@@ -14,7 +14,7 @@
 
     <!-- Mi estilo CSS -->
     <link href="css/estilos.css" rel="stylesheet">
-
+    
     <!-- Custom styles for this template -->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/colors/color-74c9be.css" rel="stylesheet">    

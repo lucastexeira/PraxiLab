@@ -1,62 +1,53 @@
 	
 	@include("layouts.cabecera")
-	
+	<link href="css/estilosLogin.css" rel="stylesheet">
 </head>
 <body>
 
-	@include("layouts.navbar")
-
-	<div class="row">
-		<div class="container">
-			<div class="col-xs-12">
-				<h2 class="text-center">Registro de usuario</h2>
-				<form action="logica\confirm.php" method="POST" id="registro-form">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="nombre">Nombre y Apellido</label>
-							
-							<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre y Apellido" required="required" <?php if (isset($_SESSION["nombre"]) and $_SESSION["nombre"]!='') {echo 'value="'.$_SESSION["nombre"].'"'; $_SESSION["nombre"]='';} ?> >
-						</div>
-						<div class="form-group">
-							<label for="telefono">Tel&eacute;fono</label>
-							<input type="text" class="form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono" required="required" <?php if (isset($_SESSION["telefono"]) and $_SESSION["telefono"]!='') {echo 'value="'.$_SESSION["telefono"].'"'; $_SESSION["telefono"]='';} ?> >
-						</div>
-						<div class="form-group">
-							<label for="fechaNacimiento">Fecha de nacimiento</label>
-							<input type="text" class="form-control birthdate" id="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento" required="required" <?php if (isset($_SESSION["fechaNacimiento"]) and $_SESSION["fechaNacimiento"]!='') {echo 'value="'.$_SESSION["fechaNacimiento"].'"'; $_SESSION["fechaNacimiento"]='';} ?> >
-						</div>
-						<div class="form-group">
-							<label for="sexo">Sexo</label>
-							<br>
-							<label class="radio-inline">
-								<input type="radio" name="sexo" class="sexo" value="M" <?php if ( !isset($_SESSION["sexo"]) or $_SESSION["sexo"]=='' or $_SESSION["sexo"]=='M') {echo 'checked="checked"'; $_SESSION["sexo"]='';} ?> >M
-							</label>
-							<label class="radio-inline">
-								<input type="radio" name="sexo" class="sexo" value="F" <?php if (isset($_SESSION["sexo"]) and $_SESSION["sexo"]=='F') {echo 'checked="checked"'; $_SESSION["sexo"]='';} ?> >F
-							</label>
-						</div>
+	@include("layouts.navbar");
+					
+					<div class="container">
+						<div class="col-md-12">
+					    	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+					        <div class="well">
+					            <div class="card-header">
+					                <img src="img/bg01.jpg" class="profile-img" /> 
+					                    <h3 class="text-center">Registro</h3>
+					            </div>
+					            <form method="" action=" usuarioCreado/{{ $persona->id_persona }}">
+					            	<input type="hidden" name="_method" value="POST">
+					            	<input type="hidden" name="_token" value="{{ csrf_field() }}">
+						            <div class="card-body">
+						                <div class="col-md-6">
+						                    <div class="form-group">
+						                        <label for="nombre">Nombre</label>
+						                        <input name="nombre" type="text" maxlength="50" id="nombre" class="form-control" placeholder="Nombre" required="required" value="{{ $persona->nombre }}"/>
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="contrasena">Apellido</label>
+						                        <input name="apellido" type="text" id="apellido" class="form-control" placeholder="Apellido" required="required" value="{{ $persona->apellido }}" />
+						                    </div>
+						                </div>
+						                <div class="col-md-6">
+						                    <div class="form-group">
+						                        <label for="nombre">Mail</label>
+						                        <input name="mail" type="mail" maxlength="50" id="mail" class="form-control" placeholder="E-mail" required="required" value="{{ $persona->mail }}"/>
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="contrasena">Contraseña</label>
+						                        <input name="contrasena" type="password" id="contrasena" class="form-control" placeholder="Contraseña" required="required" value="{{ $persona->contrasena }}" />
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="telefono">Telefono</label>
+						                        <input name="telefono" type="text" id="telefono" class="form-control" placeholder="Telefono" required="required" value="{{ $persona->telefono }}" />
+						                    </div>
+						                </div>
+						                <input type="submit" class="btn btn-primary btn-block" value="Confirmar"/>
+						            </div>
+						        </form>
+					        </div>
+					    </div>
+					    
 					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="mail">E-Mail</label>
-							<input type="email" class="form-control" id="mail" name="mail" placeholder="E-Mail" required="required">
-						</div>
-						<div class="form-group">
-							<label for="password">Contrase&ntilde;a</label>
-							<input type="password" class="form-control" id="password" name="password" placeholder="Contrase&ntilde;a" required="required">
-						</div>
-						<div class="form-group">
-							<label for="confirmaPassword">Confirme contrase&ntilde;a</label>
-							<input type="password" class="form-control" id="confirmaPassword" name="confirmaPassword" placeholder="Confirme contrase&ntilde;a" required="required">
-						</div>
-					</div>
-					<div class="col-sm-12 centered">
-						<a href="javascript:history.back()" class="btn btn-danger">Cancelar</a>
-						<input type="submit" class="btn btn-success" id="btnConfirmar" value="Confirmar"></input>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 
 	@include("layouts.pie")

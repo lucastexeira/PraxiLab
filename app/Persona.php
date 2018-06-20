@@ -2,20 +2,17 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\Persona as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Persona extends Authenticatable
+class Persona extends Model
 {
-    use Notifiable; // que es esto?
+    protected $table = 'personas';
+    protected $fillable = [
+        'nombre', 'mail', 'apellido', 'telefono', 'mail', 'contrasena','provincia', 'zona', 'pais', 'practicas_cantidad', 'creditos_cantidad',
+    ];
 
-    protected $table = "personas";
-
-    protected $fillable = [ 'nombre', 'mail', 'apellido', 'telefono', 'mail', 'provincia', 'zona', 'pais', 'practicas_cantidad', 
-                            'creditos_cantidad' ];//falta CONTRASEÑA
-
-    //CONTRASEÑA
-    /*protected $hidden = [
-        'password', 'remember_token',
-    ];*/
+    //sirve para ignorar los campos update `updated_at` y `created_at`
+    public $timestamps = false;
 }
+
+

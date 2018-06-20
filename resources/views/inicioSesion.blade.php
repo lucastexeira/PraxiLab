@@ -1,33 +1,38 @@
 	
 	@include("layouts.cabecera")
-	
+	<link href="css/estilosLogin.css" rel="stylesheet">
 </head>
 <body>
 
 	@include("layouts.navbar");
+	<div class="container">
+		<div class="col-md-6 col-md-offset-3">
+	    	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	        <div class="well">
+	            <div class="card-header">
+	                <img src="img/bg01.jpg" class="profile-img" /> 
+	                    <h3 class="text-center">Iniciar Sesión</h3>
+	            </div>
 
-	<div class="row">
-		<div class="container">
-			<div class="col-md-8 centered">
-				<h2 class="text-center">Iniciar Sesión</h2>
-				<form action="logica\confirm.php" method="POST" id="registro-form">
-					
-					<div class="form-group centered">
-						<label for="mail">E-Mail</label>
-						<input type="email" class="form-control" id="mail" name="mail" placeholder="E-Mail" required="required">
-					</div>
-					<div class="form-group centered">
-						<label for="password">Contrase&ntilde;a</label>
-						<input type="password" class="form-control" id="password" name="password" placeholder="Contrase&ntilde;a" required="required">
-					</div>
-					<div class="col-md-12 centered">
-						<a href="javascript:history.back()" class="btn btn-danger">Cancelar</a>
-						<input type="submit" class="btn btn-success" id="btnConfirmar" value="Confirmar"></input>
-					</div>
-					
-				</form>
-			</div>
-		</div>
+	            <form method="POST" action="login">
+	            {{ csrf_field() }}
+		            <div class="card-body">
+		                <div>
+		                    <div class="form-group">
+		                        <label for="mail">Nombre</label>
+		                        <input name="mail" type="text" maxlength="50" id="mail" class="form-control" placeholder="Nombre" required="true"/>
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="contrasena">Contraseña</label>
+		                        <input name="contrasena" type="password" id="contrasena" class="form-control" placeholder="Contraseña" required="true"/>
+		                    </div>
+
+		                    <input type="submit" class="btn btn-primary btn-block" value="Confirmar"/>
+		                </div>
+		            </div>
+	            </form>
+	        </div>
+	    </div>
 	</div>
 
-	@include("layouts.pie");
+@include("layouts.pie")
