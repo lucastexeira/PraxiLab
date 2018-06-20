@@ -1,0 +1,59 @@
+/* MENU */
+
+#headerwrap h1 {
+    font-size: 24px !important;
+    margin-top: 110px !important;
+    margin-bottom: 20px !important;
+}
+
+#headerwrap {
+    margin-top: -82px !important;
+    min-height: 369px !important;
+    /*background: url(../img/bg01.jpg) no-repeat center top !important;*/
+    background: #c0392b !important; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #c0392b, #8e44ad) !important; /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #c0392b, #8e44ad) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.navbar a {
+    color: #e8a9a3 !important;
+    font-size: 18px !important;
+}
+
+.navbar a:hover {
+    color: white !important;
+    font-size: 18px !important;
+}
+
+.bg-transparent{
+	transition: all 1s ease;
+}	
+
+.navbar {
+    background: transparent !important;
+}
+
+/*CATEGORIAS*/
+
+.container-articles {
+    border-bottom: 1px solid #333b3e;
+}
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 15px;
+}
+
+.articles {
+    overflow: hidden;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.article-img {
+    padding-left: 0px;
+    padding-right: 0px;
+}
