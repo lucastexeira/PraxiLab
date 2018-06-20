@@ -11,9 +11,8 @@ class Persona extends Authenticatable
 
     protected $table = "personas";
 
-    protected $fillable = [
-        'nombre', 'mail', 'apellido', 'telefono', 'mail', 'provincia', 'zona', 'pais', 'practicas_cantidad', 
-        'creditos_cantidad' ];//falta CONTRASEÑA
+    protected $fillable = [ 'nombre', 'mail', 'apellido', 'telefono', 'mail', 'provincia', 'zona', 'pais', 'practicas_cantidad', 
+                            'creditos_cantidad' ];//falta CONTRASEÑA
 
     //CONTRASEÑA
     /*protected $hidden = [

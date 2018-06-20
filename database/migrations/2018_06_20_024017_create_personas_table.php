@@ -22,6 +22,7 @@ class CreatePersonasTable extends Migration
             $table->string('provincia');
             $table->string('zona');
             $table->string('pais');
+            $table->integer('estado'); // esto es para definir si el usuario fue borrado 
             $table->string('password');
             $table->integer('practicas_cantidad');
             $table->integer('creditos_cantidad');

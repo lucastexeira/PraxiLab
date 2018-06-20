@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CalificacionComentario extends Model
 {
-    //
+    protected $table = "calificacionescomentarios";
+
+    protected $fillable = [ 'calificacion', 'comentario', 'id_persona'];
 }
