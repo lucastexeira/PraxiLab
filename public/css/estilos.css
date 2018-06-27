@@ -16,7 +16,7 @@
 }
 
 .navbar a {
-    color: #e8a9a3 !important;
+    color: #ffffff !important;
     font-size: 18px !important;
 }
 
@@ -31,6 +31,23 @@
 
 .navbar {
     background: transparent !important;
+}
+
+/*INDEX*/
+.si i {
+    color: #000000 !important;
+}
+
+button.btn.btn-theme.btn-lg {
+    background-color: #9144a6;
+}
+
+.container:hover .img{
+    background-color: blue;
+}
+
+.b-link-fade .b-wrapper, .b-link-fade .b-top-line {
+    background: #343a40 !important;
 }
 
 /*CATEGORIAS*/
