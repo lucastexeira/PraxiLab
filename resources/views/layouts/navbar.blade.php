@@ -2,6 +2,7 @@
 	<! ========== NAVBAR =======================================================================================>
 
 	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-dark fixed-top" style="color: white">
+		
 	  <a class="navbar-brand" href="index.php">
 	  	PraxiLab
 	  	<!--img width="80" src="img/logo.png" alt=""-->

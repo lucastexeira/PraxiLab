@@ -4,8 +4,8 @@
 </head>
 <body>
 
-	@include("layouts.navbar");
-					
+	@include("layouts.navbar")
+	</br>
 					<div class="container">
 						<div class="col-md-12">
 					    	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -14,9 +14,10 @@
 					                <img src="img/bg01.jpg" class="profile-img" /> 
 					                    <h3 class="text-center">Registro</h3>
 					            </div>
-					            <form method="" action=" usuarioCreado/{{ $persona->id_persona }}">
-					            	<input type="hidden" name="_method" value="POST">
-					            	<input type="hidden" name="_token" value="{{ csrf_field() }}">
+					            <form method="" action=" create/{{ $persona->id_persona }}">
+					            	<input type="hidden" name="_method" value="PUT">
+					            	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 						            <div class="card-body">
 						                <div class="col-md-6">
 						                    <div class="form-group">

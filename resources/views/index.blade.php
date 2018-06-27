@@ -3,7 +3,16 @@
 
   <body>
 	<! ========== NAVBAR =======================================================================================>
+
 	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
+
+		@if(Session::has('notice'))
+		   <div class="alert">
+			  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			  <h2>{{ Session::get('notice') }}</h2>
+			</div>
+		@endif
+		
 	  <a class="navbar-brand" href="index.php">
 	  	PraxiLab
 	  	<!--img width="80" src="img/logo.png" alt=""-->
