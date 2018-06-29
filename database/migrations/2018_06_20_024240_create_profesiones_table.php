@@ -15,12 +15,9 @@ class CreateProfesionesTable extends Migration
     {
         Schema::create('profesiones', function (Blueprint $table) {
             $table->increments('id_profesion');
+            $table->integer('id_rubro');
             $table->string('titulo');
             $table->string('descripcion');
-            $table->unsignedInteger('id_rubro');
-
-            $table->foreign('id_rubro')->references('id_rubro')->on('rubros');
-            
             $table->timestamps();
         });
     }
