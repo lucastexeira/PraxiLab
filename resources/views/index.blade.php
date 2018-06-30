@@ -70,7 +70,7 @@
 
 		<div class="row mt centered ">
 			<div class="col-lg-4 col-lg-offset-4">
-				<h1>Servicios Recomendados</h1>
+				<h1>Prácticas Recomendadas</h1>
 				<hr>
 			</div>
 		</div><!-- /row -->
@@ -92,14 +92,14 @@
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
     			<a href=" {{ 'servicios' }} ">
-    				<button type="button" class="btn btn-theme btn-lg">TODOS LOS SERVICIOS</button>
+    				<button type="button" class="btn btn-theme btn-lg">TODAS LAS PRÁCTICAS</button>
     			</a>
 			</div>
 		</div><!-- /row -->
 
 	</div><!-- /container -->
 
-	<! ========== CATEGORÍAS ======================================================================================>   
+	<! ========== RUBROS ======================================================================================>   
 	<div class="container">
 		<div class="row mt centered ">
 			<div class="col-lg-4 col-lg-offset-4">
@@ -113,11 +113,10 @@
 
 			@foreach ($rubros as $rubro)
 				<div class="col-md-3 article-img">
-				
-					<a class="b-link-fade b-animate-go" href="#"><img width="200" height="150" src="{{ $rubro->imagen }}" alt="" />
+					<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"><img width="200" height="150" src="{{ $rubro->imagen }}" alt="" />
 						<div class="b-wrapper">
 						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
+						  	<p class="b-from-right b-animate b-delay03">VER MÁS</p>
 						</div>
 					</a>
 
@@ -131,12 +130,37 @@
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
     			<a class="nav-link" href="{{ 'rubrosYServicios' }}">
-    				<button type="button" class="btn btn-theme btn-lg">RUBROS Y SERVICIOS</button>
+    				<button type="button" class="btn btn-theme btn-lg">RUBROS Y PRÁCTICAS</button>
     			</a>
 			</div>
 		</div><!-- /row -->
 	</div><!-- /container -->
 
+	<!-- MODAL -->
+	<div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        	<h4 class="modal-title">Lista de Servicios</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          
+	        </div>
+	        <div class="modal-body">
+	        @foreach ($servicios as $servicio)
+	        	<h3>{{ $servicio->nombre_servicio }}</h3>
+	        @endforeach
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+  	</div>
+  
+</div>
 
 	<! ========== NOSOTROS ===============================================================================================>    
 	<div id="black">
@@ -174,7 +198,7 @@
 	    		</div>
 	    		<div class="col-lg-4 centered si">
 	    			<i class="glyphicon glyphicon-check"></i>
-	    			<h4>Servicios</h4>
+	    			<h4>Prácticas</h4>
 	    			<p>Llevá a cabo el servicio programado. </p>
 	    		</div>
 	    		<div class="col-lg-4 centered si">
@@ -195,6 +219,12 @@
 				$("#menu").removeClass("bg-dark");
 				}
 			});
+
+		$(document).ready(function(){
+		    $("#myBtn").click(function(){
+		        $("#myModal").modal();
+		    });
+		});
 	</script>
 
     @include("layouts.pie")
