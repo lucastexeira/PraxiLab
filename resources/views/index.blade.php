@@ -112,15 +112,16 @@
 			<div class="row articles">
 
 			@foreach ($rubros as $rubro)
-				<div class="col-md-3 article-img">
-					<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"><img width="200" height="150" src="{{ $rubro->imagen }}" alt="" />
+				<div class="col-md-3 article-img" >
+
+					<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
 						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
+						  	<h4 class="b-from-left b-animate b-delay03">{{ $rubro->nombre_rubro }}</h4>
 						  	<p class="b-from-right b-animate b-delay03">VER MÁS</p>
 						</div>
 					</a>
 
-					<h3>{{ $rubro->nombre_rubro }}</h3>
+					<h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
 					
 				</div>
 			@endforeach
@@ -149,11 +150,12 @@
 	        </div>
 	        <div class="modal-body">
 	        @foreach ($servicios as $servicio)
-	        	<h3>{{ $servicio->nombre_servicio }}</h3>
+	        	@if ($servicio->id_rubro === $rubro->id_rubro)
+	        		<h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
 	        @endforeach
 	        </div>
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>-->
 	        </div>
 	      </div>
 	      
@@ -220,10 +222,12 @@
 				}
 			});
 
+
 		$(document).ready(function(){
 		    $("#myBtn").click(function(){
 		        $("#myModal").modal();
 		    });
+
 		});
 	</script>
 
