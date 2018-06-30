@@ -1,12 +1,10 @@
 <?php
 
 
-// Nuestra vista raiz ('/') es index
-Route::get('/', function () {
-	
-    return view('index');
-});
+Route::get('index',[
+	'uses' => 'HomeController@index' //Nombre_del_controlador@Nombre_del_metodo
 
+]);
 
 //Registro de usuarios
 Route::get('persona', 'HomeController@registro');
@@ -30,3 +28,15 @@ Route::get('inicioSesion',[
 
 Route::post('login', 'HomeController@inicioSesion');
 Route::get('logout', 'HomeController@logout');
+
+//Rubros y Servicios
+Route::get('rubrosYServicios',[
+	'uses' => 'RubroController@verRubrosYServicios' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Servicios
+Route::get('servicios',[
+	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
+
+]);

@@ -8,5 +8,6 @@ class Rubro extends Model
 {
     protected $table = "rubros";
 
-    protected $fillable = [ 'nombre_rubro'];
 }
+
+    protected $fillable = ['id_rubro', 'nombre_rubro', 'imagen'];

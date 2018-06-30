@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Persona;
+use App\Rubro;
+use App\Servicio;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
@@ -15,7 +17,10 @@ class HomeController extends Controller
 
 	public function index(){
 
-        return view('index');
+        $rubros = Rubro::all();
+        $servicios = Servicio::all();
+
+        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios);
     }
 
     protected $redirectTo = '/index';
