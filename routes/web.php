@@ -44,3 +44,6 @@ Route::get('servicios',[
 	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
+
+//Rubro por ID
+Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');

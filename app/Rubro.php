@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rubro extends Model
 {
-    protected $table = 'rubros';
+    protected $table = "rubros";
 
-    protected $fillable = ['id_rubro', 'nombre_rubro', 'imagen'];
-    
+	protected $fillable = ['id_rubro', 'nombre_rubro'];
+
 }
+
+    

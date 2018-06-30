@@ -10,5 +10,5 @@ class Servicio extends Model
 
     protected $fillable = ['id_rubro', 'nombre_servicio', 'imagen', 'id_rubro'];
 
-
+	//return this->belongTo('App\Servicio','id_rubro','id_rubro');
 }

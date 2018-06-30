@@ -22,6 +22,7 @@ class CreatePersonasTable extends Migration
             $table->string('provincia')->nullable();
             $table->string('zona')->nullable(); 
             $table->string('pais')->nullable();
+            $table->double('cantidad_creditos')->nullable();
             $table->integer('estado')->nullable(); // esto es para definir si el usuario fue borrado 
             $table->integer('cant_practicas_hechas'); /* esto es util para validar que el usuario voluntario hizo 
                                                          la cantidad de practicas necesarias.*/

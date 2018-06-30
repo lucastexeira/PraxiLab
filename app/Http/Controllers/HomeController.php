@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -19,8 +20,12 @@ class HomeController extends Controller
 
         $rubros = Rubro::all();
         $servicios = Servicio::all();
+        $rubroPorId = Rubro::where('id_rubro', '=', Input::get('id_rubro'));
+        $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id_rubro');
+        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', '1');
+        $i=1;
 
-        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios);
+        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('i', $i);
     }
 
     protected $redirectTo = '/index';
