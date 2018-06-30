@@ -4,7 +4,7 @@
   <body>
 	<! ========== NAVBAR =======================================================================================>
 	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
-	  <a class="navbar-brand" href="index.php">
+	  <a class="navbar-brand" href=" {{ 'index' }} ">
 	  	PraxiLab
 	  	<!--img width="80" src="img/logo.png" alt=""-->
 	  </a>
@@ -16,21 +16,19 @@
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	        Rubros 
-
-
+	        	Rubros 
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="#">Action</a>
-	          <a class="dropdown-item" href="#">Another action</a>
-	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="#">Something else here</a>
+	        	@foreach ($rubros as $rubro)
+				  <a class="dropdown-item" href="{{ $rubro->id_rubro }}">{{ $rubro->nombre_rubro }}</a>
+				@endforeach
+	          
 	        </div>
 	      </li>
 	    </ul>
 	    <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscador</button>
+	      <input class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search">
+	      <button type="button" class="btn btn-cta btn-lg">Buscar</button>
 	    </form>
 
 	    <ul class="navbar-nav">
@@ -78,43 +76,24 @@
 		</div><!-- /row -->
 
 		<div class="row mt">
+			@foreach ($servicios as $servicio)
 			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="img/portfolio/port04.jpg" alt="" />
+				<a class="b-link-fade b-animate-go" href="#"><img width="350" height="250" src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
 					<div class="b-wrapper">
 					  	<h4 class="b-from-left b-animate b-delay03">Ver más</h4>
 					</div>
 				</a>
-				<p>Servicio 1</p>
-				<p class="lead">Descripción del Servicio</p>
+				<p>{{ $servicio->nombre_servicio }}</p>
 				<hr-d>
 			</div>
-			
-			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="img/portfolio/port04.jpg" alt="" />
-					<div class="b-wrapper">
-					  	<h4 class="b-from-left b-animate b-delay03">Ver más</h4>
-					</div>
-				</a>
-				<p>Servicio 1</p>
-				<p class="lead">Descripción del Servicio</p>
-				<hr-d>
-			</div>
-
-			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="img/portfolio/port04.jpg" alt="" />
-					<div class="b-wrapper">
-					  	<h4 class="b-from-left b-animate b-delay03">Ver más</h4>
-					</div>
-				</a>
-				<p>Servicio 1</p>
-				<p class="lead">Descripción del Servicio</p>
-				<hr-d>
-			</div>
+			@endforeach
 		</div><!-- /row -->
 
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
-    			<button type="button" class="btn btn-theme btn-lg">VER MÁS</button>
+    			<a href=" {{ 'servicios' }} ">
+    				<button type="button" class="btn btn-theme btn-lg">TODOS LOS SERVICIOS</button>
+    			</a>
 			</div>
 		</div><!-- /row -->
 
@@ -131,175 +110,29 @@
 
 		<div class="container-fluid container-articles">
 			<div class="row articles">
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
-				<div class="col-md-2 article-img">
-					<a class="b-link-fade b-animate-go" href="#"><img width="185" src="img/portfolio/port01.jpg" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
-						  	<p class="b-from-right b-animate b-delay03">View Details</p>
-						</div>
-					</a>
-					<p>APE - <i class="fa fa-heart-o"></i></p>
-				</div>
 
+			@foreach ($rubros as $rubro)
+				<div class="col-md-3 article-img">
+				
+					<a class="b-link-fade b-animate-go" href="#"><img width="200" height="150" src="{{ $rubro->imagen }}" alt="" />
+						<div class="b-wrapper">
+						  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
+						  	<p class="b-from-right b-animate b-delay03">View Details</p>
+						</div>
+					</a>
+
+					<h3>{{ $rubro->nombre_rubro }}</h3>
+					
+				</div>
+			@endforeach
 			</div>
 		</div><!-- /row -->
 
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
-    			<button type="button" class="btn btn-theme btn-lg">RUBROS Y SERVICIOS</button>
+    			<a class="nav-link" href="{{ 'rubrosYServicios' }}">
+    				<button type="button" class="btn btn-theme btn-lg">RUBROS Y SERVICIOS</button>
+    			</a>
 			</div>
 		</div><!-- /row -->
 	</div><!-- /container -->
