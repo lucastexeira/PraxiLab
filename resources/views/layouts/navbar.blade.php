@@ -3,8 +3,7 @@
 
 	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-dark fixed-top" style="color: white">
 	  <a class="navbar-brand" href="index.php">
-	  	PraxiLab
-	  	<!--img width="80" src="img/logo.png" alt=""-->
+	  	<img width="100" src="img/logos/LogoColorTransparente.png" alt="">
 	  </a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>

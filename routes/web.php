@@ -30,3 +30,8 @@ Route::get('inicioSesion',[
 
 Route::post('login', 'HomeController@inicioSesion');
 Route::get('logout', 'HomeController@logout');
+
+//Inicio de Sesion - (login y logout)
+Route::get('perfil',[
+	'uses' => 'HomeController@perfil'
+]);

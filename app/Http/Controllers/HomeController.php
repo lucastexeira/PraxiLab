@@ -76,4 +76,9 @@ class HomeController extends Controller
             return Redirect::back()->with('error_message', 'El usuario no existe')->withInput();
         
     }
+
+    public function perfil(){
+
+        return view('perfil');
+    }
 }
