@@ -36,3 +36,4 @@ class CreatePersonasprofesionesTable extends Migration
         Schema::dropIfExists('personasprofesiones');
     }
 }
+
