@@ -152,6 +152,7 @@
 	        @foreach ($servicios as $servicio)
 	        	@if ($servicio->id_rubro === $rubro->id_rubro)
 	        		<h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
+	        	@endif
 	        @endforeach
 	        </div>
 	        <div class="modal-footer">
