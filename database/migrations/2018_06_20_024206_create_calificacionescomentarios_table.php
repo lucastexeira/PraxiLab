@@ -23,7 +23,7 @@ class CreateCalificacionescomentariosTable extends Migration
 
             $table->foreign('id_autor')->references('id_persona')->on('personas');
 			$table->foreign('id_destinatario')->references('id_persona')->on('personas');
-			$table->foreign('id_practica')->references('id_practica')->on('practicas');
+			//$table->foreign('id_practica')->references('id_practica')->on('practicas');
 
             $table->timestamps();
         });
