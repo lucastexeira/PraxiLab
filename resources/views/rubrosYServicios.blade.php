@@ -1,9 +1,9 @@
 	
-	@include("layouts.cabecera");
+@include("layouts.cabecera");
 </head>
 <body>
 
-	@include("layouts.navbar");
+@include("layouts.navbar");
 	
 <div class="container">
 	<div class="row">
@@ -11,23 +11,25 @@
 		    <ol class="tree-structure">
 
 			    @foreach ($rubros as $rubro)
-			    	<div class="col-md-4 article-img" >
-			    		<ul class="list-group">
-			    			
-							<h3><a class="num" href="#">{{ $rubro->nombre_rubro }} </a></h3>
+			    	<div class="col-md-3 article-img" >
+			    		<ul class="list-group" id="list-tab" role="tablist">
+
+							<!--<a href="#" ><img width="75" height="55" src="{{ $rubro->imagen }}" alt="" /><h3>{{ $rubro->nombre_rubro }}</h3></a>-->
+
+							<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img class="center-block" width="75" height="55" src="{{ $rubro->imagen }}" alt="" />
+								<h4 class= "text-center">{{ $rubro->nombre_rubro }}</h4>
+							</a>
 							
 								<ol>
 									@foreach ($servicios as $servicio)
 
 										@if($rubro->id_rubro === $servicio->id_rubro)
-											<li>
-												<span class="num">*</span>
-												<h4><a href="#" class="text-left">{{ $servicio->nombre_servicio }}</a></h4>
-											</li>
+												<h4  class="center-block"><a href="#">{{ $servicio->nombre_servicio }}</a></h4>
 										@endif
 
 									@endforeach
 								</ol>
+
 						</ul>
 					</div>
 				@endforeach
