@@ -13,10 +13,10 @@ class rubrosSeeder extends Seeder
     {
         DB::table('rubros')->insert([
 
-    		['nombre_rubro' => 'Comunicación y Diseño'],
-    		['nombre_rubro' => 'Belleza y Cuidado Personal'],
-            ['nombre_rubro' => 'Cursos y Clases'],
-            ['nombre_rubro' => 'Fiestas y Eventos']
+    		['imagen' => 'img/rubros/ComunicacionDiseno.png', 'nombre_rubro' => 'Comunicación y Diseño'],
+    		['imagen' => 'img/rubros/Belleza.png', 'nombre_rubro' => 'Belleza y Cuidado Personal'],
+            ['imagen' => 'img/rubros/Cursos.png', 'nombre_rubro' => 'Cursos y Clases'],
+            ['imagen' => 'img/rubros/Fiestas.png', 'nombre_rubro' => 'Fiestas y Eventos']
 
         ]);
     }
