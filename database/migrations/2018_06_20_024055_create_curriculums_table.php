@@ -15,13 +15,13 @@ class CreateCurriculumsTable extends Migration
     {
         Schema::create('curriculums', function (Blueprint $table) {
             $table->increments('id_curriculum');
-            $table->string('formacion_academica');
-            $table->string('formacion_complementaria');
-            $table->string('eperiencia');
-            $table->string('descripcion');
-            $table->string('idiomas');
-            $table->string('referecias');
-            $table->string('otros_datos');
+            $table->string('formacion_academica')->nullable();
+            $table->string('formacion_complementaria')->nullable();
+            $table->string('eperiencia')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->string('idiomas')->nullable();
+            $table->string('referecias')->nullable();
+            $table->string('otros_datos')->nullable();
             $table->unsignedInteger('id_persona');
 
             $table->foreign('id_persona')->references('id_persona')->on('personas');

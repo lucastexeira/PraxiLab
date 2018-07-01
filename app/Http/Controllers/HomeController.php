@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Persona;
+use App\Rubro;
+use App\Servicio;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -15,7 +18,13 @@ class HomeController extends Controller
 
 	public function index(){
 
-        return view('index');
+        $rubros = Rubro::all();
+        $servicios = Servicio::all();
+        $rubroPorId = Rubro::where('id_rubro', '=', Input::get('id_rubro'));
+        $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id_rubro');
+        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id_rubro');
+
+        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios);
     }
 
     protected $redirectTo = '/index';
@@ -75,5 +84,10 @@ class HomeController extends Controller
             // Si los datos no son los correctos volvemos al login y mostramos un error
             return Redirect::back()->with('error_message', 'El usuario no existe')->withInput();
         
+    }
+
+    public function perfil(){
+
+        return view('perfil');
     }
 }

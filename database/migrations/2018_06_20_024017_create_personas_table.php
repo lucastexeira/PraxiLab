@@ -17,14 +17,17 @@ class CreatePersonasTable extends Migration
             $table->increments('id_persona');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('telefono')->nullable();
+            $table->string('telefono');
             $table->string('mail');
             $table->string('provincia')->nullable();
-            $table->string('zona')->nullable();
+            $table->string('zona')->nullable(); 
             $table->string('pais')->nullable();
+            $table->double('cantidad_creditos')->nullable();
             $table->integer('estado')->nullable(); // esto es para definir si el usuario fue borrado 
-            $table->string('contrasena');
-            $table->float('promedio_calificacion')->nullable();
+            $table->integer('cant_practicas_hechas'); /* esto es util para validar que el usuario voluntario hizo 
+                                                         la cantidad de practicas necesarias.*/
+            $table->string('password')->nullable(); 
+            $table->integer('practicas_cantidad')->nullable();
             $table->integer('creditos_cantidad')->nullable();
             $table->timestamps();
         });
