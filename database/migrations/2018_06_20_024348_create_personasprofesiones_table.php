@@ -14,13 +14,13 @@ class CreatePersonasprofesionesTable extends Migration
     public function up()
     {
         Schema::create('personasprofesiones', function (Blueprint $table) {
-            $table->increments('id_personasprofesiones');
+            $table->increments('id');
 
             $table->unsignedInteger('id_persona');
             $table->unsignedInteger('id_profesion');
             
-            $table->foreign('id_profesion')->references('id_profesion')->on('profesiones');
-            $table->foreign('id_persona')->references('id_persona')->on('personas');
+            $table->foreign('id_profesion')->references('id')->on('profesiones');
+            $table->foreign('id_persona')->references('id')->on('personas');
 
             $table->timestamps();
         });

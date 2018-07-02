@@ -19,7 +19,7 @@ class CreateServiciosTable extends Migration
             $table->string('imagen')->nullable();
             $table->unsignedInteger('id_rubro'); 
 
-            $table->foreign('id_rubro')->references('id_rubro')->on('rubros');
+            $table->foreign('id_rubro')->references('id')->on('rubros');
 
             $table->timestamps();
         });

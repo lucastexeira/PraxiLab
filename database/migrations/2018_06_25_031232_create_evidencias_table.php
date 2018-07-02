@@ -14,12 +14,12 @@ class CreateEvidenciasTable extends Migration
     public function up()
     {
         Schema::create('evidencias', function (Blueprint $table) {
-            $table->increments('id_evidencia');
+            $table->increments('id');
             $table->string('pathevidencia');
             $table->date('fecha');
             $table->unsignedInteger('id_practica');
 
-            $table->foreign('id_practica')->references('id_practica')->on('practicas');
+            $table->foreign('id_practica')->references('id')->on('practicas');
             
             $table->timestamps();
         });

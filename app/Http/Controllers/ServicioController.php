@@ -16,12 +16,13 @@ class ServicioController extends Controller
     public function verServicios($id_rubro){
 
         $servicios = Servicio::all();
-        $rubros = Rubro::all();
-        $rubroId = Rubro::where($rubros.'id_rubro', '=', $id_rubro);
-        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $id_rubro);
+        $rubros = Rubro::find($id_rubro);
+        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
 
-        //return view('/servicios')->with('servicios', $servicios)->with('serviciosPorRubro',$serviciosPorRubro)->whith('rubros',$rubros);
+        return view('/servicios')->with('servicios', $servicios)->with('serviciosPorRubro',$serviciosPorRubro)->with('rubros',$rubros);
 
-        dd($serviciosPorRubro);
+        //$rubros = Rubro::find($id_rubro);
+
+        //dd($serviciosPorRubro);
     }
 }

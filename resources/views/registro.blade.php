@@ -14,7 +14,7 @@
 					                <img src="img/bg01.jpg" class="profile-img" /> 
 					                    <h3 class="text-center">Registro</h3>
 					            </div>
-					            <form method="" action=" usuarioCreado/{{ $persona->id_persona }}">
+					            <form method="" action=" usuarioCreado/{{ $persona->id }}">
 					            	<input type="hidden" name="_method" value="POST">
 					            	<input type="hidden" name="_token" value="{{ csrf_field() }}">
 						            <div class="card-body">

@@ -20,7 +20,7 @@
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	        	@foreach ($rubros as $rubro)
-				  <a class="dropdown-item" href="{{ $rubro->id_rubro }}">{{ $rubro->nombre_rubro }}</a>
+				  <a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a>
 				@endforeach
 	          
 	        </div>
@@ -150,7 +150,7 @@
 	        </div>
 	        <div class="modal-body">
 	        @foreach ($servicios as $servicio)
-	        	@if ($servicio->id_rubro === $rubro->id_rubro)
+	        	@if ($servicio->id_rubro === $rubro->id)
 	        		<h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
 	        	@endif
 	        @endforeach

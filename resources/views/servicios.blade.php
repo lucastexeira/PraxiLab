@@ -7,14 +7,14 @@
 	
 <div class="container">
 		<div class="row mt centered ">
-			<div class="col-lg-4 col-lg-offset-4">
-				<h1>Servicios del Rubro</h1>
+			<div class="col-lg-12 col-lg-offset-12">
+				<h1>Servicios del Rubro: {{ $rubros->nombre_rubro }}</h1>
 				<hr>
 			</div>
 		</div><!-- /row -->
 
 		<div class="row mt">
-			@foreach ($servicios as $servicio)
+			@foreach ($serviciosPorRubro as $servicio)
 			<div class="col-lg-4 col-md-4 col-xs-12 desc">
 				<a class="b-link-fade b-animate-go" href="#"><img width="350" height="250" src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
 					<div class="b-wrapper">

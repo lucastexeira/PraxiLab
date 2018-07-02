@@ -16,14 +16,14 @@
 
 							<!--<a href="#" ><img width="75" height="55" src="{{ $rubro->imagen }}" alt="" /><h3>{{ $rubro->nombre_rubro }}</h3></a>-->
 							<div  class="center-block">
-							<a class="b-link-fade b-animate-go"  class="mask flex-center rgba-blue-light" href="servicios/{{ $rubro->id_rubro }}"><img class="center-block" width="75" height="55" src="{{ $rubro->imagen }}" />
+							<a class="b-link-fade b-animate-go"  class="mask flex-center rgba-blue-light" href="servicios/{{ $rubro->id }}"><img class="center-block" width="75" height="55" src="{{ $rubro->imagen }}" />
 								<h4 class= "text-center">{{ $rubro->nombre_rubro }}</h4>
 							</a>
 							</div>
 								<ol>
 									@foreach ($servicios as $servicio)
 
-										@if($rubro->id_rubro === $servicio->id_rubro)
+										@if($rubro->id === $servicio->id_rubro)
 												<h4  class="center-block"><a href="#">{{ $servicio->nombre_servicio }}</a></h4>
 										@endif
 
