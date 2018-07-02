@@ -36,7 +36,7 @@ Route::get('rubrosYServicios',[
 ]);
 
 //Servicios
-Route::get('servicios',[
+Route::get('servicios/{id_rubro}',[
 	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);

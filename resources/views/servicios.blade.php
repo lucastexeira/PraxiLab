@@ -8,7 +8,7 @@
 <div class="container">
 		<div class="row mt centered ">
 			<div class="col-lg-4 col-lg-offset-4">
-				<h1>Todos los Servicios</h1>
+				<h1>Servicios del Rubro</h1>
 				<hr>
 			</div>
 		</div><!-- /row -->
