@@ -1,17 +1,17 @@
 	
-	@include("layouts.cabecera")
+@include("layouts.cabecera");
 </head>
 <body>
 
-	@include("layouts.navbar");
+@include("layouts.navbar");
 	
-<div class="container">
+<!--<div class="container">
 		<div class="row mt centered ">
 			<div class="col-lg-12 col-lg-offset-12">
 				<h1>Servicios del Rubro: {{ $rubros->nombre_rubro }}</h1>
 				<hr>
 			</div>
-		</div><!-- /row -->
+		</div>
 
 		<div class="row mt">
 			@foreach ($serviciosPorRubro as $servicio)
@@ -25,7 +25,28 @@
 				<hr-d>
 			</div>
 			@endforeach
-		</div><!-- /row -->
+		</div>
+</div>-->
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		    
+		    <h1 class="typo">Servicios del Rubro: {{ $rubros->nombre_rubro }}</h1>
+		    
+			<ol>
+				@foreach ($servicios as $servicio)
+
+					@if($rubro->id === $servicio->id_rubro)
+							<h4  class="center-block"><a href="#">{{ $servicio->nombre_servicio }}</a></h4>
+					@endif
+
+				@endforeach
+			</ol>
+
+		</div>
+	</div>
 </div>
 
 @include("layouts.pie")
