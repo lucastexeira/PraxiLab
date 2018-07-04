@@ -1,3 +1,7 @@
+body {
+    font-size: 12px !important;
+}
+
 /* MENU */
 
 #headerwrap h1 {
@@ -45,8 +49,8 @@
 }
 
 @media (min-width: 992px){
-.navbar-expand-lg .navbar-nav .dropdown-menu {
-    background-color: #343a40 !important;
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        background-color: #343a40 !important;
     }
 }
 
@@ -87,35 +91,35 @@
 
 /* PERFIL */
 .about{
-   margin: 4em 0;
-   padding: 1em;
-   position: relative;
+ margin: 4em 0;
+ padding: 1em;
+ position: relative;
 }
 .about h1{
-   color:#F97300;
-   margin: 2em;
+ color:#F97300;
+ margin: 2em;
 }
 .about img{
-   height: 100%;
-   width: 100%;
-   border-radius: 50%
+ height: 100%;
+ width: 100%;
+ border-radius: 50%
 }
 .about span{
-   display: block;
-   color: #888;
-   position: absolute;
-   left: 115px;
+ display: block;
+ color: #888;
+ position: absolute;
+ left: 115px;
 }
 .about .desc{
-   padding: 2em;
-   border-left:4px solid #10828C;
+ padding: 2em;
+ border-left:4px solid #10828C;
 }
 .about .desc h3{
-   color: #10828C;
+ color: #10828C;
 }
 .about .desc p{
-   line-height:2;
-   color: black;
+ line-height:2;
+ color: black;
 }
 
 p#nombre {
@@ -123,17 +127,17 @@ p#nombre {
     color: black !important;
 }
 
-a#home-tab {
+a#experiencia-tab {
     font-size: x-large !important;
     color: rebeccapurple !important;
 }
 
-a#profile-tab {
+a#curriculum-tab {
     font-size: x-large !important;
     color: rebeccapurple !important;
 }
 
-a#contact-tab {
+a#calificacion-tab {
     font-size: x-large !important;
     color: rebeccapurple !important;
 }
@@ -141,68 +145,12 @@ a#contact-tab {
 /* CALIFICACION */
 
 .calificacion {
-    border: 1px solid black;
-    border-radius: 100px;
-    width: 15em;
-    height: 15em;
-    position: relative;
-    float: left;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.calificacion p#promedio {
-    font-size: xx-large;
-    position: relative;
-    float: left;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 1.5em;
 }
 
 .btn-grey{
     background-color:#D8D8D8;
     color:#FFF;
-}
-.rating-block{
-    background-color:#FAFAFA;
-    border:1px solid #EFEFEF;  
-    padding:15px 15px 20px 15px;
-    border-radius:3px;
-}
-.bold{
-    font-weight:700;
-}
-.padding-bottom-7{
-    padding-bottom:7px;
-}
-
-.review-block{
-    background-color:#FAFAFA;
-    border:1px solid #EFEFEF;
-    padding:15px;
-    border-radius:3px;
-    margin-bottom:15px;
-}
-.review-block-name{
-    font-size:12px;
-    margin:10px 0;
-}
-.review-block-date{
-    font-size:12px;
-}
-.review-block-rate{
-    font-size:13px;
-    margin-bottom:15px;
-}
-.review-block-title{
-    font-size:15px;
-    font-weight:700;
-    margin-bottom:10px;
-}
-.review-block-description{
-    font-size:13px;
 }
 
 .experiencia-titulo {
@@ -236,6 +184,15 @@ a#contact-tab {
 .experiencia-descripcion {
     font-size:20px;
 }
+
+.curriculum {
+    margin-top: 1.5em;
+}
+
+.curriculum-datos > p {
+    font-size: 15px
+}
+
 /*RUBROS Y SERVICIOS*/
 *{
     -webkit-box-sizing: border-box;
@@ -334,4 +291,68 @@ a#contact-tab {
     width: 33px;
     height: 1px;
     background-color: #939393;
+}
+
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top: 10px;
+}
+
+.middle {
+    float: left;
+    width: 70%;
+    margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+    .side, .middle {
+        width: 100%;
+    }
+    /* Hide the right column on small screens */
+    .right {
+        display: none;
+    }
 }
