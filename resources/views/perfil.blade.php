@@ -30,17 +30,17 @@
 	<div class="container">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<li class="nav-item col-lg-4">
-				<a class="nav-link text-center active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Experiencia</a>
+				<a class="nav-link text-center active show" id="experiencia-tab" data-toggle="tab" href="#experiencia" role="tab" aria-controls="experiencia" aria-selected="true">Experiencia</a>
 			</li>
 			<li class="nav-item col-lg-4">
-				<a class="nav-link text-center" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Currículum</a>
+				<a class="nav-link text-center" id="curriculum-tab" data-toggle="tab" href="#curriculum" role="tab" aria-controls="curriculum" aria-selected="false">Currículum</a>
 			</li>
 			<li class="nav-item col-lg-4">
-				<a class="nav-link text-center" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Calificación</a>
+				<a class="nav-link text-center" id="calificacion-tab" data-toggle="tab" href="#calificacion" role="tab" aria-controls="calificacion" aria-selected="false">Calificación</a>
 			</li>
 		</ul>
 		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+			<div class="tab-pane fade active show" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="test">
@@ -62,79 +62,115 @@
 					</div>
 				</div>
 			</div>
-			<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">2</div>
-			<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-				<div class="row">
-					<div class="col-5">
-						<div class="calificacion text-center">
-							<b><p id="promedio">4.5</p></b>
+
+			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+				<div class="container">
+					<div class="curriculum">
+						<div class="row">
+							<div class="col-6">
+								<div class="curriculum-datos">
+									<h3>Fecha de nacimiento</h3>
+									<p>23/05/1994</p>
+								</div>
+								<div class="curriculum-datos">
+									<h3>Email</h3>
+									<p>mail@gmail.com</p>
+								</div>
+								<div class="curriculum-datos">
+									<h3>Profesion</h3>
+									<p>Electricista</p>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="curriculum-datos">
+									<h3>Dato</h3>
+									<p>Lorem ipsum</p>
+								</div>
+								<div class="curriculum-datos">
+									<h3>Dato</h3>
+									<p>Lorem ipsum</p>
+								</div>
+								<div class="curriculum-datos">
+									<h3>Dato</h3>
+									<p>Lorem ipsum</p>
+								</div>
+							</div>
+						</div>
+						<div class="curriculum-datos">
+							<h3>Educación</h3>
+							<p><strong>Universidad Nacional de La Matanza</strong></p>
+							<p>Tecnicatura en Desarrollo Web</p>
 						</div>
 					</div>
-					<div class="col-7">
-						<div class="pull-left">
-							<div class="pull-left" style="width:35px; line-height:1;">
-								<div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
-							</div>
-							<div class="pull-left" style="width:180px;">
-								<div class="progress" style="height:9px; margin:8px 0;">
-									<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
-										<span class="sr-only">80% Complete (danger)</span>
-									</div>
-								</div>
-							</div>
-							<div class="pull-right" style="margin-left:10px;">1</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="calificacion" role="tabpanel" aria-labelledby="calificacion-tab">
+				<div class="container calificacion">
+					<span class="heading">Calificación</span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star"></span>
+					<p>Promedio: 4.1 basado en 25 reviews.</p>
+					<hr style="border:3px solid #f1f1f1">
+
+					<div class="row">
+						<div class="side">
+							<div>5 star</div>
 						</div>
-						<div class="pull-left">
-							<div class="pull-left" style="width:35px; line-height:1;">
-								<div style="height:9px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
+						<div class="middle">
+							<div class="bar-container">
+								<div class="bar-5"></div>
 							</div>
-							<div class="pull-left" style="width:180px;">
-								<div class="progress" style="height:9px; margin:8px 0;">
-									<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
-										<span class="sr-only">80% Complete (danger)</span>
-									</div>
-								</div>
-							</div>
-							<div class="pull-right" style="margin-left:10px;">1</div>
 						</div>
-						<div class="pull-left">
-							<div class="pull-left" style="width:35px; line-height:1;">
-								<div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
-							</div>
-							<div class="pull-left" style="width:180px;">
-								<div class="progress" style="height:9px; margin:8px 0;">
-									<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
-										<span class="sr-only">80% Complete (danger)</span>
-									</div>
-								</div>
-							</div>
-							<div class="pull-right" style="margin-left:10px;">0</div>
+						<div class="side right">
+							<div>150</div>
 						</div>
-						<div class="pull-left">
-							<div class="pull-left" style="width:35px; line-height:1;">
-								<div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
-							</div>
-							<div class="pull-left" style="width:180px;">
-								<div class="progress" style="height:9px; margin:8px 0;">
-									<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
-										<span class="sr-only">80% Complete (danger)</span>
-									</div>
-								</div>
-							</div>
-							<div class="pull-right" style="margin-left:10px;">0</div>
+						<div class="side">
+							<div>4 star</div>
 						</div>
-						<div class="pull-left">
-							<div class="pull-left" style="width:35px; line-height:1;">
-								<div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
+						<div class="middle">
+							<div class="bar-container">
+								<div class="bar-4"></div>
 							</div>
-							<div class="pull-left" style="width:180px;">
-								<div class="progress" style="height:9px; margin:8px 0;">
-									<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-										<span class="sr-only">80% Complete (danger)</span>
-									</div>
-								</div>
+						</div>
+						<div class="side right">
+							<div>63</div>
+						</div>
+						<div class="side">
+							<div>3 star</div>
+						</div>
+						<div class="middle">
+							<div class="bar-container">
+								<div class="bar-3"></div>
 							</div>
-							<div class="pull-right" style="margin-left:10px;">0</div>
+						</div>
+						<div class="side right">
+							<div>15</div>
+						</div>
+						<div class="side">
+							<div>2 star</div>
+						</div>
+						<div class="middle">
+							<div class="bar-container">
+								<div class="bar-2"></div>
+							</div>
+						</div>
+						<div class="side right">
+							<div>6</div>
+						</div>
+						<div class="side">
+							<div>1 star</div>
+						</div>
+						<div class="middle">
+							<div class="bar-container">
+								<div class="bar-1"></div>
+							</div>
+						</div>
+						<div class="side right">
+							<div>20</div>
 						</div>
 					</div>
 				</div>
