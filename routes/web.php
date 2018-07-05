@@ -1,12 +1,15 @@
 <?php
 
-
 // Nuestra vista raiz ('/') es index
 Route::get('/', function () {
 	
     return view('index');
 });
 
+Route::get('index',[
+	'uses' => 'HomeController@index' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
 
 Route::get('registro',[
 	'uses' => 'HomeController@registro' //Nombre_del_controlador@Nombre_del_metodo
@@ -31,3 +34,28 @@ Route::get('login',[
 Route::get('login', 'HomeController@login');
 Route::post('login', 'HomeController@login');
 Route::get('logout', 'HomeController@logout');
+
+//Inicio de Sesion - (login y logout)
+Route::get('perfil',[
+	'uses' => 'HomeController@perfil'
+]);
+//Rubros y Servicios
+Route::get('rubrosYServicios',[
+	'uses' => 'RubroController@verRubrosYServicios' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Lista Servicios de un Rubro
+Route::get('servicios/{id_rubro}',[
+	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Lista los usuarios que pertenecen a un servicio
+Route::get('usuariosPorServicio/{id_servicio}',[
+	'uses' => 'ServicioController@verUsuariosServicios' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Rubro por ID
+Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');

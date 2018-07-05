@@ -14,7 +14,7 @@ class CreatePersonasTable extends Migration
     public function up()
     {
         Schema::create('personas', function (Blueprint $table) {
-            $table->increments('id_persona');
+            $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('telefono');
@@ -22,9 +22,11 @@ class CreatePersonasTable extends Migration
             $table->string('provincia')->nullable();
             $table->string('zona')->nullable(); 
             $table->string('pais')->nullable();
+            $table->float('cantidad_creditos')->nullable();
             $table->integer('estado')->nullable(); // esto es para definir si el usuario fue borrado 
-            $table->integer('cant_practicas_hechas'); /* esto es util para validar que el usuario voluntario hizo 
+            $table->integer('cantpracticas_hechas')->nullable(); /* esto es util para validar que el usuario voluntario hizo 
                                                          la cantidad de practicas necesarias.*/
+            $table->string('img');
             $table->string('password')->nullable(); 
             $table->integer('practicas_cantidad')->nullable();
             $table->integer('creditos_cantidad')->nullable();

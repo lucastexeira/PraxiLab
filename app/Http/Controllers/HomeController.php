@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Persona;
+use App\Rubro;
+use App\Servicio;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
@@ -19,7 +21,13 @@ class HomeController extends Controller
 
 	public function index(){
 
-        return view('index');
+        $rubros = Rubro::all();
+        $servicios = Servicio::all();
+        $rubroPorId = Rubro::where('id', '=', Input::get('id'));
+        $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
+        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id_rubro');
+
+        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios);
     }
 
     protected $redirectTo = '/index';
@@ -71,5 +79,10 @@ class HomeController extends Controller
         }
         // Si los datos no son los correctos volvemos al login y mostramos un error
         return Redirect::back()->with('error_message', 'Los datos están mal, intentelo nuevamente')->withInput();
+    }
+
+    public function perfil(){
+
+        return view('perfil');
     }
 }

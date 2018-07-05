@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEvidenciasTable extends Migration
+class CreateTransaccionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateEvidenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('evidencias', function (Blueprint $table) {
+        Schema::create('transacciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pathevidencia');
-            $table->date('fecha');
+            $table->float('monto_transferido')->nullable();
+            $table->unsignedInteger('id_emisor')->nullable();
+            $table->unsignedInteger('id_destinatario')->nullable();
             $table->unsignedInteger('id_practica');
 
+            $table->foreign('id_emisor')->references('id')->on('personas');
+            $table->foreign('id_destinatario')->references('id')->on('personas');
             $table->foreign('id_practica')->references('id')->on('practicas');
-            
+
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreateEvidenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evidencias');
+        Schema::dropIfExists('transacciones');
     }
 }
