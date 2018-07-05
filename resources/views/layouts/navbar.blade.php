@@ -2,6 +2,7 @@
 	<! ========== NAVBAR =======================================================================================>
 
 	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-dark fixed-top" style="color: white">
+		
 	  <a class="navbar-brand" href="index.php">
 	  	<img width="100" src="img/logos/LogoColorTransparente.png" alt="">
 	  </a>

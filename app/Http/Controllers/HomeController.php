@@ -9,8 +9,11 @@ use App\Servicio;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -38,31 +41,22 @@ class HomeController extends Controller
         ]);
     }
 
-    public function registro (){
-
-        $persona = new Persona;
-
-        return view('registro', compact('persona'));
+    public function registro(){
+         $persona = new Persona();
+     return View::make('registro')->with('persona', $persona);
     }
 
-	public function usuarioCreado(Request $request){
+	public function create(){
 
-        try{
-            $persona = New Persona();
-            $persona->nombre = $request->nombre;
-            $persona->apellido = $request->apellido;
-            $persona->telefono = $request->telefono;
-            $persona->mail = $request->mail;
-            $persona->contrasena = bcrypt($request->contrasena);
-
+            $persona = new Persona();
+            $persona->nombre = Input::get('nombre');
+            $persona->apellido = Input::get('apellido');
+            $persona->mail = Input::get('mail');
+            $persona->contrasena = Input::get('contrasena');
+            $persona->telefono = Input::get('telefono');
             $persona->save();
-        
-            return view('index', compact('persona'));
-        }
-        catch(Exception $e){
 
-            return "Fatal error -".$e->getMessage();
-        }
+        return Redirect::to('/')->with('notice', 'El usuario ha sido creado correctamente.');
     }
 
     public function inicioSesion(){
@@ -70,20 +64,21 @@ class HomeController extends Controller
     }
 
     public function login(){
-        $persona = [
-                'mail' => Input::get('mail'),
-                'contrasena' => Input::get('contrasena')
-            ];
-     
-            // Verificamos los datos
-            if (Auth::attempt($persona)) 
-            {
-                // Si nuestros datos son correctos mostramos la página de inicio
-                return Redirect::intended('/');
-            }
-            // Si los datos no son los correctos volvemos al login y mostramos un error
-            return Redirect::back()->with('error_message', 'El usuario no existe')->withInput();
         
+        // Obtenemos los datos del formulario
+        $persona = [
+            'mail' => Input::get('mail'),
+            'contrasena' => Input::get('contrasena')
+        ];
+     
+        // Verificamos los datos
+        if (Auth::attempt($persona)) 
+        {
+            // Si nuestros datos son correctos mostramos la página de inicio
+            return Redirect::intended('/');
+        }
+        // Si los datos no son los correctos volvemos al login y mostramos un error
+        return Redirect::back()->with('error_message', 'Los datos están mal, intentelo nuevamente')->withInput();
     }
 
     public function perfil(){

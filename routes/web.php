@@ -11,27 +11,28 @@ Route::get('index',[
 
 ]);
 
-//Registro de usuarios
-Route::get('persona', 'HomeController@registro');
-Route::post('persona', 'HomeController@registro');
-
 Route::get('registro',[
 	'uses' => 'HomeController@registro' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
-Route::get('usuarioCreado',[
-	'uses' => 'HomeController@usuarioCreado' //Nombre_del_controlador@Nombre_del_metodo
+Route::get('create',[
+	'uses' => 'HomeController@create' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
 //Inicio de Sesion - (login y logout)
 Route::get('inicioSesion',[
 	'uses' => 'HomeController@inicioSesion', 
-	'as' => 'login'
 ]);
 
-Route::post('login', 'HomeController@inicioSesion');
+//Inicio de Sesion - (login y logout)
+Route::get('login',[
+	'uses' => 'HomeController@login', 
+]);
+
+Route::get('login', 'HomeController@login');
+Route::post('login', 'HomeController@login');
 Route::get('logout', 'HomeController@logout');
 
 //Inicio de Sesion - (login y logout)

@@ -3,8 +3,18 @@
 
   <body>
 	<! ========== NAVBAR =======================================================================================>
+
 	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
 	  <a class="navbar-brand" href=" {{ 'index' }} ">
+
+		@if(Session::has('notice'))
+		   <div class="alert">
+			  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			  <h2>{{ Session::get('notice') }}</h2>
+			</div>
+		@endif
+		
+	  <a class="navbar-brand" href="index.php">
 	  	PraxiLab
 	  	<!--img width="80" src="img/logo.png" alt=""-->
 	  </a>
@@ -27,8 +37,8 @@
 	      </li>
 	    </ul>
 	    <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="search" placeholder="Buscador" aria-label="Search">
-	      <button type="button" class="btn btn-cta btn-lg">Buscar</button>
+	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscador</button>
 	    </form>
 
 	    <ul class="navbar-nav">
