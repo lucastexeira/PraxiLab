@@ -8,7 +8,7 @@ class Servicio extends Model
 {
     protected $table = 'servicios';
 
-    protected $fillable = ['id_rubro', 'nombre_servicio', 'imagen', 'id_rubro'];
+    protected $fillable = ['id_rubro', 'nombre_servicio', 'imagen'];
 
 	//return this->belongTo('App\Servicio','id_rubro','id_rubro');
 }

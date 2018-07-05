@@ -14,7 +14,7 @@ class CreateCurriculumsTable extends Migration
     public function up()
     {
         Schema::create('curriculums', function (Blueprint $table) {
-            $table->increments('id_curriculum');
+            $table->increments('id');
             $table->string('formacion_academica')->nullable();
             $table->string('formacion_complementaria')->nullable();
             $table->string('eperiencia')->nullable();
@@ -24,7 +24,7 @@ class CreateCurriculumsTable extends Migration
             $table->string('otros_datos')->nullable();
             $table->unsignedInteger('id_persona');
 
-            $table->foreign('id_persona')->references('id_persona')->on('personas');
+            $table->foreign('id_persona')->references('id')->on('personas');
             
             $table->timestamps();
         });

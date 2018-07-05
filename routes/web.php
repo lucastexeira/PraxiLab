@@ -44,9 +44,15 @@ Route::get('rubrosYServicios',[
 
 ]);
 
-//Servicios
-Route::get('servicios',[
+//Lista Servicios de un Rubro
+Route::get('servicios/{id_rubro}',[
 	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Lista los usuarios que pertenecen a un servicio
+Route::get('usuariosPorServicio/{id_servicio}',[
+	'uses' => 'ServicioController@verUsuariosServicios' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
