@@ -24,7 +24,11 @@
 									@foreach ($servicios as $servicio)
 
 										@if($rubro->id === $servicio->id_rubro)
-												<h4  class="center-block"><a href="#">{{ $servicio->nombre_servicio }}</a></h4>
+												<h4  class="center-block">
+													{{ $servicio->nombre_servicio }}
+													<a href="{{ 'wizard' }}">Adquirir</a>
+												</h4>
+												
 										@endif
 
 									@endforeach
@@ -38,5 +42,5 @@
 		</div>
 	</div>
 </div>
-
+<footer>
 @include("layouts.pie")

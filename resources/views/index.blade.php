@@ -15,7 +15,7 @@
 		@endif
 		
 	  <a class="navbar-brand" href="index">
-	  	PraxiLab
+	  	<img width="100" src="img/logos/logo_negro_y_blanco_transparente.png" class="logo">
 	  	<!--img width="80" src="img/logo.png" alt=""-->
 	  </a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,19 +36,55 @@
 	        </div>
 	      </li>
 	    </ul>
-	    <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscador</button>
-	    </form>
+
 
 	    <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
+                    Nombre
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="navbar-login">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p class="text-left">
+                                        <a href="#" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="navbar-login navbar-login-session">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p>
+                                        <a href="#" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+	    
+	    <form class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" type="search" placeholder="Buscar Practica" aria-label="Search">
+	    </form>
+
+	    <!--ul class="navbar-nav">
 	      <li class="nav-item active">
 	        <a class="nav-link" href="{{ 'inicioSesion' }}">Iniciá Sesión <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="{{ 'registro' }}">Registrate</a>
 	      </li>
-	    </ul>
+	    </ul-->
 	  </div>
 	</nav>
 
@@ -87,8 +123,9 @@
 
 		<div class="row mt">
 			@foreach ($servicios as $servicio)
-			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" href="#"><img width="350" height="250" src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
+			<div class="col-lg-3 col-md-3 col-xs-12 desc">
+				<a class="b-link-fade b-animate-go" href="#"><img width="250" height="180" 
+				src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
 					<div class="b-wrapper">
 					  	<h4 class="b-from-left b-animate b-delay03">Ver más</h4>
 					</div>
@@ -118,25 +155,37 @@
 			</div>
 		</div><!-- /row -->
 
-		<div class="container-fluid container-articles">
-			<div class="row articles">
+		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+		  <div class="carousel-inner">
+		    <div class="carousel-item active">
+		    	<div class="container-fluid container-articles">
+					<div class="row articles">
+				      @foreach ($rubros as $rubro)
+						<div class="col-md-3 article-img" >
 
-			@foreach ($rubros as $rubro)
-				<div class="col-md-3 article-img" >
+							<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="200" height="150" src="{{ $rubro->imagen }}" alt="" />
+								<div class="b-wrapper">
+								  	<h4 class="b-from-left b-animate b-delay03">{{ $rubro->nombre_rubro }}</h4>
+								  	<p class="b-from-right b-animate b-delay03">VER MÁS</p>
+								</div>
+							</a>
 
-					<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">{{ $rubro->nombre_rubro }}</h4>
-						  	<p class="b-from-right b-animate b-delay03">VER MÁS</p>
+							<h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
+							
 						</div>
-					</a>
-
-					<h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
-					
-				</div>
-			@endforeach
-			</div>
-		</div><!-- /row -->
+					@endforeach
+				    </div>
+			    </div>
+			</div><!-- /row -->
+		  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
 
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
@@ -225,11 +274,15 @@
 
 	<script>
 		$(window).scroll(function() {
-			if ($("#menu").offset().top > 320){
+			if ($("#menu").offset().top > 330){
 				$("#menu").removeClass("bg-transparent");
 				$("#menu").addClass("bg-dark");
+				$(".logo").attr('src', 'img/logos/LogoColorTransparente.png');
+				$("#menu").addClass("bg-dark");
+				
 			} else {
 				$("#menu").removeClass("bg-dark");
+				$(".logo").attr('src', 'img/logos/logo_negro_y_blanco_transparente.png');
 				}
 			});
 
@@ -241,7 +294,7 @@
 
 		});
 	</script>
-
+<footer>
     @include("layouts.pie")
 	
 	

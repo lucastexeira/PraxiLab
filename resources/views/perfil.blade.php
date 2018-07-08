@@ -177,4 +177,5 @@
 			</div>
 		</div>
 	</div>
-	@include("layouts.pie")
+<footer>
+@include("layouts.pie")

@@ -96,3 +96,62 @@ button.btn.btn-theme.btn-lg {
     padding-left: 0px;
     padding-right: 0px;
 }
+
+.navbar a:hover {
+    color: black !important;
+    font-size: 18px !important;
+}
+
+.navbar a:focus {
+    color: black !important;
+    font-size: 18px !important;
+}
+
+/*Buscador
+.btn-outline-success {
+    color: #eee !important;
+    border-color: #eee !important;
+}
+
+.btn-outline-success:hover {
+    color: black !important;
+    background-color: white !important; 
+    border-color: black !important;
+}*/
+
+
+.carousel-control-prev {
+    background-color: black !important;
+    top: 47px !important;
+    width: 5% !important;
+    height: 23% !important;
+    border-radius: 50% !important;
+}
+
+.carousel-control-next {
+    background-color: black !important;
+    top: 47px !important;
+    width: 5% !important;
+    height: 23% !important;    
+    border-radius: 50% !important;
+}
+
+
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}

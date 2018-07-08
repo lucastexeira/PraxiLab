@@ -32,9 +32,10 @@
 	    </div>
 
 		<div class="row">
+
 			@foreach ($buscador as $servicio)
-			<div class="col-lg-4 col-md-4 col-xs-12 desc">
-				<a class="b-link-fade b-animate-go" href="#"><img width="350" height="250" src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
+			<div class="col-lg-3 col-md-3 col-xs-12 desc">
+				<a class="b-link-fade b-animate-go" href="#"><img width="250" height="180" src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
 					<div class="b-wrapper">
 					  	<h4 class="b-from-left b-animate b-delay03">Ver más</h4>
 					</div>
@@ -44,6 +45,7 @@
 			</div>
 			@endforeach
 		</div><!-- /row -->
-</div>
-
+	</div>
+<footer>
 @include("layouts.pie")
+
