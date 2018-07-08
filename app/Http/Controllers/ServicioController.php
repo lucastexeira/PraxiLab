@@ -54,23 +54,4 @@ class ServicioController extends Controller
 
         //dd($servicios);
     }
-
-    public function listadoPracticasEstados(){
-
-        $rubros = Rubro::all();
-        
-        return view('/listadoPracticasEstados')->with('rubros',$rubros);
-
-        //dd($servicios);
-    }
-
-    public function irAbmPractica(){
-
-        $rubros = Rubro::all();
-        
-        return view('/abmPractica')->with('rubros',$rubros);
-
-        //dd($servicios);
-    }
-    
 }
