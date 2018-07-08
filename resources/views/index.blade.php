@@ -38,6 +38,11 @@
 	    </ul>
 
 
+	    <a class="navbar-brand" href="index">
+	  		<span class="glyphicon glyphicon-comment"></span>
+	  	<!--img width="80" src="img/logo.png" alt=""-->
+	  	</a>
+
 	    <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

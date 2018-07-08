@@ -21,7 +21,7 @@
 		    </form>
 
 		  <div class="col-lg-4">
-		    <select class="form-control" id="exampleFormControlSelect1">
+		    <select class="form-control" id="select">
 		      <option>Seleccionar Rubro</option>
 		      <option>2</option>
 		      <option>3</option>
@@ -35,12 +35,13 @@
 
 			@foreach ($buscador as $servicio)
 			<div class="col-lg-3 col-md-3 col-xs-12 desc">
+				
 				<a class="b-link-fade b-animate-go" href="#"><img width="250" height="180" src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
 					<div class="b-wrapper">
 					  	<h4 class="b-from-left b-animate b-delay03">Ver más</h4>
 					</div>
 				</a>
-				<p>{{ $servicio->nombre_servicio }}</p>
+				<p>$50 - {{ $servicio->nombre_servicio }}</p>
 				<hr-d>
 			</div>
 			@endforeach

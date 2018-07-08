@@ -155,3 +155,10 @@ button.btn.btn-theme.btn-lg {
 {
     font-size: 87px;
 }
+
+
+/*SERVICIOS*/
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(3.25rem + 2px) !important;
+}

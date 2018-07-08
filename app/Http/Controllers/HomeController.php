@@ -32,6 +32,7 @@ class HomeController extends Controller
 
     protected $redirectTo = '/index';
 
+    /*
     protected function validator(array $persona)
     {
         return Validator::make($persona, [
@@ -39,7 +40,7 @@ class HomeController extends Controller
             'mail' => 'required|string|mail|max:255|unique:persona',
             'contrasena' => 'required|string|min:6|confirmed',
         ]);
-    }
+    }*/
 
     public function registro(){
          $persona = new Persona();
@@ -53,6 +54,9 @@ class HomeController extends Controller
             $persona->nombre = Input::get('nombre');
             $persona->apellido = Input::get('apellido');
             $persona->mail = Input::get('mail');
+            $persona->provincia = Input::get('provincia');
+            $persona->zona = Input::get('zona');
+            $persona->pais = Input::get('pais');
             $persona->img = Input::get('img');
             $persona->password = Input::get('contrasena');
             $persona->telefono = Input::get('telefono');

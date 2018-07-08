@@ -27,8 +27,6 @@
 		                        <label for="contrasena">Apellido</label>
 		                        <input name="apellido" type="text" id="apellido" class="form-control" placeholder="Apellido" required="required" value="{{ $persona->apellido }}" />
 		                    </div>
-		                </div>
-		                <div class="col-md-6">
 		                    <div class="form-group">
 		                        <label for="nombre">Mail</label>
 		                        <input name="mail" type="mail" maxlength="50" id="mail" class="form-control" placeholder="E-mail" required="required" value="{{ $persona->mail }}"/>
@@ -37,6 +35,21 @@
 		                    <div class="form-group">
 		                        <label for="contrasena">Contraseña</label>
 		                        <input name="contrasena" type="password" id="contrasena" class="form-control" placeholder="Contraseña" required="required" value="{{ $persona->contrasena }}" />
+		                    </div>
+		                </div>
+		                <div class="col-md-6">
+		                    <div class="form-group">
+		                        <label for="zona">Localidad</label>
+		                        <input name="zona" type="text" maxlength="50" id="zona" class="form-control" placeholder="Localidad" required="required" value="{{ $persona->zona }}"/>
+		                    </div>
+		                        <input name="img" type="hidden" id="img" required="required" value="img/logos/logo_default.png"/>
+		                    <div class="form-group">
+		                        <label for="provincia">Provincia</label>
+		                        <input name="provincia" type="text" id="provincia" class="form-control" placeholder="Provincia" required="required" value="{{ $persona->provincia }}" />
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="pais">Pais</label>
+		                        <input name="pais" type="text" id="pais" class="form-control" placeholder="Pais" required="required" value="{{ $persona->pais }}" />
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="telefono">Telefono</label>
@@ -50,5 +63,7 @@
 	    </div>
 	    
 	</div>
+
+	
 <footer>
 	@include("layouts.pie")
