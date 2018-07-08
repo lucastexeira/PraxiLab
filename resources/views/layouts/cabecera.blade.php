@@ -34,8 +34,53 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- Jquery -->
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+
+    <!--css y js del carrusel-->
+    <link href="css/slickCarousel.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
+    <style type="text/css">
+            
+            .slick-prev:before,
+            .slick-next:before {
+              color: black;
+            }
+    </style>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="slick/slick.js" type="text/javascript" charset="utf-8"></script>
+
+    <!--Scrips del index-->
+    <script>
+
+        $(document).on('ready', function() {
+          
+          $(".regular").slick({
+            dots: true,
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 5
+          });
+        });
+        
+        $(window).scroll(function() {
+            if ($("#menu").offset().top > 320){
+                $("#menu").removeClass("bg-transparent");
+                $("#menu").addClass("bg-dark");
+            } else {
+                $("#menu").removeClass("bg-dark");
+                }
+            });
+
+
+        $(document).ready(function(){
+            $("#myBtn").click(function(){
+                $("#myModal").modal();
+            });
+
+        });
+    </script>

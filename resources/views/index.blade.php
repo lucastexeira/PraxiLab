@@ -108,25 +108,24 @@
 			</div>
 		</div><!-- /row -->
 
-		<div class="container-fluid container-articles">
-			<div class="row articles">
+		  <section class="regular slider">
 
-			@foreach ($rubros as $rubro)
-				<div class="col-md-3 article-img" >
+					@foreach ($rubros as $rubro)
+						<div>
+							<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
+								<div class="b-wrapper">
+								  	<h4 class="b-from-left b-animate b-delay03">{{ $rubro->nombre_rubro }}</h4>
+								  	<p class="b-from-right b-animate b-delay03">VER MÁS</p>
+								</div>
+							</a>
 
-					<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
-						<div class="b-wrapper">
-						  	<h4 class="b-from-left b-animate b-delay03">{{ $rubro->nombre_rubro }}</h4>
-						  	<p class="b-from-right b-animate b-delay03">VER MÁS</p>
-						</div>
-					</a>
+							<h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
+						</div>	
+					@endforeach
 
-					<h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
-					
-				</div>
-			@endforeach
-			</div>
-		</div><!-- /row -->
+		</section
+
+		
 
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
@@ -212,25 +211,6 @@
 	    	</div><!-- /row -->
 	    </div><!-- /container -->
 
-
-	<script>
-		$(window).scroll(function() {
-			if ($("#menu").offset().top > 320){
-				$("#menu").removeClass("bg-transparent");
-				$("#menu").addClass("bg-dark");
-			} else {
-				$("#menu").removeClass("bg-dark");
-				}
-			});
-
-
-		$(document).ready(function(){
-		    $("#myBtn").click(function(){
-		        $("#myModal").modal();
-		    });
-
-		});
-	</script>
 
     @include("layouts.pie")
 	
