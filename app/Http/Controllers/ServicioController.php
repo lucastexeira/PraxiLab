@@ -13,12 +13,24 @@ use Illuminate\Support\Facades\Input;
 
 class ServicioController extends Controller
 {
-    public function verServicios($id_rubro){
+    public function verTodosLosServicios(){
+
+        $id_rubro = null;
+        $buscador = Servicio::where('nombre_servicio', 'like', '%'.Input::get('buscador').'%')
+                    //->orWhere('body', 'like', '%'.Input::get('buscador').'%')
+                    ->orderBy('id', 'desc')->paginate(6);
+                    $rubros = Rubro::find($id_rubro);
+                    $servicios = Servicio::all();
+        
+        return view('/todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros);
+    }
+
+    public function verServiciosPorRubro($id_rubro){
 
         $servicios = Servicio::all();
         $rubros = Rubro::find($id_rubro);
         
-        return view('/servicios')->with('servicios', $servicios)->with('rubros',$rubros);
+        return view('/todosLosServicios')->with('servicios', $servicios)->with('rubros',$rubros);
 
         //dd($servicios);
     }

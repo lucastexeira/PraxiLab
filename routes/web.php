@@ -45,9 +45,15 @@ Route::get('rubrosYServicios',[
 
 ]);
 
+//Lista de servicios
+Route::get('todosLosServicios',[
+	'uses' => 'ServicioController@verTodosLosServicios' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
 //Lista Servicios de un Rubro
 Route::get('servicios/{id_rubro}',[
-	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'ServicioController@verServiciosPorRubro' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 

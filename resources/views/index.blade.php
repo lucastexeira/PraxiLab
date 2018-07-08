@@ -14,7 +14,7 @@
 			</div>
 		@endif
 		
-	  <a class="navbar-brand" href="index.php">
+	  <a class="navbar-brand" href="index">
 	  	PraxiLab
 	  	<!--img width="80" src="img/logo.png" alt=""-->
 	  </a>
@@ -101,7 +101,7 @@
 
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
-    			<a href=" {{ 'servicios' }} ">
+    			<a href=" {{ 'todosLosServicios' }} ">
     				<button type="button" class="btn btn-theme btn-lg">TODAS LAS PRÁCTICAS</button>
     			</a>
 			</div>
