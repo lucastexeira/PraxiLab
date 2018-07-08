@@ -24,7 +24,7 @@
 									@foreach ($servicios as $servicio)
 
 										@if($rubro->id === $servicio->id_rubro)
-												<h4  class="center-block"><a href="usuariosPorServicio/{{ $servicio->id }}">{{ $servicio->nombre_servicio }}</a></h4>
+												<h4  class="left-block"><a href="usuariosPorServicio/{{ $servicio->id }}">{{ $servicio->nombre_servicio }}</a></h4>
 										@endif
 
 									@endforeach

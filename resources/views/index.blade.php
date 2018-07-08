@@ -111,6 +111,7 @@
 
 	<! ========== RUBROS ======================================================================================>   
 	<div class="container">
+
 		<div class="row mt centered ">
 			<div class="col-lg-4 col-lg-offset-4">
 				<h1>Rubros</h1>
@@ -124,8 +125,8 @@
 						<div>
 							<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
 								<div class="b-wrapper">
-								  	<h4 class="b-from-left b-animate b-delay03">{{ $rubro->nombre_rubro }}</h4>
-								  	<p class="b-from-right b-animate b-delay03">VER MÁS</p>
+								  	<h4 >{{ $rubro->nombre_rubro }}</h4>
+								  	<p >VER MÁS</p>
 								</div>
 							</a>
 
@@ -133,7 +134,7 @@
 						</div>	
 					@endforeach
 
-		</section
+			</section>
 
 		
 

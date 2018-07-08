@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Rubro;
 use App\Servicio;
 use App\Persona;
+use App\Practica;
 use App\PersonasServicios;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -52,12 +53,13 @@ class ServicioController extends Controller
         $servicios = Servicio::all();
         $personas = Persona::all();
         $personasServicios = PersonasServicios::all();
+        $practicas = Practica::all();
         /*$ru = Rubro::all();
         $rubros = Rubro::find($id_rubro);
         $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $ru.'id');*/
 
         //return view('/servicios')->with('servicios', $servicios)->with('serviciosPorRubro',$serviciosPorRubro)->with('rubros',$rubros)->with('ru',$ru);
 
-        dd($personasServicios);
+        dd($practicas);
     }
 }
