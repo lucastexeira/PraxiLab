@@ -14,13 +14,13 @@ class CreatePracticasTable extends Migration
     public function up()
     {
         Schema::create('practicas', function (Blueprint $table) {
-            $table->increments('id_practica');
+            $table->increments('id');
             $table->string('descripcion');
             $table->unsignedInteger('id_practicante');
             $table->unsignedInteger('id_voluntario');
 
-            $table->foreign('id_practicante')->references('id_persona')->on('personas');
-            $table->foreign('id_voluntario')->references('id_persona')->on('personas');
+            $table->foreign('id_practicante')->references('id')->on('personas');
+            $table->foreign('id_voluntario')->references('id')->on('personas');
 
             $table->timestamps();
         });

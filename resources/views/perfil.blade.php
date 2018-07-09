@@ -9,7 +9,12 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 text-center">
 					<img src="img/team/profile-pics.jpg" class="img-fluid img-thumbnail">
-					<button type="button" class="btn btn-outline-primary h4">Enviar Mensaje</button>
+					<button type="button" class="btn btn-outline-primary h4">
+						<a href=" {{ 'abmPractica' }} ">Nueva Practica
+					</button>
+					<button type="button" class="btn btn-outline-primary h4">
+						<a href=" {{ 'listadoPracticasEstados' }} ">Listado de mis Practicas
+					</button>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 desc">
 
@@ -220,4 +225,5 @@
 			</div>
 		</div>
 	</div>
-	@include("layouts.pie")
+<footer>
+@include("layouts.pie")

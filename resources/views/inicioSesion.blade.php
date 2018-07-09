@@ -4,23 +4,25 @@
 </head>
 <body>
 
-	@include("layouts.navbar");
+	@include("layouts.navbar")
+	</br>
 	<div class="container">
 		<div class="col-md-6 col-md-offset-3">
 	    	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	        <div class="well">
 	            <div class="card-header">
-	                <img src="img/bg01.jpg" class="profile-img" /> 
-	                    <h3 class="text-center">Iniciar Sesión</h3>
+	                    <h1 class="text-center">Iniciar Sesión</h1>
 	            </div>
-
+	            @if(Session::has('error_message'))
+	                {{ Session::get('error_message') }}
+	            @endif
 	            <form method="POST" action="login">
-	            {{ csrf_field() }}
+	            	{{ csrf_field() }}
 		            <div class="card-body">
 		                <div>
 		                    <div class="form-group">
-		                        <label for="mail">Nombre</label>
-		                        <input name="mail" type="text" maxlength="50" id="mail" class="form-control" placeholder="Nombre" required="true"/>
+		                        <label for="mail">Mail</label>
+		                        <input name="mail" type="mail" id="mail" class="form-control" placeholder="Mail" required="true"/>
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="contrasena">Contraseña</label>
@@ -34,5 +36,5 @@
 	        </div>
 	    </div>
 	</div>
-
+<footer>
 @include("layouts.pie")

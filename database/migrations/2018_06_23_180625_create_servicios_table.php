@@ -14,12 +14,12 @@ class CreateServiciosTable extends Migration
     public function up()
     {
         Schema::create('servicios', function (Blueprint $table) {
-            $table->increments('id_servicio');
+            $table->increments('id');
             $table->string('nombre_servicio');
             $table->string('imagen')->nullable();
             $table->unsignedInteger('id_rubro'); 
 
-            $table->foreign('id_rubro')->references('id_rubro')->on('rubros');
+            $table->foreign('id_rubro')->references('id')->on('rubros');
 
             $table->timestamps();
         });

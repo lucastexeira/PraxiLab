@@ -20,9 +20,9 @@ class CreateTransaccionesTable extends Migration
             $table->unsignedInteger('id_destinatario')->nullable();
             $table->unsignedInteger('id_practica');
 
-            $table->foreign('id_emisor')->references('id_persona')->on('personas');
-            $table->foreign('id_destinatario')->references('id_persona')->on('personas');
-            $table->foreign('id_practica')->references('id_practica')->on('practicas');
+            $table->foreign('id_emisor')->references('id')->on('personas');
+            $table->foreign('id_destinatario')->references('id')->on('personas');
+            $table->foreign('id_practica')->references('id')->on('practicas');
 
             $table->timestamps();
         });
