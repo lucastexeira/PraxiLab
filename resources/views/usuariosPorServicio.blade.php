@@ -12,9 +12,10 @@
 		    <h1 class="typo">Servicios: {{ $serv->nombre_rubro }}</h1>
 
 			<ol>
-				@foreach ($practicas as $practica)
+				@foreach ($pracPers as $pracPer)
 					
-					<h4  class="center-block"><a href="#">{{ $practica->nombre_practica }}</a></h4>
+					
+					<h4  class="center-block"><a href="#">{{ $pracPer->nombre }}</a></h4>
 
 				@endforeach
 			</ol>
@@ -27,4 +28,3 @@
 
 @include("layouts.pie")
 
-"{{asset('')}}"

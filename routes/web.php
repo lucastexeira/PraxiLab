@@ -63,7 +63,7 @@ Route::get('servicios/{id_rubro}',[
 ]);
 
 //Lista los usuarios que pertenecen a un servicio
-Route::get('usuariosPorServicio/{id_servicio?}', 'ServicioController@verUsuariosServicios');
+Route::get('usuariosPorServicio/{id_servicio}', 'ServicioController@verUsuariosServicios');
 
 //Rubro por ID
 Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');

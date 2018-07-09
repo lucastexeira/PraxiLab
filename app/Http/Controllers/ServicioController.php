@@ -13,6 +13,7 @@ use App\Http\Requests;
 use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class ServicioController extends Controller
 {
@@ -48,17 +49,22 @@ class ServicioController extends Controller
         //dd($servicios);
     }
 
-    public function verUsuariosServicios($id_servicio=null){
+    public function verUsuariosServicios($id_servicio){
 
+        $users = DB::table('personas')->get();
         $servicios = Servicio::all();
         $serv = Servicio::find($id_servicio);
         $personas = Persona::all();
         $personasServicios = PersonasServicios::all();
         $practicas = Practica::all();
+        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante');
+        //DB::table('personas')->where($personas.'id', '=', $practicas.'id_persona')->get();
 
-        return view('/usuariosPorServicio')->with('servicios', $servicios)->with('serv',$serv)->with('personas',$personas)->with('personasServicios',$personasServicios)->with('practicas',$practicas);
+        /*return view('/usuariosPorServicio')->with('servicios', $servicios)->with('serv',$serv)->with('personas',$personas)
+                                           ->with('personasServicios',$personasServicios)->with('practicas',$practicas)
+                                           ->with('pracPers',$pracPers);*/
 
-        //dd($ser);
+        dd($pracPers);
     }
 
 }

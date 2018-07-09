@@ -25,7 +25,7 @@ class HomeController extends Controller
         $servicios = Servicio::all();
         $rubroPorId = Rubro::where('id', '=', Input::get('id'));
         $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
-        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id_rubro');
+        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
 
         return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios);
     }
