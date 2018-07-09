@@ -146,10 +146,6 @@ button.btn.btn-theme.btn-lg {
     border-radius: 50% !important;
 }
 
-.pestaña {
-    font-size: x-large !important;
-    color: purple !important;
- 
 .carousel-control-next {
     background-color: black !important;
     top: 47px !important;
@@ -343,6 +339,114 @@ select.form-control:not([size]):not([multiple]) {
     color: orange;
 }
 
+/* PERFIL */
+.about{
+ margin: 4em 0;
+ padding: 1em;
+ position: relative;
+}
+
+.about h1{
+ color:#F97300;
+ margin: 2em;
+}
+
+.about img{
+ height: 100%;
+ width: 100%;
+ border-radius: 50%
+}
+
+.about span{
+ display: block;
+ color: #888;
+ position: absolute;
+ left: 115px;
+}
+
+.about .desc{
+ padding: 2em;
+ border-left:4px solid #10828C;
+}
+
+.about .desc h3{
+ color: #10828C;
+}
+
+.about .desc p{
+ line-height:2;
+ color: black;
+}
+
+p#nombre {
+    font-size: 50px !important;
+    color: black !important;
+}
+
+.pestaña {
+    font-size: x-large !important;
+    color: purple !important;
+}
+
+/* CALIFICACION */
+
+.btn-grey{
+    background-color:#D8D8D8;
+    color:#FFF;
+}
+
+.experiencia-titulo {
+    display: inline;
+}
+
+.experiencia-profile-pic {  
+  width: 5em;
+  height: 5em;
+  border-radius: 100%;
+  margin-right: 1em;
+}
+
+.experiencia-evidencia {
+    width: 30em;
+    height: 20em;
+}
+
+.experiencia {
+    background-color: #F0F0F0;
+}
+
+.test {
+    display: inline;
+}
+
+.experiencia-descripcion {
+    font-size:20px;
+}
+
+.contenido {
+    margin-top: 1.5em;
+}
+
+.curriculum-datos > p {
+    font-size: 15px
+}
+
+.img-oferta-perfil {
+    height: 150px;
+    max-width: 100%;
+}
+
+.precio-oferta-perfil {
+    margin: auto;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.btn-purple {
+    background-color: purple !important;
+}
+
+/*CALIFICACION*/
 /* Three column layout */
 .side {
     float: left;

@@ -9,12 +9,7 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 text-center">
 					<img src="img/team/profile-pics.jpg" class="img-fluid img-thumbnail">
-					<button type="button" class="btn btn-outline-primary h4">
-						<a href=" {{ 'abmPractica' }} ">Nueva Practica
-					</button>
-					<button type="button" class="btn btn-outline-primary h4">
-						<a href=" {{ 'listadoPracticasEstados' }} ">Listado de mis Practicas
-					</button>
+					<button type="button" class="btn btn-outline-primary h4">Enviar Mensaje</button>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 desc">
 
@@ -75,14 +70,38 @@
 					</div>
 				</div>
 
+				<div class="panel panel-default contenido">
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row align-items-start">
+								<div class="col-3 text-center">
+									<img src="img/portfolio/port03.jpg" class="img-oferta-perfil" />
+								</div>
+								<div class="col-9">
+									<h1>Clases de Marketing</h1>
+									<p>
+										Ideal para personas que desean aprender las capacidades de venta actuales
+									</p>
+								</div>
+							</div>
+							<div class="row justify-content-end align-items-end">
+								<div class="col-1">
+									<p class="precio-oferta-perfil">500</p>
+								</div>
+								<div class="col-1">
+									<button type="button" class="btn btn-success btn-lg btn-purple">Practicar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
 				<div class="panel panel-default contenido">
 					<div class="panel-heading">
-						<div class="test">
-							<img src="img/team/profile-pics.jpg" class="experiencia-profile-pic">
-							<h2 class="experiencia-titulo">Sesión de peluqueria</h2>
-						</div>
+						<img src="img/team/profile-pics.jpg" class="experiencia-profile-pic">
+						<h1 class="experiencia-titulo">Sesión de peluqueria</h1>
 					</div>
 					<div class="experiencia-body panel-body">
 						<img src="img/portfolio/port01.jpg" class="experiencia-evidencia">
@@ -102,32 +121,22 @@
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
 					<div class="row">
-						<div class="col-6">
+						<div class="col-4">
 							<div class="curriculum-datos">
 								<h3>Fecha de nacimiento</h3>
 								<p>23/05/1994</p>
 							</div>
+						</div>
+						<div class="col-4">
 							<div class="curriculum-datos">
 								<h3>Email</h3>
 								<p>mail@gmail.com</p>
 							</div>
+						</div>
+						<div class="col-4">
 							<div class="curriculum-datos">
 								<h3>Profesion</h3>
 								<p>Electricista</p>
-							</div>
-						</div>
-						<div class="col-6">
-							<div class="curriculum-datos">
-								<h3>Dato</h3>
-								<p>Lorem ipsum</p>
-							</div>
-							<div class="curriculum-datos">
-								<h3>Dato</h3>
-								<p>Lorem ipsum</p>
-							</div>
-							<div class="curriculum-datos">
-								<h3>Dato</h3>
-								<p>Lorem ipsum</p>
 							</div>
 						</div>
 					</div>
@@ -211,5 +220,4 @@
 			</div>
 		</div>
 	</div>
-<footer>
-@include("layouts.pie")
+	@include("layouts.pie")

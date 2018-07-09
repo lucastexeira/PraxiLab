@@ -63,22 +63,6 @@ class HomeController extends Controller
         $persona->save();
  
         return Redirect::to('/index')->with('notice', 'El usuario ha sido creado correctamente.');
-
-	public function create(){
-
-            $persona = new Persona();
-            $persona->nombre = Input::get('nombre');
-            $persona->apellido = Input::get('apellido');
-            $persona->mail = Input::get('mail');
-            $persona->provincia = Input::get('provincia');
-            $persona->zona = Input::get('zona');
-            $persona->pais = Input::get('pais');
-            $persona->img = Input::get('img');
-            $persona->password = Input::get('contrasena');
-            $persona->telefono = Input::get('telefono');
-            $persona->save();
-
-        return Redirect::to('/index')->with('notice', 'El usuario ha sido creado correctamente.');
     }
  
     public function inicioSesion(){
