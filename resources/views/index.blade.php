@@ -2,48 +2,48 @@
   </head>
  
   <body>
-  <! ========== NAVBAR =======================================================================================>
- 
-  <nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
-    <a class="navbar-brand" href=" {{ 'index' }} ">
- 
-    @if(Session::has('notice'))
-       <div class="alert">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-        <h2>{{ Session::get('notice') }}</h2>
-      </div>
-    @endif
-    
-    <a class="navbar-brand" href="index">
-      <img width="100" src="img/logos/logo_negro_y_blanco_transparente.png" class="logo">
-      <!--img width="80" src="img/logo.png" alt=""-->
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
- 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-      	<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Rubros 
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            @foreach ($rubros as $rubro)
-          		<a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a>
-        	@endforeach
-            
-          </div>
-        </li>
-      </ul>
- 
- 
-      <a class="navbar-brand" href=" {{ 'listadoPracticasEstados' }} ">
-        <span class="glyphicon glyphicon-bell"></span>
-      <!--img width="80" src="img/logo.png" alt=""-->
-      </a>
- 
-      <ul class="navbar-nav">
+	<! ========== NAVBAR =======================================================================================>
+
+	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
+	  <a class="navbar-brand" href=" {{ 'index' }} ">
+
+		@if(Session::has('notice'))
+		   <div class="alert">
+			  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			  <h2>{{ Session::get('notice') }}</h2>
+			</div>
+		@endif
+		
+	  <a class="navbar-brand" href="index">
+	  	<img width="100" src="img/logos/logo_negro_y_blanco_transparente.png" class="logo">
+	  	<!--img width="80" src="img/logo.png" alt=""-->
+	  </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        	Rubros 
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	        	@foreach ($rubros as $rubro)
+				  <a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a>
+				@endforeach
+	          
+	        </div>
+	      </li>
+	    </ul>
+
+
+	    <a class="navbar-brand" href="index">
+	  		<span class="glyphicon glyphicon-comment"></span>
+	  	<!--img width="80" src="img/logo.png" alt=""-->
+	  	</a>
+
+	    <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
