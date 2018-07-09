@@ -51,20 +51,15 @@ class ServicioController extends Controller
 
     public function verUsuariosServicios($id_servicio){
 
-        $users = DB::table('personas')->get();
-        $servicios = Servicio::all();
-        $serv = Servicio::find($id_servicio);
-        $personas = Persona::all();
-        $personasServicios = PersonasServicios::all();
-        $practicas = Practica::all();
-        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante');
-        //DB::table('personas')->where($personas.'id', '=', $practicas.'id_persona')->get();
+        $servicio = Servicio::find($id_servicio);
+        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
+                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
+                                                       inner join servicios on personas_servicios.id_servicio = servicios.id
+                                                       where servicios.id = '.$id_servicio.'');
 
-        /*return view('/usuariosPorServicio')->with('servicios', $servicios)->with('serv',$serv)->with('personas',$personas)
-                                           ->with('personasServicios',$personasServicios)->with('practicas',$practicas)
-                                           ->with('pracPers',$pracPers);*/
+        return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio);
 
-        dd($pracPers);
+        //dd($pracPers);
     }
 
 }
