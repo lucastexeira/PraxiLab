@@ -17,7 +17,7 @@ class CreatePracticasTable extends Migration
             $table->increments('id');
             $table->string('nombre_practica');
             $table->string('descripcion');
-            $table->string('imagen')->nullable();
+            $table->string('imagen_practica')->nullable();
             $table->unsignedInteger('id_practicante');
             $table->unsignedInteger('id_voluntario')->nullable();
 
