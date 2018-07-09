@@ -8,5 +8,5 @@ class Practica extends Model
 {
     protected $table = 'practicas';
 
-    protected $fillable = ['descripcion','img','id_practicante','id_voluntario'];
+    protected $fillable = ['nombre_practica','descripcion','imagen','id_practicante','id_voluntario'];
 }

@@ -13,7 +13,7 @@ class practicasSeeder extends Seeder
     {
         DB::table('practicas')->insert([
     		
-            [ 'descripcion'=>'Practica1', 'img' => '', 'id_practicante' => '1']
+            ['nombre_practica' => 'Practica1', 'descripcion'=>'Practica1', 'imagen' => '', 'id_practicante' => '1']
 			
         ]);
     }

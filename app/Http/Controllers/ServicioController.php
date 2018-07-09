@@ -48,18 +48,17 @@ class ServicioController extends Controller
         //dd($servicios);
     }
 
-    public function verUsuariosServicios($id_servicio){
+    public function verUsuariosServicios($id_servicio=null){
 
         $servicios = Servicio::all();
+        $serv = Servicio::find($id_servicio);
         $personas = Persona::all();
         $personasServicios = PersonasServicios::all();
         $practicas = Practica::all();
-        /*$ru = Rubro::all();
-        $rubros = Rubro::find($id_rubro);
-        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $ru.'id');*/
 
-        //return view('/servicios')->with('servicios', $servicios)->with('serviciosPorRubro',$serviciosPorRubro)->with('rubros',$rubros)->with('ru',$ru);
+        return view('/usuariosPorServicio')->with('servicios', $servicios)->with('serv',$serv)->with('personas',$personas)->with('personasServicios',$personasServicios)->with('practicas',$practicas);
 
-        dd($practicas);
+        //dd($ser);
     }
+
 }

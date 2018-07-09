@@ -9,14 +9,12 @@
 	<div class="row">
 		<div class="col-md-12">
 		    
-		    <h1 class="typo">Servicios: {{ $rubros->nombre_rubro }}</h1>
+		    <h1 class="typo">Servicios: {{ $serv->nombre_rubro }}</h1>
 
 			<ol>
-				@foreach ($servicios as $servicio)
-
-					@if($rubro->id === $servicio->id_rubro)
-							<h4  class="center-block"><a href="usuariosPorServicio/{{ $servicio->id }}">{{ $servicio->nombre_servicio }}</a></h4>
-					@endif
+				@foreach ($practicas as $practica)
+					
+					<h4  class="center-block"><a href="#">{{ $practica->nombre_practica }}</a></h4>
 
 				@endforeach
 			</ol>
@@ -25,5 +23,8 @@
 	</div>
 </div>
 
+<img width="100" src="{{asset('img/practicas/practica1.png')}}" alt="">
 
 @include("layouts.pie")
+
+"{{asset('')}}"
