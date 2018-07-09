@@ -1,5 +1,5 @@
 body {
-    font-size: 12px !important;
+    font-size: 16px !important;
 }
 
 /* MENU */
@@ -127,26 +127,12 @@ p#nombre {
     color: black !important;
 }
 
-a#experiencia-tab {
+.pestaña {
     font-size: x-large !important;
-    color: rebeccapurple !important;
-}
-
-a#curriculum-tab {
-    font-size: x-large !important;
-    color: rebeccapurple !important;
-}
-
-a#calificacion-tab {
-    font-size: x-large !important;
-    color: rebeccapurple !important;
+    color: purple !important;
 }
 
 /* CALIFICACION */
-
-.calificacion {
-    margin-top: 1.5em;
-}
 
 .btn-grey{
     background-color:#D8D8D8;
@@ -177,20 +163,31 @@ a#calificacion-tab {
     display: inline;
 }
 
-.panel {
-    margin-top: 1.5em;
-}
-
 .experiencia-descripcion {
     font-size:20px;
 }
 
-.curriculum {
+.contenido {
     margin-top: 1.5em;
 }
 
 .curriculum-datos > p {
     font-size: 15px
+}
+
+.img-oferta-perfil {
+    height: 150px;
+    max-width: 100%;
+}
+
+.precio-oferta-perfil {
+    margin: auto;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.btn-purple {
+    background-color: purple !important;
 }
 
 /*RUBROS Y SERVICIOS*/
