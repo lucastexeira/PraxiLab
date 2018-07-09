@@ -123,7 +123,7 @@
 
 					@foreach ($rubros as $rubro)
 						<div>
-							<a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
+							<a data-toggle="modal" class="b-link-fade b-animate-go" href="servicios/{{ $rubro->id }}"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
 								<div class="b-wrapper">
 								  	<h4 >{{ $rubro->nombre_rubro }}</h4>
 								  	<p >VER MÁS</p>

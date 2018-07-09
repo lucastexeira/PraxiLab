@@ -17,7 +17,7 @@
 					
 
 					<h4  class="center-block"><a href="#">{{ $pracPer->nombre }}</a></h4>
-					
+
 					<!-- Team member -->
 			            <div class="col-xs-12 col-sm-6 col-md-4">
 			                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
@@ -26,7 +26,7 @@
 			                            <div class="card">
 			                                <div class="card-body text-center">
 			                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
-			                                    <h4 class="card-title">Sunlimetech</h4>
+			                                    <h4 class="card-title">{{ $pracPer->username }}</h4>
 			                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
 			                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
 			                                </div>
