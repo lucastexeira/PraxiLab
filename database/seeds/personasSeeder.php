@@ -21,6 +21,9 @@ class personasSeeder extends Seeder
             'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'', 'password' => '123456'],
 
             [ 'username' => 'Usuario2', 'nombre'=>'Usuario2', 'apellido' => 'Usuario2', 'telefono' => '5555-4444', 'mail' => 'Usuario2@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'', 'password' => '123456'],
+
+            [ 'username' => 'Usuario3', 'nombre'=>'Usuario3', 'apellido' => 'Usuario3', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
             'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'', 'password' => '123456']
 			
         ]);

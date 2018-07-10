@@ -14,7 +14,8 @@ class personasServiciosSeeder extends Seeder
         DB::table('personas_servicios')->insert([
     		
             [ 'id_persona' => '1', 'id_servicio' => '1'],
-			[ 'id_persona' => '2', 'id_servicio' => '2']
+			[ 'id_persona' => '2', 'id_servicio' => '2'],
+            [ 'id_persona' => '3', 'id_servicio' => '3']
 
         ]);
     }

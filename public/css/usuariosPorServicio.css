@@ -1,8 +1,4 @@
-body {
-  padding: 10px 0;
-  background-color: #f4f4f4;
-  font-family: 'Montserrat', sans-serif;
-}
+
 a {
   text-decoration: none;
   transition: all 0.3s ease-in-out;
@@ -56,15 +52,16 @@ a:active {
 .img-thumb-bg .caption {
   bottom: -5px;
   height: 100px;
-  font-size: 12px;
+  font-size: 15px;
+  font-color: white;
   position: absolute;
   padding: 0 20px 20px;
   transition: all 0.3s ease-in-out;
 }
 .img-thumb-bg .caption .tag a {
-  color: #fff;
+  color: white;
   padding: 0 5px;
-  font-size: 12px;
+  font-size: 15px;
   border-radius: 2px;
   display: inline-block;
   text-transform: uppercase;
