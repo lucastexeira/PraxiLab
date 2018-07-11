@@ -68,3 +68,23 @@ Route::get('usuariosPorServicio/{id_servicio}', 'ServicioController@verUsuariosS
 //Rubro por ID
 Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');
 
+//Adquirir un servicio
+Route::get('wizard',[
+	'uses' => 'ServicioController@adquirirServicio' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Lista de Practicas Por Estados
+Route::get('listadoPracticasEstados',[
+	'uses' => 'ServicioController@listadoPracticasEstados' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Ir al ABM de Practicas (Lista de Rubros)
+Route::get('abmPractica',[
+	'uses' => 'ServicioController@irAbmPractica' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Lista de Practicas en abmPractica
+//Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');

@@ -36,7 +36,7 @@
 	</div>
 				
 </div>
-
+<footer>
 
 @include("layouts.pie")
 
