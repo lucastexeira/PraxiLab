@@ -64,11 +64,13 @@ class ServicioController extends Controller
         //dd($pracPers);
     }
 
-    public function adquirirServicio(){
+    public function irAWizard(Request $request){
 
         $rubros = Rubro::all();
-        
-        return view('/wizard')->with('rubros',$rubros);
+        $servicios = Servicio::all();
+        //$servicios = Servicio::where('id_rubro', $request->id_rubro)->pluck('id');
+
+        return view('/wizard')->with('rubros',$rubros)->with('servicios',$servicios);
 
         //dd($servicios);
     }
@@ -86,12 +88,14 @@ class ServicioController extends Controller
 
         $rubros = Rubro::all();
         //$serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id_rubro');
-        $servicios = Servicio::where('id_rubro',1)->pluck('id');
+        $servicios = Servicio::where('id_rubro', $request->id_rubro)->pluck('id');
 
         return view('/abmPractica')->with('rubros',$rubros)->with('servicios',$servicios);
 
         //dd($servicios);
     }
+
+    
 
     
 }
