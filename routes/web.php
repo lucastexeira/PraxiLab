@@ -51,17 +51,19 @@ Route::get('todosLosServicios',[
 
 ]);
 
-//Lista Servicios de un Rubro
+/**Lista Servicios de un Rubro
 Route::get('servicios/{id_rubro}',[
 	'uses' => 'ServicioController@verServiciosPorRubro' //Nombre_del_controlador@Nombre_del_metodo
+
+]);*/
+
+Route::get('servicios/{id_rubro}',[
+	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
 //Lista los usuarios que pertenecen a un servicio
-Route::get('usuariosPorServicio/{id_servicio}',[
-	'uses' => 'ServicioController@verUsuariosServicios' //Nombre_del_controlador@Nombre_del_metodo
-
-]);
+Route::get('usuariosPorServicio/{id_servicio}', 'ServicioController@verUsuariosServicios');
 
 //Rubro por ID
 Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');

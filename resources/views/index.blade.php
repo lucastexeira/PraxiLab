@@ -156,80 +156,70 @@
  
   </div><!-- /container -->
  
-  <! ========== RUBROS ======================================================================================>   
-  <div class="container">
-    <div class="row mt centered ">
-      <div class="col-lg-4 col-lg-offset-4">
-        <h1>Rubros</h1>
-        <hr>
-      </div>
-    </div><!-- /row -->
- 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="container-fluid container-articles">
-          <div class="row articles">
-              @foreach ($rubros as $rubro)
-            <div class="col-md-3 article-img" >
-             <a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="200" height="150" src="{{ $rubro->imagen }}" alt="" />
-                <div class="b-wrapper">
-                    <h4 class="b-from-left b-animate b-delay03">{{ $rubro->nombre_rubro }}</h4>
-                    <p class="b-from-right b-animate b-delay03">VER MÁS</p>
-                </div>
-              </a>
- 
-              <h3 class="text-center" id="nombre-rubros">{{ $rubro->nombre_rubro }}</h3>
-              
-            </div>
-          @endforeach
-            </div>
-          </div>
-      </div><!-- /row -->
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-        </a>
-    </div>
- 
-    <div class="row mt centered">
-      <div class="col-lg-4 col-lg-offset-4">
-          <a class="nav-link" href="{{ 'rubrosYServicios' }}">
-            <button type="button" class="btn btn-theme btn-lg">RUBROS Y PRÁCTICAS</button>
-          </a>
-      </div>
-    </div><!-- /row -->
-  </div><!-- /container -->
- 
-  <!-- MODAL -->
-  <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Lista de Servicios</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            
-          </div>
-          <div class="modal-body">
-          @foreach ($servicios as $servicio)
-          @if ($servicio->id_rubro === $rubro->id)
-              <h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
-            @endif
-          @endforeach
-          </div>
-          <div class="modal-footer">
-            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>-->
-          </div>
-        </div>
-        
-      </div>
-    </div>
+
+	<! ========== RUBROS ======================================================================================>   
+	<div class="container">
+
+		<div class="row mt centered ">
+			<div class="col-lg-4 col-lg-offset-4">
+				<h1>Rubros</h1>
+				<hr>
+			</div>
+		</div><!-- /row -->
+
+		  <section class="regular slider">
+
+					@foreach ($rubros as $rubro)
+						<div>
+							<a data-toggle="modal" class="b-link-fade b-animate-go" href="servicios/{{ $rubro->id }}"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
+								<div class="b-wrapper">
+								  	<h4 >{{ $rubro->nombre_rubro }}</h4>
+								  	<p >VER MÁS</p>
+								</div>
+							</a>
+
+							<h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
+						</div>	
+					@endforeach
+
+			</section>
+
+		
+
+		<div class="row mt centered">
+			<div class="col-lg-4 col-lg-offset-4">
+    			<a class="nav-link" href="{{ 'rubrosYServicios' }}">
+    				<button type="button" class="btn btn-theme btn-lg">RUBROS Y PRÁCTICAS</button>
+    			</a>
+			</div>
+		</div><!-- /row -->
+	</div><!-- /container -->
+
+	<!-- MODAL -->
+	<div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        	<h4 class="modal-title">Lista de Servicios</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          
+	        </div>
+	        <div class="modal-body">
+	        @foreach ($servicios as $servicio)
+	        	@if ($servicio->id_rubro === $rubro->id)
+	        		<h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
+	        	@endif
+	        @endforeach
+	        </div>
+	        <div class="modal-footer">
+	          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>-->
+	        </div>
+	      </div>
+	      
+	    </div>
+  	</div>
   
 </div>
  
@@ -281,8 +271,35 @@
         </div><!-- /row -->
       </div><!-- /container -->
  
- 
-  <script>
+	<! ========== PASOS A SEGUIR =========================================================================================>    
+	    <div class="container" id="comoFunciona">
+	    	<div class="row mt">
+	    		<div class="col-lg-4 col-lg-offset-4 centered">
+	    			<h3>¡¿Cómo Funciona?!</h3>
+	    			<hr>
+	    		</div>
+	    	</div>
+	    	<div class="row mt">
+	    		<div class="col-lg-4 centered si">
+	    			<i class="glyphicon glyphicon-search"></i>
+	    			<h4>Comunicación</h4>
+	    			<p>Buscá y conectate con usuarios según tus necesidades.</p>
+	    		</div>
+	    		<div class="col-lg-4 centered si">
+	    			<i class="glyphicon glyphicon-check"></i>
+	    			<h4>Prácticas</h4>
+	    			<p>Llevá a cabo el servicio programado. </p>
+	    		</div>
+	    		<div class="col-lg-4 centered si">
+	    			<i class="glyphicon glyphicon-heart"></i>
+	    			<h4>Reputación</h4>
+	    			<p>Calificá al usuario.</p>
+	    		</div>    	
+	    	</div><!-- /row -->
+	    </div><!-- /container -->
+
+
+	<script>
     $(window).scroll(function() {
       if ($("#menu").offset().top > 330){
         $("#menu").removeClass("bg-transparent");
@@ -294,7 +311,6 @@
         $("#menu").removeClass("bg-dark");
         $(".logo").attr('src', 'img/logos/logo_negro_y_blanco_transparente.png');
         }
-
         });
  
  
@@ -305,5 +321,4 @@
  
     });
   </script>
-<footer>
     @include("layouts.pie")

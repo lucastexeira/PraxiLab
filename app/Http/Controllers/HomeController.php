@@ -25,8 +25,8 @@ class HomeController extends Controller
         $servicios = Servicio::paginate(4);
         $rubroPorId = Rubro::where('id', '=', Input::get('id'));
         $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
-        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id_rubro');
- 
+        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
+
         return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios);
     }
  
@@ -47,21 +47,21 @@ class HomeController extends Controller
          $rubros = Rubro::all();
      return View::make('registro')->with('persona', $persona)->with('rubros', $rubros);
     }
-    
-	public function create(){
-
-            $persona = new Persona();
-            $persona->nombre = Input::get('nombre');
-            $persona->apellido = Input::get('apellido');
-            $persona->mail = Input::get('mail');
-            $persona->provincia = Input::get('provincia');
-            $persona->zona = Input::get('zona');
-            $persona->pais = Input::get('pais');
-            $persona->img = Input::get('img');
-            $persona->password = Input::get('contrasena');
-            $persona->telefono = Input::get('telefono');
-            $persona->save();
-
+ 
+    public function create(){
+ 
+        $persona = new Persona();
+        $persona->nombre = Input::get('nombre');
+        $persona->apellido = Input::get('apellido');
+        $persona->mail = Input::get('mail');
+        $persona->provincia = Input::get('provincia');
+        $persona->zona = Input::get('zona');
+        $persona->pais = Input::get('pais');
+        $persona->img = Input::get('img');
+        $persona->password = Input::get('contrasena');
+        $persona->telefono = Input::get('telefono');
+        $persona->save();
+ 
         return Redirect::to('/index')->with('notice', 'El usuario ha sido creado correctamente.');
     }
  
