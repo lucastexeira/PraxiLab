@@ -20,9 +20,6 @@
     <link href="{{asset('css/colors/color-74c9be.css')}}" rel="stylesheet">    
     <link href="{{asset('css/animations.css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
-
-    <!--Estilo de la lista de practicas-->
-    <link href="{{asset('css/usuariosPorServicio.css')}}" rel="stylesheet">
    
     <!-- Main Jquery & Hover Effects. Should load first -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

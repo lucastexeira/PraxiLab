@@ -1,6 +1,9 @@
 	
 @include("layouts.cabecera");
 
+<!--Estilo de la lista de practicas-->
+<link href="{{asset('css/usuariosPorServicio.css')}}" rel="stylesheet">
+
 </head>
 <body>
 
