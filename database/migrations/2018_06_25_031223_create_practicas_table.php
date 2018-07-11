@@ -15,9 +15,11 @@ class CreatePracticasTable extends Migration
     {
         Schema::create('practicas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre_practica');
             $table->string('descripcion');
+            $table->string('imagen_practica')->nullable();
             $table->unsignedInteger('id_practicante');
-            $table->unsignedInteger('id_voluntario');
+            $table->unsignedInteger('id_voluntario')->nullable();
 
             $table->foreign('id_practicante')->references('id')->on('personas');
             $table->foreign('id_voluntario')->references('id')->on('personas');
