@@ -86,5 +86,10 @@ Route::get('abmPractica',[
 
 ]);
 
+Route::get('transacciones',[
+	'uses' => 'TransaccionController@verTransacciones' //Nombre_del_controlador@Nombre_del_metodo
+]);
+
+
 //Lista de Practicas en abmPractica
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
