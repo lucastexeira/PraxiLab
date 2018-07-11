@@ -23,7 +23,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="rubro">Rubro</label>
-                            <select class="form-control" id="id_rubro" name="id_rubro">
+                            <select class="form-control" id="id" name="id">
                               <option value="">Seleccionar Rubro</option>
                               @foreach ($rubros as $rubro)
                                 <option value="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</option>
@@ -32,9 +32,10 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="servicio">Práctica</label>
+                            <label for="servicio">Servicio</label>
                             
-                            <select name="id_servicio" id="id_servicio" class="form-control input-sm"></select>
+                            <select name="id_servicio" id="id_servicio" class="form-control input-sm">
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
@@ -60,18 +61,18 @@
   </div>
 
   <script>
-  $('#id_rubro').change(function(){
+  $('#id').change(function(){
     var rubroID = $(this).val();
 
     if(rubroID){
       $.ajax({
+        type:"GET",
+        url:"{{url('abmPractica')}}?id="+rubroID,
         success:function(res){
           if(res){
             $("#id_servicio").empty();
-            $("#id_servicio").append('<option>Seleccione Practica</option>');
-            $.each(res,function(idservicio,nombreservicio){
-              var idservicio = $id;
-              var nombreservicio = $nombre_servicio;
+            $("#id_servicio").append('<option>Seleccionar Servicio</option>');
+            $.each(res,function(key,value){
               $("#id_servicio").append('<option value="'+key+'">'+value+'</option>');
             });
           }else{
