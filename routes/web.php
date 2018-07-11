@@ -51,11 +51,11 @@ Route::get('todosLosServicios',[
 
 ]);
 
-//Lista Servicios de un Rubro
+/**Lista Servicios de un Rubro
 Route::get('servicios/{id_rubro}',[
 	'uses' => 'ServicioController@verServiciosPorRubro' //Nombre_del_controlador@Nombre_del_metodo
 
-]);
+]);*/
 
 Route::get('servicios/{id_rubro}',[
 	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo

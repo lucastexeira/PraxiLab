@@ -265,20 +265,6 @@
         </div><!-- /row -->
       </div><!-- /container -->
  
- 
-  <script>
-    $(window).scroll(function() {
-      if ($("#menu").offset().top > 330){
-        $("#menu").removeClass("bg-transparent");
-        $("#menu").addClass("bg-dark");
-        $(".logo").attr('src', 'img/logos/LogoColorTransparente.png');
-        $("#menu").addClass("bg-dark");
-        
-      } else {
-        $("#menu").removeClass("bg-dark");
-        $(".logo").attr('src', 'img/logos/logo_negro_y_blanco_transparente.png');
-        }
-
 	<! ========== PASOS A SEGUIR =========================================================================================>    
 	    <div class="container" id="comoFunciona">
 	    	<div class="row mt">
@@ -308,22 +294,25 @@
 
 
 	<script>
-		$(window).scroll(function() {
-			if ($("#menu").offset().top > 320){
-				$("#menu").removeClass("bg-transparent");
-				$("#menu").addClass("bg-dark");
-			} else {
-				$("#menu").removeClass("bg-dark");
-				}
-			});
-
-
-		$(document).ready(function(){
-		    $("#myBtn").click(function(){
-		        $("#myModal").modal();
-		    });
-
-		});
-	</script>
-
+    $(window).scroll(function() {
+      if ($("#menu").offset().top > 330){
+        $("#menu").removeClass("bg-transparent");
+        $("#menu").addClass("bg-dark");
+        $(".logo").attr('src', 'img/logos/LogoColorTransparente.png');
+        $("#menu").addClass("bg-dark");
+        
+      } else {
+        $("#menu").removeClass("bg-dark");
+        $(".logo").attr('src', 'img/logos/logo_negro_y_blanco_transparente.png');
+        }
+        });
+ 
+ 
+    $(document).ready(function(){
+        $("#myBtn").click(function(){
+            $("#myModal").modal();
+        });
+ 
+    });
+  </script>
     @include("layouts.pie")

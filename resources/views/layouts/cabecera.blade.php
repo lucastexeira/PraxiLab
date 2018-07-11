@@ -72,20 +72,4 @@
           });
         });
         
-        $(window).scroll(function() {
-            if ($("#menu").offset().top > 320){
-                $("#menu").removeClass("bg-transparent");
-                $("#menu").addClass("bg-dark");
-            } else {
-                $("#menu").removeClass("bg-dark");
-                }
-            });
-
-
-        $(document).ready(function(){
-            $("#myBtn").click(function(){
-                $("#myModal").modal();
-            });
-
-        });
     </script>

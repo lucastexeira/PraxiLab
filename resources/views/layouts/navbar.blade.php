@@ -17,10 +17,11 @@
 	        	Rubros 
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	        	@foreach ($rubros as $rubro)
-				  <a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a>
-				@endforeach
-	          
+	        	
+	        	@foreach ($rubros as $rubro) 
+          			<a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a> 
+        		@endforeach
+	          	
 	        </div>
 	      </li>
 	    </ul>

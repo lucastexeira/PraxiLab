@@ -28,7 +28,7 @@ class ServicioController extends Controller
         return view('/todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros);
     }
 
-    public function verServiciosPorRubro($id_rubro){
+    /*public function verServiciosPorRubro($id_rubro){
 
         $servicios = Servicio::all();
         $rubros = Rubro::find($id_rubro);
@@ -36,27 +36,30 @@ class ServicioController extends Controller
         return view('/todosLosServicios')->with('servicios', $servicios)->with('rubros',$rubros);
 
         //dd($servicios);
-    }
+    }*/
 
     public function verServicios($id_rubro){
 
         $servicios = Servicio::all();
-        $rubros = Rubro::find($id_rubro);
-        
-        return view('/servicios')->with('servicios', $servicios)->with('rubros',$rubros);
+        $rubros = Rubro::All();
+        $ruId = Rubro::find($id_rubro)->first();
 
-        //dd($servicios);
+        
+        return view('/servicios')->with('servicios', $servicios)->with('rubros',$rubros)->with('ruId',$ruId);
+
+        //dd($ruId);
     }
 
     public function verUsuariosServicios($id_servicio){
 
         $servicio = Servicio::find($id_servicio);
+        $rubros = Rubro::All();
         $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
                                                        inner join personas_servicios on personas.id = personas_servicios.id_persona
                                                        inner join servicios on personas_servicios.id_servicio = servicios.id
                                                        where servicios.id = '.$id_servicio.'');
 
-        return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio);
+        return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros);
 
         //dd($pracPers);
     }
