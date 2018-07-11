@@ -68,7 +68,7 @@ Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');
 
 //Adquirir un servicio
 Route::get('wizard',[
-	'uses' => 'ServicioController@adquirirServicio' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'ServicioController@irAWizard' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
