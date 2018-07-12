@@ -7,10 +7,10 @@
 	<div class="container">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<li class="nav-item col-lg-6">
-				<a class="nav-link text-center active show pestaña" id="historial-tab" data-toggle="tab" href="#historial" role="tab" aria-controls="historial" aria-selected="false">Historia de Transacciones</a>
+				<a class="nav-link text-center active show pestaña" id="historial-tab" data-toggle="tab" href="#historial" role="tab" aria-controls="historial" aria-selected="true">Historia de Transacciones</a>
 			</li>
 			<li class="nav-item col-lg-6">
-				<a class="nav-link text-center pestaña" id="creditos-tab" data-toggle="tab" href="#creditos" role="tab" aria-controls="creditos" aria-selected="true">Créditos</a>
+				<a class="nav-link text-center pestaña" id="creditos-tab" data-toggle="tab" href="#creditos" role="tab" aria-controls="creditos" aria-selected="false">Créditos</a>
 			</li>
 		</ul>
 
@@ -81,6 +81,69 @@
 			<div class="tab-pane fade" id="creditos" role="tabpanel" aria-labelledby="creditos-tab">
 				<div class="panel panel-default contenido">
 					
+					<form action=”https://www.paypal.com/cgi-bin/webscr” method=”post”>
+
+						<div class="card-body">
+
+							<div class="row">
+				                <div class="center-block nav-item col-lg-6" ><h1>Compra de creditos</h1>
+				                	<br>
+				                    <div class="form-group"  width="50%" >
+				                        <label for="text">Cantidad de creditos</label>
+				                        <input name="canCredito" type="text" id="canCredito" class="form-control" placeholder="Monto Deseado" required="true" style= "width:60%"/>
+				                    </div>
+				                    <div class="form-group">
+				                        <label for="text">Precio Total</label>
+				                        <input name="precioTotal" type="text" id="precioTotal" class="form-control" placeholder="Precio" style= "width:60%"/>
+				                    </div>
+								</div>
+
+				                <div class="center-block nav-item col-lg-6" ><h1>Compra de creditos</h1>
+				                	<br>
+				                    <div class="form-group"  width="50%" >
+				                        <label for="text">Cantidad de Meses</label>
+				                        <select>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="11">12</option>
+										</select>
+				                    </div>
+				                    <div class="form-group">
+				                        <label for="text">Precio Total</label>
+				                        <input name="precioTotal" type="text" id="precioTotal" class="form-control" placeholder="Precio" style= "width:40%"/>
+				                    </div>
+				                </div>
+
+				            </div>
+
+			                    <h2>Pague con</h2>
+			                    <br>
+			                    <div class="nav nav-tabs">
+			                    	<div class="center-block">
+					                    <a href="#">
+											<img src="{{asset('img/logos/mercadoPago.png')}}"  width="50%" height="85%" class="center-block"/>
+										</a>
+									</div>
+									<div class="center-block">
+										<a href="#">
+											<img src="{{asset('img/logos/paypal.png')}}"  width="60%" height="65%" class="center-block"/>
+										</a>
+									</div>
+								</div>
+		           		</div>
+
+					</form>
+
 				</div>
 			</div>
 
