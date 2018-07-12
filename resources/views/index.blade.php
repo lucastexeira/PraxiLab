@@ -62,7 +62,13 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <a class="dropdown-item" href="{{ 'listadoPracticasEstados' }}">
-                                      <span class="glyphicon glyphicon-cog"></span> Prácticas y Transacciones</a>
+                                      <span class="glyphicon glyphicon-cog"></span> Mis Prácticas</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a class="dropdown-item" href="{{url('transacciones/')}}">
+                                      <span class="fa fa-dollar"></span> Historial de Transacciones</a>
                                 </div>
                             </div>
                         </div>

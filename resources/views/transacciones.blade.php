@@ -68,7 +68,7 @@
 								<td><a href=" {{ 'oferta' }} ">Compra de Creditos</td></a>
 								<td>--</td>
 								<td>Agreditado(+)</td>
-								<td>$1000</td>
+								<td>+$1000</td>
 								<td>$1000</td>
 							</tr>
 
