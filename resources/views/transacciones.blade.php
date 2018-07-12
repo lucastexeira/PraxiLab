@@ -2,7 +2,7 @@
 </head>
 <body>
 
-	@include("layouts.navbar")
+@include("layouts.navbar")
 
 	<div class="container">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
