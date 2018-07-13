@@ -64,7 +64,7 @@
 						        <td>$60</td>
 						        <td>04/06/2018</td>
 						        <td>Sin Calificar</td>
-						        <td><button type="success">Calificar</button></td>
+						        <td><a href=" {{ 'cargarEvidencia' }} "><button type="button" class="btn btn-theme btn-lg" >Calificar</button></a></td>
 						      </tr>
 						      <tr>
 						        <td>Ariel - arielgabrielr@gmail.com - 44447777</td>
@@ -131,7 +131,7 @@
 						        <td>$60</td>
 						        <td>04/06/2018</td>
 						        <td>Sin Calificar</td>
-						        <td><button type="success">Calificar</button></td>
+						        <td><a href=" {{ 'cargarEvidencia' }} "><button type="button" class="btn btn-theme btn-lg" >Calificar</button></a></td>
 						      </tr>
 						      <tr>
 						        <td>Ariel - arielgabrielr@gmail.com - 44447777</td>
