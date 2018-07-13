@@ -6,19 +6,12 @@
 
 	<div id="f">
 		<div class="container">
-			<div class="row center">
+			<div class="row mt centered">
 				<!-- ADDRESS -->
-				<div class="col-lg-3">
-					<h4>Proyecto Final</h4>
+				<div class="col-lg-12">
+					<img width="100" src="{{asset('img/logos/logo_blanco_y_negro.png')}}" alt="">
 					<p>
-						Montesanto Karen<br/>
-						Rosa Allende Damian<br/>
-						Texeira Lucas<br/>
-					</p>
-					<p>
-						<i class="fa fa-mobile"></i> +55 4893.8943<br/>
-						<i class="fa fa-envelope-o"></i> hello@yourdomain.com
-					</p>
+						Montesanto Karen | Rosa Allende Damian | Texeira Lucas
 				</div>
 			</div>
 		</div>

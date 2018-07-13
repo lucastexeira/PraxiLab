@@ -97,8 +97,13 @@ class HomeController extends Controller
         return Redirect::back()->with('error_message', 'Los datos están mal, intentelo nuevamente')->withInput();
     }
 
-     public function perfil(){
+    public function perfil(){
         $rubros = Rubro::all();
         return view('perfil')->with('rubros', $rubros);
+    }
+
+    public function oferta(){
+        $rubros = Rubro::all();
+        return view('oferta')->with('rubros', $rubros);
     }
 }
