@@ -32,7 +32,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             @foreach ($rubros as $rubro)
-              <a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a>
+              <a class="dropdown-item" href="{{url('servicios/'.$rubro->id.'')}}">{{ $rubro->nombre_rubro }}</a>
             @endforeach
             
           </div>
