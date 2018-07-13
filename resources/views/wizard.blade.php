@@ -39,7 +39,7 @@
                     </li>
                 </ul>
             </div>
-            <form role="form" id="formularioWizard" class="formularioWizard">
+            <form role="form" id="formularioWizard" class="formularioWizard" method="post">
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
 
@@ -91,11 +91,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="descripcion">Nombre</label>
-                                    <input name="descripcion" type="text" id="descripcion" class="form-control" placeholder="Descripción de la Practica" required="true" value="" class="required"/>
+                                    <input name="descripcion" type="text" id="descripcion" class="form-control" placeholder="Descripción de la Practica" required="true">
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
-                                    <textarea name="descripcion" cols="40" rows="4" class="form-control"></textarea>
+                                    <textarea name="descripcion" cols="40" rows="4" class="form-control" required></textarea>
                                 </div>
 
                             </div>
@@ -104,25 +104,23 @@
                                 
                                 <div class="form-group">
                                     <label for="imagen">Imagen</label>
-                                    <input name="imagen" type="file" id="imagen" placeholder="Imagen de la Practica" required="true" value="" class="form-control"/>
+                                    <input name="imagen" type="file" id="imagen" placeholder="Imagen de la Practica" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="precio">Monto ofrecido</label>
-                                    <input name="precio" type="number" id="precio" class="form-control" placeholder="Monto ofrecido" required="true" value=""/>
+                                    <input name="precio" type="number" id="precio" class="form-control" placeholder="Monto ofrecido" required>
                                 </div>
                             </div>
                         </div>
 
                         <ul class="list-inline pull-right">
-                            <li><button type="sumit" class="btn btn-theme
-                                btn-lg next-step" id="botonStep2">Guardar y Finalizar</button></li>
+                            <button type="submit" class="btn btn-theme btn-lg next-step" id="botonStep2">Guardar y Finalizar</button>
                         </ul>
                     </div>
 
                     <div class="tab-pane text-center" role="tabpanel" id="complete">
                         <h2>¡Se ha creado la práctica exitosamente!</h2>
-
 
                         <ul class="list-group">
                           <li class="list-group-item"><b>Rubro</b> Fiestas y animación</li>
@@ -132,8 +130,10 @@
                           <li class="list-group-item"><b>Vestibulum</b> at eros</li>
                         </ul>
 
-                        <button type="button" class="btn btn-theme
-                                btn-lg prev-step">Ir al Home</button>
+                        </br>
+                        <button type="button" class="btn btn-theme btn-lg next-step">
+                            <a href="{{ 'oferta' }}">Ir a mi práctica</a>
+                        </button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -146,7 +146,7 @@
 <script>
     $(document).ready(function(){
 
-
+    //PASO 1    
         //Oculto el rubro a seleccionar y los servicios
         $("#imgRubro").hide();
         $(".nombreRubroSeleccionado").hide();
@@ -167,21 +167,6 @@
             $("#botonStep1").show();
             $('#botonStep1').addClass('col-md-2');
         });
-
-        //Si apreto el boton de confirmar y continuar del PASO 1, deshabilito al icono1
-        $("#botonStep1").click(function(){
-            
-            $('#iconoPaso1').addClass('disabled');
-            $('#irAPaso2').attr('href', '#step2');
-        });
-
-        //Si apreto el boton de confirmar y finalizar del PASO 2, deshabilito al icono2
-        $("#botonStep2").click(function(){
-            
-            $('#iconoPaso2').addClass('disabled');
-            //$('#iconoPaso2').removeClass('active show');
-            $('#irAPaso3').attr('href', '#complete');
-        }); 
 
         $("img").click(function(){
         
@@ -221,6 +206,24 @@
             });
         }
     });
+
+
+    //PASO 2
+        //Si apreto el boton de confirmar y continuar del PASO 1, deshabilito al icono1
+        $("#botonStep1").click(function(){
+            
+            $('#iconoPaso1').addClass('disabled');
+            $('#irAPaso2').attr('href', '#step2');
+        });
+
+        //Si apreto el boton de confirmar y finalizar del PASO 2, deshabilito al icono2
+        $("#botonStep2").click(function(){
+            
+            $('#irAPaso2').removeAttr('href', '#step2');
+            $('#iconoPaso2').addClass('disabled');
+            $('#irAPaso3').attr('href', '#complete');
+
+        }); 
 
 
         //Initialize tooltips

@@ -36,7 +36,7 @@ class serviciosSeeder extends Seeder
             //Cursos y Clases
             [ 'id_rubro'=>3, 'nombre_servicio' => 'Artes Plásticas'],
             [ 'id_rubro'=>3, 'nombre_servicio' => 'Fotografía'],
-            [ 'id_rubro'=>3, 'nombre_servicio' => 'Idiomas'],
+            [ 'id_rubro'=>3, 'nombre_servicio' => 'Musica'],
             [ 'id_rubro'=>3, 'nombre_servicio' => 'Tatuajes'],
             //[ 'id_rubro'=>3, 'nombre_servicio' => 'Manejo'],
             [ 'id_rubro'=>3, 'nombre_servicio' => 'Otros'],
