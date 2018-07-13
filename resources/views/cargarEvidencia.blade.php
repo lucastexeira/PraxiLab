@@ -8,9 +8,9 @@
 
 <form method="POST" action="cargarEvidencia">
 
-	<div class="container">
+	<div class="container panel panel-default ">
 
-		<div class="card-body">
+		<div class="card-body ">
 
 			<div class="row mt centered ">
 		      <div class="col-lg-8 col-lg-offset-2">
@@ -25,7 +25,7 @@
 			  <div class="image-upload-wrap">
 			    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
 			    <div class="drag-text">
-			      <h3>Drag and drop a file or select add Image</h3>
+			      <h3  style="color: black">Drag and drop a file or select add Image</h3>
 			    </div>
 			  </div>
 			  <div class="file-upload-content">
@@ -45,12 +45,15 @@
         <br>
         <label for="Comentario"><h3>Calificación</h3></label>
         <br>
-	        <div class="stars" >
+	        <div class="stars">
 
 	        	@for($i=1;$i<6;$i++)
+
 					<input class="star star-4" id="star-{{$i}}" type="radio" name="star"/>
 					<label class="star star-4" for="star-{{$i}}"></label>
+
 				@endfor
+
 			</div>
 
 		<div class="row mt centered">
