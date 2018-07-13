@@ -57,6 +57,7 @@
 						        <td>$80</td>
 						        <td>03/04/2018</td>
 						        <td>En Curso</td>
+						        <td>&nbsp</td>
 						      </tr>
 						      <tr>
 						        <td>Matias - matiash@gmail.com - 444433333</td>
@@ -72,6 +73,7 @@
 						        <td>$200</td>
 						        <td>08/06/2018</td>
 						        <td>Finalizado</td>
+						        <td>&nbsp</td>
 						      </tr>
 						    </tbody>
 	                	</table>
@@ -117,6 +119,7 @@
 						        <td>$60</td>
 						        <td>03/04/2018</td>
 						        <td>Solicitada</td>
+						        <td>&nbsp</td>
 						      </tr>
 						      <tr>
 						        <td>Florencia - florc@gmail.com - 44448888</td>
@@ -124,6 +127,7 @@
 						        <td>$150</td>
 						        <td>03/04/2018</td>
 						        <td>En Curso</td>
+						        <td>&nbsp</td>
 						      </tr>
 						      <tr>
 						        <td>Matias - matiash@gmail.com - 444433333</td>
@@ -139,6 +143,7 @@
 						        <td>$250</td>
 						        <td>08/06/2018</td>
 						        <td>Finalizado</td>
+						        <td>&nbsp</td>
 						      </tr>
 						    </tbody>
 	                	</table>

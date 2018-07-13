@@ -129,23 +129,27 @@
       <div class="row centered">
         <div class="col-lg-8 col-lg-offset-2 mt">
           <h1 class="animation slideDown">
-          ¡No pierdas más tiempo! </br>La experiencia hace al profesional.
-        </h1>
-        <button id="verMas" type="button" class="btn btn-cta btn-lg">VER MÁS</button>
-        <br>
-        <br>
-        
-        <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="Realizá prácticas y adquirí experiencia">
-          <i class="glyphicon glyphicon-usd" style="color: black"></i>
-        </br> REALIZÁ UNA PRÁCTICA
-      </br> ¡ganá experiencia!
-    </button>
-    
-    <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="adquirí prácticas y ganá dinero">
-      <i class="glyphicon glyphicon-list-alt" style="color: black"></i>
-    </br>ADQUIRÍ UNA PRÁCTICA
-  </br> ¡ganá dinero!
-</button>
+            ¡No pierdas más tiempo! </br>La experiencia hace al profesional.
+          </h1>
+            <button id="verMas" type="button" class="btn btn-cta btn-lg">VER MÁS</button>
+            <br>
+            <br>
+            
+            <a href="{{ 'wizard' }}">
+              <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="Realizá prácticas y adquirí experiencia">
+                  <i class="glyphicon glyphicon-list-alt" style="color: black"></i>
+                  </br> REALIZÁ UNA PRÁCTICA
+                  </br> ¡ganá experiencia!
+              </button>
+            </a>
+            
+            <a href="{{ 'todosLosServicios' }}">
+              <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="adquirí prácticas y ganá dinero">
+                <i class="glyphicon glyphicon-usd" style="color: black"></i>
+                </br>ADQUIRÍ UNA PRÁCTICA
+                </br> ¡ganá dinero!
+              </button>
+            </a>
 
 </div>
 
