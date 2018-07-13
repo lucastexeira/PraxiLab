@@ -1,7 +1,19 @@
 body {
     font-size: 16px !important;
 }
- 
+
+h4 {
+    font-size: 18px!important;
+}
+
+p {
+    font-size: 19px !important;
+}
+
+a {
+    color: black!important;
+}
+
 /* MENU */
 
 a.button {
@@ -38,15 +50,15 @@ a.button {
     font-size: 18px !important;
 }
 
-.navbar a:hover {
-    color: white !important;
-    font-size: 18px !important;
+.navbar a:hover { 
+    color: black !important; 
 }
- 
-.bg-transparent{
-  transition: all 1s ease;
-}  
- 
+
+.bg-dark {
+    height: 60px!important;
+    transition: 0.50s!important;
+}
+
 .navbar {
     background: transparent !important;
     color: black !important;
@@ -115,16 +127,6 @@ button.btn.btn-theme.btn-lg {
     padding-right: 0px;
 }
  
-.navbar a:hover {
-    color: black !important;
-    font-size: 18px !important;
-}
- 
-.navbar a:focus {
-    color: black !important;
-    font-size: 18px !important;
-}
-
 
 /*Buscador
 .btn-outline-success {
@@ -497,4 +499,8 @@ p#nombre {
     .right {
         display: none;
     }
+}
+
+.form-control {
+    font-size: 15px !important;
 }

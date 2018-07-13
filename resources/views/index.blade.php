@@ -36,57 +36,71 @@
           </div>
         </li>
       </ul>
- 
- 
-      <a class="navbar-brand" href=" {{ 'listadoPracticasEstados' }} ">
-        <span class="glyphicon glyphicon-bell"></span>
-      <!--img width="80" src="img/logo.png" alt=""-->
-      </a>
- 
-      <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
-                  Nombre
-                </a>
 
-                <ul class="dropdown-menu">
-                    <li  class="nav-item dropdown">
-                        <div class="navbar-login">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a class="dropdown-item" href="{{ 'perfil' }}">
-                                      <span class="glyphicon glyphicon-user"></span> Ver Perfil</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a class="dropdown-item" href="{{ 'listadoPracticasEstados' }}">
-                                      <span class="glyphicon glyphicon-cog"></span> Prácticas y Transacciones</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li  class="nav-item dropdown">
-                        <div class="navbar-login navbar-login-session">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                  <a href="{{ 'logout' }}" class="dropdown-item">
-                                  <span class="glyphicon glyphicon-log-out"></span> Cerrar Sesion</a>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
- 
-      
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar Practica" aria-label="Search">
       </form>
+
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-bell"></span>
+      <!--img width="80" src="img/logo.png" alt=""-->
+          </a>
+          <ul class="dropdown-menu">
+              <li  class="nav-item dropdown">
+                  <div class="navbar-login">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <a class="dropdown-item" href="{{ 'listadoPracticasEstados' }}">
+                                <span class="glyphicon glyphicon-user"></span> Tenés una práctica nueva</a>
+                          </div>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
+                Nombre
+              </a>
+
+              <ul class="dropdown-menu">
+                  <li  class="nav-item dropdown">
+                      <div class="navbar-login">
+                          <div class="row">
+                              <div class="col-lg-12">
+                                  <a class="dropdown-item" href="{{ 'perfil' }}">
+                                    <span class="glyphicon glyphicon-user"></span> Ver Perfil</a>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-lg-12">
+                                  <a class="dropdown-item" href="{{ 'listadoPracticasEstados' }}">
+                                    <span class="glyphicon glyphicon-cog"></span> Prácticas y Transacciones</a>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <li class="divider"></li>
+                  <li  class="nav-item dropdown">
+                      <div class="navbar-login navbar-login-session">
+                          <div class="row">
+                              <div class="col-lg-12">
+                                <a href="{{ 'logout' }}" class="dropdown-item">
+                                <span class="glyphicon glyphicon-log-out"></span> Cerrar Sesion</a>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </li>
+      </ul>
  
       <!--ul class="navbar-nav">
         <li class="nav-item active">
@@ -107,17 +121,31 @@
             ¡No pierdas más tiempo! </br>La experiencia hace al profesional.
           </h1>
             <button id="verMas" type="button" class="btn btn-cta btn-lg">VER MÁS</button>
+            <br>
+            <br>
+            
+            <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="Realizá prácticas y adquirí experiencia">
+              <i class="glyphicon glyphicon-usd" style="color: black"></i>
+              </br> REALIZÁ UNA PRÁCTICA
+              </br> ¡ganá experiencia!
+            </button>
+            
+            <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="adquirí prácticas y ganá dinero">
+              <i class="glyphicon glyphicon-list-alt" style="color: black"></i>
+              </br>ADQUIRÍ UNA PRÁCTICA
+              </br> ¡ganá dinero!
+            </button>
+
         </div>
          
-          <div class="col-md-6 centered si">
+          <!--div class="col-md-6 centered si">
             <i class="glyphicon glyphicon-list-alt"></i>
             <h4><a class="button" href=" {{ 'abmPractica' }} ">¡Realizá prácticas y adquirí experiencia!</a></h4>
           </div>
           <div class="col-md-6 centered si">
             <i class="glyphicon glyphicon-usd"></i>
             <h4><a class="button" href=" {{ 'todosLosServicios' }} ">¡Adquirí un servicio y generá ingresos!</a></h4>
-          </div> 
-          
+          </div--> 
       </div><!-- /row -->
       </div><!-- /container -->
     </div> <!-- /headerwrap -->
@@ -157,69 +185,69 @@
   </div><!-- /container -->
  
 
-	<! ========== RUBROS ======================================================================================>   
-	<div class="container">
+  <! ========== RUBROS ======================================================================================>   
+  <div class="container">
 
-		<div class="row mt centered ">
-			<div class="col-lg-4 col-lg-offset-4">
-				<h1>Rubros</h1>
-				<hr>
-			</div>
-		</div><!-- /row -->
+    <div class="row mt centered ">
+      <div class="col-lg-4 col-lg-offset-4">
+        <h1>Rubros</h1>
+        <hr>
+      </div>
+    </div><!-- /row -->
 
-		  <section class="regular slider">
+      <section class="regular slider">
 
-					@foreach ($rubros as $rubro)
-						<div>
-							<a data-toggle="modal" class="b-link-fade b-animate-go" href="servicios/{{ $rubro->id }}"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
-								<div class="b-wrapper">
-								  	<h4 >{{ $rubro->nombre_rubro }}</h4>
-								  	<p >VER MÁS</p>
-								</div>
-							</a>
+          @foreach ($rubros as $rubro)
+            <div>
+              <a data-toggle="modal" class="b-link-fade b-animate-go" href="servicios/{{ $rubro->id }}"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
+                <div class="b-wrapper">
+                    <h4 >{{ $rubro->nombre_rubro }}</h4>
+                    <p >VER MÁS</p>
+                </div>
+              </a>
 
-							<h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
-						</div>	
-					@endforeach
+              <h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
+            </div>  
+          @endforeach
 
-			</section>
+      </section>
 
-		
+    
 
-		<div class="row mt centered">
-			<div class="col-lg-4 col-lg-offset-4">
-    			<a class="nav-link" href="{{ 'rubrosYServicios' }}">
-    				<button type="button" class="btn btn-theme btn-lg">RUBROS Y PRÁCTICAS</button>
-    			</a>
-			</div>
-		</div><!-- /row -->
-	</div><!-- /container -->
+    <div class="row mt centered">
+      <div class="col-lg-4 col-lg-offset-4">
+          <a class="nav-link" href="{{ 'rubrosYServicios' }}">
+            <button type="button" class="btn btn-theme btn-lg">RUBROS Y PRÁCTICAS</button>
+          </a>
+      </div>
+    </div><!-- /row -->
+  </div><!-- /container -->
 
-	<!-- MODAL -->
-	<div class="modal fade" id="myModal" role="dialog">
-	    <div class="modal-dialog">
-	    
-	      <!-- Modal content-->
-	      <div class="modal-content">
-	        <div class="modal-header">
-	        	<h4 class="modal-title">Lista de Servicios</h4>
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          
-	        </div>
-	        <div class="modal-body">
-	        @foreach ($servicios as $servicio)
-	        	@if ($servicio->id_rubro === $rubro->id)
-	        		<h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
-	        	@endif
-	        @endforeach
-	        </div>
-	        <div class="modal-footer">
-	          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>-->
-	        </div>
-	      </div>
-	      
-	    </div>
-  	</div>
+  <!-- MODAL -->
+  <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Lista de Servicios</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+          </div>
+          <div class="modal-body">
+          @foreach ($servicios as $servicio)
+            @if ($servicio->id_rubro === $rubro->id)
+              <h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
+            @endif
+          @endforeach
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>-->
+          </div>
+        </div>
+        
+      </div>
+    </div>
   
 </div>
  
@@ -258,8 +286,7 @@
             <p>Buscá y conectate con usuarios según tus necesidades.</p>
           </div>
           <div class="col-lg-4 centered si">
-
-          <i class="glyphicon glyphicon-check"></i>
+            <i class="glyphicon glyphicon-check"></i>
             <h4>Prácticas</h4>
             <p>Llevá a cabo el servicio programado. </p>
           </div>
@@ -270,38 +297,11 @@
           </div>      
         </div><!-- /row -->
       </div><!-- /container -->
- 
-	<! ========== PASOS A SEGUIR =========================================================================================>    
-	    <div class="container" id="comoFunciona">
-	    	<div class="row mt">
-	    		<div class="col-lg-4 col-lg-offset-4 centered">
-	    			<h3>¡¿Cómo Funciona?!</h3>
-	    			<hr>
-	    		</div>
-	    	</div>
-	    	<div class="row mt">
-	    		<div class="col-lg-4 centered si">
-	    			<i class="glyphicon glyphicon-search"></i>
-	    			<h4>Comunicación</h4>
-	    			<p>Buscá y conectate con usuarios según tus necesidades.</p>
-	    		</div>
-	    		<div class="col-lg-4 centered si">
-	    			<i class="glyphicon glyphicon-check"></i>
-	    			<h4>Prácticas</h4>
-	    			<p>Llevá a cabo el servicio programado. </p>
-	    		</div>
-	    		<div class="col-lg-4 centered si">
-	    			<i class="glyphicon glyphicon-heart"></i>
-	    			<h4>Reputación</h4>
-	    			<p>Calificá al usuario.</p>
-	    		</div>    	
-	    	</div><!-- /row -->
-	    </div><!-- /container -->
 
 
-	<script>
+  <script>
     $(window).scroll(function() {
-      if ($("#menu").offset().top > 330){
+      if ($("#menu").offset().top > 190){
         $("#menu").removeClass("bg-transparent");
         $("#menu").addClass("bg-dark");
         $(".logo").attr('src', 'img/logos/LogoColorTransparente.png');
