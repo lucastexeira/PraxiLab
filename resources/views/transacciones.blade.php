@@ -19,12 +19,15 @@
 				
 				<div class="card-body">
 	                <table class="table table-striped">
+
+	                	<br>
+	                	<h1>Cantidad de creditos actual: $690</h1>
+	                	<br>
 	                	<thead>
 							<tr>
 								<th>Fecha de transacción</th>
 								<th>Nombre de la Práctica</th>
 								<th>Usuario</th>
-								<th>Credito(+)/Debito(-)</th>
 								<th>Monto</th>
 								<th>Saldo</th>
 							</tr>
@@ -35,7 +38,6 @@
 								<td>20/07/2018</td>
 								<td><a href=" {{ 'oferta' }} ">Alisado</a></td>
 								<td><a href="#">Laura</a></td>
-								<td>Debitado(-)</td>
 								<td>-$200</td>
 								<td>$690</td>
 							</tr>
@@ -43,7 +45,6 @@
 								<td>08/07/2018</td>
 								<td><a href=" {{ 'oferta' }} ">Reparacion de Computadoras</a></td>
 								<td><a href="#">Ariel</a></td>
-								<td>Acreditado(+)</td>
 								<td>+$50</td>
 								<td>$890</td>
 							</tr>
@@ -51,7 +52,6 @@
 								<td>04/06/2018</td>
 								<td><a href=" {{ 'oferta' }} ">Corte de pelo</a></td>
 								<td><a href="#">Matias</a></td>
-								<td>Debitado(-)</td>
 								<td>-$60</td>
 								<td>$840</td>
 							</tr>
@@ -59,7 +59,6 @@
 								<td>03/04/2018</td>
 								<td><a href=" {{ 'oferta' }} ">Tintura</td></a>
 								<td><a href="#">Florencia</a></td>
-								<td>Debitado(-)</td>
 								<td>-$100</td>
 								<td>$900</td>
 							</tr>
@@ -67,7 +66,6 @@
 								<td>29/03/2018</td>
 								<td><a href=" {{ 'oferta' }} ">Compra de Creditos</td></a>
 								<td>--</td>
-								<td>Agreditado(+)</td>
 								<td>+$1000</td>
 								<td>$1000</td>
 							</tr>
@@ -86,7 +84,7 @@
 						<div class="card-body">
 
 							<div class="row">
-				                <div class="center-block nav-item col-lg-6" ><h1>Compra de creditos</h1>
+				                <div class="center-block nav-item col-lg-5 col-lg-offset-1"  ><h1>Compra de creditos</h1>
 				                	<br>
 				                    <div class="form-group"  width="50%" >
 				                        <label for="text">Cantidad de creditos</label>
@@ -98,24 +96,14 @@
 				                    </div>
 								</div>
 
-				                <div class="center-block nav-item col-lg-6" ><h1>Compra de creditos</h1>
+				                <div class="center-block nav-item col-lg-5 col-lg-offset-1" ><h1>Compra de creditos</h1>
 				                	<br>
 				                    <div class="form-group"  width="50%" >
 				                        <label for="text">Cantidad de Meses</label>
 				                        <select>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-											<option value="11">11</option>
-											<option value="11">12</option>
+				                        	@for($i=1;$i<13;$i++)
+											<option value="{{$i}}">{{$i}}</option>
+											@endfor
 										</select>
 				                    </div>
 				                    <div class="form-group">
