@@ -1,6 +1,7 @@
 @include("layouts.cabecera")
 <script class="jsbin" src="{{asset('/js/upImg.js')}}}"></script>
 <link href="{{asset('css/upImg.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -12,7 +13,7 @@
 
 		<div class="card-body">
 			<br>
-			<h1>Carga de evidencia</h1>
+			<h1>Carga de evidencia en la practica: Nombre de la practica</h1>
 			<br>
 
 			<div class="file-upload">
@@ -34,10 +35,25 @@
 		</div>
 
 		<div class="form-group">
-            <label for="contrasena">Comentario</label>
+            <label for="Comentario"><h3>Comentario</h3></label>
             <input name="Comentario" type="text" id="Comentario" class="form-control" placeholder="Escriba un comentario" required="required"/>
         </div>
 
+        <br>
+        <label for="Comentario"><h3>Calificación</h3></label>
+        <br>
+	        <div class="stars" >
+				<input class="star star-5" id="star-5" type="radio" name="star"/>
+				<label class="star star-5" for="star-5"></label>
+				<input class="star star-4" id="star-4" type="radio" name="star"/>
+				<label class="star star-4" for="star-4"></label>
+				<input class="star star-3" id="star-3" type="radio" name="star"/>
+				<label class="star star-3" for="star-3"></label>
+				<input class="star star-2" id="star-2" type="radio" name="star"/>
+				<label class="star star-2" for="star-2"></label>
+				<input class="star star-1" id="star-1" type="radio" name="star"/>
+				<label class="star star-1" for="star-1"></label>
+			</div>
 
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
@@ -82,5 +98,8 @@ $('.image-upload-wrap').bind('dragover', function () {
 	$('.image-upload-wrap').bind('dragleave', function () {
 		$('.image-upload-wrap').removeClass('image-dropping');
 });
+
+
+
 </script>
 @include("layouts.pie")
