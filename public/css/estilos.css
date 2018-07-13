@@ -2,6 +2,18 @@ body {
     font-size: 16px !important;
 }
 
+h4 {
+    font-size: 18px!important;
+}
+
+p {
+    font-size: 19px !important;
+}
+
+a {
+    color: black!important;
+}
+
 /* MENU */
 
 a.button {
@@ -38,14 +50,19 @@ a.button {
     font-size: 18px !important;
 }
 
-.navbar a:hover {
-    color: white !important;
-    font-size: 18px !important;
+.navbar a:hover { 
+    color: black !important; 
 }
 
 .bg-transparent{
   transition: all 1s ease;
 }  
+
+
+.bg-dark {
+    height: 60px!important;
+    transition: 0.50s!important;
+}
 
 .navbar {
     background: transparent !important;
@@ -553,4 +570,8 @@ button.btn.btn-theme.btn-lg {
 
 .tabs-oferta {
     margin-top: 2em;
+}
+
+.form-control {
+    font-size: 15px !important;
 }

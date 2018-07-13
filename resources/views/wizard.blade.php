@@ -1,11 +1,7 @@
-
+@include("layouts.cabecera");
     <link href="{{asset('css/estilosWizard.css')}}" rel="stylesheet">
     
-    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
-    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
 </head>
 <body>
 
@@ -18,24 +14,24 @@
                 <div class="connecting-line"></div>
                 <ul class="nav nav-tabs" role="tablist">
 
-                    <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                    <li role="presentation" id="iconoPaso1" class="active">
+                        <a href="" id="irAPaso1" data-toggle="tab" aria-controls="step1" role="tab" title="Paso 1">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-folder-open"></i>
                             </span>
                         </a>
                     </li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                    <li role="presentation" id="iconoPaso2" class="disabled">
+                        <a href="" id="irAPaso2" data-toggle="tab" aria-controls="step2" role="tab" title="Paso 2">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-pencil"></i>
                             </span>
                         </a>
                     </li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                    <li role="presentation" id="iconoPaso3" class="disabled">
+                        <a href="" id="irAPaso3" data-toggle="tab" aria-controls="complete" role="tab" title="Finalizado">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-ok"></i>
                             </span>
@@ -43,7 +39,7 @@
                     </li>
                 </ul>
             </div>
-            <form role="form">
+            <form role="form" id="formularioWizard" class="formularioWizard">
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
 
@@ -68,14 +64,7 @@
                                     </button>
                                 </div>
                             </div>
-                                <!--select name="id_servicio" id="id_servicio" class="form-control input-sm">
-                                    @foreach ($servicios as $servicio)
-                                        <a href="" alt="{{ $servicio->id }}" src="{{ $servicio->nombre }}">
-                                        $servicio->nombre_servicio</a>
-                                    @endforeach
-                                </select-->
-
-                            <div class="col-md-10" id="col-servicio">
+                            <div class="col-md-4" id="col-servicio">
                                 <div class="servicios">
                                     <ol>
                                     @foreach ($servicios as $servicio)
@@ -85,18 +74,15 @@
                                                 </h4>
                                             </a>
                                     @endforeach
-                                    <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-primary next-step"> Guardar y continuar?</button></li>
-                            </ul>
+                                    
                                     </ol>
                                  </div>
                             </div>
-                            
+                            <div>
+                                <button type="button" id="botonStep1" class="btn btn-theme
+                                btn-lg next-step"> Guardar y continuar</button>
+                            </div>
                         </div>
-
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-primary next-step">Guardar y continuar?</button></li>
-                        </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step2">
                         <h3>Describe la Práctica</h3>
@@ -105,7 +91,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="descripcion">Nombre</label>
-                                    <input name="descripcion" type="text" id="descripcion" class="form-control" placeholder="Descripción de la Practica" required="true" value=""/>
+                                    <input name="descripcion" type="text" id="descripcion" class="form-control" placeholder="Descripción de la Practica" required="true" value="" class="required"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
@@ -129,13 +115,25 @@
                         </div>
 
                         <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                            <li><button type="sumit" class="btn btn-theme
+                                btn-lg next-step" id="botonStep2">Guardar y Finalizar</button></li>
                         </ul>
                     </div>
-                    <div class="tab-pane" role="tabpanel" id="complete">
-                        <h3>Complete</h3>
-                        <p>You have successfully completed all steps.</p>
+
+                    <div class="tab-pane text-center" role="tabpanel" id="complete">
+                        <h2>¡Se ha creado la práctica exitosamente!</h2>
+
+
+                        <ul class="list-group">
+                          <li class="list-group-item"><b>Rubro</b> Fiestas y animación</li>
+                          <li class="list-group-item"><b>Servicio</b> Dapibus ac facilisis in</li>
+                          <li class="list-group-item"><b>Práctica</b> Morbi leo risus</li>
+                          <li class="list-group-item"><b>Descripción</b> Porta ac consectetur ac</li>
+                          <li class="list-group-item"><b>Vestibulum</b> at eros</li>
+                        </ul>
+
+                        <button type="button" class="btn btn-theme
+                                btn-lg prev-step">Ir al Home</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -154,6 +152,7 @@
         $(".nombreRubroSeleccionado").hide();
         $(".servicios").hide();
         $(".h3Servicios").hide();
+        $("#botonStep1").hide();
 
         //$('#class-rubro').attr('class', 'col-md-2').hide();
 
@@ -165,15 +164,31 @@
                 $('#' + i).removeClass('servicioClickeado');
             }
             $('#' + servicioID).addClass('servicioClickeado');
+            $("#botonStep1").show();
+            $('#botonStep1').addClass('col-md-2');
         });
+
+        //Si apreto el boton de confirmar y continuar del PASO 1, deshabilito al icono1
+        $("#botonStep1").click(function(){
+            
+            $('#iconoPaso1').addClass('disabled');
+            $('#irAPaso2').attr('href', '#step2');
+        });
+
+        //Si apreto el boton de confirmar y finalizar del PASO 2, deshabilito al icono2
+        $("#botonStep2").click(function(){
+            
+            $('#iconoPaso2').addClass('disabled');
+            //$('#iconoPaso2').removeClass('active show');
+            $('#irAPaso3').attr('href', '#complete');
+        }); 
 
         $("img").click(function(){
         
             var rubroID = $(this).attr("alt");
             var rubroIMG = $(this).attr("src");
 
-            $('#rubroSeleccionado').addClass('col-md-2');
- 
+            $('#rubroSeleccionado').addClass('col-md-3');
             // eliminar una clase del elemento
             
 
@@ -183,9 +198,6 @@
                 url:"{{url('wizard')}}?id="+rubroID,
                 success:function(res){
                   if(res){
-                    /*$("#id_servicio").empty();
-                    $("#id_servicio").append('<option>Seleccionar Servicio</option>');*/
-                    
                     //Oculto listado de rubros con efecto lento
                     $(".imagenRubroSinSeleccion").toggle("slow");
                      
@@ -197,8 +209,6 @@
                      $(".servicios").show("slow");
                      $(".h3Rubros").hide();
                      $(".h3Servicios").show();
-                     //$('#class-rubro').attr('class', 'col-md-2').show();
-                     //$('#class-servicio').attr('class', 'col-md-10').show();
 
                     $.each(res,function(key,value){
                       $("#id_servicio").append('<option value="'+key+'">'+value+'</option>');
@@ -233,12 +243,6 @@
             nextTab($active);
 
         });
-        $(".prev-step").click(function (e) {
-
-            var $active = $('.wizard .nav-tabs li.active');
-            prevTab($active);
-
-        });
 });
 
 function nextTab(elem) {
@@ -247,6 +251,7 @@ $(elem).next().find('a[data-toggle="tab"]').click();
 function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
+  
 
 </script>
 <footer>

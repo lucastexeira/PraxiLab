@@ -21,7 +21,7 @@
 				@foreach ($servicios as $servicio)
 
 					@if($ruId->id === $servicio->id_rubro)
-							<h4  class="center-block"><a href="{{url('usuariosPorServicio/'.$servicio->id.'')}}">{{ $servicio->nombre_servicio }}</a></h4>
+							<h4  class="center-block"><a href="{{url('usuariosPorServicio/'.$servicio->id.'')}}" style="color: #6200A6">{{ $servicio->nombre_servicio }}</a></h4>
 					@endif
 
 				@endforeach

@@ -1,58 +1,151 @@
 	
 	@include("layouts.cabecera")
 	<link href="css/estilosLogin.css" rel="stylesheet">
+
 </head>
 <body>
 
 	@include("layouts.navbar")
 	</br>
-	<div class="container">
-		<div class="col-md-12">
-	    	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	        <div class="well">
-	            <div class="card-header">
-	                    <h1 class="text-center">Mi listado de Prácticas</h1>
-	            </div>
-	            <div class="card-body">
-	                <table class="table table-striped">
-	                	<thead>
-					      <tr>
-					        <th>Usuario</th>
-					        <th>Nombre de la Práctica</th>
-					        <th>Precio</th>
-					        <th>Fecha de solicitud</th>
-					        <th>Estado</th>
-					      </tr>
-					    </thead>
 
-					    <tbody>
-					      <tr>
-					        <td>Florencia - florc@gmail.com - 44448888</td>
-					        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
-					        <td>$60</td>
-					        <td>03/04/2018</td>
-					        <td>En Curso</td>
-					      </tr>
-					      <tr>
-					        <td>Matias - matiash@gmail.com - 444433333</td>
-					        <td><a href=" {{ 'oferta' }} ">Corte de pelo</a></td>
-					        <td>$60</td>
-					        <td>04/06/2018</td>
-					        <td>Finalizado</td>
-					        <td><button type="success">Falta Calificar</button></td>
-					      </tr>
-					      <tr>
-					        <td>Ariel - arielgabrielr@gmail.com - 44447777</td>
-					        <td><a href=" {{ 'oferta' }} ">Alisado</a></td>
-					        <td>$60</td>
-					        <td>08/06/2018</td>
-					        <td>Finalizado</td>
-					      </tr>
-					    </tbody>
-	                </table>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-<footer>
+	<div class="container">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item col-lg-3">
+				<a class="nav-link text-center active show pestaña" id="ofertas-tab" data-toggle="tab" href="#ofertas" role="tab" aria-controls="ofertas" aria-selected="false">Como Practicante</a>
+			</li>
+			<li class="nav-item col-lg-3">
+				<a class="nav-link text-center pestaña" id="experiencia-tab" data-toggle="tab" href="#experiencia" role="tab" aria-controls="experiencia" aria-selected="true">Como Voluntario</a>
+			</li>
+		</ul>
+		
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade active show" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
+				<div class="panel panel-default contenido">
+					<div class="panel-body">
+						<div class="card-header">
+	                    	<h1 class="text-center">Mi listado de Prácticas</h1>
+	            		</div>
+
+	            		</br>
+	            		<div class="col-lg-4">
+		            		<select class="form-control" id="select">
+					          <option value="">Seleccionar Estado</option>
+					            <option value="">Solicitada</option>
+					            <option value="">En Curso</option>
+					            <option value="">Finalizada</option>
+					            <option value="">Sin Calificar</option>
+					        </select>
+
+				        </div>
+				        </br>
+
+						<table class="table table-striped">
+		                	<thead>
+						      <tr>
+						        <th>Usuario</th>
+						        <th>Nombre de la Práctica</th>
+						        <th>Precio</th>
+						        <th>Fecha de solicitud</th>
+						        <th>Estado</th>
+						      </tr>
+						    </thead>
+
+						    <tbody>
+						      <tr>
+						        <td>Florencia - florc@gmail.com - 44448888</td>
+						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
+						        <td>$80</td>
+						        <td>03/04/2018</td>
+						        <td>En Curso</td>
+						      </tr>
+						      <tr>
+						        <td>Matias - matiash@gmail.com - 444433333</td>
+						        <td><a href=" {{ 'oferta' }} ">Corte de pelo</a></td>
+						        <td>$60</td>
+						        <td>04/06/2018</td>
+						        <td>Sin Calificar</td>
+						        <td><button type="success">Calificar</button></td>
+						      </tr>
+						      <tr>
+						        <td>Ariel - arielgabrielr@gmail.com - 44447777</td>
+						        <td><a href=" {{ 'oferta' }} ">Alisado</a></td>
+						        <td>$200</td>
+						        <td>08/06/2018</td>
+						        <td>Finalizado</td>
+						      </tr>
+						    </tbody>
+	                	</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
+				<div class="panel panel-default contenido">
+					<div class="panel-body">
+						<div class="card-header">
+	                    	<h1 class="text-center">Mi listado de Prácticas</h1>
+	            		</div>
+
+	            		</br>
+	            		<div class="col-lg-4">
+		            		<select class="form-control" id="select">
+					          <option value="">Seleccionar Estado</option>
+					            <option value="">Solicitada</option>
+					            <option value="">En Curso</option>
+					            <option value="">Finalizada</option>
+					            <option value="">Sin Calificar</option>
+					        </select>
+
+				        </div>
+				        </br>
+
+						<table class="table table-striped">
+		                	<thead>
+						      <tr>
+						        <th>Usuario</th>
+						        <th>Nombre de la Práctica</th>
+						        <th>Precio</th>
+						        <th>Fecha de solicitud</th>
+						        <th>Estado</th>
+						      </tr>
+						    </thead>
+
+						    <tbody>
+						      <tr>
+						        <td>Florencia - florc@gmail.com - 44448888</td>
+						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
+						        <td>$60</td>
+						        <td>03/04/2018</td>
+						        <td>Solicitada</td>
+						      </tr>
+						      <tr>
+						        <td>Florencia - florc@gmail.com - 44448888</td>
+						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
+						        <td>$150</td>
+						        <td>03/04/2018</td>
+						        <td>En Curso</td>
+						      </tr>
+						      <tr>
+						        <td>Matias - matiash@gmail.com - 444433333</td>
+						        <td><a href=" {{ 'oferta' }} ">Corte de pelo</a></td>
+						        <td>$60</td>
+						        <td>04/06/2018</td>
+						        <td>Sin Calificar</td>
+						        <td><button type="success">Calificar</button></td>
+						      </tr>
+						      <tr>
+						        <td>Ariel - arielgabrielr@gmail.com - 44447777</td>
+						        <td><a href=" {{ 'oferta' }} ">Alisado</a></td>
+						        <td>$250</td>
+						        <td>08/06/2018</td>
+						        <td>Finalizado</td>
+						      </tr>
+						    </tbody>
+	                	</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+
 @include("layouts.pie")
