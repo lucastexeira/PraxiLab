@@ -9,7 +9,12 @@
 	<div class="row">
 		<div class="col-md-12">
 		    <ol class="tree-structure">
-		    	<h1 class="typo">Rubros</h1>
+		    	<div class="row mt centered ">
+			      <div class="col-lg-8 col-lg-offset-2">
+			        <h1>Rubros</h1>
+			        <hr>
+			      </div>
+			    </div>
 			    @foreach ($rubros as $rubro)
 			    	<div class="col-md-3 article-img">
 			    		<ul class="list-group" id="list-tab" role="tablist">

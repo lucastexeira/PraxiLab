@@ -1,4 +1,6 @@
  @include("layouts.cabecera")
+ <!--Estilo de la lista de practicas-->
+<link href="{{asset('css/usuariosPorServicio.css')}}" rel="stylesheet">
   </head>
  
   <body>
@@ -62,7 +64,13 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <a class="dropdown-item" href="{{ 'listadoPracticasEstados' }}">
-                                      <span class="glyphicon glyphicon-cog"></span> Prácticas y Transacciones</a>
+                                      <span class="glyphicon glyphicon-cog"></span> Mis Prácticas</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a class="dropdown-item" href="{{url('transacciones/')}}">
+                                      <span class="fa fa-dollar"></span> Historial de Transacciones</a>
                                 </div>
                             </div>
                         </div>
@@ -131,20 +139,29 @@
       </div>
     </div><!-- /row -->
  
-    <div class="row mt">
-      @foreach ($servicios as $servicio)
-      <div class="col-lg-3 col-md-3 col-xs-12 desc">
-        <a class="b-link-fade b-animate-go" href="#"><img width="250" height="180" 
-        src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
-          <div class="b-wrapper">
-              <h4 class="b-from-left b-animate b-delay03">Ver más</h4>
-          </div>
-        </a>
-        <p>$50 - {{ $servicio->nombre_servicio }}</p>
-        <hr-d>
+    <div class="row">
+          
+    @foreach ($pracPers as $pracPer)
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="thumbnail img-thumb-bg" style="background-image: url({{asset($pracPer->imagen_practica)}})">
+          <div class="overlay"></div>
+                  <div class="caption">
+                      <div class="title"><a href="#">{{ $pracPer->nombre_practica }}</a></div>
+                      <div class="clearfix">
+                        <span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/')}}">{{ $pracPer->nombre }}</a></h2></font></span>
+                          <span class="meta-data"><font color="white"><h2>Calificación: <i class="fa fa-star-o"></i> 5     Oferta: <i class="fa fa-dollar"></i> 50</h2></font></span>
+                          <span class="meta-data"><font color="white"></font></span>
+                      </div>
+                      <div class="content">
+                         <p>{{ $pracPer->descripcion }}</p>
+                      </div>
+                  </div>
+              </div>
       </div>
-      @endforeach
-    </div><!-- /row -->
+    @endforeach
+
+             
+    </div>
  
     <div class="row mt centered">
       <div class="col-lg-4 col-lg-offset-4">
@@ -270,34 +287,6 @@
           </div>      
         </div><!-- /row -->
       </div><!-- /container -->
- 
-	<! ========== PASOS A SEGUIR =========================================================================================>    
-	    <div class="container" id="comoFunciona">
-	    	<div class="row mt">
-	    		<div class="col-lg-4 col-lg-offset-4 centered">
-	    			<h3>¡¿Cómo Funciona?!</h3>
-	    			<hr>
-	    		</div>
-	    	</div>
-	    	<div class="row mt">
-	    		<div class="col-lg-4 centered si">
-	    			<i class="glyphicon glyphicon-search"></i>
-	    			<h4>Comunicación</h4>
-	    			<p>Buscá y conectate con usuarios según tus necesidades.</p>
-	    		</div>
-	    		<div class="col-lg-4 centered si">
-	    			<i class="glyphicon glyphicon-check"></i>
-	    			<h4>Prácticas</h4>
-	    			<p>Llevá a cabo el servicio programado. </p>
-	    		</div>
-	    		<div class="col-lg-4 centered si">
-	    			<i class="glyphicon glyphicon-heart"></i>
-	    			<h4>Reputación</h4>
-	    			<p>Calificá al usuario.</p>
-	    		</div>    	
-	    	</div><!-- /row -->
-	    </div><!-- /container -->
-
 
 	<script>
     $(window).scroll(function() {
