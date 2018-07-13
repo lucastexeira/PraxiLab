@@ -124,17 +124,21 @@
             <br>
             <br>
             
-            <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="Realizá prácticas y adquirí experiencia">
-              <i class="glyphicon glyphicon-usd" style="color: black"></i>
-              </br> REALIZÁ UNA PRÁCTICA
-              </br> ¡ganá experiencia!
-            </button>
+            <a href="{{ 'wizard' }}">
+              <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="Realizá prácticas y adquirí experiencia">
+                  <i class="glyphicon glyphicon-list-alt" style="color: black"></i>
+                  </br> REALIZÁ UNA PRÁCTICA
+                  </br> ¡ganá experiencia!
+              </button>
+            </a>
             
-            <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="adquirí prácticas y ganá dinero">
-              <i class="glyphicon glyphicon-list-alt" style="color: black"></i>
-              </br>ADQUIRÍ UNA PRÁCTICA
-              </br> ¡ganá dinero!
-            </button>
+            <a href="{{ 'todosLosServicios' }}">
+              <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="adquirí prácticas y ganá dinero">
+                <i class="glyphicon glyphicon-usd" style="color: black"></i>
+                </br>ADQUIRÍ UNA PRÁCTICA
+                </br> ¡ganá dinero!
+              </button>
+            </a>
 
         </div>
          
