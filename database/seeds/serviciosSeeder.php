@@ -23,12 +23,12 @@ class serviciosSeeder extends Seeder
 
             //Belleza y Cuidado Personal
             [ 'id_rubro'=>2, 'nombre_servicio' => 'Cosmetología'],
-            //[ 'id_rubro'=>2, 'nombre_servicio' => 'Cuidado Personal'],
+            /*[ 'id_rubro'=>2, 'nombre_servicio' => 'Cuidado Personal'],
             [ 'id_rubro'=>2, 'nombre_servicio' => 'Depilación'],
-            //[ 'id_rubro'=>2, 'nombre_servicio' => 'Estética'],
+            [ 'id_rubro'=>2, 'nombre_servicio' => 'Estética'],*/
             [ 'id_rubro'=>2, 'nombre_servicio' => 'Manicuría y Pedicuría'],
-            /*[ 'id_rubro'=>2, 'nombre_servicio' => 'Maquilladoras y Peinadoras'],
-            [ 'id_rubro'=>2, 'nombre_servicio' => 'Peluquería'],*/
+            //[ 'id_rubro'=>2, 'nombre_servicio' => 'Maquilladoras y Peinadoras'],
+            [ 'id_rubro'=>2, 'nombre_servicio' => 'Peluquería'],
             [ 'id_rubro'=>2, 'nombre_servicio' => 'Tatuajes y Piercings'],
             [ 'id_rubro'=>2, 'nombre_servicio' => 'Otros'],
 

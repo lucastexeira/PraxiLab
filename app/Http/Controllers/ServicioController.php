@@ -45,7 +45,7 @@ class ServicioController extends Controller
 
         $servicios = Servicio::all();
         $rubros = Rubro::All();
-        $ruId = Rubro::find($id_rubro)->first();
+        $ruId = Rubro::find($id_rubro);
 
         
         return view('/servicios')->with('servicios', $servicios)->with('rubros',$rubros)->with('ruId',$ruId);
