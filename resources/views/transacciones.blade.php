@@ -5,12 +5,20 @@
 @include("layouts.navbar")
 
 	<div class="container">
+
+		<div class="row mt centered ">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h1>Mis Transacciones</h1>
+				<hr>
+			</div>
+		</div>
+
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<li class="nav-item col-lg-6">
 				<a class="nav-link text-center active show pestaña" id="historial-tab" data-toggle="tab" href="#historial" role="tab" aria-controls="historial" aria-selected="true">Historia de Transacciones</a>
 			</li>
 			<li class="nav-item col-lg-6">
-				<a class="nav-link text-center pestaña" id="creditos-tab" data-toggle="tab" href="#creditos" role="tab" aria-controls="creditos" aria-selected="false">Créditos</a>
+				<a class="nav-link text-center pestaña" id="creditos-tab" data-toggle="tab" href="#creditos" role="tab" aria-controls="creditos" aria-selected="false">Créditos/Suscripción</a>
 			</li>
 		</ul>
 

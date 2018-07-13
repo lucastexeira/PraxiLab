@@ -24,8 +24,11 @@ class ServicioController extends Controller
                     ->orderBy('id', 'desc')->paginate(8);
                     $rubros = Rubro::All();
                     $servicios = Servicio::all();
+        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
+                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
+                                                       inner join servicios on personas_servicios.id_servicio = servicios.id');
         
-        return view('/todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros);
+        return view('/todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers);
     }
 
     /*public function verServiciosPorRubro($id_rubro){

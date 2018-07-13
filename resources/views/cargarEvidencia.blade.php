@@ -11,9 +11,13 @@
 	<div class="container">
 
 		<div class="card-body">
-			<br>
-			<h1>Carga de evidencia en la practica: Nombre de la practica</h1>
-			<br>
+
+			<div class="row mt centered ">
+		      <div class="col-lg-8 col-lg-offset-2">
+		        <h1>Carga de evidencia en la practica: Nombre de la practica</h1>
+		        <hr>
+		      </div>
+		    </div>
 
 			<div class="file-upload">
 			  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>

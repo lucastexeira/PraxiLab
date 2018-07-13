@@ -11,9 +11,12 @@
 	
 <div class="container">
 		    
-		<h1 class="typo">Servicios: {{ $servicio->nombre_servicio }}</h1>
-
-		<br>
+		<div class="row mt centered ">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h1>Servicios: {{ $servicio->nombre_servicio }}</h1>
+				<hr>
+			</div>
+		</div>
 	<div class="row">
 					
 		@foreach ($pracPers as $pracPer)
