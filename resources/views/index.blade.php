@@ -15,7 +15,7 @@
 		@endif
 		
 	  <a class="navbar-brand" href="index">
-	  	<img width="100" src="img/logos/logo_negro_y_blanco_transparente.png" class="logo">
+	  	<img width="100" src="img/logos/Logo blanco y negro transparente 2.png" class="logo">
 	  	<!--img width="80" src="img/logo.png" alt=""-->
 	  </a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -281,12 +281,12 @@
       if ($("#menu").offset().top > 330){
         $("#menu").removeClass("bg-transparent");
         $("#menu").addClass("bg-dark");
-        $(".logo").attr('src', 'img/logos/LogoColorTransparente.png');
+        $(".logo").attr('src', 'img/logos/Logo blanco y negro transparente 2.png');
         $("#menu").addClass("bg-dark");
         
       } else {
         $("#menu").removeClass("bg-dark");
-        $(".logo").attr('src', 'img/logos/logo_negro_y_blanco_transparente.png');
+        $(".logo").attr('src', 'img/logos/Logo blanco y negro transparente 2.png');
         }
 
         });

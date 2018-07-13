@@ -84,5 +84,10 @@ Route::get('abmPractica',[
 
 ]);
 
+//Oferta
+Route::get('oferta',[
+	'uses' => 'HomeController@oferta'
+]);
+
 //Lista de Practicas en abmPractica
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
