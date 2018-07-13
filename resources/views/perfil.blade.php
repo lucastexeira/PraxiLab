@@ -89,7 +89,7 @@
 									<p class="precio-oferta-perfil">500</p>
 								</div>
 								<div class="col-1">
-									<button type="button" class="btn btn-success btn-lg btn-purple">Practicar</button>
+									<button type="button" class="btn btn-success btn-block btn-lg btn-purple">Practicar</button>
 								</div>
 							</div>
 						</div>

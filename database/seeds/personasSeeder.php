@@ -17,13 +17,25 @@ class personasSeeder extends Seeder
     {
         DB::table('personas')->insert([
     		
-            [ 'username' => 'Usuario1', 'nombre'=>'Usuario1', 'apellido' => 'Usuario1', 'telefono' => '4444-5555', 'mail' => 'Usuario1@mail.com', 'provincia' => '', 'zona' => '',
+            [ 'username' => 'DamianR', 'nombre'=>'Damian', 'apellido' => 'Rosa', 'telefono' => '4444-5555', 'mail' => 'Usuario1@mail.com', 'provincia' => '', 'zona' => '',
             'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'', 'password' => '123456'],
 
-            [ 'username' => 'Usuario2', 'nombre'=>'Usuario2', 'apellido' => 'Usuario2', 'telefono' => '5555-4444', 'mail' => 'Usuario2@mail.com', 'provincia' => '', 'zona' => '',
+            [ 'username' => 'LucasT', 'nombre'=>'Lucas', 'apellido' => 'TexeiraTresManzanas', 'telefono' => '5555-4444', 'mail' => 'Usuario2@mail.com', 'provincia' => '', 'zona' => '',
             'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'', 'password' => '123456'],
 
-            [ 'username' => 'Usuario3', 'nombre'=>'Usuario3', 'apellido' => 'Usuario3', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
+            [ 'username' => 'KarenM', 'nombre'=>'Karmen', 'apellido' => 'Monsanto', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'', 'password' => '123456'],
+
+            [ 'username' => 'GastonF', 'nombre'=>'Gaston', 'apellido' => 'Ferrari', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'', 'password' => '123456'],
+
+            [ 'username' => 'SantiagoG', 'nombre'=>'Santiago', 'apellido' => 'Guiterrez', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'', 'password' => '123456'],
+
+            [ 'username' => 'SofiaP', 'nombre'=>'Sofia', 'apellido' => 'Perez', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'', 'password' => '123456'],
+
+            [ 'username' => 'SusanaA', 'nombre'=>'Susana', 'apellido' => 'Aranda', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
             'pais' => '', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'', 'password' => '123456']
 			
         ]);
