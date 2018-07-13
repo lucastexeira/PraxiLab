@@ -10,7 +10,7 @@
 		<div class="container gallery-container">
 			<div class="panel panel-default contenido">
 				<div class="panel-heading">
-					<h1 class="experiencia-titulo">Práctica: nombre de la practica</h1>
+					<h1 class="experiencia-titulo">Práctica: Clases de Guitarra Acustica</h1>
 				</div>
 				<div class="experiencia-body panel-body">
 					<div class="tz-gallery">

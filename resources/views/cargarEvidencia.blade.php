@@ -58,7 +58,9 @@
 
 		<div class="row mt centered">
 			<div class="col-lg-4 col-lg-offset-4">
+				<a  href="verEvidencia/" >
 				<input type="submit" class="file-upload-btn btn-block" value="Agegar Evidencia"/>
+				</a>
 			</div>
 		</div><!-- /row -->
 	</div>
