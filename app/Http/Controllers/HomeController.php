@@ -31,7 +31,7 @@ class HomeController extends Controller
         $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
         $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
                                                        inner join personas_servicios on personas.id = personas_servicios.id_persona
-                                                       inner join servicios on personas_servicios.id_servicio = servicios.id limit 4');
+                                                       inner join servicios on personas_servicios.id_servicio = servicios.id limit 6');
 
         return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers);
 
