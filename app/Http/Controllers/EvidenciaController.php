@@ -18,10 +18,19 @@ use Illuminate\Support\Facades\DB;
 
 class EvidenciaController extends Controller
 {
-     public function cargarEvidencia(){
+    public function cargarEvidencia(){
 
         $rubros = Rubro::all();
 
         return view('/cargarEvidencia')->with('rubros', $rubros);
+    }
+
+    public function verEvidencia(){
+
+        $rubros = Rubro::all();
+
+        return view('/verEvidencia')->with('rubros', $rubros);
+
+        //dd($rubros);
     }
 }

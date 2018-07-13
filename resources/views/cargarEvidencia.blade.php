@@ -1,7 +1,6 @@
 @include("layouts.cabecera")
 <script class="jsbin" src="{{asset('/js/upImg.js')}}}"></script>
 <link href="{{asset('css/upImg.css')}}" rel="stylesheet">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 </head>
 <body>
 
