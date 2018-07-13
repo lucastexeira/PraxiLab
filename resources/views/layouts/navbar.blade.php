@@ -3,8 +3,8 @@
 
 	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-dark fixed-top" style="color: white">
 		
-	  <a class="navbar-brand" href="{{ 'index' }}">
-	  	<img width="100" src="img/logos/Logo blanco y negro transparente 2.png" alt="">
+	  <a class="navbar-brand" href="{{url('index')}}">
+	  	<img width="100" src="{{asset('img/logos/LogoColorTransparente.png')}}" alt="">
 	  </a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
@@ -17,10 +17,11 @@
 	        	Rubros 
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	        	@foreach ($rubros as $rubro)
-				  <a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a>
-				@endforeach
-	          
+	        	
+	        	@foreach ($rubros as $rubro) 
+          			<a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a> 
+        		@endforeach
+	          	
 	        </div>
 	      </li>
 	    </ul>

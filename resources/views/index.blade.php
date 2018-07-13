@@ -1,53 +1,55 @@
  @include("layouts.cabecera")
+ <!--Estilo de la lista de practicas-->
+<link href="{{asset('css/usuariosPorServicio.css')}}" rel="stylesheet">
   </head>
  
   <body>
-	<! ========== NAVBAR =======================================================================================>
-
-	<nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
-	  <a class="navbar-brand" href=" {{ 'index' }} ">
-
-		@if(Session::has('notice'))
-		   <div class="alert">
-			  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-			  <h2>{{ Session::get('notice') }}</h2>
-			</div>
-		@endif
-		
-	  <a class="navbar-brand" href="index">
-	  	<img width="100" src="img/logos/Logo blanco y negro transparente 2.png" class="logo">
-	  	<!--img width="80" src="img/logo.png" alt=""-->
-	  </a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	        	Rubros 
-	        </a>
-	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	        	@foreach ($rubros as $rubro)
-				  <a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a>
-				@endforeach
-	          
-	        </div>
-	      </li>
-	    </ul>
-
-
-	    <a class="navbar-brand" href="index">
-	  		<span class="glyphicon glyphicon-comment"></span>
-	  	<!--img width="80" src="img/logo.png" alt=""-->
-	  	</a>
-
-	    <ul class="navbar-nav">
+  <! ========== NAVBAR =======================================================================================>
+ 
+  <nav id="menu" class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
+    <a class="navbar-brand" href=" {{ 'index' }} ">
+ 
+    @if(Session::has('notice'))
+       <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <h2>{{ Session::get('notice') }}</h2>
+      </div>
+    @endif
+    
+    <a class="navbar-brand" href="index">
+      <img width="100" src="img/logos/logo_negro_y_blanco_transparente.png" class="logo">
+      <!--img width="80" src="img/logo.png" alt=""-->
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Rubros 
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            @foreach ($rubros as $rubro)
+              <a class="dropdown-item" href="{{ $rubro->id }}">{{ $rubro->nombre_rubro }}</a>
+            @endforeach
+            
+          </div>
+        </li>
+      </ul>
+ 
+ 
+      <a class="navbar-brand" href=" {{ 'listadoPracticasEstados' }} ">
+        <span class="glyphicon glyphicon-bell"></span>
+      <!--img width="80" src="img/logo.png" alt=""-->
+      </a>
+ 
+      <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	                <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
-	                Nombre
+                  <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
+                  Nombre
                 </a>
 
                 <ul class="dropdown-menu">
@@ -56,7 +58,19 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <a class="dropdown-item" href="{{ 'perfil' }}">
-                                    	<span class="glyphicon glyphicon-user"></span> Ver Perfil</a>
+                                      <span class="glyphicon glyphicon-user"></span> Ver Perfil</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a class="dropdown-item" href="{{ 'listadoPracticasEstados' }}">
+                                      <span class="glyphicon glyphicon-cog"></span> Mis Prácticas</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a class="dropdown-item" href="{{url('transacciones/')}}">
+                                      <span class="fa fa-dollar"></span> Historial de Transacciones</a>
                                 </div>
                             </div>
                         </div>
@@ -66,8 +80,8 @@
                         <div class="navbar-login navbar-login-session">
                             <div class="row">
                                 <div class="col-lg-12">
-                                	<a href="{{ 'logout' }}" class="dropdown-item">
-                                	<span class="glyphicon glyphicon-log-out"></span> Cerrar Sesion</a>
+                                  <a href="{{ 'logout' }}" class="dropdown-item">
+                                  <span class="glyphicon glyphicon-log-out"></span> Cerrar Sesion</a>
                                     
                                 </div>
                             </div>
@@ -125,20 +139,29 @@
       </div>
     </div><!-- /row -->
  
-    <div class="row mt">
-      @foreach ($servicios as $servicio)
-      <div class="col-lg-3 col-md-3 col-xs-12 desc">
-        <a class="b-link-fade b-animate-go" href="#"><img width="250" height="180" 
-        src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
-          <div class="b-wrapper">
-              <h4 class="b-from-left b-animate b-delay03">Ver más</h4>
-          </div>
-        </a>
-        <p>$50 - {{ $servicio->nombre_servicio }}</p>
-        <hr-d>
+    <div class="row">
+          
+    @foreach ($pracPers as $pracPer)
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="thumbnail img-thumb-bg" style="background-image: url({{asset($pracPer->imagen_practica)}})">
+          <div class="overlay"></div>
+                  <div class="caption">
+                      <div class="title"><a href="#">{{ $pracPer->nombre_practica }}</a></div>
+                      <div class="clearfix">
+                        <span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/')}}">{{ $pracPer->nombre }}</a></h2></font></span>
+                          <span class="meta-data"><font color="white"><h2>Calificación: <i class="fa fa-star-o"></i> 5     Oferta: <i class="fa fa-dollar"></i> 50</h2></font></span>
+                          <span class="meta-data"><font color="white"></font></span>
+                      </div>
+                      <div class="content">
+                         <p>{{ $pracPer->descripcion }}</p>
+                      </div>
+                  </div>
+              </div>
       </div>
-      @endforeach
-    </div><!-- /row -->
+    @endforeach
+
+             
+    </div>
  
     <div class="row mt centered">
       <div class="col-lg-4 col-lg-offset-4">
@@ -150,80 +173,70 @@
  
   </div><!-- /container -->
  
-  <! ========== RUBROS ======================================================================================>   
-  <div class="container">
-    <div class="row mt centered ">
-      <div class="col-lg-4 col-lg-offset-4">
-        <h1>Rubros</h1>
-        <hr>
-      </div>
-    </div><!-- /row -->
- 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="container-fluid container-articles">
-          <div class="row articles">
-              @foreach ($rubros as $rubro)
-            <div class="col-md-3 article-img" >
-             <a data-toggle="modal" class="b-link-fade b-animate-go" href="#myModal"  class="center-block"><img width="200" height="150" src="{{ $rubro->imagen }}" alt="" />
-                <div class="b-wrapper">
-                    <h4 class="b-from-left b-animate b-delay03">{{ $rubro->nombre_rubro }}</h4>
-                    <p class="b-from-right b-animate b-delay03">VER MÁS</p>
-                </div>
-              </a>
- 
-              <h3 class="text-center" id="nombre-rubros">{{ $rubro->nombre_rubro }}</h3>
-              
-            </div>
-          @endforeach
-            </div>
-          </div>
-      </div><!-- /row -->
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-        </a>
-    </div>
- 
-    <div class="row mt centered">
-      <div class="col-lg-4 col-lg-offset-4">
-          <a class="nav-link" href="{{ 'rubrosYServicios' }}">
-            <button type="button" class="btn btn-theme btn-lg">RUBROS Y PRÁCTICAS</button>
-          </a>
-      </div>
-    </div><!-- /row -->
-  </div><!-- /container -->
- 
-  <!-- MODAL -->
-  <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Lista de Servicios</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            
-          </div>
-          <div class="modal-body">
-          @foreach ($servicios as $servicio)
-          @if ($servicio->id_rubro === $rubro->id)
-              <h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
-            @endif
-          @endforeach
-          </div>
-          <div class="modal-footer">
-            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>-->
-          </div>
-        </div>
-        
-      </div>
-    </div>
+
+	<! ========== RUBROS ======================================================================================>   
+	<div class="container">
+
+		<div class="row mt centered ">
+			<div class="col-lg-4 col-lg-offset-4">
+				<h1>Rubros</h1>
+				<hr>
+			</div>
+		</div><!-- /row -->
+
+		  <section class="regular slider">
+
+					@foreach ($rubros as $rubro)
+						<div>
+							<a data-toggle="modal" class="b-link-fade b-animate-go" href="servicios/{{ $rubro->id }}"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
+								<div class="b-wrapper">
+								  	<h4 >{{ $rubro->nombre_rubro }}</h4>
+								  	<p >VER MÁS</p>
+								</div>
+							</a>
+
+							<h3 class="text-center">{{ $rubro->nombre_rubro }}</h3>
+						</div>	
+					@endforeach
+
+			</section>
+
+		
+
+		<div class="row mt centered">
+			<div class="col-lg-4 col-lg-offset-4">
+    			<a class="nav-link" href="{{ 'rubrosYServicios' }}">
+    				<button type="button" class="btn btn-theme btn-lg">RUBROS Y PRÁCTICAS</button>
+    			</a>
+			</div>
+		</div><!-- /row -->
+	</div><!-- /container -->
+
+	<!-- MODAL -->
+	<div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        	<h4 class="modal-title">Lista de Servicios</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          
+	        </div>
+	        <div class="modal-body">
+	        @foreach ($servicios as $servicio)
+	        	@if ($servicio->id_rubro === $rubro->id)
+	        		<h3>{{ $servicio->nombre_servicio}}{{ $servicio->id_rubro}}</h3>
+	        	@endif
+	        @endforeach
+	        </div>
+	        <div class="modal-footer">
+	          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>-->
+	        </div>
+	      </div>
+	      
+	    </div>
+  	</div>
   
 </div>
  
@@ -274,9 +287,8 @@
           </div>      
         </div><!-- /row -->
       </div><!-- /container -->
- 
- 
-  <script>
+
+	<script>
     $(window).scroll(function() {
       if ($("#menu").offset().top > 330){
         $("#menu").removeClass("bg-transparent");
@@ -288,7 +300,6 @@
         $("#menu").removeClass("bg-dark");
         $(".logo").attr('src', 'img/logos/Logo blanco y negro transparente 2.png');
         }
-
         });
  
  
@@ -299,5 +310,4 @@
  
     });
   </script>
-<footer>
     @include("layouts.pie")

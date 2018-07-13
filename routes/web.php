@@ -51,24 +51,26 @@ Route::get('todosLosServicios',[
 
 ]);
 
-//Lista Servicios de un Rubro
+/**Lista Servicios de un Rubro
 Route::get('servicios/{id_rubro}',[
 	'uses' => 'ServicioController@verServiciosPorRubro' //Nombre_del_controlador@Nombre_del_metodo
+
+]);*/
+
+Route::get('servicios/{id_rubro}',[
+	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
 //Lista los usuarios que pertenecen a un servicio
-Route::get('usuariosPorServicio/{id_servicio}',[
-	'uses' => 'ServicioController@verUsuariosServicios' //Nombre_del_controlador@Nombre_del_metodo
-
-]);
+Route::get('usuariosPorServicio/{id_servicio}', 'ServicioController@verUsuariosServicios');
 
 //Rubro por ID
 Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');
 
 //Adquirir un servicio
 Route::get('wizard',[
-	'uses' => 'ServicioController@adquirirServicio' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'ServicioController@irAWizard' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
@@ -89,5 +91,16 @@ Route::get('oferta',[
 	'uses' => 'HomeController@oferta'
 ]);
 
+Route::get('transacciones',[
+	'uses' => 'TransaccionController@verTransacciones' //Nombre_del_controlador@Nombre_del_metodo
+]);
+
+Route::get('cargarEvidencia',[
+	'uses' => 'EvidenciaController@cargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+]);
+
+Route::get('verEvidencia',[
+	'uses' => 'EvidenciaController@verEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+]);
 //Lista de Practicas en abmPractica
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');

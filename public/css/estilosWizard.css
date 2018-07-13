@@ -18,7 +18,7 @@
     height: 2px;
     background: #e0e0e0;
     position: absolute;
-    width: 80%;
+    width: 69%;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -65,7 +65,7 @@ span.round-tab:hover {
 }
 
 .wizard .nav-tabs > li {
-    width: 25%;
+    width: 32%;
 }
 
 .wizard li:after {
@@ -97,6 +97,10 @@ span.round-tab:hover {
     margin: 20px auto;
     border-radius: 100%;
     padding: 0;
+}
+
+.nav-tabs>li {
+    margin-right: 10px!important;
 }
 
     .wizard .nav-tabs > li a:hover {
@@ -142,4 +146,43 @@ span.round-tab:hover {
 .wizard li span.round-tab i {
     color: #5bc0de !important;
     top: 20px !important;
+}
+
+ 
+.botonRubro {
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+}
+
+.botonRubro:hover {
+    background-color: #fff;
+    border: 1px solid #8e44ad;
+    border-radius: 5px;
+    color: #8e44ad;
+}
+
+.servicios {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 8px;
+    width: 265px;
+    margin-right: 10px;
+    margin-top: 0;
+    -msie-border-radius: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    height: 290px;
+    vertical-align: top;
+    position: float;
+    right:50px;
+}
+
+div#rubroSeleccionado{
+    border: 1px solid #8e44ad;
+}
+
+.servicioClickeado {
+    background-color: #8e44ad;
+    color: white;
 }
