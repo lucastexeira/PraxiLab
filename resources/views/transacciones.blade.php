@@ -96,7 +96,7 @@
 				                    </div>
 								</div>
 
-				                <div class="center-block nav-item col-lg-5 col-lg-offset-1" ><h1>Compra de creditos</h1>
+				                <div class="center-block nav-item col-lg-5 col-lg-offset-1" ><h1>Suscripción</h1>
 				                	<br>
 				                    <div class="form-group"  width="50%" >
 				                        <label for="text">Cantidad de Meses</label>
