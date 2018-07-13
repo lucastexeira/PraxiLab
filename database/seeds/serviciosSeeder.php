@@ -22,6 +22,8 @@ class serviciosSeeder extends Seeder
             [ 'id_rubro'=>3, 'nombre_servicio' => 'Fotografía'],
             [ 'id_rubro'=>4, 'nombre_servicio' => 'Personal Gastronómico'],
             [ 'id_rubro'=>4, 'nombre_servicio' => 'Servicios Audiovisuales']
+            [ 'id_rubro'=>5, 'nombre_servicio' => 'Personal Gastronómico'],
+            [ 'id_rubro'=>5, 'nombre_servicio' => 'Servicios Audiovisuales']
 			
         ]);
     }
