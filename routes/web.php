@@ -86,6 +86,11 @@ Route::get('abmPractica',[
 
 ]);
 
+//Oferta
+Route::get('oferta',[
+	'uses' => 'HomeController@oferta'
+]);
+
 Route::get('transacciones',[
 	'uses' => 'TransaccionController@verTransacciones' //Nombre_del_controlador@Nombre_del_metodo
 ]);
