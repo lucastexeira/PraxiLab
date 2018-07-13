@@ -54,10 +54,18 @@
 						      <tr>
 						        <td>Florencia - florc@gmail.com - 44448888</td>
 						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
+						        <td>$60</td>
+						        <td>03/04/2018</td>
+						        <td>Solicitada</td>
+						        <td><a href="#"><button type="button" class="btn btn-theme btn-lg" >Comenzar</button></a></td>
+						      </tr>
+						      <tr>
+						        <td>Florencia - florc@gmail.com - 44448888</td>
+						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
 						        <td>$80</td>
 						        <td>03/04/2018</td>
 						        <td>En Curso</td>
-						        <td>&nbsp</td>
+						        <td><a href="#"><button type="button" class="btn btn-theme btn-lg" >Terminar</button></a></td>
 						      </tr>
 						      <tr>
 						        <td>Matias - matiash@gmail.com - 444433333</td>
@@ -65,7 +73,7 @@
 						        <td>$60</td>
 						        <td>04/06/2018</td>
 						        <td>Sin Calificar</td>
-						        <td><a href=" {{ 'cargarEvidencia' }} "><button type="button" class="btn btn-theme btn-lg" >Calificar</button></a></td>
+						        <td><a href=" {{ 'cargarEvidencia' }} "><button type="button" class="btn btn-theme btn-lg" >Evidenciar/Calificar</button></a></td>
 						      </tr>
 						      <tr>
 						        <td>Ariel - arielgabrielr@gmail.com - 44447777</td>

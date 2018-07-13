@@ -104,8 +104,12 @@
 						<h1 class="experiencia-titulo">Sesión de peluqueria</h1>
 					</div>
 					<div class="experiencia-body panel-body">
+						<a  href="verEvidencia/" >	
 						<img src="img/portfolio/port01.jpg" class="experiencia-evidencia">
+						</a>
+						<a  href="verEvidencia/" >
 						<img src="img/portfolio/port02.jpg" class="experiencia-evidencia">
+						</a>
 						<p class="experiencia-descripcion">
 							ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
