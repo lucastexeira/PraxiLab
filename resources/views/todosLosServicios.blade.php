@@ -18,12 +18,12 @@
  
     <div class="row mt ">
  
-      <form class="col-lg-4" action="{{ 'todosLosServicios' }}" method="GET"> 
+      <form class="col-lg-3" action="{{ 'todosLosServicios' }}" method="GET"> 
           <span><i class="nav-icon-search"></i></span><input class="form-control" type="search" placeholder="Nombre de la practica" aria-label="Search" id="buscador" name="buscador" >
           <!--button type="button" class="btn btn-cta btn-lg" style="background-color: #9244a4">Buscar</button-->
         </form>
  
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <select class="form-control" id="select">
           <option value="">Seleccionar Rubro</option>
           @foreach ($rubros as $rubro)
@@ -38,7 +38,7 @@
 
 
       @foreach ($pracPers as $pracPer)
-        <div class="col-lg-6 col-md-4 col-sm-4">
+        <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="thumbnail img-thumb-bg" style="background-image: url({{asset($pracPer->imagen_practica)}})">
             <div class="overlay"></div>
                     <div class="caption">

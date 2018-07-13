@@ -19,9 +19,11 @@ class CreatePracticasTable extends Migration
             $table->string('descripcion');
             $table->string('imagen_practica')->nullable();
             $table->unsignedInteger('id_practicante');
+            $table->unsignedInteger('id_servicio');
             $table->unsignedInteger('id_voluntario')->nullable();
 
             $table->foreign('id_practicante')->references('id')->on('personas');
+            $table->foreign('id_servicio')->references('id')->on('servicios');
             $table->foreign('id_voluntario')->references('id')->on('personas');
 
             $table->timestamps();
