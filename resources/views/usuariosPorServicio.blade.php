@@ -14,7 +14,7 @@
 		<h1 class="typo">Servicios: {{ $servicio->nombre_servicio }}</h1>
 
 		<br>
-		<div class="row">
+	<div class="row">
 					
 		@foreach ($pracPers as $pracPer)
 			<div class="col-lg-6 col-md-4 col-sm-4">
@@ -24,8 +24,8 @@
 	                    <div class="title"><a href="#">{{ $pracPer->nombre_practica }}</a></div>
 	                    <div class="clearfix">
 	                     	<span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/')}}">{{ $pracPer->nombre }}</a></h2></font></span>
-	                       	<span class="meta-data"><font color="white"><h2>Caificacion: <i class="fa fa-star-o"></i> 5</h2></font></span>
-	                   		
+                       		<span class="meta-data"><font color="white"><h2>Caificacion: <i class="fa fa-star-o"></i> 5     Oferta: <i class="fa fa-dollar"></i> 50</h2></font></span>
+                       		<span class="meta-data"><font color="white"></font></span>
 	                    </div>
 	                    <div class="content">
 	                       <p>{{ $pracPer->descripcion }}</p>

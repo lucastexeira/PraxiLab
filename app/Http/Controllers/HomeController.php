@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Persona;
 use App\Rubro;
 use App\Servicio;
+use App\Practica;
+use App\PersonasServicios;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
  
 class HomeController extends Controller
 {
@@ -26,8 +29,13 @@ class HomeController extends Controller
         $rubroPorId = Rubro::where('id', '=', Input::get('id'));
         $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
         $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
+        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
+                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
+                                                       inner join servicios on personas_servicios.id_servicio = servicios.id limit 4');
 
-        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios);
+        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers);
+
+        //dd($pracPers);
     }
  
     protected $redirectTo = '/index';
