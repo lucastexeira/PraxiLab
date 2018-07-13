@@ -9,7 +9,12 @@
 	<div class="row">
 		<div class="col-md-12">
 		    
-		    <h1 class="typo">Rubro: {{ $ruId->nombre_rubro }}</h1>
+		    <div class="row mt centered ">
+				<div class="center-block">
+					<h1>Rubros: {{ $ruId->nombre_rubro }}</h1>
+					<hr>
+				</div>
+			</div>
 
 		    <h3 class="typo">	Servicios</h3>
 			<ol>

@@ -48,7 +48,7 @@
 		                <div class="center-block nav-item col-lg-5 col-lg-offset-1"  ><h1>Calificación</h1>
 		                	<h4>Como califico el practicante al voluntario</h4>
 		                    <div class="form-group"  width="50%" >
-		                        <span class="meta-data"><font color="black"><h3>Calificación: <i class="fa fa-star-o"></i> 4</h3></font></span>
+		                        <span class="meta-data"><font color="black"><h3>Comentario: <i class="fa fa-star-o"></i> 4</h3></font></span>
 		                    </div>
 		                    <div class="form-group">
 		                    <br>
@@ -65,7 +65,7 @@
 		                <div class="center-block nav-item col-lg-5 col-lg-offset-1"  ><h1>Calificación</h1>
 		                	<h4>Como califico el voluntario al practicante</h4>
 		                    <div class="form-group"  width="50%" >
-		                        <span class="meta-data"><font color="black"><h3>Calificación: <i class="fa fa-star-o"></i> 4</h3></font></span>
+		                        <span class="meta-data"><font color="black"><h3>Comentario: <i class="fa fa-star-o"></i> 4</h3></font></span>
 		                    </div>
 		                    <div class="form-group">
 		                    <br>
