@@ -1,4 +1,5 @@
 @include("layouts.cabecera")
+<link href="{{asset('css/oferta.css')}}" rel="stylesheet">
 </head>
 <body>
 

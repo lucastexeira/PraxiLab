@@ -3,7 +3,7 @@
 
 
 <nav id="menu" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href=" {{ 'index' }} ">
+    <a class="navbar-brand" href=" {{url('index/') }} ">
      
       @if(Session::has('notice'))
       <div class="alert">
@@ -13,7 +13,7 @@
       @endif
       
       <a class="navbar-brand" href="{{ 'index' }}">
-        <img width="100" src="img/logos/Logo blanco y negro transparente 2.png" class="logo">
+        <img width="100" src="{{asset('img/logos/Logo blanco y negro transparente 2.png')}}" class="logo">
         <!--img width="80" src="img/logo.png" alt=""-->
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
                     <div class="navbar-login">
                       <div class="row">
                         <div class="col-lg-12">
-                          <a class="dropdown-item" href="{{ 'listadoPracticasEstados' }}">
+                          <a class="dropdown-item" href="{{url('listadoPracticasEstados/')}}">
                             <span class="glyphicon glyphicon-user"></span> Tenés una práctica nueva</a>
                           </div>
                         </div>
@@ -74,13 +74,13 @@
                 <div class="navbar-login">
                   <div class="row">
                     <div class="col-lg-12">
-                      <a class="dropdown-item" href="{{ 'perfil' }}">
+                      <a class="dropdown-item" href="{{url('perfil/')}}">
                         <span class="glyphicon glyphicon-user"></span> Ver Perfil</a>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-12">
-                        <a class="dropdown-item" href="{{ 'listadoPracticasEstados' }}">
+                        <a class="dropdown-item" href="{{url('listadoPracticasEstados/')}}">
                           <span class="glyphicon glyphicon-cog"></span> Mis Prácticas</a>
                         </div>
                       </div>
