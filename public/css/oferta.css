@@ -167,3 +167,66 @@ color: black !important;
     font-weight: bold;
     font-size: 2em !important;
 }
+
+
+/*SERVICIOS*/
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(3.25rem + 2px) !important;
+}
+
+.experiencia-evidencia {
+    width: 30em;
+    height: 20em;
+}
+
+.experiencia {
+    background-color: #F0F0F0;
+}
+.experiencia-descripcion {
+    font-size:20px;
+}
+
+.btn-experiencia-perfil {
+    color: white;
+    font-size: 1.5em !important;
+}
+
+.experiencia-titulo {
+    display: inline;
+}
+
+.experiencia-profile-pic {  
+  width: 4em;
+  height: 4em;
+  border-radius: 100%;
+  margin-right: 1em;
+}
+
+.experiencia-evidencia {
+    width: 30em;
+    height: 20em;
+}
+
+.contenido {
+    margin-top: 1.5em;
+}
+
+.curriculum-datos > p {
+    font-size: 15px;
+}
+
+.img-oferta-perfil {
+    height: 150px;
+    max-width: 100%;
+}
+
+.precio-oferta-perfil {
+    margin: auto;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.btn-purple {
+    background-color: purple !important;
+}
