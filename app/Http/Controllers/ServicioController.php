@@ -70,7 +70,7 @@ class ServicioController extends Controller
     public function irAWizard(Request $request){
 
         $rubros = Rubro::all();
-        $servicios = Servicio::all();
+        $servicios = Servicio::paginate(5);
         //$servicios = Servicio::where('id_rubro', $request->id_rubro)->pluck('id');
 
         return view('/wizard')->with('rubros',$rubros)->with('servicios',$servicios);
