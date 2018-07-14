@@ -44,9 +44,9 @@
 					    <tbody>
 							<tr>
 								<td>20/07/2018</td>
-								<td><a href=" {{ 'oferta' }} ">Alisado</a></td>
-								<td><a href="#">Laura</a></td>
-								<td>-$200</td>
+								<td><a href=" {{ 'oferta' }} ">Clases de Guitarra Acustica</a></td>
+								<td><a href="#">Damian</a></td>
+								<td>-$80</td>
 								<td>$690</td>
 							</tr>
 							<tr>
