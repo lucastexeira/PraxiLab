@@ -43,6 +43,7 @@
 		</ul>
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade active show" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
+			<br><a href="{{url('wizard/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Nueva oferta de Practica</button></a>
 				<div class="panel panel-default contenido">
 					<div class="panel-body">
 						<div class="container-fluid">
