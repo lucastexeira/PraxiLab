@@ -17,7 +17,7 @@
       @endif
       
       <a class="navbar-brand" href="index">
-        <img width="100" src="img/logos/logo_negro_y_blanco_transparente.png" class="logo">
+        <img width="100" src="img/logos/Logo blanco y negro transparente 2.png" class="logo">
         <!--img width="80" src="img/logo.png" alt=""-->
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -165,7 +165,7 @@
       </div><!-- /container -->
     </div> <!-- /headerwrap -->
     
-    <! ========== SERVICIOS RECOMENDADOS ==========================================================================>    
+    <! ========== PRACTICAS RECOMENDADOS ==========================================================================>    
     <div class="container">  
       <div class="row mt centered ">
         <div class="col-lg-4 col-lg-offset-4">
@@ -178,20 +178,23 @@
         
         @foreach ($pracPers as $pracPer)
         <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="thumbnail img-thumb-bg" style="background-image: url({{asset($pracPer->imagen_practica)}})">
-            <div class="overlay"></div>
-            <div class="caption">
-              <div class="title"><a href="#">{{ $pracPer->nombre_practica }}</a></div>
-              <div class="clearfix">
-                <span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/')}}">{{ $pracPer->nombre }}</a></h2></font></span>
-                <span class="meta-data"><font color="white"><h2>Calificación: <i class="fa fa-star-o"></i> 5     Oferta: <i class="fa fa-dollar"></i> 50</h2></font></span>
-                <span class="meta-data"><font color="white"></font></span>
-              </div>
-              <div class="content">
-               <p>{{ $pracPer->descripcion }}</p>
+          <a href="{{ 'oferta' }}">
+            <div class="thumbnail img-thumb-bg" style="background-image: url({{asset($pracPer->imagen_practica)}})">
+              <div class="overlay"></div>
+              <div class="caption">
+                <div class="title">{{ $pracPer->nombre_practica }}</div>
+                </a>
+                <div class="clearfix">
+                  <span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/')}}">{{ $pracPer->nombre }}</a></h2></font></span>
+                  <span class="meta-data"><font color="white"><h2>Calificación: <i class="fa fa-star-o"></i> 5     Oferta: <i class="fa fa-dollar"></i> 50</h2></font></span>
+                  <span class="meta-data"><font color="white"></font></span>
+                </div>
+                <div class="content">
+                 <a href="{{ 'oferta' }}"><p>{{ $pracPer->descripcion }}</p></a>
+               </div>
              </div>
            </div>
-         </div>
+         
        </div>
        @endforeach
 
@@ -223,7 +226,7 @@
 
       @foreach ($rubros as $rubro)
       <div>
-        <a data-toggle="modal" class="b-link-fade b-animate-go" href="servicios/{{ $rubro->id }}"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
+        <a class="b-link-fade b-animate-go" href="servicios/{{ $rubro->id }}"  class="center-block"><img width="255" height="175" src="{{ $rubro->imagen }}" alt="" />
           <div class="b-wrapper">
             <h4 >{{ $rubro->nombre_rubro }}</h4>
             <p >VER MÁS</p>
@@ -241,7 +244,7 @@
     <div class="row mt centered">
       <div class="col-lg-4 col-lg-offset-4">
         <a class="nav-link" href="{{ 'rubrosYServicios' }}">
-          <button type="button" class="btn btn-theme btn-lg">RUBROS Y PRÁCTICAS</button>
+          <button type="button" class="btn btn-theme btn-lg">RUBROS Y SERVICIOS</button>
         </a>
       </div>
     </div><!-- /row -->
@@ -324,7 +327,7 @@
 
 <script>
   $(window).scroll(function() {
-    if ($("#menu").offset().top > 190){
+    if ($("#menu").offset().top > 195){
       $("#menu").removeClass("bg-transparent");
       $("#menu").addClass("bg-dark");
       $(".logo").attr('src', 'img/logos/Logo blanco y negro transparente 2.png');

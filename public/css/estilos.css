@@ -30,9 +30,13 @@ a.button {
     padding-top: 10px !important;
 }
 
+nav#menu.navbar.navbar-expand-lg.navbar-transparent.fixed-top {
+    bottom: 582px !important;
+}
+
 #headerwrap h1 {
     font-size: 24px !important;
-    margin-top: 110px !important;
+    margin-top: 78px !important;
     margin-bottom: 20px !important;
 }
 
@@ -45,15 +49,6 @@ a.button {
     background: linear-gradient(to right, #c0392b, #8e44ad) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.navbar a {
-    color: #ffffff !important;
-    font-size: 18px !important;
-}
-
-.navbar a:hover { 
-    color: black !important; 
-}
-
 .bg-transparent{
   transition: all 1s ease;
 }  
@@ -62,6 +57,7 @@ a.button {
 .bg-dark {
     height: 60px!important;
     transition: 0.50s!important;
+    top: 2px;
 }
 
 .navbar {
@@ -132,6 +128,12 @@ button.btn.btn-theme.btn-lg {
     padding-right: 0px;
 }
 
+
+.navbar a {
+    color: white !important;
+    font-size: 18px !important;
+}
+
 .navbar a:hover {
     color: black !important;
     font-size: 18px !important;
@@ -169,6 +171,10 @@ button.btn.btn-theme.btn-lg {
         width: 5% !important;
         height: 23% !important;    
         border-radius: 50% !important;
+    }
+
+    .title{
+        background-color: #d3cdcda3;
     }
 
     /* CALIFICACION */
@@ -354,6 +360,11 @@ button.btn.btn-theme.btn-lg {
 
     .checked {
         color: orange;
+    }
+
+    .text-center {
+    text-align: center!important;
+    color: purple;
     }
 
     /* PERFIL */
@@ -574,4 +585,11 @@ button.btn.btn-theme.btn-lg {
 
 .form-control {
     font-size: 15px !important;
+}
+
+/*Todos los servicios*/
+
+.modal-content {
+
+top: 126px!important;
 }
