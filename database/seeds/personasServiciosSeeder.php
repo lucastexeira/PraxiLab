@@ -18,7 +18,7 @@ class personasServiciosSeeder extends Seeder
             [ 'id_persona' => '3', 'id_servicio' => '3'],
             [ 'id_persona' => '4', 'id_servicio' => '3'],
             [ 'id_persona' => '5', 'id_servicio' => '3'],
-            [ 'id_persona' => '1', 'id_servicio' => '14']
+            [ 'id_persona' => '2', 'id_servicio' => '13']
 
         ]);
     }

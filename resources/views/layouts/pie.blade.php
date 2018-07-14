@@ -9,7 +9,7 @@
 			<div class="row mt centered">
 				<!-- ADDRESS -->
 				<div class="col-lg-12">
-					<img width="100" src="{{asset('img/logos/logo_blanco_y_negro.png')}}" alt="">
+					<img width="100" src="{{asset('img/logos/Logo blanco y negro transparente 2.png')}}" alt="">
 					<p>
 						Montesanto Karen | Rosa Allende Damian | Texeira Lucas
 				</div>
