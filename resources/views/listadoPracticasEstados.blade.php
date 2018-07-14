@@ -1,6 +1,7 @@
 	
 	@include("layouts.cabecera")
 	<link href="css/estilosLogin.css" rel="stylesheet">
+	<link href="css/oferta.css" rel="stylesheet">
 
 </head>
 <body>
