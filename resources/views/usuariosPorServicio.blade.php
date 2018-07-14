@@ -24,7 +24,7 @@
 				<div class="thumbnail img-thumb-bg" style="background-image: url({{asset($pracPer->imagen_practica)}})">
 					<div class="overlay"></div>
 	                <div class="caption">
-	                    <div class="tag"><a href="#">{{ $pracPer->nombre_practica }}</a></div>
+	                    <div class="tag"><a href="{{url('oferta/')}}">{{ $pracPer->nombre_practica }}</a></div>
 	                    <div class="clearfix">
 	                     	<span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/')}}">{{ $pracPer->nombre }}</a></h2></font></span>
                        		<span class="meta-data"><font color="white"><h2>Calificación: <i class="fa fa-star-o"></i> 5     Oferta: <i class="fa fa-dollar"></i> 50</h2></font></span>
