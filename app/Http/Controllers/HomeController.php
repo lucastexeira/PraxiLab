@@ -45,6 +45,12 @@ class HomeController extends Controller
          $rubros = Rubro::all();
      return View::make('registro')->with('persona', $persona)->with('rubros', $rubros);
     }
+
+    public function registroSinRegistro(){
+         $persona = new Persona();
+         $rubros = Rubro::all();
+     return View::make('registroSinRegistro')->with('persona', $persona)->with('rubros', $rubros);
+    }
  
     public function create(){
  
@@ -107,5 +113,21 @@ class HomeController extends Controller
     public function oferta(){
         $rubros = Rubro::all();
         return view('oferta')->with('rubros', $rubros);
+    }
+
+    public function indexSinRegistro(){
+
+        $rubros = Rubro::all();
+        $servicios = Servicio::paginate(4);
+        $rubroPorId = Rubro::where('id', '=', Input::get('id'));
+        $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
+        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
+        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
+                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
+                                                       inner join servicios on personas_servicios.id_servicio = servicios.id limit 6');
+
+        return view('/indexSinRegistro')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers);
+
+        //dd($pracPers);
     }
 }
