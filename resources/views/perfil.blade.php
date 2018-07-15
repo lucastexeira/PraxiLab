@@ -2,7 +2,11 @@
 </head>
 <body>
 
-	@include("layouts.navbar")
+  @if(session()->has('mail'))
+    @include('layouts.navbar')
+  @else 
+      @include('layouts.navbarSinInicio')
+  @endif
 
 	<div class="about" id="about">
 		<div class="container">

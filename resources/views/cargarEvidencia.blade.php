@@ -4,7 +4,11 @@
 </head>
 <body>
 
-@include("layouts.navbar")
+  @if(session()->has('mail'))
+    @include('layouts.navbar')
+  @else 
+      @include('layouts.navbarSinInicio')
+  @endif
 
 <form method="POST" action="cargarEvidencia">
 
