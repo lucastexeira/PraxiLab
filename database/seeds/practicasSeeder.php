@@ -15,7 +15,7 @@ class practicasSeeder extends Seeder
 
             ['nombre_practica' => 'Clase de Guitarra Acustica', 'descripcion'=>'Clases de guitarra, Ukelele o audioperceptiva orientadas a que puedas disfrutar del instrumento de forma cómoda y a tus tiempos para que estés en condiciones de tocarlo frente a amigos/as o un público como solista o en una banda.
             ',
-            'imagen_practica' => 'img/practicas/practica_guitarra_1.png', 'id_practicante' => '2', 'id_servicio'=>'1'],
+            'imagen_practica' => 'img/practicas/practica_guitarra_1.png', 'id_practicante' => '2', 'id_servicio'=>'13'],
 
             ['nombre_practica' => 'Practica2', 'descripcion'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
             'imagen_practica' => 'img/practicas/practica2.png', 'id_practicante' => '2', 'id_servicio'=>'1'],
