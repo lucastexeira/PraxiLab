@@ -1,6 +1,7 @@
 	
 	@include("layouts.cabecera")
 	<link href="css/estilosLogin.css" rel="stylesheet">
+	<link href="css/oferta.css" rel="stylesheet">
 
 </head>
 <body>
@@ -9,11 +10,19 @@
 	</br>
 
 	<div class="container">
+
+		<div class="row mt centered ">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h1>Mis Practicas</h1>
+				<hr>
+			</div>
+		</div>
+
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
-			<li class="nav-item col-lg-3">
+			<li class="nav-item col-lg-6">
 				<a class="nav-link text-center active show pestaña" id="ofertas-tab" data-toggle="tab" href="#ofertas" role="tab" aria-controls="ofertas" aria-selected="false">Como Practicante</a>
 			</li>
-			<li class="nav-item col-lg-3">
+			<li class="nav-item col-lg-6">
 				<a class="nav-link text-center pestaña" id="experiencia-tab" data-toggle="tab" href="#experiencia" role="tab" aria-controls="experiencia" aria-selected="true">Como Voluntario</a>
 			</li>
 		</ul>
@@ -22,10 +31,6 @@
 			<div class="tab-pane fade active show" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
 				<div class="panel panel-default contenido">
 					<div class="panel-body">
-						<div class="card-header">
-	                    	<h1 class="text-center">Mi listado de Prácticas</h1>
-	            		</div>
-
 	            		</br>
 	            		<div class="col-lg-4">
 		            		<select class="form-control" id="select">

@@ -45,11 +45,11 @@
               <input class="form-control mr-sm-2" type="search" placeholder="Buscar Practica" aria-label="Search">
             </form>
 
-            <ul class="navbar-nav">
+            <!--ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                   <span class="glyphicon glyphicon-bell"></span>
-                  <!--img width="80" src="img/logo.png" alt=""-->
+                  <img width="80" src="img/logo.png" alt="">
                 </a>
                 <ul class="dropdown-menu">
                   <li  class="nav-item dropdown">
@@ -64,9 +64,9 @@
                     </li>
                   </ul>
                 </li>
-              </ul>
+              </ul-->
 
-              <ul class="navbar-nav">
+              <!--ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                     <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
@@ -110,17 +110,17 @@
                       </li>
                     </ul>
                   </li>
-                </ul>
+                </ul-->
             
                     
-      <!--ul class="navbar-nav">
+      <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="{{ 'inicioSesion' }}">Iniciá Sesión <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ 'registro' }}">Registrate</a>
         </li>
-      </ul-->
+      </ul>
     </div>
   </nav>
   

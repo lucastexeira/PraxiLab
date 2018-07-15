@@ -53,7 +53,7 @@
                       <div class="row">
                         <div class="col-lg-12">
                           <a class="dropdown-item" href="{{url('listadoPracticasEstados/')}}">
-                            <span class="glyphicon glyphicon-user"></span> Tenés una práctica nueva</a>
+                            <span class=""></span>Práctica Solicitada(1)</a>
                           </div>
                         </div>
                       </div>
@@ -66,7 +66,7 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                     <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
-                    Nombre
+                    LucasT
                   </a>
 
                   <ul class="dropdown-menu">
