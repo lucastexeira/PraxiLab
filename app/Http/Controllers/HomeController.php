@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
- 
+use Session; 
+
 class HomeController extends Controller
 {
     private $path = 'persona';
@@ -44,12 +45,6 @@ class HomeController extends Controller
          $persona = new Persona();
          $rubros = Rubro::all();
      return View::make('registro')->with('persona', $persona)->with('rubros', $rubros);
-    }
-
-    public function registroSinRegistro(){
-         $persona = new Persona();
-         $rubros = Rubro::all();
-     return View::make('registroSinRegistro')->with('persona', $persona)->with('rubros', $rubros);
     }
  
     public function create(){
@@ -110,24 +105,4 @@ class HomeController extends Controller
         return view('perfil')->with('rubros', $rubros);
     }
 
-    public function oferta(){
-        $rubros = Rubro::all();
-        return view('oferta')->with('rubros', $rubros);
-    }
-
-    public function indexSinRegistro(){
-
-        $rubros = Rubro::all();
-        $servicios = Servicio::paginate(4);
-        $rubroPorId = Rubro::where('id', '=', Input::get('id'));
-        $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
-        $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
-        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
-                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
-                                                       inner join servicios on personas_servicios.id_servicio = servicios.id limit 6');
-
-        return view('/indexSinRegistro')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers);
-
-        //dd($pracPers);
-    }
 }

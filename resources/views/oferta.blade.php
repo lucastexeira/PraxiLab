@@ -14,14 +14,14 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-md-5">
-						<img class="imagen-oferta" src="img/practicas/practica_guitarra_1.png">
+						<img class="imagen-oferta" src="{{asset(''.$imagen_practica.'') }}">
 					</div>
 					<div class="col-md-7">
 						<div class="div-descripcion-corta-oferta">
-							<h1 class="titulo-oferta">Clases de Guitarra Acustica</h1>
+							<h1 class="titulo-oferta">{{ $nombre }}</h1>
 							<div class="usuario-oferta">
-								<img src="img/team/profile-pics.jpg" class="usuario-oferta-pic">
-								<p class="nombre-usuario-oferta">Lucas Texeira</p>
+								<img src="{{asset(''.$imagen.'')}}" class="usuario-oferta-pic">
+								<p class="nombre-usuario-oferta">{{ $username }}</p>
 							</div>
 							<div class="div-calificacion-oferta">
 								<span class="fa fa-star checked-purple"></span>
@@ -72,7 +72,7 @@
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade active show" id="descripcion" role="tabpanel" aria-labelledby="descripcion-tab">
 						<div class="contenido">
-							Clases de guitarra, Ukelele o audioperceptiva orientadas a que puedas disfrutar del instrumento de forma cómoda y a tus tiempos para que estés en condiciones de tocarlo frente a amigos/as o un público como solista o en una banda.
+							{{ $descripcion }}
 						</div>
 					</div>
 					<div class="tab-pane fade" id="calificacion" role="tabpanel" aria-labelledby="calificacion-tab">
