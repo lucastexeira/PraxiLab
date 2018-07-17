@@ -25,11 +25,11 @@ class ServicioController extends Controller
                     ->orderBy('id', 'desc')->paginate(8);
                     $rubros = Rubro::All();
                     $servicios = Servicio::all();
-        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
-                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
-                                                       inner join servicios on personas_servicios.id_servicio = servicios.id');
+        $pracPers = DB::Select('Select practicas.id, nombre_practica, personas.nombre, practicas.descripcion, imagen_practica from practicas inner join personas on practicas.id_practicante = personas.id 
+                                                        inner join servicios on practicas.id_servicio = servicios.id order by practicas.id'); 
         
         return view('/todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers);
+        //dd($pracPers);
     }
 
     /*public function verServiciosPorRubro($id_rubro){
@@ -58,10 +58,9 @@ class ServicioController extends Controller
 
         $servicio = Servicio::find($id_servicio);
         $rubros = Rubro::All();
-        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
-                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
-                                                       inner join servicios on personas_servicios.id_servicio = servicios.id
-                                                       where servicios.id = '.$id_servicio.'');
+        $pracPers = DB::Select('Select * from practicas inner join personas on practicas.id_practicante = personas.id 
+                                                        inner join servicios on practicas.id_servicio = servicios.id 
+                                                        where servicios.id = '.$id_servicio.''); 
 
         return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros);
 
