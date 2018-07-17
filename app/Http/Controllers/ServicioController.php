@@ -19,16 +19,14 @@ use Session;
 class ServicioController extends Controller
 {
     public function verTodosLosServicios(){
-
-        $buscador = Servicio::where('nombre_servicio', 'like', '%'.Input::get('buscador').'%')
+$buscador= array();
+        $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
                     //->orWhere('body', 'like', '%'.Input::get('buscador').'%')
-                    ->orderBy('id', 'desc')->paginate(8);
+                    ->orderBy('id', 'desc')->get();
                     $rubros = Rubro::All();
                     $servicios = Servicio::all();
-        $pracPers = DB::Select('Select practicas.id, nombre_practica, personas.nombre, practicas.descripcion, imagen_practica from practicas inner join personas on practicas.id_practicante = personas.id 
-                                                        inner join servicios on practicas.id_servicio = servicios.id order by practicas.id'); 
         
-        return view('/todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers);
+        return view('todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers);
         //dd($pracPers);
     }
 
