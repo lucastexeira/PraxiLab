@@ -12,7 +12,7 @@
       </div>
       @endif
       
-      <a class="navbar-brand" href="{{ 'index' }}">
+      <a class="navbar-brand" href="{{url('index')}}">
         <img width="100" src="{{asset('img/logos/Logo blanco y negro transparente 2.png')}}" class="logo">
         <!--img width="80" src="img/logo.png" alt=""-->
       </a>
@@ -65,7 +65,7 @@
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                    <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
+                    <img src="{{asset('$imagen')}}" class="img-circle" alt="Usuario" height="50px" width="50px">
                     LucasT
                   </a>
 

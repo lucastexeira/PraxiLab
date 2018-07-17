@@ -6,7 +6,11 @@
 </head>
 <body>
  
-  @include("layouts.navbar");
+  @if(session()->has('mail'))
+    @include('layouts.navbar')
+  @else 
+      @include('layouts.navbarSinInicio')
+  @endif
   
   <div class="container">
     <div class="row mt centered ">
@@ -39,7 +43,7 @@
 
       @foreach ($pracPers as $pracPer)
         <div class="col-lg-4 col-md-4 col-sm-4">
-          <a href="{{ 'oferta' }}">
+          <a href="oferta/{{ $pracPer->id }}">
           <div class="thumbnail img-thumb-bg" style="background-image: url({{asset($pracPer->imagen_practica)}})">
             <div class="overlay"></div>
                 <div class="caption">
@@ -51,7 +55,7 @@
                         <span class="meta-data"><font color="white"></font></span>
                     </div>
                     <div class="content">
-                       <a href="{{ 'oferta' }}"><p>{{ $pracPer->descripcion }}</p></a>
+                       <a href="oferta/{{ $pracPer->id }}"><p>{{ $pracPer->descripcion }}</p></a>
                     </div>
                   </div>
                 </div>
@@ -59,7 +63,16 @@
         </div>
       @endforeach
  
-      <!--@foreach ($buscador as $servicio)
+      
+  </div>
+</div>
+<footer>
+
+@include("layouts.pie")
+
+
+
+<!--@foreach ($buscador as $servicio)
       <div class="col-lg-3 col-md-3 col-xs-12 desc">
         
         <a class="b-link-fade b-animate-go" href="{{ 'oferta' }}"><img width="250" height="180" src="{{ $servicio->imagen }}" alt="{{ $servicio->nombre_servicio }}" />
@@ -72,8 +85,3 @@
       </div>
       @endforeach
     </div><!-- /row -->
-  </div>
-</div>
-<footer>
-
-@include("layouts.pie")

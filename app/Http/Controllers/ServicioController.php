@@ -14,6 +14,7 @@ use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class ServicioController extends Controller
 {
@@ -57,9 +58,10 @@ class ServicioController extends Controller
 
         $servicio = Servicio::find($id_servicio);
         $rubros = Rubro::All();
-        $pracPers = DB::Select('Select * from practicas inner join personas on practicas.id_practicante = personas.id
-                                                        inner join servicios on practicas.id_servicio = servicios.id
-                                                        where servicios.id = '.$id_servicio.'');
+        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
+                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
+                                                       inner join servicios on personas_servicios.id_servicio = servicios.id
+                                                       where servicios.id = '.$id_servicio.'');
 
         return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros);
 
@@ -68,11 +70,12 @@ class ServicioController extends Controller
 
     public function irAWizard(Request $request){
 
+        $practica = new Practica();
         $rubros = Rubro::all();
         $servicios = Servicio::paginate(5);
         //$servicios = Servicio::where('id_rubro', $request->id_rubro)->pluck('id');
 
-        return view('/wizard')->with('rubros',$rubros)->with('servicios',$servicios);
+        return view('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica);
 
         //dd($servicios);
     }
@@ -97,7 +100,24 @@ class ServicioController extends Controller
         //dd($servicios);
     }
 
-    
+    public function createPractica(Request $req){
+
+        //$session_id = session()->getId();
+        $req = Session::get('mail');
+
+        if ( $req ){
+            $servicioId = DB::table('personas')->where('mail', $req)->first()->id;
+        
+            $practica = new Practica();
+            $practica->nombre_practica = Input::get('nombre_practica');
+            $practica->descripcion = Input::get('descripcion');
+            $practica->imagen_practica = Input::get('imagen_practica');
+            $practica->id_practicante = $servicioId;
+            $practica->id_servicio = Input::get('id_servicio');
+            $practica->id_voluntario = Input::get('id_voluntario');
+            $practica->save();
+        }
+    }
 
     
 }
