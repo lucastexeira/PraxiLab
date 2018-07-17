@@ -14,14 +14,14 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-md-5">
-						<img class="imagen-oferta" src="{{asset(''.$imagen_practica.'') }}">
+						<img class="imagen-oferta" src="{{asset('') }}">
 					</div>
 					<div class="col-md-7">
 						<div class="div-descripcion-corta-oferta">
-							<h1 class="titulo-oferta">{{ $nombre }}</h1>
+							<h1 class="titulo-oferta">nombre</h1>
 							<div class="usuario-oferta">
-								<img src="{{asset(''.$imagen.'')}}" class="usuario-oferta-pic">
-								<p class="nombre-usuario-oferta">{{ $username }}</p>
+								<img src="{{asset('')}}" class="usuario-oferta-pic">
+								<p class="nombre-usuario-oferta">username</p>
 							</div>
 							<div class="div-calificacion-oferta">
 								<span class="fa fa-star checked-purple"></span>
@@ -71,9 +71,11 @@
 				</ul>
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade active show" id="descripcion" role="tabpanel" aria-labelledby="descripcion-tab">
+					@foreach ($practicaPersona as $Persona)
 						<div class="contenido">
-							{{ $descripcion }}
+							{{ $Persona->descripcion }}
 						</div>
+					@endforeach
 					</div>
 					<div class="tab-pane fade" id="calificacion" role="tabpanel" aria-labelledby="calificacion-tab">
 						<div class="container contenido">
