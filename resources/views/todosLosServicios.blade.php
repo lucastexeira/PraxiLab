@@ -43,7 +43,7 @@
 
       @foreach ($pracPers as $pracPer)
         <div class="col-lg-4 col-md-4 col-sm-4">
-          <a href="oferta/{{ $pracPer->id }}">
+          <a href="{{url('oferta/'.$pracPer->id.'')}}">
           <div class="thumbnail img-thumb-bg" style="background-image: url({{asset($pracPer->imagen_practica)}})">
             <div class="overlay"></div>
                 <div class="caption">
@@ -55,7 +55,7 @@
                         <span class="meta-data"><font color="white"></font></span>
                     </div>
                     <div class="content">
-                       <a href="oferta/{{ $pracPer->id }}"><p>{{ $pracPer->descripcion }}</p></a>
+                       <a href="{{url('oferta/'.$pracPer->id.'')}}"><p>{{ $pracPer->descripcion }}</p></a>
                     </div>
                   </div>
                 </div>
