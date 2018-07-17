@@ -68,7 +68,7 @@
                                 <div class="servicios">
                                     <ol>
                                     @foreach ($servicios as $servicio)
-                                            <a href="#step2">
+                                            <a id="listaServicios" href="#step2">
                                                 <h4 class="center-block servicioSeleccionado" id="{{ $servicio->id }}" >
                                                     {{ $servicio->nombre_servicio }}
                                                 </h4>
@@ -123,11 +123,10 @@
                         <h2>¡Se ha creado la práctica exitosamente!</h2>
 
                         <ul class="list-group">
-                          <li class="list-group-item"><b>Rubro</b> Fiestas y animación</li>
-                          <li class="list-group-item"><b>Servicio</b> Dapibus ac facilisis in</li>
-                          <li class="list-group-item"><b>Práctica</b> Morbi leo risus</li>
-                          <li class="list-group-item"><b>Descripción</b> Porta ac consectetur ac</li>
-                          <li class="list-group-item"><b>Vestibulum</b> at eros</li>
+                          <li class="list-group-item" style="color:black"><b>Rubro</b> Cursos y Clases</li>
+                          <li class="list-group-item" style="color:black"><b>Servicio</b> Música</li>
+                          <li class="list-group-item" style="color:black"><b>Práctica</b> Clases de guitarra acústica</li>
+                          <li class="list-group-item" style="color:black"><b>Descripción</b> Clases de guitarra, Ukelele o audioperceptiva.</li>
                         </ul>
 
                         </br>

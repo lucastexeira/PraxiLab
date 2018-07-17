@@ -1,4 +1,5 @@
 @include("layouts.cabecera")
+<link href="{{asset('css/oferta.css')}}" rel="stylesheet">
 </head>
 <body>
 
@@ -9,7 +10,6 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 text-center">
 					<img src="img/team/profile-pics.jpg" class="img-fluid img-thumbnail">
-					<button type="button" class="btn btn-outline-primary h4">Enviar Mensaje</button>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 desc">
 
@@ -44,33 +44,34 @@
 		</ul>
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade active show" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
+			<br><a href="{{url('wizard/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Nueva oferta de Practica</button></a>
 				<div class="panel panel-default contenido">
 					<div class="panel-body">
 						<div class="container-fluid">
 							<div class="row align-items-start">
 								<div class="col-3 text-center">
-									<img src="img/portfolio/port04.jpg" class="img-oferta-perfil" />
+									<img src="img/practicas/practica_guitarra_1.png" class="img-oferta-perfil" />
 								</div>
 								<div class="col-9">
-									<h1>Clase de guitarra</h1>
+									<h1>Clase de Guitarra Acústica</h1>
 									<p>
-										Capital Federal
+										Clases de guitarra, Ukelele o audioperceptiva orientadas a que puedas disfrutar del instrumento de forma cómoda y a tus tiempos para que estés en condiciones de tocarlo frente a amigos/as o un público como solista o en una banda.
 									</p>
 								</div>
 							</div>
 							<div class="row justify-content-end align-items-end">
 								<div class="col-1">
-									<p class="precio-oferta-perfil">1000</p>
+									<p class="precio-oferta-perfil">80</p>
 								</div>
 								<div class="col-1">
-									<button type="button" class="btn btn-success btn-lg btn-purple">Practicar</button>
+									<a href="{{url('oferta/')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="panel panel-default contenido">
+				<!--div class="panel panel-default contenido">
 					<div class="panel-body">
 						<div class="container-fluid">
 							<div class="row align-items-start">
@@ -89,36 +90,32 @@
 									<p class="precio-oferta-perfil">500</p>
 								</div>
 								<div class="col-1">
-									<button type="button" class="btn btn-success btn-block btn-lg btn-purple">Practicar</button>
+									<button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div-->
 
 			</div>
 			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
 				<div class="panel panel-default contenido">
 					<div class="panel-heading">
 						<img src="img/team/profile-pics.jpg" class="experiencia-profile-pic">
-						<h1 class="experiencia-titulo">Sesión de peluqueria</h1>
+						<h1 class="experiencia-titulo">Clase de Guitarra Acustica</h1>
 					</div>
 					<div class="experiencia-body panel-body">
-						<a  href="verEvidencia/" >	
-						<img src="img/portfolio/port01.jpg" class="experiencia-evidencia">
-						</a>
-						<a  href="verEvidencia/" >
-						<img src="img/portfolio/port02.jpg" class="experiencia-evidencia">
+						<a href="verEvidencia/" >
+							<img src="img/practicas/practica_guitarra_2.jpg" class="experiencia-evidencia">
 						</a>
 						<p class="experiencia-descripcion">
-							ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							Primera práctica de guitarra realizada con Damian Rosa.
 						</p>
 					</div>
+					<a href="verEvidencia/" >
+						<button type="button" class="btn btn-lg btn-block btn-purple btn-experiencia-perfil">Ver mas</button>
+					</a>
+
 				</div>
 			</div>
 
@@ -155,10 +152,10 @@
 			<div class="tab-pane fade" id="calificacion" role="tabpanel" aria-labelledby="calificacion-tab">
 				<div class="container contenido">
 					<span class="heading">Calificación</span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
+					<span class="fa fa-star checked-purple"></span>
+					<span class="fa fa-star checked-purple"></span>
+					<span class="fa fa-star checked-purple"></span>
+					<span class="fa fa-star checked-purple"></span>
 					<span class="fa fa-star"></span>
 					<p>Promedio: 4.1 basado en 25 reviews.</p>
 					<hr style="border:3px solid #f1f1f1">

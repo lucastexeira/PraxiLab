@@ -11,8 +11,18 @@ Route::get('index',[
 
 ]);
 
+Route::get('indexSinRegistro',[
+	'uses' => 'HomeController@indexSinRegistro' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
 Route::get('registro',[
 	'uses' => 'HomeController@registro' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+Route::get('registroSinRegistro',[
+	'uses' => 'HomeController@registroSinRegistro' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 

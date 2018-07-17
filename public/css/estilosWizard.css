@@ -165,21 +165,30 @@ span.round-tab:hover {
     border: 1px solid #ccc;
     display: inline-block;
     padding: 8px;
-    width: 306px;
-    margin-right: 10px;
-    margin-top: 0;
+    width: 300px;
+    margin-right: 75px;
+    /* margin-top: 0; */
     -msie-border-radius: 5px;
     border-radius: 5px;
     white-space: nowrap;
-    height: 290px;
-    vertical-align: top;
+    /* height: 290px; */
+    horizontal-align: right;
     position: float;
-    right:50px;
+    right: 200px;
 }
 .servicioClickeado {
     background-color: #8e44ad;
     color: white;
 }
+
+
+ol > a { 
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid; 
+}
+
+/**/
 
 ol {
     padding-left: 0px !important;
