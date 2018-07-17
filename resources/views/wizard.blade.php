@@ -5,7 +5,12 @@
 </head>
 <body>
 
-@include("layouts.navbar");
+  @if(session()->has('mail'))
+    @include('layouts.navbar')
+  @else 
+      @include('layouts.navbarSinInicio')
+  @endif
+  
 <div class="container">
     <div class="row">
         <div class="well">
@@ -39,7 +44,12 @@
                     </li>
                 </ul>
             </div>
-            <form role="form" id="formularioWizard" class="formularioWizard" method="post">
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <form action=" createPractica/{{ $practica->id }}" role="form" id="formularioWizard" class="formularioWizard" method="">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
 
@@ -76,6 +86,12 @@
                                     @endforeach
                                     
                                     </ol>
+
+                                    <input name="id_servicio" id="id_servicio" type="hidden" value=""/>
+
+                                    <!--input name="id_practicante" id="id_practicante" type="hidden" value="2"/-->
+
+                                    <input name="id_voluntario" id="id_voluntario" type="hidden" value=""/>
                                  </div>
                             </div>
                             <div>
@@ -91,26 +107,26 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="descripcion">Nombre</label>
-                                    <input name="descripcion" type="text" id="descripcion" class="form-control" placeholder="Descripción de la Practica" required="true">
+                                    <input name="nombre_practica" type="text" id="nombre_practica" class="form-control" placeholder="Nombre de la Practica" required="required" value="{{ $practica->nombre_practica }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
-                                    <textarea name="descripcion" cols="40" rows="4" class="form-control" required></textarea>
+                                    <textarea name="descripcion" cols="40" rows="4" class="form-control" required="required" value="{{ $practica->descripcion }}"></textarea>
                                 </div>
 
                             </div>
 
                             <div class="col-md-6">
-                                
-                                <div class="form-group">
+                                <input name="imagen_practica" type="hidden" id="imagen_practica" required="required" value="img/logos/logo_default.png"/>
+                                <!--div class="form-group">
                                     <label for="imagen">Imagen</label>
                                     <input name="imagen" type="file" id="imagen" placeholder="Imagen de la Practica" class="form-control" required>
-                                </div>
+                                </div-->
 
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <label for="precio">Monto ofrecido</label>
                                     <input name="precio" type="number" id="precio" class="form-control" placeholder="Monto ofrecido" required>
-                                </div>
+                                </div-->
                             </div>
                         </div>
 
@@ -118,15 +134,15 @@
                             <button type="submit" class="btn btn-theme btn-lg next-step" id="botonStep2">Guardar y Finalizar</button>
                         </ul>
                     </div>
-
+            </form>
                     <div class="tab-pane text-center" role="tabpanel" id="complete">
                         <h2>¡Se ha creado la práctica exitosamente!</h2>
 
                         <ul class="list-group">
                           <li class="list-group-item" style="color:black"><b>Rubro</b> Cursos y Clases</li>
-                          <li class="list-group-item" style="color:black"><b>Servicio</b> Música</li>
-                          <li class="list-group-item" style="color:black"><b>Práctica</b> Clases de guitarra acústica</li>
-                          <li class="list-group-item" style="color:black"><b>Descripción</b> Clases de guitarra, Ukelele o audioperceptiva.</li>
+                          <li class="list-group-item" style="color:black"><b>Servicio</b> {{ $practica->id_servicio }}</li>
+                          <li class="list-group-item" style="color:black"><b>Práctica</b>  {{ $practica->id_practica }} - {{ $practica->nombre_practica }}</li>
+                          <li class="list-group-item" style="color:black"><b>Descripción</b>  {{ $practica->descripcion }}</li>
                         </ul>
 
                         </br>
@@ -136,7 +152,6 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-            </form>
         </div>
     </div>
    </div>
@@ -163,6 +178,7 @@
                 $('#' + i).removeClass('servicioClickeado');
             }
             $('#' + servicioID).addClass('servicioClickeado');
+            $('#id_servicio').attr('value', servicioID);
             $("#botonStep1").show();
             $('#botonStep1').addClass('col-md-2');
         });
@@ -185,7 +201,8 @@
                     //Oculto listado de rubros con efecto lento
                     $(".imagenRubroSinSeleccion").toggle("slow");
                      
-                     //Cuando se selecciona un rubro, agrego el id e imagen al rubro y lo muestro
+                     //Cuando se selecciona un rubro, agrego el id e imagen (para guardarlo) al rubro y lo muestro
+
                      $('#imgRubro').attr('alt', rubroID).show("slow");
                      $('#imgRubro').attr('src', rubroIMG).show("slow");
 

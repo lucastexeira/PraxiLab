@@ -78,9 +78,15 @@ Route::get('usuariosPorServicio/{id_servicio}', 'ServicioController@verUsuariosS
 //Rubro por ID
 Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');
 
-//Adquirir un servicio
+//ir a Wizard
 Route::get('wizard',[
 	'uses' => 'ServicioController@irAWizard' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Crear una practica (Wizard)
+Route::get('createPractica',[
+	'uses' => 'ServicioController@createPractica' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
@@ -97,8 +103,8 @@ Route::get('abmPractica',[
 ]);
 
 //Oferta
-Route::get('oferta',[
-	'uses' => 'HomeController@oferta'
+Route::get('oferta/{id}',[
+	'uses' => 'OfertaController@oferta'
 ]);
 
 Route::get('transacciones',[
