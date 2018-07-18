@@ -46,7 +46,7 @@ Route::post('login', 'HomeController@login');
 Route::get('logout', 'HomeController@logout');
 
 //Inicio de Sesion - (login y logout)
-Route::get('perfil',[
+Route::get('perfil/{id_persona}',[
 	'uses' => 'HomeController@perfil'
 ]);
 //Rubros y Servicios

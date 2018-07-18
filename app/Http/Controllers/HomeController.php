@@ -100,9 +100,13 @@ class HomeController extends Controller
       return redirect('/index');
     }
 
-    public function perfil(){
+    public function perfil($id){
         $rubros = Rubro::all();
-        return view('perfil')->with('rubros', $rubros);
+        //$persona = DB::Select('select * from personas where personas.id = '.$id.'')->get();
+        $persona= Persona::where('id', $id)->first(); 
+        
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
+        //dd($persona);
     }
 
 }
