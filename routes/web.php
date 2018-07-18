@@ -103,7 +103,7 @@ Route::get('abmPractica',[
 ]);
 
 //Oferta
-Route::get('oferta/{id}',[
+Route::get('oferta/{id_practica}',[
 	'uses' => 'OfertaController@oferta'
 ]);
 
