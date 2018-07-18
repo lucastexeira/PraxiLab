@@ -21,10 +21,15 @@ use Session;
 
 class OfertaController extends Controller
 {
-    public function oferta(Request $req, $id){ 
+    public function oferta($id){ 
 
         $rubros = Rubro::all();
-        $practicaPersona = DB::Select('select * from practicas inner join personas on practicas.id_practicante = personas.id where practicas.id = '.$id.'');
+        $practicaPersona = DB::Select('select * from practicas 
+        							   inner join personas on practicas.id_practicante = personas.id 
+        							   where practicas.id = '.$id.'');
+
+        /*      $practicaPersona= Practica::where('id', $id)->first();
+        $practicaPersona->Persona = Persona::where('id', $practicaPersona->id_practicante)->first();*/
 
         return view('oferta')->with('rubros', $rubros)->with('practicaPersona', $practicaPersona); 
         //dd($practicaPersona);
