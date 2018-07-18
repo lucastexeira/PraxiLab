@@ -15,7 +15,7 @@ class CreateEvidenciasTable extends Migration
     {
         Schema::create('evidencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pathevidencia');
+            $table->string('pathevidencia');//imagen de la practica hecha
             $table->date('fecha');
             $table->unsignedInteger('id_practica');
 

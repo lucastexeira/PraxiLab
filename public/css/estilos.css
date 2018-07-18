@@ -1,12 +1,42 @@
 body {
-    font-size: 12px !important;
+    font-size: 16px !important;
+}
+
+h4 {
+    font-size: 18px!important;
+}
+
+p {
+    font-size: 19px !important;
+}
+
+a {
+    color: black!important;
 }
 
 /* MENU */
 
+a.button {
+    text-decoration: none !important;
+    color: initial !important;
+}
+
+@media (min-width: 768px){
+    .navbar-nav > li > a {
+        padding-right: 17px !important;
+    }
+}
+.navbar-brand {
+    padding-top: 10px !important;
+}
+
+nav#menu.navbar.navbar-expand-lg.navbar-transparent.fixed-top {
+    bottom: 750px !important;
+}
+
 #headerwrap h1 {
     font-size: 24px !important;
-    margin-top: 110px !important;
+    margin-top: 78px !important;
     margin-bottom: 20px !important;
 }
 
@@ -19,19 +49,16 @@ body {
     background: linear-gradient(to right, #c0392b, #8e44ad) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.navbar a {
-    color: #ffffff !important;
-    font-size: 18px !important;
-}
-
-.navbar a:hover {
-    color: white !important;
-    font-size: 18px !important;
-}
-
 .bg-transparent{
-	transition: all 1s ease;
-}	
+  transition: all 1s ease;
+}  
+
+
+.bg-dark {
+    height: 60px!important;
+    transition: 0.50s!important;
+    top: 2px;
+}
 
 .navbar {
     background: transparent !important;
@@ -74,6 +101,10 @@ button.btn.btn-theme.btn-lg {
 
 /*CATEGORIAS*/
 
+#nombre-rubros{
+    margin-left: -35px !important;
+}
+
 .container-articles {
     border-bottom: 1px solid #333b3e;
 }
@@ -97,6 +128,12 @@ button.btn.btn-theme.btn-lg {
     padding-right: 0px;
 }
 
+
+.navbar a {
+    color: white !important;
+    font-size: 18px !important;
+}
+
 .navbar a:hover {
     color: black !important;
     font-size: 18px !important;
@@ -112,7 +149,7 @@ button.btn.btn-theme.btn-lg {
     color: #eee !important;
     border-color: #eee !important;
 }
-
+ 
 .btn-outline-success:hover {
     color: black !important;
     background-color: white !important; 
@@ -120,6 +157,258 @@ button.btn.btn-theme.btn-lg {
 }*/
 
 
+    .carousel-control-prev {
+        background-color: black !important;
+        top: 47px !important;
+        width: 5% !important;
+        height: 23% !important;
+        border-radius: 50% !important;
+    }
+
+    .carousel-control-next {
+        background-color: black !important;
+        top: 47px !important;
+        width: 5% !important;
+        height: 23% !important;    
+        border-radius: 50% !important;
+    }
+
+    .title{
+        background-color: #d3cdcda3;
+    }
+
+    /* CALIFICACION */
+
+    .btn-grey{
+        background-color:#D8D8D8;
+        color:#FFF;
+    }
+    .navbar-login
+    {
+        width: 305px;
+        padding: 10px;
+        padding-bottom: 0px;
+    }
+
+    .navbar-login-session
+    {
+        padding: 10px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+
+    .icon-size
+    {
+        font-size: 87px;
+    }
+
+
+    /*SERVICIOS*/
+
+    select.form-control:not([size]):not([multiple]) {
+        height: calc(3.25rem + 2px) !important;
+    }
+
+    .experiencia-evidencia {
+        width: 30em;
+        height: 20em;
+    }
+
+    .experiencia {
+        background-color: #F0F0F0;
+    }
+
+    .test {
+        display: inline;
+    }
+
+    .experiencia-descripcion {
+        font-size:20px;
+    }
+
+    .contenido {
+        margin-top: 1.5em;
+    }
+
+    .curriculum-datos > p {
+        font-size: 15px
+    }
+
+    .img-oferta-perfil {
+        height: 150px;
+        max-width: 100%;
+    }
+
+    .precio-oferta-perfil {
+        margin: auto;
+        font-size: 1.3em;
+        text-align: center;
+    }
+
+    .btn-purple {
+        background-color: purple !important;
+    }
+
+    /*RUBROS Y SERVICIOS*/
+    *{
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .tree-structure{
+        list-style: none;
+        clear: both;
+        padding-left: 15px;
+    }
+    .tree-structure li {
+        position: relative;
+    }
+    .tree-structure li a{
+        font-weight: normal;
+        color: #9143a5;
+        text-decoration: none;
+        font-weight: 700;
+        vertical-align: middle;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        display: inline-block;
+        max-width: calc(100% - 50px);
+        vertical-align: top;
+    }
+    .tree-structure li a:hover{
+        padding-left: 5px;
+    }
+    .tree-structure > li > .num{
+        display: inline-block;
+        background: #333;
+        min-width: 24px;
+        padding-left: 0px;
+        padding-right: 0px;
+        text-align: center;
+        padding: 3px 9px;
+        margin-right: 10px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+    }
+    .tree-structure > li > .num:after{
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 100%;
+        background-color: #939393;
+        top: 5px;
+        left: 12px;
+        z-index: -1;
+    }
+    .tree-structure > li:last-child > .num:after{   
+        height: calc(100% - 44px);
+    }
+    .tree-structure ol{
+        padding: 20px 0 20px 45px;
+    }
+    .tree-structure ol li{
+        list-style-type: none;
+        padding: 8px 0
+    }
+    .tree-structure ol li .num{
+        position: relative;
+    }
+    .tree-structure ol li a{
+        color: #000;
+        font-weight: normal;
+    }
+    .tree-structure .num{
+        background-color: #666;
+        min-width: 24px;
+        padding-left: 0px;
+        padding-right: 0px;
+        text-align: center;
+        padding: 3px 9px;
+        margin-right: 10px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .tree-structure  ol  li .num:before{
+        position: absolute;
+        content: "";
+        top: 0;
+        bottom: 0;
+        right: 100%;
+        margin: auto;
+        width: 33px;
+        height: 1px;
+        background-color: #939393;
+    }
+
+    .heading {
+        font-size: 25px;
+        margin-right: 25px;
+    }
+
+    .fa {
+        font-size: 25px;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .text-center {
+    text-align: center!important;
+    color: purple;
+    }
+
+    /* PERFIL */
+    .about{
+     margin: 4em 0;
+     padding: 1em;
+     position: relative;
+ }
+
+ .about h1{
+     color:#F97300;
+     margin: 2em;
+ }
+
+ .about img{
+     height: 100%;
+     width: 100%;
+     border-radius: 50%
+ }
+
+ .about span{
+     display: block;
+     color: #888;
+     position: absolute;
+     left: 115px;
+ }
+
+ .about .desc{
+     padding: 2em;
+     border-left:4px solid #10828C;
+ }
+
+ .about .desc h3{
+     color: #10828C;
+ }
+
+ .about .desc p{
+     line-height:2;
+     color: black;
+ }
+
+ p#nombre {
+    font-size: 50px !important;
+    color: black !important;
 .carousel-control-prev {
     background-color: black !important;
     top: 47px !important;
@@ -136,7 +425,12 @@ button.btn.btn-theme.btn-lg {
     border-radius: 50% !important;
 }
 
+/* CALIFICACION */
 
+.btn-grey{
+    background-color:#D8D8D8;
+    color:#FFF;
+}
 .navbar-login
 {
     width: 305px;
@@ -154,4 +448,357 @@ button.btn.btn-theme.btn-lg {
 .icon-size
 {
     font-size: 87px;
+}
+
+
+/*SERVICIOS*/
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(3.25rem + 2px) !important;
+}
+
+.experiencia-evidencia {
+    width: 30em;
+    height: 20em;
+}
+
+.experiencia {
+    background-color: #F0F0F0;
+}
+.experiencia-descripcion {
+    font-size:20px;
+}
+
+.btn-experiencia-perfil {
+    color: white;
+    font-size: 1.5em !important;
+}
+
+.experiencia-titulo {
+    display: inline;
+}
+
+.experiencia-profile-pic {  
+  width: 4em;
+  height: 4em;
+  border-radius: 100%;
+  margin-right: 1em;
+}
+
+.experiencia-evidencia {
+    width: 30em;
+    height: 20em;
+}
+
+.contenido {
+    margin-top: 1.5em;
+}
+
+.curriculum-datos > p {
+    font-size: 15px;
+}
+
+.img-oferta-perfil {
+    height: 150px;
+    max-width: 100%;
+}
+
+.precio-oferta-perfil {
+    margin: auto;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.btn-purple {
+    background-color: purple !important;
+}
+
+/*RUBROS Y SERVICIOS*/
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.tree-structure{
+    list-style: none;
+    clear: both;
+    padding-left: 15px;
+}
+.tree-structure li {
+    position: relative;
+}
+.tree-structure li a{
+    font-weight: normal;
+    color: #9143a5;
+    text-decoration: none;
+    font-weight: 700;
+    vertical-align: middle;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    max-width: calc(100% - 50px);
+    vertical-align: top;
+}
+.tree-structure li a:hover{
+    padding-left: 5px;
+}
+.tree-structure > li > .num{
+    display: inline-block;
+    background: #333;
+    min-width: 24px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    padding: 3px 9px;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+}
+.tree-structure > li > .num:after{
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: #939393;
+    top: 5px;
+    left: 12px;
+    z-index: -1;
+}
+.tree-structure > li:last-child > .num:after{   
+    height: calc(100% - 44px);
+}
+.tree-structure ol{
+    padding: 20px 0 20px 45px;
+}
+.tree-structure ol li{
+    list-style-type: none;
+    padding: 8px 0
+}
+.tree-structure ol li .num{
+    position: relative;
+}
+.tree-structure ol li a{
+    color: #000;
+    font-weight: normal;
+}
+.tree-structure .num{
+    background-color: #666;
+    min-width: 24px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+    padding: 3px 9px;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.tree-structure  ol  li .num:before{
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    margin: auto;
+    width: 33px;
+    height: 1px;
+    background-color: #939393;
+}
+
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* PERFIL */
+.about{
+   margin: 1em 0;
+   padding: 1em;
+   position: relative;
+}
+
+.about h1{
+   color:#F97300;
+   margin: 2em;
+}
+
+.about img{
+   height: 100%;
+   width: 100%;
+   border-radius: 50%
+}
+
+.about span{
+   display: block;
+   color: #888;
+   position: absolute;
+   left: 115px;
+}
+
+.about .desc{
+   padding: 2em;
+   border-left:4px solid #10828C;
+}
+
+.about .desc h3{
+   color: #10828C;
+}
+
+.about .desc p{
+   line-height:2;
+   color: black;
+}
+
+p#nombre {
+font-size: 50px !important;
+color: black !important;
+}
+
+.pestaña {
+    font-size: x-large !important;
+    color: purple !important;
+}
+
+/*CALIFICACION*/
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top: 10px;
+}
+
+.middle {
+    float: left;
+    width: 70%;
+    margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 0%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 100%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 0%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 0%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 0%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+    .side, .middle {
+        width: 100%;
+    }
+    /* Hide the right column on small screens */
+    .right {
+        display: none;
+    }
+}
+
+/*OFERTA*/
+
+.imagen-oferta {
+    max-width: 100%;
+}
+.titulo-oferta {
+    font-size: 40px !important;
+}
+
+.checked-purple {
+    color: purple;
+}
+
+.checked-orange {
+    color: #DE5D34;
+}
+
+.div-calificacion-oferta {
+    display: -webkit-inline-box;
+    margin-top: 0.5em;
+}
+
+.cantidad-opiniones-oferta {
+    margin-left: 1em;
+}
+
+.usuario-oferta {
+    display: -webkit-box;
+    margin-top: 0.5em;
+}
+
+.usuario-oferta-pic {
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    margin-right: 1em;
+}
+
+.nombre-usuario-oferta {
+    font-weight: bold;
+}
+
+.div-boton-oferta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    margin-left: 15px;
+}
+
+.btn-oferta {
+    width: 100% !important;
+    color: white;
+    font-size: 2em !important;
+}
+
+.tabs-oferta {
+    margin-top: 2em;
+}
+
+.form-control {
+    font-size: 15px !important;
+}
+
+.precio-oferta {
+    font-weight: bold;
+    font-size: 2em !important;
+}
+
+/*Todos los servicios*/
+
+.modal-content {
+
+top: 126px!important;
 }

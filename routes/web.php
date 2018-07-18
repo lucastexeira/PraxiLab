@@ -11,8 +11,18 @@ Route::get('index',[
 
 ]);
 
+Route::get('indexSinRegistro',[
+	'uses' => 'HomeController@indexSinRegistro' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
 Route::get('registro',[
 	'uses' => 'HomeController@registro' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+Route::get('registroSinRegistro',[
+	'uses' => 'HomeController@registroSinRegistro' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
@@ -51,23 +61,62 @@ Route::get('todosLosServicios',[
 
 ]);
 
-//Lista Servicios de un Rubro
+/**Lista Servicios de un Rubro
 Route::get('servicios/{id_rubro}',[
 	'uses' => 'ServicioController@verServiciosPorRubro' //Nombre_del_controlador@Nombre_del_metodo
+
+]);*/
+
+Route::get('servicios/{id_rubro}',[
+	'uses' => 'ServicioController@verServicios' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
 //Lista los usuarios que pertenecen a un servicio
-Route::get('usuariosPorServicio/{id_servicio}',[
-	'uses' => 'ServicioController@verUsuariosServicios' //Nombre_del_controlador@Nombre_del_metodo
-
-]);
+Route::get('usuariosPorServicio/{id_servicio}', 'ServicioController@verUsuariosServicios');
 
 //Rubro por ID
 Route::get('/verRubro/{id_rubro}', 'HomeController@someMethod');
 
-//Adquirir un servicio
+//ir a Wizard
 Route::get('wizard',[
-	'uses' => 'ServicioController@adquirirServicio' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'ServicioController@irAWizard' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
+
+//Crear una practica (Wizard)
+Route::get('createPractica',[
+	'uses' => 'ServicioController@createPractica' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Lista de Practicas Por Estados
+Route::get('listadoPracticasEstados',[
+	'uses' => 'ServicioController@listadoPracticasEstados' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Ir al ABM de Practicas (Lista de Rubros)
+Route::get('abmPractica',[
+	'uses' => 'ServicioController@irAbmPractica' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Oferta
+Route::get('oferta/{id_practica}',[
+	'uses' => 'OfertaController@oferta'
+]);
+
+Route::get('transacciones',[
+	'uses' => 'TransaccionController@verTransacciones' //Nombre_del_controlador@Nombre_del_metodo
+]);
+
+Route::get('cargarEvidencia',[
+	'uses' => 'EvidenciaController@cargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+]);
+
+Route::get('verEvidencia',[
+	'uses' => 'EvidenciaController@verEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+]);
+//Lista de Practicas en abmPractica
+//Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');

@@ -3,8 +3,11 @@
 	<link href="css/estilosLogin.css" rel="stylesheet">
 </head>
 <body>
-
-	@include("layouts.navbar")
+  @if(session()->has('mail'))
+    @include('layouts.navbar')
+  @else 
+      @include('layouts.navbarSinInicio')
+  @endif
 	</br>
 	<div class="container">
 		<div class="col-md-6 col-md-offset-3">

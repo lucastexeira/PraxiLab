@@ -1,45 +1,42 @@
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="css/estilosLogin.css" rel="stylesheet">
-	<link href="css/estilosWizard.css" rel="stylesheet">
+@include("layouts.cabecera");
+    <link href="{{asset('css/estilosWizard.css')}}" rel="stylesheet">
+    
+     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-@include("layouts.navbar");
+  @if(session()->has('mail'))
+    @include('layouts.navbar')
+  @else 
+      @include('layouts.navbarSinInicio')
+  @endif
+  
 <div class="container">
-	<div class="row">
-		<div class="well">
+    <div class="row">
+        <div class="well">
         <div class="wizard">
             <div class="wizard-inner">
                 <div class="connecting-line"></div>
                 <ul class="nav nav-tabs" role="tablist">
 
-                    <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                    <li role="presentation" id="iconoPaso1" class="active">
+                        <a href="" id="irAPaso1" data-toggle="tab" aria-controls="step1" role="tab" title="Paso 1">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-folder-open"></i>
                             </span>
                         </a>
                     </li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                    <li role="presentation" id="iconoPaso2" class="disabled">
+                        <a href="" id="irAPaso2" data-toggle="tab" aria-controls="step2" role="tab" title="Paso 2">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-pencil"></i>
                             </span>
                         </a>
                     </li>
-                    <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-picture"></i>
-                            </span>
-                        </a>
-                    </li>
 
-                    <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                    <li role="presentation" id="iconoPaso3" class="disabled">
+                        <a href="" id="irAPaso3" data-toggle="tab" aria-controls="complete" role="tab" title="Finalizado">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-ok"></i>
                             </span>
@@ -47,80 +44,236 @@
                     </li>
                 </ul>
             </div>
-            <form role="form">
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <form action=" createPractica/{{ $practica->id }}" role="form" id="formularioWizard" class="formularioWizard" method="">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
-                        <h3>Step 1</h3>
-                        <p>This is step 1</p>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-primary next-step">Guardar y continuar?</button></li>
-                        </ul>
+
+                        <h3 class="h3Rubros">Elegir el Rubro que corresponde con su práctica.</h3>
+                        <h3 class="h3Servicios">Elegir el Servicio que corresponde con su práctica.</h3>
+
+                        <div class="col-md-12" id="contenedor">
+                            <div id="listadoRubros">
+                                <div class="imagenRubroSinSeleccion">  
+                                  @foreach ($rubros as $rubro)
+                                    <button class="botonRubro" type="button" id="botonRubro">
+                                        <img width="150" height="100" alt="{{ $rubro->id }}" src="{{ $rubro->imagen }}"/>
+                                        <p>{{ $rubro->nombre_rubro }}</p>
+                                    </button>
+                                   @endforeach
+                                </div>
+
+                                <div class="imagenRubroSeleccionado" id="rubroSeleccionado">  
+                                    <button class="botonRubro" type="button">
+                                        <img width="150" height="100" id="imgRubro" src=""/>
+                                        <p class="nombreRubroSeleccionado"></p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-4" id="col-servicio">
+                                <div class="servicios">
+                                    <ol>
+                                    @foreach ($servicios as $servicio)
+                                            <a id="listaServicios" href="#step2">
+                                                <h4 class="center-block servicioSeleccionado" id="{{ $servicio->id }}" >
+                                                    {{ $servicio->nombre_servicio }}
+                                                </h4>
+                                            </a>
+                                    @endforeach
+                                    
+                                    </ol>
+
+                                    <input name="id_servicio" id="id_servicio" type="hidden" value=""/>
+
+                                    <!--input name="id_practicante" id="id_practicante" type="hidden" value="2"/-->
+
+                                    <input name="id_voluntario" id="id_voluntario" type="hidden" value=""/>
+                                 </div>
+                            </div>
+                            <div>
+                                <button type="button" id="botonStep1" class="btn btn-theme
+                                btn-lg next-step"> Guardar y continuar</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step2">
-                        <h3>Step 2</h3>
-                        <p>This is step 2</p>
+                        <h3>Describe la Práctica</h3>
+                        
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="descripcion">Nombre</label>
+                                    <input name="nombre_practica" type="text" id="nombre_practica" class="form-control" placeholder="Nombre de la Practica" required="required" value="{{ $practica->nombre_practica }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcion">Descripción</label>
+                                    <textarea name="descripcion" cols="40" rows="4" class="form-control" required="required" value="{{ $practica->descripcion }}"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <input name="imagen_practica" type="hidden" id="imagen_practica" required="required" value="img/logos/logo_default.png"/>
+                                <!--div class="form-group">
+                                    <label for="imagen">Imagen</label>
+                                    <input name="imagen" type="file" id="imagen" placeholder="Imagen de la Practica" class="form-control" required>
+                                </div-->
+
+                                <!--div class="form-group">
+                                    <label for="precio">Monto ofrecido</label>
+                                    <input name="precio" type="number" id="precio" class="form-control" placeholder="Monto ofrecido" required>
+                                </div-->
+                            </div>
+                        </div>
+
                         <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                            <button type="submit" class="btn btn-theme btn-lg next-step" id="botonStep2">Guardar y Finalizar</button>
                         </ul>
                     </div>
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                        <h3>Step 3</h3>
-                        <p>This is step 3</p>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+            </form>
+                    <div class="tab-pane text-center" role="tabpanel" id="complete">
+                        <h2>¡Se ha creado la práctica exitosamente!</h2>
+
+                        <ul class="list-group">
+                          <li class="list-group-item" style="color:black"><b>Rubro</b> Cursos y Clases</li>
+                          <li class="list-group-item" style="color:black"><b>Servicio</b> {{ $practica->id_servicio }}</li>
+                          <li class="list-group-item" style="color:black"><b>Práctica</b>  {{ $practica->id_practica }} - {{ $practica->nombre_practica }}</li>
+                          <li class="list-group-item" style="color:black"><b>Descripción</b>  {{ $practica->descripcion }}</li>
                         </ul>
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="complete">
-                        <h3>Complete</h3>
-                        <p>You have successfully completed all steps.</p>
+
+                        </br>
+                        <button type="button" class="btn btn-theme btn-lg next-step">
+                            <a href="{{ 'oferta' }}">Ir a mi práctica</a>
+                        </button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-            </form>
         </div>
     </div>
    </div>
 </div>
-<footer>
-@include("layouts.pie")
 
-<script type="text/javascript">
-	$(document).ready(function () {
-    //Initialize tooltips
-    $('.nav-tabs > li a[title]').tooltip();
-    
-    //Wizard
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+<script>
+    $(document).ready(function(){
 
-        var $target = $(e.target);
-    
-        if ($target.parent().hasClass('disabled')) {
-            return false;
+    //PASO 1    
+        //Oculto el rubro a seleccionar y los servicios
+        $("#imgRubro").hide();
+        $(".nombreRubroSeleccionado").hide();
+        $(".servicios").hide();
+        $(".h3Servicios").hide();
+        $("#botonStep1").hide();
+
+        //$('#class-rubro').attr('class', 'col-md-2').hide();
+
+        $(".servicioSeleccionado").click(function(){
+            var servicioID = $(this).attr("id");
+
+            var i;
+            for (i = 1; i < 9; i++) { 
+                $('#' + i).removeClass('servicioClickeado');
+            }
+            $('#' + servicioID).addClass('servicioClickeado');
+            $('#id_servicio').attr('value', servicioID);
+            $("#botonStep1").show();
+            $('#botonStep1').addClass('col-md-2');
+        });
+
+        $("img").click(function(){
+        
+            var rubroID = $(this).attr("alt");
+            var rubroIMG = $(this).attr("src");
+
+            $('#rubroSeleccionado').addClass('col-md-3');
+            // eliminar una clase del elemento
+            
+
+            if(rubroID){
+              $.ajax({
+                type:"GET",
+                url:"{{url('wizard')}}?id="+rubroID,
+                success:function(res){
+                  if(res){
+                    //Oculto listado de rubros con efecto lento
+                    $(".imagenRubroSinSeleccion").toggle("slow");
+                     
+                     //Cuando se selecciona un rubro, agrego el id e imagen (para guardarlo) al rubro y lo muestro
+
+                     $('#imgRubro').attr('alt', rubroID).show("slow");
+                     $('#imgRubro').attr('src', rubroIMG).show("slow");
+
+                     //Muestro listado de servicios por ID de Rubro
+                     $(".servicios").show("slow");
+                     $(".h3Rubros").hide();
+                     $(".h3Servicios").show();
+
+                    $.each(res,function(key,value){
+                      $("#id_servicio").append('<option value="'+key+'">'+value+'</option>');
+                      $("#imgRubro").append('<p>"'+value+'"</p>');
+                    });
+                  }else{
+                    $("#id_servicio").empty();
+                  }
+                }
+            });
         }
     });
 
-    $(".next-step").click(function (e) {
 
-        var $active = $('.wizard .nav-tabs li.active');
-        $active.next().removeClass('disabled');
-        nextTab($active);
+    //PASO 2
+        //Si apreto el boton de confirmar y continuar del PASO 1, deshabilito al icono1
+        $("#botonStep1").click(function(){
+            
+            $('#iconoPaso1').addClass('disabled');
+            $('#irAPaso2').attr('href', '#step2');
+        });
 
-    });
-    $(".prev-step").click(function (e) {
+        //Si apreto el boton de confirmar y finalizar del PASO 2, deshabilito al icono2
+        $("#botonStep2").click(function(){
+            
+            $('#irAPaso2').removeAttr('href', '#step2');
+            $('#iconoPaso2').addClass('disabled');
+            $('#irAPaso3').attr('href', '#complete');
 
-        var $active = $('.wizard .nav-tabs li.active');
-        prevTab($active);
+        }); 
 
-    });
+
+        //Initialize tooltips
+        $('.nav-tabs > li a[title]').tooltip();
+        
+        //Wizard
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+            var $target = $(e.target);
+        
+            if ($target.parent().hasClass('disabled')) {
+                return false;
+            }
+        });
+
+        $(".next-step").click(function (e) {
+
+            var $active = $('.wizard .nav-tabs li.active');
+            $active.next().removeClass('disabled');
+            nextTab($active);
+
+        });
 });
 
 function nextTab(elem) {
-    $(elem).next().find('a[data-toggle="tab"]').click();
+$(elem).next().find('a[data-toggle="tab"]').click();
 }
 function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
+  
+
 </script>
+<footer>
+@include("layouts.pie")
+
+
