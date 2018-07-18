@@ -83,6 +83,7 @@ class HomeController extends Controller
             //Si encuentro un mail, lo meto en una variable de sesion
             $req->session()->put('mail', $mail);
             session(['mail' => $mail]); //usando el helper
+
             
             return Redirect::to('/index');
         }

@@ -111,7 +111,6 @@ $buscador= array();
             $practica->imagen_practica = Input::get('imagen_practica');
             $practica->id_practicante = $servicioId;
             $practica->id_servicio = Input::get('id_servicio');
-            $practica->id_voluntario = Input::get('id_voluntario');
             $practica->save();
         }
     }
