@@ -9,57 +9,61 @@
       @include('layouts.navbarSinInicio')
   @endif
 
+  @foreach ($practicaPersona as $Persona)
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-md-5">
-						<img class="imagen-oferta" src="{{asset('') }}">
-					</div>
-					<div class="col-md-7">
-						<div class="div-descripcion-corta-oferta">
-							<h1 class="titulo-oferta">nombre</h1>
-							<div class="usuario-oferta">
-								<img src="{{asset('')}}" class="usuario-oferta-pic">
-								<p class="nombre-usuario-oferta">username</p>
-							</div>
-							<div class="div-calificacion-oferta">
-								<span class="fa fa-star checked-purple"></span>
-								<span class="fa fa-star checked-purple"></span>
-								<span class="fa fa-star checked-purple"></span>
-								<span class="fa fa-star checked-purple"></span>
-								<span class="fa fa-star"></span>
-								<p class="cantidad-opiniones-oferta">2 opiniones</p>
-							</div>
-							<div class="div-precio-oferta">
-								<p class="precio-oferta">$80</p>
-							</div>
-							<div class="div-boton-oferta">
-								<button type="button" class="btn btn-lg btn-purple btn-oferta" data-toggle="modal" data-target="#myModal">Practicar</button>
-							</div>
-
-							<!-- Modal -->
-							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							      </div>
-							      <div class="modal-body">
-							        ¿Está seguro que desea iniciar la práctica?
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
-							        <a href="{{ 'listadoPracticasEstados' }}">
-							        	<button type="button" class="btn btn-primary">Continuar</button>
-							        </a>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-
+					<form action=" adquirirPractica" role="form" id="formulario" class="formulario" method="">
+					<input type="hidden" name="_method" value="PUT">
+                	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<div class="col-md-5">
+							<img class="imagen-oferta" src="{{asset('$Persona->imagen_practica') }}">
 						</div>
-					</div>
+						<div class="col-md-7">
+							<div class="div-descripcion-corta-oferta">
+								<input name="id_practica" id="id_practica" type="hidden" value="{{ $Persona->practica_id }}"/>
+								<h1 class="titulo-oferta">{{ $Persona->nombre_practica }}</h1>
+								<div class="usuario-oferta">
+									<img src="{{asset('$Persona->img')}}" class="usuario-oferta-pic">
+									<p class="nombre-usuario-oferta">{{ $Persona->username }}</p>
+								</div>{{ $Persona->practica_id }}
+								<div class="div-calificacion-oferta">
+									<span class="fa fa-star checked-purple"></span>
+									<span class="fa fa-star checked-purple"></span>
+									<span class="fa fa-star checked-purple"></span>
+									<span class="fa fa-star checked-purple"></span>
+									<span class="fa fa-star"></span>
+									<p class="cantidad-opiniones-oferta">2 opiniones</p>
+								</div>
+								<div class="div-precio-oferta">
+									<p class="precio-oferta">{{ $Persona->precio }}</p>
+								</div>
+								<div class="div-boton-oferta">
+									<button type="button" class="btn btn-lg btn-purple btn-oferta" data-toggle="modal" data-target="#myModal">Practicar</button>
+								</div>
+
+								<!-- Modal -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								      </div>
+								      <div class="modal-body">
+								        ¿Está seguro que desea iniciar la práctica?
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+								        <button type="submit" class="btn btn-primary">Continuar</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
+							</div>
+						</div>
+					</form>
 				</div>
 				<ul class="nav nav-tabs tabs-oferta" id="myTab" role="tablist">
 					<li class="nav-item col-lg-6">
@@ -71,11 +75,11 @@
 				</ul>
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade active show" id="descripcion" role="tabpanel" aria-labelledby="descripcion-tab">
-					@foreach ($practicaPersona as $Persona)
+					
 						<div class="contenido">
 							{{ $Persona->descripcion }}
 						</div>
-					@endforeach
+					
 					</div>
 					<div class="tab-pane fade" id="calificacion" role="tabpanel" aria-labelledby="calificacion-tab">
 						<div class="container contenido">
@@ -151,5 +155,5 @@
 			</div>
 		</div>
 	</div>
-
+	@endforeach
 	@include("layouts.pie")
