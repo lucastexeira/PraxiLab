@@ -84,11 +84,11 @@ class HomeController extends Controller
             $req->session()->put('mail', $mail);
             session(['mail' => $mail]); //usando el helper
             
-            return Redirect::to('/index')->with('notice', 'Bienvenidx.');
+            return Redirect::to('/index');
         }
         else {
             // echo "Login Failed!";
-            return Redirect::to('/inicioSesion')->with('notice', 'MAL.');
+            return Redirect::to('/inicioSesion');
         }
                 // attempt to do the login
  
