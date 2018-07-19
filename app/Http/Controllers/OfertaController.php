@@ -8,6 +8,7 @@ use App\Persona;
 use App\Rubro;
 use App\Servicio;
 use App\Practica;
+use App\Historial_Practica;
 use App\PersonasServicios;
 use App\Http\Requests;
 use Exception;
@@ -23,6 +24,7 @@ class OfertaController extends Controller
 {
     public function oferta($id){ 
 
+        $historial_practicas = new Historial_Practica();
         $rubros = Rubro::all();
         $practicaPersona = DB::Select('select practicas.id as practica_id, nombre_practica, img, imagen_practica, username, precio, descripcion from practicas 
         							   inner join personas on practicas.id_practicante = personas.id 
@@ -31,7 +33,7 @@ class OfertaController extends Controller
         /*      $practicaPersona= Practica::where('id', $id)->first();
         $practicaPersona->Persona = Persona::where('id', $practicaPersona->id_practicante)->first();*/
 
-        return view('oferta')->with('rubros', $rubros)->with('practicaPersona', $practicaPersona); 
+        return view('oferta')->with('rubros', $rubros)->with('practicaPersona', $practicaPersona)->with('historial_practicas', $historial_practicas); 
         //dd($practicaPersona);
     }
 
@@ -44,10 +46,13 @@ class OfertaController extends Controller
         if ( $req ){
             $idVoluntario = DB::table('personas')->where('mail', $req)->first()->id;
         
-            $historial_practicas = new HitorialPracticas();
+            $historial_practicas = new Hitorial_Practica();
             $historial_practicas->id_estado = '1';
             $historial_practicas->id_voluntario = $idVoluntario;
+            $historial_practicas->id_practica = Input::get('id_practica');
             $historial_practicas->save();
+
+            return Redirect::to('/index')->with('notice', 'El usuario ha sido creado correctamente, Inicie Sesión');
         }
     }
 }

@@ -14,7 +14,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="row">
-					<form action=" adquirirPractica" role="form" id="formulario" class="formulario" method="">
+					<form action=" adquirirPractica/{{$historial->id}}" role="form" id="formulario" class="formulario" method="">
 					<input type="hidden" name="_method" value="PUT">
                 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="col-md-5">
@@ -27,7 +27,7 @@
 								<div class="usuario-oferta">
 									<img src="{{asset('$Persona->img')}}" class="usuario-oferta-pic">
 									<p class="nombre-usuario-oferta">{{ $Persona->username }}</p>
-								</div>{{ $Persona->practica_id }}
+								</div>
 								<div class="div-calificacion-oferta">
 									<span class="fa fa-star checked-purple"></span>
 									<span class="fa fa-star checked-purple"></span>
