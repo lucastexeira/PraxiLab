@@ -10,8 +10,8 @@
       </div>
       @endif
       
-      <a class="navbar-brand" href="index">
-        <img width="100" src="img/logos/Logo blanco y negro transparente 2.png" class="logo">
+      <a class="navbar-brand" href="{{url('index')}}">
+        <img width="100" src="{{asset('img/logos/Logo blanco y negro transparente 2.png')}}" class="logo">
         <!--img width="80" src="img/logo.png" alt=""-->
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
