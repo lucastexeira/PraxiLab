@@ -46,13 +46,11 @@ class OfertaController extends Controller
         if ( $req ){
             $idVoluntario = DB::table('personas')->where('mail', $req)->first()->id;
         
-            $historial_practicas = new Hitorial_Practica();
+            $historial_practicas = new Historial_Practica();
             $historial_practicas->id_estado = '1';
             $historial_practicas->id_voluntario = $idVoluntario;
             $historial_practicas->id_practica = Input::get('id_practica');
             $historial_practicas->save();
-
-            return Redirect::to('/index')->with('notice', 'El usuario ha sido creado correctamente, Inicie Sesión');
         }
     }
 }

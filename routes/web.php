@@ -107,6 +107,12 @@ Route::get('oferta/{id_practica}',[
 	'uses' => 'OfertaController@oferta'
 ]);
 
+//Crear una practica (Wizard)
+Route::get('adquirirPractica',[
+	'uses' => 'OfertaController@adquirirPractica' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
 Route::get('transacciones',[
 	'uses' => 'TransaccionController@verTransacciones' //Nombre_del_controlador@Nombre_del_metodo
 ]);

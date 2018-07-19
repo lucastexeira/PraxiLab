@@ -13,19 +13,20 @@
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="row">
-					<form action=" adquirirPractica/{{$historial->id}}" role="form" id="formulario" class="formulario" method="">
+				<div class="row"> 
+					<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+					<form action="{{asset('adquirirPractica/'.$historial_practicas->id.'')}}" role="form" id="formulario" class="formulario" method="">
 					<input type="hidden" name="_method" value="PUT">
                 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="col-md-5">
-							<img class="imagen-oferta" src="{{asset('$Persona->imagen_practica') }}">
+							<img class="imagen-oferta" src="{{asset($Persona->imagen_practica) }}">
 						</div>
 						<div class="col-md-7">
 							<div class="div-descripcion-corta-oferta">
 								<input name="id_practica" id="id_practica" type="hidden" value="{{ $Persona->practica_id }}"/>
 								<h1 class="titulo-oferta">{{ $Persona->nombre_practica }}</h1>
 								<div class="usuario-oferta">
-									<img src="{{asset('$Persona->img')}}" class="usuario-oferta-pic">
+									<img src="{{asset($Persona->img)}}" class="usuario-oferta-pic">
 									<p class="nombre-usuario-oferta">{{ $Persona->username }}</p>
 								</div>
 								<div class="div-calificacion-oferta">
