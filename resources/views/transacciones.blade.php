@@ -92,22 +92,37 @@
 			<div class="tab-pane fade" id="creditos" role="tabpanel" aria-labelledby="creditos-tab">
 				<div class="panel panel-default contenido">
 					
-					<form action=”https://www.paypal.com/cgi-bin/webscr” method=”post”>
+					<!--<form action=”https://www.paypal.com/cgi-bin/webscr” method=”post”>-->
 
 						<div class="card-body">
 
 							<div class="row">
-				                <div class="center-block nav-item col-lg-5 col-lg-offset-1"  ><h1>Compra de creditos</h1>
-				                	<br>
-				                    <div class="form-group"  width="50%" >
-				                        <label for="text">Cantidad de creditos</label>
-				                        <input name="canCredito" type="text" id="canCredito" class="form-control" placeholder="Monto Deseado" required="true" style= "width:60%"/>
-				                    </div>
-				                    <div class="form-group">
-				                        <label for="text">Precio Total</label>
-				                        <input name="precioTotal" type="text" id="precioTotal" class="form-control" placeholder="Precio" style= "width:60%"/>
-				                    </div>
-								</div>
+
+
+
+
+				                <form method="post" action="compra">
+						            <div class="card-body">
+						                <div>
+
+						                    <div class="form-group">
+						                        <label for="MONTO">Monto</label>
+						                        <input name="monto" id="monto" class="form-control" placeholder="Monto Deseado"/>
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="PRECIO">Precio</label>
+						                        <input name="precio" id="precio" class="form-control" placeholder="Precio Total"/>
+						                    </div>
+
+						                    <input type="submit" class="btn btn-primary btn-block" value="Comprar"/>
+						                </div>
+						            </div>
+					            </form>
+
+
+
+
+
 
 				                <div class="center-block nav-item col-lg-5 col-lg-offset-1" ><h1>Suscripción</h1>
 				                	<br>
@@ -143,7 +158,7 @@
 								</div>
 		           		</div>
 
-					</form>
+					<!--</form>-->
 
 				</div>
 			</div>

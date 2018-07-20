@@ -120,3 +120,8 @@ Route::get('verEvidencia',[
 ]);
 //Lista de Practicas en abmPractica
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
+
+//Route::get('mp', 'MercadoPagoController@compraMP' );
+
+Route::get('compra', 'MercadoPagoController@compraMP');
+Route::post('compra', 'MercadoPagoController@compraMP');
