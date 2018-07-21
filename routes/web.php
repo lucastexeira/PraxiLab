@@ -118,5 +118,14 @@ Route::get('cargarEvidencia',[
 Route::get('verEvidencia',[
 	'uses' => 'EvidenciaController@verEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 ]);
+
+Route::get('editarPerfil/{id_persona}',[
+	'uses' => 'HomeController@editarPerfil'
+]);
+
+Route::get('edit/{id}',[
+	'uses' => 'HomeController@edit' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
 //Lista de Practicas en abmPractica
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');

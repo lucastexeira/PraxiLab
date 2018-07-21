@@ -1,5 +1,6 @@
 @include("layouts.cabecera")
 <link href="{{asset('css/oferta.css')}}" rel="stylesheet">
+<title>{{$persona->nombre}} {{$persona->apellido}} - PraxiLab</title>
 </head>
 <body>
 

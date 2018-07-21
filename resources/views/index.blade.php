@@ -1,6 +1,7 @@
  @include("layouts.cabecera")
  <!--Estilo de la lista de practicas-->
  <link href="{{asset('css/usuariosPorServicio.css')}}" rel="stylesheet">
+ <title>Inicio - PraxiLab</title>
 </head>
 
 <body>

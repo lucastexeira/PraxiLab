@@ -65,10 +65,19 @@ class HomeController extends Controller
     }
 
     public function edit($id){
+        $rubros = Rubro::all();
         $persona = Persona::where('id', $id)->first();
-        $curriculum_persona = Persona::where('id_persona' = $id);
+        $curriculum_persona = Persona::where('id_persona', $id);
 
-        dd($curriculum_persona);
+        $persona->nombre = Input::get('nombre');
+        $persona->apellido = Input::get('apellido');
+        $persona->mail = Input::get('mail');
+        $persona->provincia = Input::get('provincia');
+        $persona->pais = Input::get('pais');
+        $persona->telefono = Input::get('telefono');
+        $persona->save();
+
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
     }
  
     public function inicioSesion(){
@@ -114,6 +123,13 @@ class HomeController extends Controller
         
         return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
         //dd($persona);
+    }
+
+    public function editarPerfil($id) {
+        $rubros = Rubro::all();
+        $persona= Persona::where('id', $id)->first(); 
+        
+        return view('editarPerfil')->with('rubros', $rubros)->with('persona', $persona);
     }
 
 }

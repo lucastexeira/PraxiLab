@@ -20,7 +20,7 @@ class personasSeeder extends Seeder
             [ 'username' => 'DamianR', 'nombre'=>'Damian', 'apellido' => 'Rosa', 'telefono' => '4444-5555', 'mail' => 'Usuario1@mail.com', 'provincia' => '', 'zona' => '',
             'pais' => '', 'descripcion' => 'Buscando personas para realizar mis practicas','cantidad_creditos' => '1', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'', 'password' => '123456'],
 
-            [ 'username' => 'LucasT', 'nombre'=>'Lucas', 'apellido' => 'TexeiraTresManzanas', 'telefono' => '5555-4444', 'mail' => 'Usuario2@mail.com', 'provincia' => '', 'zona' => '',
+            [ 'username' => 'LucasT', 'nombre'=>'Lucas', 'apellido' => 'Texeira', 'telefono' => '5555-4444', 'mail' => 'Usuario2@mail.com', 'provincia' => '', 'zona' => '',
             'pais' => '', 'descripcion' => 'Buscando personas para realizar mis practicas', 'cantidad_creditos' => '1', 'estado' => '1', 'cant_practicas_hechas' => '1', 'img' =>'img/team/profile-pics.jpg', 'password' => '123456'],
 
             [ 'username' => 'KarenM', 'nombre'=>'Karmen', 'apellido' => 'Monsanto', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
