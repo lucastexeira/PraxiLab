@@ -95,16 +95,11 @@
 					<!--<form action=”https://www.paypal.com/cgi-bin/webscr” method=”post”>-->
 
 						<div class="card-body">
-
 							<div class="row">
-
-
-
-
 				                <form method="post" action="compra">
-						            <div class="card-body">
+						           {!! csrf_field()  !!}
+									<div class="card-body">
 						                <div>
-
 						                    <div class="form-group">
 						                        <label for="MONTO">Monto</label>
 						                        <input name="monto" id="monto" class="form-control" placeholder="Monto Deseado"/>
