@@ -130,7 +130,7 @@
 						<div class="col-4">
 							<div class="curriculum-datos">
 								<h3>Email</h3>
-								<p>mail@gmail.com</p>
+								<p>{{ $persona->mail }}</p>
 							</div>
 						</div>
 						<div class="col-4">

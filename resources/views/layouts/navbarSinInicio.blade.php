@@ -35,10 +35,10 @@
                    
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="{{ 'inicioSesion' }}">Iniciá Sesión <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{ asset('inicioSesion') }}">Iniciá Sesión <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ 'registro' }}">Registrate</a>
+          <a class="nav-link" href="{{ asset('registro') }}">Registrate</a>
         </li>
       </ul>
     </div>

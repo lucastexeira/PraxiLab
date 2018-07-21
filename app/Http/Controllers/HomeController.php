@@ -63,6 +63,13 @@ class HomeController extends Controller
  
         return Redirect::to('/inicioSesion')->with('notice', 'El usuario ha sido creado correctamente, Inicie Sesión');
     }
+
+    public function edit($id){
+        $persona = Persona::where('id', $id)->first();
+        $curriculum_persona = Persona::where('id_persona' = $id);
+
+        dd($curriculum_persona);
+    }
  
     public function inicioSesion(){
  
