@@ -174,9 +174,9 @@
             <br>
             
               @if(session()->has('mail'))
-            <a href="{{ 'wizard' }}">
+                <a href="{{ 'wizard' }}">
               @else 
-            <a href="{{ 'inicioSesion' }}">
+                <a href="{{ 'inicioSesion' }}">
               @endif
             
               <button style="border: 1px black solid; color: white; background-color: transparent!important;" type="button" class="button btn btn-theme btn-lg col-md-6" title="Realizá prácticas y adquirí experiencia">

@@ -41,7 +41,15 @@
 									<p class="precio-oferta">{{ $Persona->precio }}</p>
 								</div>
 								<div class="div-boton-oferta">
-									<button type="button" class="btn btn-lg btn-purple btn-oferta" data-toggle="modal" data-target="#myModal">Practicar</button>
+									@if(session()->has('mail'))
+						                <button type="button" class="btn btn-lg btn-purple btn-oferta" data-toggle="modal" data-target="#myModal">	Practicar
+									</button>
+						            @else 
+						            	<a href="{{asset('inicioSesion')}}">
+							               <button type="button" class="btn btn-lg btn-purple btn-oferta">	Practicar
+											</button>
+										</a>
+						            @endif
 								</div>
 
 								<!-- Modal -->

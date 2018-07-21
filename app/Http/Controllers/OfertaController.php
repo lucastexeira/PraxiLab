@@ -10,15 +10,18 @@ use App\Servicio;
 use App\Practica;
 use App\Historial_Practica;
 use App\PersonasServicios;
+use App\Evidecia;
 use App\Http\Requests;
 use Exception;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Image;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Session; 
+use DateTime;
 
 class OfertaController extends Controller
 {
@@ -27,8 +30,8 @@ class OfertaController extends Controller
         $historial_practicas = new Historial_Practica();
         $rubros = Rubro::all();
         $practicaPersona = DB::Select('select practicas.id as practica_id, nombre_practica, img, imagen_practica, username, precio, descripcion from practicas 
-        							   inner join personas on practicas.id_practicante = personas.id 
-        							   where practicas.id = '.$id.'');
+                                       inner join personas on practicas.id_practicante = personas.id 
+                                       where practicas.id = '.$id.'');
 
         /*      $practicaPersona= Practica::where('id', $id)->first();
         $practicaPersona->Persona = Persona::where('id', $practicaPersona->id_practicante)->first();*/
@@ -51,6 +54,43 @@ class OfertaController extends Controller
             $historial_practicas->id_voluntario = $idVoluntario;
             $historial_practicas->id_practica = Input::get('id_practica');
             $historial_practicas->save();
+
+            $rubros = Rubro::all();
+            
+            return view('/listadoPracticasEstados')->with('rubros',$rubros);
+        }
+    }
+
+    public function irAcargarEvidencia(Request $request){
+
+        $evidencia = new Evidecia();
+        $rubros = Rubro::all();
+        //$servicios = Servicio::where('id_rubro', $request->id_rubro)->pluck('id');
+
+        return view('/cargarEvidencia')->with('rubros',$rubros)->with('evidencia',$evidencia);
+
+        //dd($servicios);
+    }
+
+    public function createEvidencia(Request $req){
+
+        //$session_id = session()->getId();
+        $req = Session::get('mail');
+        $now = new \DateTime();
+        $now->format('d-m-Y H:i:s');
+
+        if ( $req ){
+            //$servicioId = DB::table('personas')->where('mail', $req)->first()->id;
+        
+            $evidencia = new Evidecia();
+            $evidencia->pathevidencia = Input::get('pathevidencia');
+            $evidencia->fecha = $now;
+            $evidencia->id_practica = '1';
+            $evidencia->save();
+
+            $rubros = Rubro::all();
+            
+            return view('/listadoPracticasEstados')->with('rubros',$rubros);
         }
     }
 }

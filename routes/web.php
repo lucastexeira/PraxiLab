@@ -126,3 +126,15 @@ Route::get('verEvidencia',[
 ]);
 //Lista de Practicas en abmPractica
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
+
+//ir a Cargar Evidencia
+Route::get('cargarEvidencia',[
+	'uses' => 'OfertaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Cargar Evidencia
+Route::get('createEvidencia',[
+	'uses' => 'OfertaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
