@@ -92,7 +92,7 @@ Route::get('createPractica',[
 
 //Lista de Practicas Por Estados
 Route::get('listadoPracticasEstados',[
-	'uses' => 'ServicioController@listadoPracticasEstados' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'PracticasController@listadoPracticasEstados' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
