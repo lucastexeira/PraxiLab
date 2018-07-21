@@ -10,7 +10,10 @@
       @include('layouts.navbarSinInicio')
   @endif
 
-<form method="POST" action="cargarEvidencia">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<form method="" role="form" action="createEvidencia">
+	<input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 	<div class="container panel panel-default ">
 
@@ -33,9 +36,10 @@
 			    </div>
 			  </div>
 			  <div class="file-upload-content">
-			    <img class="file-upload-image" src="#" alt="your image" />
+			    <img class="file-upload-image" value="img/logos/logo_default.png" id="pathevidencia" name="pathevidencia" alt="Imagen Evidencia" />
+			    <input type="hidden" id="pathevidencia" name="pathevidencia" value="img/logos/logo_default.png">
 			    <div class="image-title-wrap">
-			      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+			      <button type="button" onclick="removeUpload()" class="remove-image">Borrar <span class="image-title">Uploaded Image</span></button>
 			    </div>
 			  </div>
 			</div>
