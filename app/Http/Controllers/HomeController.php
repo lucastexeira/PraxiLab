@@ -89,7 +89,7 @@ class HomeController extends Controller
         }
         else {
             // echo "Login Failed!";
-            return Redirect::to('/inicioSesion')->with('notice', 'MAL.');
+            return Redirect::to('/inicioSesion');
         }
                 // attempt to do the login
  
