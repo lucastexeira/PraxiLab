@@ -20,7 +20,7 @@ use Session;
 class ServicioController extends Controller
 {
     public function verTodosLosServicios(){
-$buscador= array();
+        $buscador= array();
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
                     //->orWhere('body', 'like', '%'.Input::get('buscador').'%')
                     ->orderBy('id', 'desc')->get();
