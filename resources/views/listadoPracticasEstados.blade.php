@@ -46,7 +46,6 @@
 
 				        </div>
 				        </br>
-
 						<table class="table table-striped">
 		                	<thead>
 						      <tr>
@@ -59,6 +58,17 @@
 						    </thead>
 
 						    <tbody>
+
+						    	@foreach ($practicasDelPracticante as $soyPrac)
+						          <tr>
+							        <td>{{ $soyPrac->nombre }} {{ $soyPrac->apellido }} - {{ $soyPrac->mail }} - {{ $soyPrac->telefono }}</td>
+							        <td><a href=" {{ 'oferta' }} ">{{ $soyPrac->nombre_practica }}</td></a>
+							        <td>${{ $soyPrac->precio }}</td>
+							        <td>{{ $soyPrac->created_at }}</td>
+							        <td>{{ $soyPrac->estado }}</td>
+							        <td><a href="#"><button type="button" class="btn btn-success btn-lg" >Comenzar</button></a></td>
+							      </tr>
+						        @endforeach
 						      <tr>
 						        <td>Florencia - florc@gmail.com - 44448888</td>
 						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
@@ -122,9 +132,6 @@
 			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
 				<div class="panel panel-default contenido">
 					<div class="panel-body">
-						<div class="card-header">
-	                    	<h1 class="text-center">Mi listado de Prácticas</h1>
-	            		</div>
 
 	            		</br>
 	            		<div class="col-lg-4">
@@ -138,7 +145,9 @@
 
 				        </div>
 				        </br>
-
+				        @foreach ($practicasDelVoluntario as $soyVol)
+				        	{{ $soyVol->id }}
+				        @endforeach
 						<table class="table table-striped">
 		                	<thead>
 						      <tr>

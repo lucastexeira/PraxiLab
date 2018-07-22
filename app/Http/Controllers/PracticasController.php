@@ -9,6 +9,7 @@ use App\Servicio;
 use App\Practica;
 use App\Estado;
 use App\Historial_Practica;
+use Illuminate\Support\Facades\DB;
 use Session; 
 
 class PracticasController extends Controller
@@ -19,9 +20,31 @@ class PracticasController extends Controller
         $req = Session::get('mail');
         $user = Persona::where('mail', $req)->first()->id;
 
-        $soyPracticante = Practica::where('id_practicante', $user)->get();
+        //Traigo todas las practicas en donde el id del practicante coincida con el logueado
+        
 
-        $soyPracticante->Historial_Practica = Historial_Practica::where('id', $soyPracticante->id)->get();
+        /*$todasLasPracticas = Practica::where('id_practicante', $user)->get();
+
+        $practicasDelVoluntario = Historial_Practica::where('id_voluntario', $user)->where('password', '=', $password)->get();
+
+        $practicasDelPracticante = Historial_Practica::where('id_voluntario', '!=' , $user)->get();
+        */
+
+        $practicasDelPracticante = DB::table('practicas')
+            ->join('historial_practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+            ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
+            ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
+            ->select('personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono', 'practicas.nombre_practica', 'practicas.precio', 'historial_practicas.created_at', 'estados.estado')
+            ->where('practicas.id_practicante', $user)
+            ->where('historial_practicas.id_voluntario', '!=', $user)
+            ->get();
+
+        $practicasDelVoluntario = DB::table('practicas')
+            ->join('historial_practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+            ->select('practicas.*')
+            ->where('practicas.id_practicante', $user)
+            ->where('historial_practicas.id_voluntario', $user)
+            ->get();
 
         //$idPra = Practica::where('id_practicante', $user)->get()->id;
         //$estados = Estado::where('id_practica', '$idPra')->get();
@@ -29,8 +52,8 @@ class PracticasController extends Controller
         //$estados = Estado::where('id_practica', $soyPracticante->id);
         //$soyVoluntario = ;
         
-        //return view('/listadoPracticasEstados')->with('rubros',$rubros);
+        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante);
 
-        dd($soyPracticante->Historial_Practica);
+        //dd($soyPracticante);
     }
 }
