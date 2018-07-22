@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Persona;
 use MP;
 use Session;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class MercadoPagoController extends Controller
 {
@@ -36,7 +39,12 @@ class MercadoPagoController extends Controller
         );
 
         $preference = $mp->create_preference($preference_data);
-        
+
+        $monto = Input::get('monto');
+
+        $inser=DB::table('personas')
+                    ->where('mail', $mail)
+                    ->update(['creditos_cantidad' => $monto]);
 
     //     //Create Customer
     //      $mp->post (
@@ -67,7 +75,7 @@ class MercadoPagoController extends Controller
     //         )
     //     );
 
-        print_r ($preference_data);
+       dd($inser);
     }
 
 
