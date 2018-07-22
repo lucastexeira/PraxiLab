@@ -7,7 +7,6 @@ use App\Rubro;
 use App\Servicio;
 use App\Persona;
 use App\Practica;
-use App\Estado;
 use App\PersonasServicios;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -78,22 +77,13 @@ class ServicioController extends Controller
         //dd($servicios);
     }
 
-    public function listadoPracticasEstados(Request $req){
+    public function listadoPracticasEstados(){
 
         $rubros = Rubro::all();
-        $req = Session::get('mail');
-        $user = Persona::where('mail', $req)->first()->id;
-
-        $soyPracticante = Practica::where('id_practicante', $user)->get();
-        $idPra = Practica::where('id_practicante', $user)->get()->id;
-        $estados = Estado::where('id_practica', '$idPra')->get();
-
-        //$estados = Estado::where('id_practica', $soyPracticante->id);
-        //$soyVoluntario = ;
         
-        //return view('/listadoPracticasEstados')->with('rubros',$rubros);
+        return view('/listadoPracticasEstados')->with('rubros',$rubros);
 
-        dd($soyPracticante->id);
+        //dd($servicios);
     }
 
     public function irAbmPractica(Request $request){

@@ -25,7 +25,7 @@ use DateTime;
 
 class OfertaController extends Controller
 {
-    public function oferta(Request $req, $id){ 
+    public function oferta($id){ 
 
         $historial_practicas = new Historial_Practica();
         $rubros = Rubro::all();
@@ -33,13 +33,12 @@ class OfertaController extends Controller
                                        inner join personas on practicas.id_practicante = personas.id 
                                        where practicas.id = '.$id.'');
 
-        $practicaPersona= Practica::where('id', $id)->first();
-        $practicaPersona->Persona = Persona::where('id', $practicaPersona->id_practicante)->first();
+        /*$practicaPersona= Practica::where('id', $id)->first();
+        $practicaPersona->Persona = Persona::where('id', $practicaPersona->id_practicante)->first();*/
 
         return view('oferta')->with('rubros', $rubros)->with('practicaPersona', $practicaPersona)->with('historial_practicas', $historial_practicas); 
         //dd($practicaPersona);
     }
-
     
     public function adquirirPractica(Request $req){
 
