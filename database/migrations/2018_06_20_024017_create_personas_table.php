@@ -23,6 +23,7 @@ class CreatePersonasTable extends Migration
             $table->string('provincia')->nullable();
             $table->string('zona')->nullable(); 
             $table->string('pais')->nullable();
+            $table->longtext('descripcion')->nullable();
             $table->float('cantidad_creditos')->nullable();
             $table->integer('estado')->nullable(); // esto es para definir si el usuario fue borrado 
             $table->integer('cantpracticas_hechas')->nullable(); /* esto es util para validar que el usuario voluntario hizo 

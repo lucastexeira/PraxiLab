@@ -63,6 +63,22 @@ class HomeController extends Controller
  
         return Redirect::to('/inicioSesion')->with('notice', 'El usuario ha sido creado correctamente, Inicie Sesión');
     }
+
+    public function edit($id){
+        $rubros = Rubro::all();
+        $persona = Persona::where('id', $id)->first();
+        $curriculum_persona = Persona::where('id_persona', $id);
+
+        $persona->nombre = Input::get('nombre');
+        $persona->apellido = Input::get('apellido');
+        $persona->mail = Input::get('mail');
+        $persona->provincia = Input::get('provincia');
+        $persona->pais = Input::get('pais');
+        $persona->telefono = Input::get('telefono');
+        $persona->save();
+
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
+    }
  
     public function inicioSesion(){
  
@@ -101,9 +117,20 @@ class HomeController extends Controller
       return redirect('/index');
     }
 
-    public function perfil(){
+    public function perfil($id){
         $rubros = Rubro::all();
-        return view('perfil')->with('rubros', $rubros);
+        //$persona = DB::Select('select * from personas where personas.id = '.$id.'')->get();
+        $persona= Persona::where('id', $id)->first(); 
+        
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
+        //dd($persona);
+    }
+
+    public function editarPerfil($id) {
+        $rubros = Rubro::all();
+        $persona= Persona::where('id', $id)->first(); 
+        
+        return view('editarPerfil')->with('rubros', $rubros)->with('persona', $persona);
     }
 
 }
