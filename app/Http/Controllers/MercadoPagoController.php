@@ -22,14 +22,17 @@ class MercadoPagoController extends Controller
         $mp->sandbox_mode(TRUE);
         //https://api.mercadopago.com/users/8472593339549232/mercadopago_account/balance?access_token=bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6
 
-        
+        $monto = Input::get('monto');
+
+        $precio = $monto + $monto * 0.05;
+
         $preference_data = array(
             "items" => array(
                 array(
                     "title" => "Trisky Gato",
                     "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
-                    "unit_price" => 0.05
+                    "unit_price" => $precio
                     )
                 ),
             "payer" => array(
@@ -49,9 +52,9 @@ class MercadoPagoController extends Controller
 
         $preference = $mp->create_preference($preference_data);
 
-        $cantidadCreditosActual = DB::table('personas')->where('mail', $mail)->first(['cantidad_creditos']);
 
-        $monto = Input::get('monto');
+        // Actualiza la cantidad de creditos del usuario y crea registro en la rabla transacciones
+        $cantidadCreditosActual = DB::table('personas')->where('mail', $mail)->first(['cantidad_creditos']);
 
         floatval($monto);
 
@@ -62,12 +65,8 @@ class MercadoPagoController extends Controller
         $montoAGuardar = $monto + $cant;
 
         DB::table('personas')
-                    ->where('mail', $mail)
-                    ->update(['cantidad_creditos' => $montoAGuardar]);
-
-        /*DB::table('transacciones')->insert([
-            ['monto_transferido' => '654', 'id_emisor' => '0', 'id_destinatario' => $idUser , 'historial_practica' => '0']
-        ]);*/
+                ->where('mail', $mail)
+                ->update(['cantidad_creditos' => $montoAGuardar]);
 
         $transaccion = new Transaccion();
         $transaccion->monto_transferido = $monto;
@@ -75,6 +74,19 @@ class MercadoPagoController extends Controller
         $transaccion->id_destinatario = $usuario;
         $transaccion->historial_practica = null;
         $transaccion->save();
+
+       dd($preference_data);
+    }
+
+
+    /*public function beforeAction($action)
+    {
+        if ($action->id == 'notification') {
+            $this->enableCsrfValidation = false;
+        }
+
+        return parent::beforeAction($action);
+    }*/
 
 
     //     //Create Customer
@@ -105,18 +117,4 @@ class MercadoPagoController extends Controller
     //             "data" => $data
     //         )
     //     );*/
-
-       dd($montoAGuardar);
-    }
-
-
-    /*public function beforeAction($action)
-    {
-        if ($action->id == 'notification') {
-            $this->enableCsrfValidation = false;
-        }
-
-        return parent::beforeAction($action);
-    }*/
-
 }
