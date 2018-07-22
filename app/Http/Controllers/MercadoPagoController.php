@@ -57,6 +57,8 @@ class MercadoPagoController extends Controller
 
         $cant = $cantidadCreditosActual->cantidad_creditos;
 
+        $usuario = $idUser->id;
+
         $montoAGuardar = $monto + $cant;
 
         DB::table('personas')
@@ -69,9 +71,9 @@ class MercadoPagoController extends Controller
 
         $transaccion = new Transaccion();
         $transaccion->monto_transferido = $monto;
-        $transaccion->id_emisor = 0;
-        $transaccion->id_destinatario = $idUser;
-        $transaccion->historial_practica = 0;
+        $transaccion->id_emisor = $usuario;
+        $transaccion->id_destinatario = $usuario;
+        $transaccion->historial_practica = null;
         $transaccion->save();
 
 
