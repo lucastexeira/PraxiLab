@@ -10,8 +10,8 @@
       </div>
       @endif
       
-      <a class="navbar-brand" href="index">
-        <img width="100" src="img/logos/Logo blanco y negro transparente 2.png" class="logo">
+      <a class="navbar-brand" href="{{url('index')}}">
+        <img width="100" src="{{asset('img/logos/Logo blanco y negro transparente 2.png')}}" class="logo">
         <!--img width="80" src="img/logo.png" alt=""-->
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +35,10 @@
                    
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="{{ 'inicioSesion' }}">Iniciá Sesión <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{ asset('inicioSesion') }}">Iniciá Sesión <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ 'registro' }}">Registrate</a>
+          <a class="nav-link" href="{{ asset('registro') }}">Registrate</a>
         </li>
       </ul>
     </div>
