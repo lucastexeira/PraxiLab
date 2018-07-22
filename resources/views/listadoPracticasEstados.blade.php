@@ -145,9 +145,7 @@
 
 				        </div>
 				        </br>
-				        @foreach ($practicasDelVoluntario as $soyVol)
-				        	{{ $soyVol->id }}
-				        @endforeach
+				        
 						<table class="table table-striped">
 		                	<thead>
 						      <tr>
@@ -160,6 +158,17 @@
 						    </thead>
 
 						    <tbody>
+
+						    	@foreach ($practicasDelVoluntario as $soyVol)
+						          <tr>
+							        <td>{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }} - {{ $soyVol->telefono }}</td>
+							        <td><a href=" {{ 'oferta' }} ">{{ $soyVol->nombre_practica }}</td></a>
+							        <td>${{ $soyVol->precio }}</td>
+							        <td>{{ $soyVol->created_at }}</td>
+							        <td>{{ $soyVol->estado }}</td>
+							        <td><a href="#"><button type="button" class="btn btn-success btn-lg" >Comenzar</button></a></td>
+							      </tr>
+						        @endforeach
 						      <tr>
 						        <td>Florencia - florc@gmail.com - 44448888</td>
 						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
