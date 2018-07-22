@@ -92,7 +92,7 @@ Route::get('createPractica',[
 
 //Lista de Practicas Por Estados
 Route::get('listadoPracticasEstados',[
-	'uses' => 'ServicioController@listadoPracticasEstados' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'PracticasController@listadoPracticasEstados' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
@@ -105,6 +105,12 @@ Route::get('abmPractica',[
 //Oferta
 Route::get('oferta/{id_practica}',[
 	'uses' => 'OfertaController@oferta'
+]);
+
+//Crear una practica (Wizard)
+Route::get('adquirirPractica',[
+	'uses' => 'OfertaController@adquirirPractica' //Nombre_del_controlador@Nombre_del_metodo
+
 ]);
 
 Route::get('transacciones',[
@@ -129,3 +135,15 @@ Route::get('edit/{id}',[
 ]);
 //Lista de Practicas en abmPractica
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
+
+//ir a Cargar Evidencia
+Route::get('cargarEvidencia',[
+	'uses' => 'OfertaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Cargar Evidencia
+Route::get('createEvidencia',[
+	'uses' => 'OfertaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);

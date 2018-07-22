@@ -7,6 +7,7 @@ use App\Rubro;
 use App\Servicio;
 use App\Persona;
 use App\Practica;
+use App\Estado;
 use App\PersonasServicios;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -19,7 +20,7 @@ use Session;
 class ServicioController extends Controller
 {
     public function verTodosLosServicios(){
-$buscador= array();
+    $buscador= array();
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
                     //->orWhere('body', 'like', '%'.Input::get('buscador').'%')
                     ->orderBy('id', 'desc')->get();
@@ -77,13 +78,22 @@ $buscador= array();
         //dd($servicios);
     }
 
-    public function listadoPracticasEstados(){
+    public function listadoPracticasEstados(Request $req){
 
         $rubros = Rubro::all();
-        
-        return view('/listadoPracticasEstados')->with('rubros',$rubros);
+        $req = Session::get('mail');
+        $user = Persona::where('mail', $req)->first()->id;
 
-        //dd($servicios);
+        $soyPracticante = Practica::where('id_practicante', $user)->get();
+        $idPra = Practica::where('id_practicante', $user)->get()->id;
+        $estados = Estado::where('id_practica', '$idPra')->get();
+
+        //$estados = Estado::where('id_practica', $soyPracticante->id);
+        //$soyVoluntario = ;
+        
+        //return view('/listadoPracticasEstados')->with('rubros',$rubros);
+
+        dd($soyPracticante->id);
     }
 
     public function irAbmPractica(Request $request){
@@ -112,6 +122,10 @@ $buscador= array();
             $practica->id_practicante = $servicioId;
             $practica->id_servicio = Input::get('id_servicio');
             $practica->save();
+
+            $rubros = Rubro::all();
+            
+            return view('/listadoPracticasEstados')->with('rubros',$rubros);
         }
     }
 
