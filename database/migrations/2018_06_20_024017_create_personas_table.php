@@ -31,7 +31,6 @@ class CreatePersonasTable extends Migration
             $table->string('img');
             $table->string('password')->nullable(); 
             $table->integer('practicas_cantidad')->nullable();
-            $table->integer('creditos_cantidad')->nullable();
             $table->timestamps();
         });
     }
