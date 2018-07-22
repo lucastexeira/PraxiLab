@@ -1,13 +1,13 @@
-	
 	@include("layouts.cabecera")
 	<link href="css/estilosLogin.css" rel="stylesheet">
+	<title>Iniciar sesión - PraxiLab</title>
 </head>
 <body>
-  @if(session()->has('mail'))
-    @include('layouts.navbar')
-  @else 
-      @include('layouts.navbarSinInicio')
-  @endif
+	@if(session()->has('mail'))
+		@include('layouts.navbar')
+	@else 
+		@include('layouts.navbarSinInicio')
+	@endif
 	</br>
 	<div class="container">
 		<div class="col-md-6 col-md-offset-3">

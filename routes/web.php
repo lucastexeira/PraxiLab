@@ -46,7 +46,7 @@ Route::post('login', 'HomeController@login');
 Route::get('logout', 'HomeController@logout');
 
 //Inicio de Sesion - (login y logout)
-Route::get('perfil',[
+Route::get('perfil/{id_persona}',[
 	'uses' => 'HomeController@perfil'
 ]);
 //Rubros y Servicios
@@ -92,7 +92,7 @@ Route::get('createPractica',[
 
 //Lista de Practicas Por Estados
 Route::get('listadoPracticasEstados',[
-	'uses' => 'ServicioController@listadoPracticasEstados' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'PracticasController@listadoPracticasEstados' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
@@ -107,6 +107,12 @@ Route::get('oferta/{id_practica}',[
 	'uses' => 'OfertaController@oferta'
 ]);
 
+//Crear una practica (Wizard)
+Route::get('adquirirPractica',[
+	'uses' => 'OfertaController@adquirirPractica' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
 Route::get('transacciones',[
 	'uses' => 'TransaccionController@verTransacciones' //Nombre_del_controlador@Nombre_del_metodo
 ]);
@@ -118,8 +124,29 @@ Route::get('cargarEvidencia',[
 Route::get('verEvidencia',[
 	'uses' => 'EvidenciaController@verEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 ]);
+
+Route::get('editarPerfil/{id_persona}',[
+	'uses' => 'HomeController@editarPerfil'
+]);
+
+Route::get('edit/{id}',[
+	'uses' => 'HomeController@edit' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
 //Lista de Practicas en abmPractica
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
+
+//ir a Cargar Evidencia
+Route::get('cargarEvidencia',[
+	'uses' => 'OfertaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Cargar Evidencia
+Route::get('createEvidencia',[
+	'uses' => 'OfertaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
 
 //Route::get('mp', 'MercadoPagoController@compraMP' );
 

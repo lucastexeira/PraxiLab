@@ -20,7 +20,7 @@ use Session;
 class ServicioController extends Controller
 {
     public function verTodosLosServicios(){
-        $buscador= array();
+    $buscador= array();
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
                     //->orWhere('body', 'like', '%'.Input::get('buscador').'%')
                     ->orderBy('id', 'desc')->get();
@@ -122,6 +122,10 @@ class ServicioController extends Controller
             $practica->id_practicante = $servicioId;
             $practica->id_servicio = Input::get('id_servicio');
             $practica->save();
+
+            $rubros = Rubro::all();
+            
+            return view('/listadoPracticasEstados')->with('rubros',$rubros);
         }
     }
 

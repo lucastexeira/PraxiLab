@@ -17,10 +17,10 @@ class CreateCurriculumsTable extends Migration
             $table->increments('id');
             $table->string('formacion_academica')->nullable();
             $table->string('formacion_complementaria')->nullable();
-            $table->string('eperiencia')->nullable();
-            $table->string('descripcion')->nullable();
+            $table->string('experiencia')->nullable();
+            $table->longtext('descripcion')->nullable(); //Descripcion iria en Persona
             $table->string('idiomas')->nullable();
-            $table->string('referecias')->nullable();
+            $table->string('referencias')->nullable();
             $table->string('otros_datos')->nullable();
             $table->unsignedInteger('id_persona');
 

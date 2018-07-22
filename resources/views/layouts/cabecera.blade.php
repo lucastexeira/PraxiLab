@@ -8,8 +8,6 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="{{asset('ico/favicon.png')}}">
 
-    <title>PraxiLab</title>
-
     <link href="{{asset('css/hover_pack.css')}}" rel="stylesheet">
 
     <!-- Mi estilo CSS -->
