@@ -18,7 +18,6 @@ class CreateCurriculumsTable extends Migration
             $table->string('formacion_academica')->nullable();
             $table->string('formacion_complementaria')->nullable();
             $table->string('experiencia')->nullable();
-            $table->longtext('descripcion')->nullable(); //Descripcion iria en Persona
             $table->string('idiomas')->nullable();
             $table->string('referencias')->nullable();
             $table->string('otros_datos')->nullable();

@@ -121,31 +121,72 @@
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
-					<div class="row">
-						<div class="col-4">
-							<div class="curriculum-datos">
-								<h3>Fecha de nacimiento</h3>
-								<p>23/05/1994</p>
-							</div>
+					<a href="{{url('editarCurriculum/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+					@if ($curriculum->formacion_academica != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>FORMACIÓN ACADÉMICA</h2>
 						</div>
-						<div class="col-4">
-							<div class="curriculum-datos">
-								<h3>Email</h3>
-								<p>{{ $persona->mail }}</p>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="curriculum-datos">
-								<h3>Profesion</h3>
-								<p>Electricista</p>
-							</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->formacion_academica }}</p>
 						</div>
 					</div>
-					<div class="curriculum-datos">
-						<h3>Educación</h3>
-						<p><strong>Universidad Nacional de La Matanza</strong></p>
-						<p>Tecnicatura en Desarrollo Web</p>
+					@endif
+
+					@if ($curriculum->formacion_complementaria != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>FORMACIÓN COMPLEMENTARIA</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->formacion_complementaria }}</p>
+						</div>
 					</div>
+					@endif
+					
+					@if ($curriculum->experiencia != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>EXPERIENCIA</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->experiencia }}</p>
+						</div>
+					</div>
+					@endif
+
+					@if ($curriculum->idiomas != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>IDIOMAS</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->idiomas }}</p>
+						</div>
+					</div>
+					@endif
+
+					@if ($curriculum->referencias != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>REFERENCIAS</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->referencias }}</p>
+						</div>
+					</div>
+					@endif
+
+					@if ($curriculum->otros_datos != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>OTROS DATOS</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->otros_datos }}</p>
+						</div>
+					</div>
+					@endif
 				</div>
 			</div>
 

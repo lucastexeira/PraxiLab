@@ -8,6 +8,7 @@ use App\Rubro;
 use App\Servicio;
 use App\Practica;
 use App\PersonasServicios;
+use App\Curriculum;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
@@ -77,7 +78,7 @@ class HomeController extends Controller
         $persona->telefono = Input::get('telefono');
         $persona->save();
 
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
+        return $this->perfil($persona->id);
     }
  
     public function inicioSesion(){
@@ -119,16 +120,15 @@ class HomeController extends Controller
 
     public function perfil($id){
         $rubros = Rubro::all();
-        //$persona = DB::Select('select * from personas where personas.id = '.$id.'')->get();
-        $persona= Persona::where('id', $id)->first(); 
+        $persona = Persona::where('id', $id)->first();
+        $curriculum = Curriculum::where('id_persona', $id)->first();
         
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
-        //dd($persona);
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum);
     }
 
     public function editarPerfil($id) {
         $rubros = Rubro::all();
-        $persona= Persona::where('id', $id)->first(); 
+        $persona = Persona::where('id', $id)->first();
         
         return view('editarPerfil')->with('rubros', $rubros)->with('persona', $persona);
     }
