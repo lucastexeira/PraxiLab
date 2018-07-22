@@ -102,11 +102,11 @@
 						                <div>
 						                    <div class="form-group">
 						                        <label for="MONTO">Monto</label>
-						                        <input name="monto" id="monto" class="form-control" placeholder="Monto Deseado"/>
+						                        <input name="monto" id="monto" class="form-control" placeholder="Monto Deseado" type="number"/>
 						                    </div>
 						                    <div class="form-group">
 						                        <label for="PRECIO">Precio</label>
-						                        <input name="precio" id="precio" class="form-control" placeholder="Precio Total"/>
+						                        <input name="precio" id="precio" class="form-control" placeholder="Precio Total" type="number"/>
 						                    </div>
 
 						                    <input type="submit" class="btn btn-primary btn-block" value="Comprar"/>
