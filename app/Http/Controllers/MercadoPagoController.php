@@ -29,7 +29,7 @@ class MercadoPagoController extends Controller
         $preference_data = array(
             "items" => array(
                 array(
-                    "title" => "Trisky Gato",
+                    "title" => "Creditos Praxilab",
                     "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
                     "unit_price" => $precio
@@ -75,7 +75,7 @@ class MercadoPagoController extends Controller
         $transaccion->historial_practica = null;
         $transaccion->save();
 
-       dd($preference_data);
+       dd($preference);
     }
 
 
