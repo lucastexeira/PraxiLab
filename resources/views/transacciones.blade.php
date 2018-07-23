@@ -96,27 +96,30 @@
 
 						<div class="card-body">
 							<div class="row">
-				                <form method="post" action="compra">
-						           {!! csrf_field()  !!}
-									<div class="card-body">
-						                <div>
-						                    <div class="form-group">
-						                        <label for="MONTO">Monto</label>
-						                        <input name="monto" id="monto" class="form-control" placeholder="Monto Deseado" type="number"/>
-						                    </div>
-						                    <div class="form-group">
-						                        <label for="PRECIO">Precio</label>
-						                        <input name="precio" id="precio" class="form-control" placeholder="Precio Total" type="number"/>
-						                    </div>
+								<div class="center-block nav-item col-lg-5 col-lg-offset-1"> 
+									<form method="post" action="compra">
+									{!! csrf_field()  !!}
+										<div class="card-body ">
+											<div>
+												<div class="form-group">
+													<label for="MONTO">Monto</label>
+													<input name="monto" id="monto" class="form-control" placeholder="Monto Deseado" type="number"/>
+												</div>
 
-						                    <input type="submit" class="btn btn-primary btn-block" value="Comprar"/>
-						                </div>
-						            </div>
-					            </form>
+												<div class="form-group">
+													<label>Precio Total</label>
+													<p id = "montoCalculado"></p>
+												</div>
 
+												<div class="form-group">
+													<p>Cada compra de credito tiene un %5 de recargo sobre el monto total</p>
+												</div>
 
-
-
+												<input type="submit" class="btn btn-primary btn-block" value="Calcular Crecio"/>
+											</div>
+										</div>
+									</form>
+								</div>
 
 
 				                <div class="center-block nav-item col-lg-5 col-lg-offset-1" ><h1>Suscripción</h1>
@@ -141,14 +144,7 @@
 			                    <br>
 			                    <div class="nav nav-tabs">
 			                    	<div class="center-block">
-					                    <a href="#">
 											<img src="{{asset('img/logos/mercadoPago.png')}}"  width="50%" height="85%" class="center-block"/>
-										</a>
-									</div>
-									<div class="center-block">
-										<a href="#">
-											<img src="{{asset('img/logos/paypal.png')}}"  width="60%" height="65%" class="center-block"/>
-										</a>
 									</div>
 								</div>
 		           		</div>
@@ -160,4 +156,14 @@
 
 		</div>
 	</div>
+
+
+	<script>
+    $( document ).ready(function() {
+		$('#monto').on('keyup', function(){
+			var monto = parseInt(this.value) + parseInt(this.value)*0.05;
+			$('#montoCalculado').html(monto);
+		});
+	});
+    </script>
 	@include("layouts.pie")

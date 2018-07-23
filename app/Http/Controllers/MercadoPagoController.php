@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Persona;
 use App\Transaccion;
+use App\Rubro;
 use MP;
 use Session;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Redirect;
 
 class MercadoPagoController extends Controller
 {
@@ -74,10 +76,12 @@ class MercadoPagoController extends Controller
         $transaccion->id_destinatario = $usuario;
         $transaccion->historial_practica = null;
         $transaccion->save();
+        
+        $url = $preference['response']['init_point'];
 
-       dd($preference);
+        return Redirect::to($url);
+        //dd($preference);
     }
-
 
     /*public function beforeAction($action)
     {
