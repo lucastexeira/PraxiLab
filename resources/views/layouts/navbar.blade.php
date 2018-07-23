@@ -60,12 +60,12 @@
                     </li>
                   </ul>
                 </li>
-              </ul>
+              </ul\
 
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                    <img src="{{asset('$imagen')}}" class="img-circle" alt="Usuario" height="50px" width="50px">
+                    <img src="" class="img-circle" alt="Usuario" height="50px" width="50px">
                     LucasT
                   </a>
 
