@@ -29,7 +29,7 @@ class OfertaController extends Controller
 
         $historial_practicas = new Historial_Practica();
         $rubros = Rubro::all();
-        $practicaPersona = DB::Select('select practicas.id as practica_id, nombre_practica, img, imagen_practica, username, precio, descripcion from practicas 
+        $practicaPersona = DB::Select('select practicas.id as practica_id, nombre_practica, img, imagen_practica, username, precio, practicas.descripcion from practicas 
                                        inner join personas on practicas.id_practicante = personas.id 
                                        where practicas.id = '.$id.'');
 
