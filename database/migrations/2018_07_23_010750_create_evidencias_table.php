@@ -17,9 +17,9 @@ class CreateEvidenciasTable extends Migration
             $table->increments('id');
             $table->string('pathevidencia');//imagen de la practica hecha
             $table->date('fecha');
-            $table->unsignedInteger('id_practica');
+            $table->unsignedInteger('id_historial');
 
-            $table->foreign('id_practica')->references('id')->on('practicas');
+            $table->foreign('id_historial')->references('id')->on('historial_practicas');
             
             $table->timestamps();
         });

@@ -137,7 +137,7 @@ Route::get('edit/{id}',[
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
 
 //ir a Cargar Evidencia
-Route::get('cargarEvidencia',[
+Route::get('cargarEvidencia/{cargarEvidencia}',[
 	'uses' => 'OfertaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
@@ -145,5 +145,17 @@ Route::get('cargarEvidencia',[
 //Cargar Evidencia
 Route::get('createEvidencia',[
 	'uses' => 'OfertaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Update estado a comenzar
+Route::get('updateEstadoComenzar/{id_historial_practicas}',[
+	'uses' => 'PracticasController@updateEstadoComenzar' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Update estado a terminar
+Route::get('updateEstadoTerminar/{id_historial_practicas}',[
+	'uses' => 'PracticasController@updateEstadoTerminar' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);

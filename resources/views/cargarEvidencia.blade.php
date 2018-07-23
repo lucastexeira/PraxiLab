@@ -21,7 +21,7 @@
 
 			<div class="row mt centered ">
 		      <div class="col-lg-8 col-lg-offset-2">
-		        <h1>Carga de evidencia en la practica: Nombre de la practica</h1>
+		        <h1>Carga de evidencia en la practica: {{ $practicaEvidencia->id_practica }}</h1>
 		        <hr>
 		      </div>
 		    </div>
