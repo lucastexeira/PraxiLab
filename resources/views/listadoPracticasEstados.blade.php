@@ -94,7 +94,7 @@
 											  </div>
 											</div>
 										@else
-											<a href=" {{ 'cargarEvidencia' }} ">
+											<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
 										    	<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
 											</a>
 										@endif
@@ -170,7 +170,7 @@
 						        <td>$60</td>
 						        <td>04/06/2018</td>
 						        <td>Sin Calificar</td>
-						        <td><a href=" {{ 'cargarEvidencia' }} "><button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button></a></td>
+						        <td><a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} "><button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button></a></td>
 						      </tr>
 						      <tr>
 						        <td>Ariel - arielgabrielr@gmail.com - 44447777</td>

@@ -60,13 +60,19 @@ class OfertaController extends Controller
         }
     }
 
-    public function irAcargarEvidencia(Request $request){
+    public function irAcargarEvidencia(Request $request, $id_historial_practicas){
 
         $evidencia = new Evidecia();
         $rubros = Rubro::all();
+
+        /*
+        $practicaEvidencia = DB::Select('select practicas.* from historial_practicas inner join practicas on practicas.id = historial_practicas.id_practica where historial_practicas.id = '.$id_historial_practicas.'')->first();
+*/
+        $practicaEvidencia = Historial_Practica::where('id_practica',$id_historial_practicas)->first();
+
         //$servicios = Servicio::where('id_rubro', $request->id_rubro)->pluck('id');
 
-        return view('/cargarEvidencia')->with('rubros',$rubros)->with('evidencia',$evidencia);
+        return view('/cargarEvidencia')->with('rubros',$rubros)->with('evidencia',$evidencia)->with('practicaEvidencia',$practicaEvidencia);
 
         //dd($servicios);
     }

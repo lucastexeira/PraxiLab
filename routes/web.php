@@ -137,7 +137,7 @@ Route::get('edit/{id}',[
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
 
 //ir a Cargar Evidencia
-Route::get('cargarEvidencia',[
+Route::get('cargarEvidencia/{cargarEvidencia}',[
 	'uses' => 'OfertaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
