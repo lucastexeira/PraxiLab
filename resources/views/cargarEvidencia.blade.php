@@ -11,7 +11,7 @@
   @endif
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<form method="" role="form" action="createEvidencia">
+<form method="" role="form" action="{{url('createEvidencia/'.$practicaEvidencia->id.'')}}"> 
 	<input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -21,7 +21,7 @@
 
 			<div class="row mt centered ">
 		      <div class="col-lg-8 col-lg-offset-2">
-		        <h1>Carga de evidencia en la practica: {{ $practicaEvidencia->id_practica }}</h1>
+		        <h1>Carga de evidencia en la practica: <i>{{ $practicaEvidencia->nombre_practica }}</i></h1><img src="{{asset($practicaEvidencia->imagen_practica )}}" class="img-rounded" width="100" height="80" alt="Imagen Practica"> 
 		        <hr>
 		      </div>
 		    </div>
@@ -47,7 +47,7 @@
 
 		<div class="form-group">
             <label for="Comentario"><h3>Comentario</h3></label>
-            <input name="Comentario" type="text" id="Comentario" class="form-control" placeholder="Escriba un comentario" required="required"/>
+            <input name="Comentario" type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario" required="required" value="{{ $calificacionescomentarios->comentario }}"/>
         </div>
 
         <br>
@@ -57,7 +57,7 @@
 
 	        	@for($i=1;$i<6;$i++)
 
-					<input class="star star-4" id="star-{{$i}}" type="radio" name="star"/>
+					<input class="star star-4" id="star-{{$i}}" type="radio" id="calificacion" name="calificacion" value="{{ $calificacionescomentarios->calificacion }}"/>
 					<label class="star star-4" for="star-{{$i}}"></label>
 
 				@endfor

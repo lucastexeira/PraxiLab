@@ -24,22 +24,18 @@ class PracticasController extends Controller
         $practicasDelPracticante = DB::table('practicas')
             ->join('historial_practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
             ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
-            //->join('personas', 'personas.id', '=', 'practicas.id_practicante')
             ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
             ->select('personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono', 'practicas.nombre_practica', 'practicas.precio', 'historial_practicas.id_practica', 'historial_practicas.created_at', 'historial_practicas.id_estado', 'historial_practicas.id as id_historial_practicas', 'estados.estado')
             ->where('historial_practicas.id_voluntario', '!=', $user)
-            //->where('practicas.id_practicante', $user)
             ->get();
 
 
         $practicasDelVoluntario = DB::table('practicas')
             ->join('historial_practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
             ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
-            //->join('personas', 'personas.id', '=', 'practicas.id_practicante')
             ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
             ->select('personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono', 'practicas.nombre_practica', 'practicas.precio', 'historial_practicas.id_practica', 'historial_practicas.id as id_historial_practicas', 'historial_practicas.created_at', 'estados.estado')
             ->where('historial_practicas.id_voluntario', $user)
-            //->where('practicas.id_practicante', $user)
             ->get();
         
         return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante);
@@ -54,7 +50,6 @@ class PracticasController extends Controller
                 ->where('id_estado', 1)
                 ->update(['id_estado' => 2]);
 
-
             return Redirect::to('/listadoPracticasEstados');
         }
 
@@ -66,7 +61,6 @@ class PracticasController extends Controller
                 ->where('id', $id_historial_practicas)
                 ->where('id_estado', 2)
                 ->update(['id_estado' => 3]);
-
 
             return Redirect::to('/listadoPracticasEstados');
         }
