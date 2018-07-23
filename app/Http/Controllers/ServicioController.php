@@ -7,7 +7,6 @@ use App\Rubro;
 use App\Servicio;
 use App\Persona;
 use App\Practica;
-use App\Estado;
 use App\PersonasServicios;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -21,12 +20,14 @@ class ServicioController extends Controller
 {
     public function verTodosLosServicios(){
     $buscador= array();
+
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                    //->orWhere('body', 'like', '%'.Input::get('buscador').'%')
-                    ->orderBy('id', 'desc')->get();
+                    ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                    ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
+                    ->orderBy('practicas.id', 'desc')->get();
                     $rubros = Rubro::All();
                     $servicios = Servicio::all();
-        
+
         return view('todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers);
         //dd($pracPers);
     }
@@ -78,22 +79,13 @@ class ServicioController extends Controller
         //dd($servicios);
     }
 
-    public function listadoPracticasEstados(Request $req){
+    public function listadoPracticasEstados(){
 
         $rubros = Rubro::all();
-        $req = Session::get('mail');
-        $user = Persona::where('mail', $req)->first()->id;
-
-        $soyPracticante = Practica::where('id_practicante', $user)->get();
-        $idPra = Practica::where('id_practicante', $user)->get()->id;
-        $estados = Estado::where('id_practica', '$idPra')->get();
-
-        //$estados = Estado::where('id_practica', $soyPracticante->id);
-        //$soyVoluntario = ;
         
-        //return view('/listadoPracticasEstados')->with('rubros',$rubros);
+        return view('/listadoPracticasEstados')->with('rubros',$rubros);
 
-        dd($soyPracticante->id);
+        //dd($servicios);
     }
 
     public function irAbmPractica(Request $request){
