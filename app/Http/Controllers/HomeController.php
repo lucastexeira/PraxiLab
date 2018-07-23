@@ -133,4 +133,28 @@ class HomeController extends Controller
         return view('editarPerfil')->with('rubros', $rubros)->with('persona', $persona);
     }
 
+    public function editarCurriculum($id) {
+        $rubros = Rubro::all();
+        $curriculum = Curriculum::where('id_persona', $id)->first();
+        $persona = Persona::where('id', $id)->first();
+        
+        return view('editarCurriculum')->with('rubros', $rubros)->with('curriculum', $curriculum)->with('persona', $persona);
+    }
+
+    public function editCurriculum($id){
+        $rubros = Rubro::all();
+        $curriculum = Curriculum::where('id_persona', $id)->first();
+        $persona = Persona::where('id', $id)->first();
+
+        $curriculum->formacion_academica = Input::get('formacion_academica');
+        $curriculum->formacion_complementaria = Input::get('formacion_complementaria');
+        $curriculum->experiencia = Input::get('experiencia');
+        $curriculum->idiomas = Input::get('idiomas');
+        $curriculum->referencias = Input::get('referencias');
+        $curriculum->otros_datos = Input::get('otros_datos');
+        $curriculum->save();
+
+        return $this->perfil($persona->id);
+    }
+
 }

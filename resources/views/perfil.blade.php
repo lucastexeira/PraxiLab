@@ -122,6 +122,7 @@
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
 					<a href="{{url('editarCurriculum/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+
 					@if ($curriculum->formacion_academica != '')
 					<div class="panel panel-default contenido">
 						<div class="panel-heading">

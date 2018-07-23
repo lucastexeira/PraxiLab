@@ -147,3 +147,12 @@ Route::get('createEvidencia',[
 	'uses' => 'OfertaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
+
+Route::get('editarCurriculum/{id_persona}',[
+	'uses' => 'HomeController@editarCurriculum'
+]);
+
+Route::get('editCurriculum/{id}',[
+	'uses' => 'HomeController@editCurriculum' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
