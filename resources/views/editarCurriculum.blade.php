@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<form method="" action="{{asset('editCurriculum/'.$persona->id.'')}}">
-				<input type="hidden" name="_method" value="PUT">
+				<input type="hidden" name="_method" value="POST">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="card-body">
 					<div class="col-md-6">

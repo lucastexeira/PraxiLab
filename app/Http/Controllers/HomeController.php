@@ -122,8 +122,9 @@ class HomeController extends Controller
         $rubros = Rubro::all();
         $persona = Persona::where('id', $id)->first();
         $curriculum = Curriculum::where('id_persona', $id)->first();
+        $practicas = Practica::where('id_practicante', "=", $id)->get();
         
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum);
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum)->with('practicas', $practicas);
     }
 
     public function editarPerfil($id) {
