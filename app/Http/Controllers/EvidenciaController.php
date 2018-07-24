@@ -65,13 +65,15 @@ class EvidenciaController extends Controller
             $calificacionescomentarios = new CalificacionComentario();
             $calificacionescomentarios->calificacion = Input::get('calificacion');
             $calificacionescomentarios->comentario = Input::get('comentario');
-            $calificacionescomentarios->id_persona = $idPersona;
+            $calificacionescomentarios->id_autor = $idPersona;
+            $calificacionescomentarios->id_destinatario = 1;
+            $calificacionescomentarios->id_practica = $id;
             $calificacionescomentarios->save();
            
         }
 
          $rubros = Rubro::all();
-
-         return Redirect::to('/listadoPracticasEstados');
+         dd($calificacionescomentarios);
+         //return Redirect::to('/listadoPracticasEstados');
     }
 }

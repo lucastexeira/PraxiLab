@@ -47,7 +47,7 @@
 
 		<div class="form-group">
             <label for="Comentario"><h3>Comentario</h3></label>
-            <input name="Comentario" type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario" required="required" value="{{ $calificacionescomentarios->comentario }}"/>
+            <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario" required="required" value="{{ $calificacionescomentarios->comentario }}"/>
         </div>
 
         <br>
@@ -55,9 +55,9 @@
         <br>
 	        <div class="stars">
 
-	        	@for($i=1;$i<6;$i++)
+	        	@for($i = 1; $i < 6; $i++)
 
-					<input class="star star-4" id="star-{{$i}}" type="radio" id="calificacion" name="calificacion" value="{{ $calificacionescomentarios->calificacion }}"/>
+					<input class="star star-4" id="star-{{$i}}" type="radio" name="calificacion" value="{{ $calificacionescomentarios->calificacion }}"/>
 					<label class="star star-4" for="star-{{$i}}"></label>
 
 				@endfor
