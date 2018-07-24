@@ -55,9 +55,9 @@
         <br>
 	        <div class="stars">
 
-	        	@for($i = 1; $i < 6; $i++)
+	        	@for($i = 5; $i > 0; $i--)
 
-					<input class="star star-4" id="star-{{$i}}" type="radio" name="calificacion" value="{{ $calificacionescomentarios->calificacion }}"/>
+					<input class="star star-4" id="star-{{$i}}" type="radio" name="calificacion" value="{{ $i }}"/>
 					<label class="star star-4" for="star-{{$i}}"></label>
 
 				@endfor

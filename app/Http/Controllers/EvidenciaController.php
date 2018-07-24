@@ -73,7 +73,7 @@ class EvidenciaController extends Controller
         }
 
          $rubros = Rubro::all();
-         dd($calificacionescomentarios);
-         //return Redirect::to('/listadoPracticasEstados');
+         //dd($calificacionescomentarios);
+         return Redirect::to('/listadoPracticasEstados');
     }
 }
