@@ -25,13 +25,27 @@ class MercadoPagoController extends Controller
         //https://api.mercadopago.com/users/8472593339549232/mercadopago_account/balance?access_token=bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6
 
         $monto = Input::get('monto');
+        $mes = Input::get('meses');
 
-        $precio = $monto + $monto * 0.05;
+        if($monto!=0 && $mes==0){
+            $titulo = "Creditos Praxilab";
+            $precio = $monto + $monto * 0.05;
+        }
+        elseif($monto==null && $mes!=0){
+            $titulo = "Suscripcion Praxilab";
+            $precio = $mes*100;
+        }
+        else{
+            $titulo = "Creditos mas Suscripcion Praxilab";
+            $precio = $mes*100 + ($monto + $monto * 0.05); 
+        }
+        
+
 
         $preference_data = array(
             "items" => array(
                 array(
-                    "title" => "Creditos Praxilab",
+                    "title" => $titulo,
                     "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
                     "unit_price" => $precio
@@ -80,7 +94,7 @@ class MercadoPagoController extends Controller
         $url = $preference['response']['init_point'];
 
         return Redirect::to($url);
-        //dd($preference);
+        //dd($precio);
     }
 
     /*public function beforeAction($action)
