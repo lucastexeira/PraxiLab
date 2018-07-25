@@ -164,3 +164,6 @@ Route::get('updateEstadoTerminar/{id_historial_practicas}',[
 
 Route::get('compra', 'MercadoPagoController@compraMP');
 Route::post('compra', 'MercadoPagoController@compraMP');
+
+
+Route::get('crearUsuarioMP', 'MercadoPagoController@crearUsuarioMP');

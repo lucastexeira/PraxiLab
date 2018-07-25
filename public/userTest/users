@@ -1,0 +1,40 @@
+array:2 [▼
+  "status" => 201
+  "response" => array:5 [▼
+    "id" => 339527866
+    "nickname" => "TEST8BGNUA60"
+    "password" => "qatest8677"
+    "site_status" => "active"
+    "email" => "test_user_95476100@testuser.com"
+  ]
+]
+
+
+array:2 [▼
+  "status" => 201
+  "response" => array:5 [▼
+    "id" => 339528072
+    "nickname" => "TETE7494082"
+    "password" => "qatest5522"
+    "site_status" => "active"
+    "email" => "test_user_55960355@testuser.com"
+  ]
+]
+
+array:2 [▼
+  "status" => 201
+  "response" => array:5 [▼
+    "id" => 339529411
+    "nickname" => "TETE8414451"
+    "password" => "qatest8373"
+    "site_status" => "active"
+    "email" => "test_user_26389488@testuser.com"
+  ]
+]
+
+
+Visa Nº 4444 4444 4444 0008: approved.
+Mastercard Nº 5031 1111 1111 6619: approved.
+Mastercard Nº 5031 1111 1111 6601: pending.
+American Express Nº 37000 00000 02461: rejected.
+Visa Nº 4444 4444 4444 0024: rejected.

@@ -146,7 +146,7 @@
 			                    <br>
 									<div class="nav nav-tabs">
 										
-											<button class="center-block nav-item col-lg-8" style ="width: 80px">
+											<button class="center-block col-lg-6" style ="width: 20px">
 											<img src="{{asset('img/logos/mercadoPago.png')}}"  width="50%" height="85%" class="center-block"/>
 											</button>
 										

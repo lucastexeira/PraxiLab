@@ -39,31 +39,39 @@ class MercadoPagoController extends Controller
             $titulo = "Creditos mas Suscripcion Praxilab";
             $precio = $mes*100 + ($monto + $monto * 0.05); 
         }
-        
-
 
         $preference_data = array(
             "items" => array(
                 array(
+                    "id" => "",
                     "title" => $titulo,
                     "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
-                    "unit_price" => $precio
-                    )
-                ),
+                    "unit_price" => $precio,
+                    "picture_url" => ''
+                )
+            ),
             "payer" => array(
                 array(
-                    "name" => "Usuario1",
+                    "name" => "Nombre",
                     "surname" => "Apellido",
-                    "email" => $mail
-                ), 
-                "back_urls" => array( 
-                    "success" => "localhost"."/payment/approved"// imagino que aca va otra url  
-                ), 
-                "expires" => false, 
-                "expiration_date_from" => null, 
-                "expiration_date_to" => null 
-            )
+                    "email" => $mail,
+                    "identification" => array(
+                        "type" => "doc",
+                        "number" => "121",
+                    )
+                )
+            ),
+            "back_urls" => array(
+                "success" => "localhost/index",
+                "failed" => "localhost/index",
+                "pending" => "localhost/index"
+            ),
+            "auto_return" => "approved",
+            "external_reference" => "",
+            "expires" => false,
+            "expiration_date_from" => null,
+            "expiration_date_to" => null
         );
 
         $preference = $mp->create_preference($preference_data);
@@ -94,9 +102,24 @@ class MercadoPagoController extends Controller
         $url = $preference['response']['init_point'];
 
         return Redirect::to($url);
-        //dd($precio);
     }
 
+
+    public function crearUsuarioMP(){
+
+        
+        $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
+        $mp->sandbox_mode(FALSE);
+       
+        $body = array(
+            "site_id" => "MLA"
+        );
+      
+        $result = $mp->post('/users/test_user', $body);
+      
+        dd($result);
+
+    }
     /*public function beforeAction($action)
     {
         if ($action->id == 'notification') {
