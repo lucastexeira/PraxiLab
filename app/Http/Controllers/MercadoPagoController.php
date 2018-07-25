@@ -101,8 +101,8 @@ class MercadoPagoController extends Controller
         
         $url = $preference['response']['init_point'];
 
-        //return Redirect::to($url);
-        dd($preference);
+        return Redirect::to($url);
+        //dd($preference);
     }
 
 
@@ -124,53 +124,26 @@ class MercadoPagoController extends Controller
 
     public function confirmarPago(){
 
-        
+        $rubros = Rubro::all();
+
         $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
         $mp->sandbox_mode(FALSE);
        
         $payment_info = $mp->get_payment_info($_GET["collection_id"]);
 
         if ($payment_info["status"] == 200) {
-            dd($payment_info["response"]);
+            
+            $mensaje = "El pago se efectuo Correctamente";
+            $check = "check.png";
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            //dd($payment_info["response"]);
         }
+        else{
+            return view('/estadoPago')->with('rubros', $rubros);
+            //dd($payment_info["response"]);
+        }
+
+        
 
     }
-    /*public function beforeAction($action)
-    {
-        if ($action->id == 'notification') {
-            $this->enableCsrfValidation = false;
-        }
-
-        return parent::beforeAction($action);
-    }*/
-
-
-    //     //Create Customer
-    //      $mp->post (
-    //          array(
-    //              "uri" => "/v1/customers",
-    //              "data" => array(
-    //                  "email" => $mail
-    //              )
-    //          )
-    //      );
-
-    //     //Create Payment
-    //     $data = array (
-    //         "items" => array (
-    //             array (
-    //                 "title" => "Test Modified",
-    //                 "quantity" => 1,
-    //                 "currency_id" => "USD",
-    //                 "unit_price" => 20.4
-    //             )
-    //         )
-    //     );
-
-    //     $mp->post (
-    //         array(
-    //             "uri" => "/v1/payments",
-    //             "data" => $data
-    //         )
-    //     );*/
 }
