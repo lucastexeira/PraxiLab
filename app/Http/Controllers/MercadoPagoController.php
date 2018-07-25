@@ -19,7 +19,7 @@ class MercadoPagoController extends Controller
     public function compraMP(Request $req){ 
         $mail = Session::get('mail');
         $idUser = DB::table('personas')->where('mail', $mail)->first(['id']);
-        //$mail = $req->input('mail');
+         
         //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
         $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
         $mp->sandbox_mode(TRUE);
@@ -102,16 +102,17 @@ class MercadoPagoController extends Controller
         
         $url = $preference['response']['init_point'];
 
-        //return Redirect::to($url);
-        dd($preference);
+        return Redirect::to($url);
+        //dd($preference);
     }
 
 
     public function crearUsuarioMP(){
 
         
+        //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
         $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
-        $mp->sandbox_mode(FALSE);
+        $mp->sandbox_mode(TRUE);
        
         $body = array(
             "site_id" => "MLA"
@@ -127,8 +128,9 @@ class MercadoPagoController extends Controller
 
         $rubros = Rubro::all();
 
+        //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
         $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
-        $mp->sandbox_mode(FALSE);
+        $mp->sandbox_mode(TRUE);
        
         $payment_info = $mp->get_payment_info($_GET["collection_id"]);
 
