@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class MercadoPagoController extends Controller
 {
     public function compraMP(Request $req){ 
         $mail = Session::get('mail');
         $idUser = DB::table('personas')->where('mail', $mail)->first(['id']);
-        //$mail = $req->input('mail');
+         
         //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
         $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
         $mp->sandbox_mode(TRUE);
@@ -63,9 +64,9 @@ class MercadoPagoController extends Controller
                 )
             ),
             "back_urls" => array(
-                "success" => "localhost/index",
-                "failed" => "localhost/index",
-                "pending" => "localhost/index"
+                "success" => URL::to('confirmarPago'),
+                "failed" => URL::to('confirmarPago'),
+                "pending" => URL::to('confirmarPago')
             ),
             "auto_return" => "approved",
             "external_reference" => "",
@@ -101,16 +102,17 @@ class MercadoPagoController extends Controller
         
         $url = $preference['response']['init_point'];
 
-        //return Redirect::to($url);
-        dd($preference);
+        return Redirect::to($url);
+        //dd($preference);
     }
 
 
     public function crearUsuarioMP(){
 
         
+        //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
         $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
-        $mp->sandbox_mode(FALSE);
+        $mp->sandbox_mode(TRUE);
        
         $body = array(
             "site_id" => "MLA"
@@ -121,42 +123,32 @@ class MercadoPagoController extends Controller
         dd($result);
 
     }
-    /*public function beforeAction($action)
-    {
-        if ($action->id == 'notification') {
-            $this->enableCsrfValidation = false;
+
+    public function confirmarPago(){
+
+        $rubros = Rubro::all();
+
+        //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
+        $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
+        $mp->sandbox_mode(TRUE);
+       
+        $payment_info = $mp->get_payment_info($_GET["collection_id"]);
+
+        if ($payment_info["status"] == 200) {
+            
+            $mensaje = "El pago se efectuo Correctamente";
+            $check = "check.png";
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            //dd($payment_info["response"]);
+        }
+        else{
+            $mensaje = "El pago NO se completo";
+            $check = "checkRojo.png";
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            //dd($payment_info["response"]);
         }
 
-        return parent::beforeAction($action);
-    }*/
+        
 
-
-    //     //Create Customer
-    //      $mp->post (
-    //          array(
-    //              "uri" => "/v1/customers",
-    //              "data" => array(
-    //                  "email" => $mail
-    //              )
-    //          )
-    //      );
-
-    //     //Create Payment
-    //     $data = array (
-    //         "items" => array (
-    //             array (
-    //                 "title" => "Test Modified",
-    //                 "quantity" => 1,
-    //                 "currency_id" => "USD",
-    //                 "unit_price" => 20.4
-    //             )
-    //         )
-    //     );
-
-    //     $mp->post (
-    //         array(
-    //             "uri" => "/v1/payments",
-    //             "data" => $data
-    //         )
-    //     );*/
+    }
 }
