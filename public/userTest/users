@@ -32,6 +32,18 @@ array:2 [▼
   ]
 ]
 
+array:2 [▼
+  "status" => 201
+  "response" => array:5 [▼
+    "id" => 339531387
+    "nickname" => "TEST8XRKDOMV"
+    "password" => "qatest7146"
+    "site_status" => "active"
+    "email" => "test_user_5577800@testuser.com"
+  ]
+]
+
+
 
 Visa Nº 4444 4444 4444 0008: approved.
 Mastercard Nº 5031 1111 1111 6619: approved.

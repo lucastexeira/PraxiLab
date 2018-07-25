@@ -101,7 +101,8 @@ class MercadoPagoController extends Controller
         
         $url = $preference['response']['init_point'];
 
-        return Redirect::to($url);
+        //return Redirect::to($url);
+        dd($preference);
     }
 
 
