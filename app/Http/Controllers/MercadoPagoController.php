@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class MercadoPagoController extends Controller
 {
@@ -63,9 +64,9 @@ class MercadoPagoController extends Controller
                 )
             ),
             "back_urls" => array(
-                "success" => "localhost:88/accepted",
-                "failed" => "localhost/index",
-                "pending" => "localhost/index"
+                "success" => URL::to('confirmarPago'),
+                "failed" => URL::to('confirmarPago'),
+                "pending" => URL::to('confirmarPago')
             ),
             "auto_return" => "approved",
             "external_reference" => "",
@@ -101,8 +102,8 @@ class MercadoPagoController extends Controller
         
         $url = $preference['response']['init_point'];
 
-        return Redirect::to($url);
-        //dd($preference);
+        //return Redirect::to($url);
+        dd($preference);
     }
 
 
@@ -139,7 +140,9 @@ class MercadoPagoController extends Controller
             //dd($payment_info["response"]);
         }
         else{
-            return view('/estadoPago')->with('rubros', $rubros);
+            $mensaje = "El pago NO se completo";
+            $check = "checkRojo.png";
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
             //dd($payment_info["response"]);
         }
 
