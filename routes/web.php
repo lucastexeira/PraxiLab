@@ -169,3 +169,4 @@ Route::post('compra', 'MercadoPagoController@compraMP');
 
 
 Route::get('crearUsuarioMP', 'MercadoPagoController@crearUsuarioMP');
+Route::get('confirmarPago', 'MercadoPagoController@confirmarPago');

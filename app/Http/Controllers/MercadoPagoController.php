@@ -63,7 +63,7 @@ class MercadoPagoController extends Controller
                 )
             ),
             "back_urls" => array(
-                "success" => "localhost/index",
+                "success" => "localhost:88/accepted",
                 "failed" => "localhost/index",
                 "pending" => "localhost/index"
             ),
@@ -119,6 +119,20 @@ class MercadoPagoController extends Controller
         $result = $mp->post('/users/test_user', $body);
       
         dd($result);
+
+    }
+
+    public function confirmarPago(){
+
+        
+        $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
+        $mp->sandbox_mode(FALSE);
+       
+        $payment_info = $mp->get_payment_info($_GET["collection_id"]);
+
+        if ($payment_info["status"] == 200) {
+            dd($payment_info["response"]);
+        }
 
     }
     /*public function beforeAction($action)
