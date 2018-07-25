@@ -134,11 +134,11 @@ class HomeController extends Controller
 
         return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios);
         //dd($calificacionescomentarios);
-        $persona = Persona::where('id', $id)->first();
+        /*$persona = Persona::where('id', $id)->first();
         $curriculum = Curriculum::where('id_persona', $id)->first();
         $practicas = Practica::where('id_practicante', "=", $id)->get();
         
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum)->with('practicas', $practicas);
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum)->with('practicas', $practicas);*/
     }
 
     public function editarPerfil($id) {
