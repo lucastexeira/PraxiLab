@@ -7,7 +7,9 @@ use App\Persona;
 use App\Rubro;
 use App\Servicio;
 use App\Practica;
+use App\CalificacionComentario;
 use App\PersonasServicios;
+use App\Curriculum;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
@@ -76,7 +78,7 @@ class HomeController extends Controller
         $persona->telefono = Input::get('telefono');
         $persona->save();
 
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
+        return $this->perfil($persona->id);
     }
  
     public function inicioSesion(){
@@ -118,18 +120,56 @@ class HomeController extends Controller
 
     public function perfil($id){
         $rubros = Rubro::all();
-        //$persona = DB::Select('select * from personas where personas.id = '.$id.'')->get();
-        $persona= Persona::where('id', $id)->first(); 
+        $persona= Persona::where('id', $id)->first();
+
+        $calificacionescomentarios =  DB::table('calificacionescomentarios')
+                                        ->where('id_destinatario', '=', $id)
+                                        ->avg('calificacion');
+
+        $comentarios =  DB::table('calificacionescomentarios')
+                            ->where('id_destinatario', '=', $id)
+                            ->select('comentario', 'calificacion', 'created_at')
+                            ->get();
+
+
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios);
+        //dd($calificacionescomentarios);
+        /*$persona = Persona::where('id', $id)->first();
+        $curriculum = Curriculum::where('id_persona', $id)->first();
+        $practicas = Practica::where('id_practicante', "=", $id)->get();
         
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);
-        //dd($persona);
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum)->with('practicas', $practicas);*/
     }
 
     public function editarPerfil($id) {
         $rubros = Rubro::all();
-        $persona= Persona::where('id', $id)->first(); 
+        $persona = Persona::where('id', $id)->first();
         
         return view('editarPerfil')->with('rubros', $rubros)->with('persona', $persona);
+    }
+
+    public function editarCurriculum($id) {
+        $rubros = Rubro::all();
+        $curriculum = Curriculum::where('id_persona', $id)->first();
+        $persona = Persona::where('id', $id)->first();
+        
+        return view('editarCurriculum')->with('rubros', $rubros)->with('curriculum', $curriculum)->with('persona', $persona);
+    }
+
+    public function editCurriculum($id){
+        $rubros = Rubro::all();
+        $curriculum = Curriculum::where('id_persona', $id)->first();
+        $persona = Persona::where('id', $id)->first();
+
+        $curriculum->formacion_academica = Input::get('formacion_academica');
+        $curriculum->formacion_complementaria = Input::get('formacion_complementaria');
+        $curriculum->experiencia = Input::get('experiencia');
+        $curriculum->idiomas = Input::get('idiomas');
+        $curriculum->referencias = Input::get('referencias');
+        $curriculum->otros_datos = Input::get('otros_datos');
+        $curriculum->save();
+
+        return $this->perfil($persona->id);
     }
 
 }

@@ -8,6 +8,9 @@ use App\Rubro;
 use App\Servicio;
 use App\Persona;
 use App\Practica;
+use App\Evidecia;
+use App\CalificacionComentario;
+use App\Historial_Practica;
 use App\PersonasServicios;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -15,22 +18,62 @@ use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Session; 
+use DateTime;
+use Illuminate\Support\Facades\Redirect;
 
 class EvidenciaController extends Controller
 {
-    public function cargarEvidencia(){
+    public function irAcargarEvidencia(Request $request, $id_historial_practicas){
 
+        $evidencia = new Evidecia();
+        $calificacionescomentarios = new CalificacionComentario();
+        
         $rubros = Rubro::all();
 
-        return view('/cargarEvidencia')->with('rubros', $rubros);
+        $practicaEvidencia = Historial_Practica::where('historial_practicas.id', $id_historial_practicas)
+            ->leftJoin('practicas', 'historial_practicas.id_practica', '=', 'practicas.id')
+            ->select(
+                'historial_practicas.id',
+                'practicas.nombre_practica',
+                'practicas.imagen_practica',
+                'practicas.id'
+        )
+        ->first();
+
+        return view('/cargarEvidencia')->with('rubros',$rubros)->with('evidencia',$evidencia)->with('practicaEvidencia',$practicaEvidencia)->with('calificacionescomentarios',$calificacionescomentarios);
+
     }
 
-    public function verEvidencia(){
+    public function createEvidencia(Request $req, $id){
 
-        $rubros = Rubro::all();
+        //$session_id = session()->getId();
+        $req = Session::get('mail');
 
-        return view('/verEvidencia')->with('rubros', $rubros);
+        $now = new \DateTime();
+        $now->format('d-m-Y H:i:s');
 
-        //dd($rubros);
+        if ( $req ){
+            $evidencia = new Evidecia();
+            $evidencia->pathevidencia = Input::get('pathevidencia');
+            $evidencia->fecha = $now;
+            $evidencia->id_practica = $id;
+            $evidencia->save();
+
+            $idPersona = DB::table('personas')->where('mail', $req)->first()->id;
+
+            $calificacionescomentarios = new CalificacionComentario();
+            $calificacionescomentarios->calificacion = Input::get('calificacion');
+            $calificacionescomentarios->comentario = Input::get('comentario');
+            $calificacionescomentarios->id_autor = $idPersona;
+            $calificacionescomentarios->id_destinatario = 1;
+            $calificacionescomentarios->id_practica = $id;
+            $calificacionescomentarios->save();
+           
+        }
+
+         $rubros = Rubro::all();
+         //dd($calificacionescomentarios);
+         return Redirect::to('/listadoPracticasEstados');
     }
 }
