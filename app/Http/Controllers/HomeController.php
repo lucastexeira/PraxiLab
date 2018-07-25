@@ -7,6 +7,7 @@ use App\Persona;
 use App\Rubro;
 use App\Servicio;
 use App\Practica;
+use App\CalificacionComentario;
 use App\PersonasServicios;
 use App\Curriculum;
 use Illuminate\Http\Request;
@@ -119,6 +120,20 @@ class HomeController extends Controller
 
     public function perfil($id){
         $rubros = Rubro::all();
+        $persona= Persona::where('id', $id)->first();
+
+        $calificacionescomentarios =  DB::table('calificacionescomentarios')
+                                        ->where('id_destinatario', '=', $id)
+                                        ->avg('calificacion');
+
+        $comentarios =  DB::table('calificacionescomentarios')
+                            ->where('id_destinatario', '=', $id)
+                            ->select('comentario', 'calificacion', 'created_at')
+                            ->get();
+
+
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios);
+        //dd($calificacionescomentarios);
         $persona = Persona::where('id', $id)->first();
         $curriculum = Curriculum::where('id_persona', $id)->first();
         $practicas = Practica::where('id_practicante', "=", $id)->get();

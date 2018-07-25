@@ -117,13 +117,6 @@ Route::get('transacciones',[
 	'uses' => 'TransaccionController@verTransacciones' //Nombre_del_controlador@Nombre_del_metodo
 ]);
 
-Route::get('cargarEvidencia',[
-	'uses' => 'EvidenciaController@cargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
-]);
-
-Route::get('verEvidencia',[
-	'uses' => 'EvidenciaController@verEvidencia' //Nombre_del_controlador@Nombre_del_metodo
-]);
 
 Route::get('editarPerfil/{id_persona}',[
 	'uses' => 'HomeController@editarPerfil'
@@ -138,13 +131,13 @@ Route::get('edit/{id}',[
 
 //ir a Cargar Evidencia
 Route::get('cargarEvidencia/{cargarEvidencia}',[
-	'uses' => 'OfertaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'EvidenciaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
 //Cargar Evidencia
-Route::get('createEvidencia',[
-	'uses' => 'OfertaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+Route::get('createEvidencia/{id}',[
+	'uses' => 'EvidenciaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
