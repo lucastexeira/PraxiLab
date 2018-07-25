@@ -45,23 +45,24 @@
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade active show" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
 			<br><a href="{{url('wizard/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Nueva oferta de Practica</button></a>
+				@foreach ($practicas as $oferta)
 				<div class="panel panel-default contenido">
 					<div class="panel-body">
 						<div class="container-fluid">
 							<div class="row align-items-start">
 								<div class="col-3 text-center">
-									<img src="img/practicas/practica_guitarra_1.png" class="img-oferta-perfil" />
+									<img src="{{$oferta->imagen_practica}}" class="img-oferta-perfil" />
 								</div>
 								<div class="col-9">
-									<h1>Clase de Guitarra Acústica</h1>
+									<h1>{{$oferta->nombre_practica}}</h1>
 									<p>
-										Clases de guitarra, Ukelele o audioperceptiva orientadas a que puedas disfrutar del instrumento de forma cómoda y a tus tiempos para que estés en condiciones de tocarlo frente a amigos/as o un público como solista o en una banda.
+										{{$oferta->descripcion}}
 									</p>
 								</div>
 							</div>
 							<div class="row justify-content-end align-items-end">
 								<div class="col-1">
-									<p class="precio-oferta-perfil">80</p>
+									<p class="precio-oferta-perfil">{{$oferta->precio}}</p>
 								</div>
 								<div class="col-1">
 									<a href="{{url('oferta/')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
@@ -70,34 +71,9 @@
 						</div>
 					</div>
 				</div>
-
-				<!--div class="panel panel-default contenido">
-					<div class="panel-body">
-						<div class="container-fluid">
-							<div class="row align-items-start">
-								<div class="col-3 text-center">
-									<img src="img/portfolio/port03.jpg" class="img-oferta-perfil" />
-								</div>
-								<div class="col-9">
-									<h1>Clases de Marketing</h1>
-									<p>
-										Ideal para personas que desean aprender las capacidades de venta actuales
-									</p>
-								</div>
-							</div>
-							<div class="row justify-content-end align-items-end">
-								<div class="col-1">
-									<p class="precio-oferta-perfil">500</p>
-								</div>
-								<div class="col-1">
-									<button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div-->
-
+				@endforeach
 			</div>
+			
 			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
 				<div class="panel panel-default contenido">
 					<div class="panel-heading">
@@ -121,46 +97,122 @@
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
-					<div class="row">
-						<div class="col-4">
-							<div class="curriculum-datos">
-								<h3>Fecha de nacimiento</h3>
-								<p>23/05/1994</p>
-							</div>
+					<a href="{{url('editarCurriculum/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+
+					@if ($curriculum->formacion_academica != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>FORMACIÓN ACADÉMICA</h2>
 						</div>
-						<div class="col-4">
-							<div class="curriculum-datos">
-								<h3>Email</h3>
-								<p>{{ $persona->mail }}</p>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="curriculum-datos">
-								<h3>Profesion</h3>
-								<p>Electricista</p>
-							</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->formacion_academica }}</p>
 						</div>
 					</div>
-					<div class="curriculum-datos">
-						<h3>Educación</h3>
-						<p><strong>Universidad Nacional de La Matanza</strong></p>
-						<p>Tecnicatura en Desarrollo Web</p>
+					@endif
+
+					@if ($curriculum->formacion_complementaria != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>FORMACIÓN COMPLEMENTARIA</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->formacion_complementaria }}</p>
+						</div>
 					</div>
+					@endif
+					
+					@if ($curriculum->experiencia != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>EXPERIENCIA</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->experiencia }}</p>
+						</div>
+					</div>
+					@endif
+
+					@if ($curriculum->idiomas != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>IDIOMAS</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->idiomas }}</p>
+						</div>
+					</div>
+					@endif
+
+					@if ($curriculum->referencias != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>REFERENCIAS</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->referencias }}</p>
+						</div>
+					</div>
+					@endif
+
+					@if ($curriculum->otros_datos != '')
+					<div class="panel panel-default contenido">
+						<div class="panel-heading">
+							<h2>OTROS DATOS</h2>
+						</div>
+						<div class="experiencia-body panel-body">
+							<p>{{ $curriculum->otros_datos }}</p>
+						</div>
+					</div>
+					@endif
 				</div>
 			</div>
 
 			<div class="tab-pane fade" id="calificacion" role="tabpanel" aria-labelledby="calificacion-tab">
 				<div class="container contenido">
 					<span class="heading">Calificación</span>
-					<span class="fa fa-star checked-purple"></span>
-					<span class="fa fa-star checked-purple"></span>
-					<span class="fa fa-star checked-purple"></span>
-					<span class="fa fa-star checked-purple"></span>
-					<span class="fa fa-star"></span>
-					<p>Promedio: 4.1 basado en 25 reviews.</p>
+
+						@if($calificacionescomentarios > 1 and $calificacionescomentarios < 2)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						@elseif($calificacionescomentarios > 2 and $calificacionescomentarios < 3)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						@elseif($calificacionescomentarios > 3 and $calificacionescomentarios < 4)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						@elseif($calificacionescomentarios > 4 and $calificacionescomentarios < 5)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star"></span>
+						@else($calificacionescomentarios == 5)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+						@endif
+
+						<p>Promedio: {{ $calificacionescomentarios }}</p>
+						
 					<hr style="border:3px solid #f1f1f1">
 
-					<div class="row">
+					@foreach($comentarios as $c)
+					   <ul class="list-group">
+					    <li class="list-group-item">{{ $c->created_at }} <b>{{ $c->comentario }}</b> <span class="badge">{{ $c->calificacion }} </span></li>
+					  </ul>
+					@endforeach
+					<!--div class="row">
 						<div class="side">
 							<div>5 star</div>
 						</div>
@@ -216,7 +268,7 @@
 						<div class="side right">
 							<div>20</div>
 						</div>
-					</div>
+					</div-->
 				</div>
 			</div>
 		</div>
