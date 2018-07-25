@@ -62,7 +62,7 @@
 						    	@foreach ($practicasDelPracticante as $soyPrac)
 						          <tr>
 							        <td>{{ $soyPrac->nombre }} {{ $soyPrac->apellido }} - {{ $soyPrac->mail }} - {{ $soyPrac->telefono }}</td>
-							        <td><a href=" {{ 'oferta' }} ">{{ $soyPrac->nombre_practica }}</td></a>
+							        <td><a href=" {{url('oferta/')}} ">{{ $soyPrac->nombre_practica }}</td></a>
 							        <td>${{ $soyPrac->precio }}</td>
 							        <td>{{ $soyPrac->created_at }}</td>
 							        <td>{{ $soyPrac->estado }}</td> 
@@ -141,12 +141,17 @@
 						    	@foreach ($practicasDelVoluntario as $soyVol)
 						          <tr>
 							        <td>{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }} - {{ $soyVol->telefono }}</td>
-							        <td><a href=" {{ 'oferta' }} ">{{ $soyVol->nombre_practica }}</td></a>
+							        <td><a href=" {{url('oferta/'.$soyVol->id_practica.'')}} ">{{ $soyVol->nombre_practica }}</td></a>
 							        <td>${{ $soyVol->precio }}</td>
 							        <td>{{ $soyVol->created_at }}</td>
 							        <td>{{ $soyVol->estado }}</td>
-							        <td><a href="#"><button type="button" class="btn btn-success btn-lg" >Comenzar</button></a></td>
-							      </tr>
+										  @if( $soyVol->estado == 3)
+							        	<td><a href="#"><button type="button" class="btn btn-success btn-lg" >Comenzar</button></a></td>
+											@else
+												<td>&nbsp</td>
+											@endif
+
+										</tr>
 						        @endforeach
 						      <tr>
 						        <td>Florencia - florc@gmail.com - 44448888</td>
