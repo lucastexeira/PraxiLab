@@ -148,6 +148,15 @@ Route::get('createEvidencia',[
 
 ]);
 
+Route::get('editarCurriculum/{id_persona}',[
+	'uses' => 'HomeController@editarCurriculum'
+]);
+
+Route::get('editCurriculum/{id}',[
+	'uses' => 'HomeController@editCurriculum' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
 //Update estado a comenzar
 Route::get('updateEstadoComenzar/{id_historial_practicas}',[
 	'uses' => 'PracticasController@updateEstadoComenzar' //Nombre_del_controlador@Nombre_del_metodo
