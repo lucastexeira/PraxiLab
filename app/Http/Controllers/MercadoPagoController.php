@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Persona;
 use App\Transaccion;
+use App\Rubro;
 use MP;
 use Session;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Redirect;
 
 class MercadoPagoController extends Controller
 {
@@ -23,31 +25,53 @@ class MercadoPagoController extends Controller
         //https://api.mercadopago.com/users/8472593339549232/mercadopago_account/balance?access_token=bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6
 
         $monto = Input::get('monto');
+        $mes = Input::get('meses');
 
-        $precio = $monto + $monto * 0.05;
+        if($monto!=0 && $mes==0){
+            $titulo = "Creditos Praxilab";
+            $precio = $monto + $monto * 0.05;
+        }
+        elseif($monto==null && $mes!=0){
+            $titulo = "Suscripcion Praxilab";
+            $precio = $mes*100;
+        }
+        else{
+            $titulo = "Creditos mas Suscripcion Praxilab";
+            $precio = $mes*100 + ($monto + $monto * 0.05); 
+        }
 
         $preference_data = array(
             "items" => array(
                 array(
-                    "title" => "Creditos Praxilab",
+                    "id" => "",
+                    "title" => $titulo,
                     "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
-                    "unit_price" => $precio
-                    )
-                ),
+                    "unit_price" => $precio,
+                    "picture_url" => ''
+                )
+            ),
             "payer" => array(
                 array(
-                    "name" => "Usuario1",
+                    "name" => "Nombre",
                     "surname" => "Apellido",
-                    "email" => $mail
-                ), 
-                "back_urls" => array( 
-                    "success" => "localhost"."/payment/approved"// imagino que aca va otra url  
-                ), 
-                "expires" => false, 
-                "expiration_date_from" => null, 
-                "expiration_date_to" => null 
-            )
+                    "email" => $mail,
+                    "identification" => array(
+                        "type" => "doc",
+                        "number" => "121",
+                    )
+                )
+            ),
+            "back_urls" => array(
+                "success" => "localhost/index",
+                "failed" => "localhost/index",
+                "pending" => "localhost/index"
+            ),
+            "auto_return" => "approved",
+            "external_reference" => "",
+            "expires" => false,
+            "expiration_date_from" => null,
+            "expiration_date_to" => null
         );
 
         $preference = $mp->create_preference($preference_data);
@@ -74,11 +98,29 @@ class MercadoPagoController extends Controller
         $transaccion->id_destinatario = $usuario;
         $transaccion->historial_practica = null;
         $transaccion->save();
+        
+        $url = $preference['response']['init_point'];
 
-       dd($preference);
+        //return Redirect::to($url);
+        dd($preference);
     }
 
 
+    public function crearUsuarioMP(){
+
+        
+        $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
+        $mp->sandbox_mode(FALSE);
+       
+        $body = array(
+            "site_id" => "MLA"
+        );
+      
+        $result = $mp->post('/users/test_user', $body);
+      
+        dd($result);
+
+    }
     /*public function beforeAction($action)
     {
         if ($action->id == 'notification') {
