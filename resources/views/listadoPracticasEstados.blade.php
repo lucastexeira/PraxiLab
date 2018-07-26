@@ -49,7 +49,7 @@
 						<table class="table table-striped">
 		                	<thead>
 						      <tr>
-						        <th>Usuario</th>
+						        <th>Usuario Voluntario</th>
 						        <th>Nombre de la Práctica</th>
 						        <th>Precio</th>
 						        <th>Fecha de solicitud</th>
@@ -128,7 +128,7 @@
 						<table class="table table-striped">
 		                	<thead>
 						      <tr>
-						        <th>Usuario</th>
+						        <th>Usuario Practicante</th>
 						        <th>Nombre de la Práctica</th>
 						        <th>Precio</th>
 						        <th>Fecha de solicitud</th>
@@ -141,7 +141,7 @@
 						    	@foreach ($practicasDelVoluntario as $soyVol)
 						          <tr>
 							        <td>{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }} - {{ $soyVol->telefono }}</td>
-							        <td><a href=" {{url('oferta/'.$soyVol->id_practica.'')}} ">{{ $soyVol->nombre_practica }}</td></a>
+							        <td><a href=" {{url('oferta/'.$soyVol->id.'')}} ">{{ $soyVol->nombre_practica }}</td></a>
 							        <td>${{ $soyVol->precio }}</td>
 							        <td>{{ $soyVol->created_at }}</td>
 							        <td>{{ $soyVol->estado }}</td>

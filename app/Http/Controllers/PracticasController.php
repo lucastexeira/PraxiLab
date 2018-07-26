@@ -21,32 +21,30 @@ class PracticasController extends Controller
         $req = Session::get('mail');
         $user = Persona::where('mail', $req)->first()->id;
 
-        $practicasDelPracticante = DB::table('practicas')
-            ->join('historial_practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
-            ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
-            ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
-            ->select('practicas.id_practicante', 'personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono',
-                     'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
-                     'historial_practicas.created_at', 'historial_practicas.id_estado', 'estados.estado')
-            ->where('practicas.id_practicante', '=', $user)
-            ->orderByRaw('created_at DESC')
-            ->get();
+        $practicasDelPracticante = DB::table('historial_practicas')
+                                        ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                        ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
+                                        ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
+                                        ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono',
+                                                 'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
+                                                 'historial_practicas.created_at', 'historial_practicas.id_estado', 'estados.estado')
+                                        ->where('practicas.id_practicante', '=', $user)
+                                        ->orderByRaw('created_at DESC')
+                                        ->get();
 
-
-        $practicasDelVoluntario = DB::table('practicas')
-            ->join('historial_practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
-            ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
-            ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
-            ->select('practicas.id','personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono', 
-                     'practicas.nombre_practica', 'practicas.precio', 'historial_practicas.id_practica', 
-                     'historial_practicas.id as id_historial_practicas', 'historial_practicas.created_at', 'estados.estado')
-            ->where('historial_practicas.id_voluntario', $user)
-            ->orderByRaw('created_at DESC')
-            ->get();
+        $practicasDelVoluntario = DB::table('historial_practicas')
+                                        ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                        ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
+                                        ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
+                                        ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono',
+                                                 'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
+                                                 'historial_practicas.created_at', 'historial_practicas.id_estado', 'estados.estado')
+                                        ->where('historial_practicas.id_voluntario', '=', $user)
+                                        ->get();
         
-        //return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante);
+        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante);
 
-        dd($practicasDelVoluntario);
+        //dd($practicasDelVoluntario);
     }
 
     public function updateEstadoComenzar($id_historial_practicas){
