@@ -49,7 +49,7 @@
 						<table class="table table-striped">
 		                	<thead>
 						      <tr>
-						        <th>Usuario</th>
+						        <th>Usuario Voluntario</th>
 						        <th>Nombre de la Práctica</th>
 						        <th>Precio</th>
 						        <th>Fecha de solicitud</th>
@@ -61,8 +61,8 @@
 
 						    	@foreach ($practicasDelPracticante as $soyPrac)
 						          <tr>
-							        <td>{{ $soyPrac->nombre }} {{ $soyPrac->apellido }} - {{ $soyPrac->mail }} - {{ $soyPrac->telefono }}</td>
-							        <td><a href=" {{ 'oferta' }} ">{{ $soyPrac->nombre_practica }}</td></a>
+							        <td><a href=" {{url('perfil/'.$soyPrac->id_voluntario.'')}} ">{{ $soyPrac->nombre }} {{ $soyPrac->apellido }} - {{ $soyPrac->mail }} - {{ $soyPrac->telefono }}</a></td>
+							        <td><a href=" {{url('oferta/'.$soyPrac->id.'')}} ">{{ $soyPrac->nombre_practica }}</td></a>
 							        <td>${{ $soyPrac->precio }}</td>
 							        <td>{{ $soyPrac->created_at }}</td>
 							        <td>{{ $soyPrac->estado }}</td> 
@@ -72,36 +72,36 @@
 										    <a href="{{ asset('updateEstadoComenzar/'.$soyPrac->id_historial_practicas.'')}}">
 										    	<button type="button" class="btn btn-success btn-lg" >Comenzar</button>
 										    </a>
-										@elseif ($soyPrac->id_estado == 2)
-										    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Terminar</button>
+												@elseif ($soyPrac->id_estado == 2)
+										    	<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Terminar</button>
 										    <!-- Modal -->
-											<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-											  <div class="modal-dialog" role="document">
-											    <div class="modal-content">
-											      <div class="modal-header">
-											        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											      </div>
-											      <div class="modal-body">
-											        ¿Está seguro que desea finalizar la práctica?
-											      </div>
-											      <div class="modal-footer">
-											        <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
-											        <a href="{{ asset('updateEstadoTerminar/'.$soyPrac->id_historial_practicas.'')}}">
-											        	<button type="button" class="btn btn-primary">Continuar</button>
-											        </a>
-											      </div>
-											    </div>
-											  </div>
-											</div>
-										@else
-											<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
-										    	<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
-											</a>
-										@endif
+																<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																	<div class="modal-dialog" role="document">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																			</div>
+																			<div class="modal-body">
+																				¿Está seguro que desea finalizar la práctica?
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+																				<a href="{{ asset('updateEstadoTerminar/'.$soyPrac->id_historial_practicas.'')}}">
+																					<button type="button" class="btn btn-primary">Continuar</button>
+																				</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+												@else
+													<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
+															<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
+													</a>
+												@endif
 							        	
 							       	</td>
 							      </tr>
-								 @endforeach
+								 	@endforeach
 						    </tbody>
 	                	</table>
 					</div>
@@ -128,7 +128,7 @@
 						<table class="table table-striped">
 		                	<thead>
 						      <tr>
-						        <th>Usuario</th>
+						        <th>Usuario Practicante</th>
 						        <th>Nombre de la Práctica</th>
 						        <th>Precio</th>
 						        <th>Fecha de solicitud</th>
@@ -140,46 +140,23 @@
 
 						    	@foreach ($practicasDelVoluntario as $soyVol)
 						          <tr>
-							        <td>{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }} - {{ $soyVol->telefono }}</td>
-							        <td><a href=" {{ 'oferta' }} ">{{ $soyVol->nombre_practica }}</td></a>
+							        <td><a href=" {{url('perfil/'.$soyVol->id_practicante.'')}} ">{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }} - {{ $soyVol->telefono }}</a></td>
+							        <td><a href=" {{url('oferta/'.$soyVol->id.'')}} ">{{ $soyVol->nombre_practica }}</a></td>
 							        <td>${{ $soyVol->precio }}</td>
 							        <td>{{ $soyVol->created_at }}</td>
 							        <td>{{ $soyVol->estado }}</td>
-							        <td><a href="#"><button type="button" class="btn btn-success btn-lg" >Comenzar</button></a></td>
-							      </tr>
+										  @if( $soyVol->id_estado == 3)
+											<td>
+												<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
+														<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
+												</a>
+											</td>
+											@else
+												<td>&nbsp</td>
+											@endif
+
+										</tr>
 						        @endforeach
-						      <tr>
-						        <td>Florencia - florc@gmail.com - 44448888</td>
-						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
-						        <td>$60</td>
-						        <td>03/04/2018</td>
-						        <td>Solicitada</td>
-						        <td>&nbsp</td>
-						      </tr>
-						      <tr>
-						        <td>Florencia - florc@gmail.com - 44448888</td>
-						        <td><a href=" {{ 'oferta' }} ">Tintura</td></a>
-						        <td>$150</td>
-						        <td>03/04/2018</td>
-						        <td>En Curso</td>
-						        <td>&nbsp</td>
-						      </tr>
-						      <tr>
-						        <td>Matias - matiash@gmail.com - 444433333</td>
-						        <td><a href=" {{ 'oferta' }} ">Corte de pelo</a></td>
-						        <td>$60</td>
-						        <td>04/06/2018</td>
-						        <td>Sin Calificar</td>
-						        <td><a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} "><button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button></a></td>
-						      </tr>
-						      <tr>
-						        <td>Ariel - arielgabrielr@gmail.com - 44447777</td>
-						        <td><a href=" {{ 'oferta' }} ">Alisado</a></td>
-						        <td>$250</td>
-						        <td>08/06/2018</td>
-						        <td>Finalizado</td>
-						        <td>&nbsp</td>
-						      </tr>
 						    </tbody>
 	                	</table>
 					</div>
