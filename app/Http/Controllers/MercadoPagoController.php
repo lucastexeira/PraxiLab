@@ -13,16 +13,23 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\App;
+
 
 class MercadoPagoController extends Controller
 {
     public function compraMP(Request $req){ 
         $mail = Session::get('mail');
         $idUser = DB::table('personas')->where('mail', $mail)->first(['id']);
+
+        $mp_client_id= env('MP_CLIENT_ID');
+        $mp_client_secret= env('MP_CLIENT_SECRET');
          
         //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
-        $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
-        $mp->sandbox_mode(TRUE);
+        
+        //$mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
+        $mp = new MP('149347024881692', '1sxwddTWdF9GsFwhItyEsdJNGi1QYx2w');
+        //$mp->sandbox_mode(FALSE);
         //https://api.mercadopago.com/users/8472593339549232/mercadopago_account/balance?access_token=bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6
 
         $monto = Input::get('monto');
@@ -44,7 +51,7 @@ class MercadoPagoController extends Controller
         $preference_data = array(
             "items" => array(
                 array(
-                    "id" => "",
+                    "id" => "111",
                     "title" => $titulo,
                     "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
@@ -102,8 +109,9 @@ class MercadoPagoController extends Controller
         
         $url = $preference['response']['init_point'];
 
-        return Redirect::to($url);
-        //dd($preference);
+        //return Redirect::to($url);
+
+        dd($preference);
     }
 
 
@@ -112,7 +120,7 @@ class MercadoPagoController extends Controller
         
         //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
         $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
-        $mp->sandbox_mode(TRUE);
+        $mp->sandbox_mode(FALSE);
        
         $body = array(
             "site_id" => "MLA"
@@ -129,8 +137,9 @@ class MercadoPagoController extends Controller
         $rubros = Rubro::all();
 
         //$mp = new MP ("TEST-0cdf6519-1e50-4ccd-8e93-a44aecec08ab", "TEST-8472593339549232-072113-1bd9da49c68ace86fe66f74afcf6b919-294144857");
-        $mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
-        $mp->sandbox_mode(TRUE);
+        //$mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
+        $mp = new MP('149347024881692', '1sxwddTWdF9GsFwhItyEsdJNGi1QYx2w');
+        //$mp->sandbox_mode(FALSE);
        
         $payment_info = $mp->get_payment_info($_GET["collection_id"]);
 

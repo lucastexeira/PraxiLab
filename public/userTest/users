@@ -53,3 +53,5 @@ Visa Nº 4444 4444 4444 0024: rejected.
 
 
 http://localhost/index?collection_id=3972210015&collection_status=approved&preference_id=294144857-553e647e-7979-46c9-aa09-3b32b7a48844&external_reference=null&payment_type=debit_card&merchant_order_id=789272502
+
+https://www.mercadopago.com.ar/developers/es/solutions/payments/custom-checkout/test-cards/

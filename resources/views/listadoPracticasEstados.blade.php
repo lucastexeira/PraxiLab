@@ -72,36 +72,36 @@
 										    <a href="{{ asset('updateEstadoComenzar/'.$soyPrac->id_historial_practicas.'')}}">
 										    	<button type="button" class="btn btn-success btn-lg" >Comenzar</button>
 										    </a>
-										@elseif ($soyPrac->id_estado == 2)
-										    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Terminar</button>
+												@elseif ($soyPrac->id_estado == 2)
+										    	<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Terminar</button>
 										    <!-- Modal -->
-											<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-											  <div class="modal-dialog" role="document">
-											    <div class="modal-content">
-											      <div class="modal-header">
-											        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											      </div>
-											      <div class="modal-body">
-											        ¿Está seguro que desea finalizar la práctica?
-											      </div>
-											      <div class="modal-footer">
-											        <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
-											        <a href="{{ asset('updateEstadoTerminar/'.$soyPrac->id_historial_practicas.'')}}">
-											        	<button type="button" class="btn btn-primary">Continuar</button>
-											        </a>
-											      </div>
-											    </div>
-											  </div>
-											</div>
-										@else
-											<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
-										    	<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
-											</a>
-										@endif
+																<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+																	<div class="modal-dialog" role="document">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+																			</div>
+																			<div class="modal-body">
+																				¿Está seguro que desea finalizar la práctica?
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+																				<a href="{{ asset('updateEstadoTerminar/'.$soyPrac->id_historial_practicas.'')}}">
+																					<button type="button" class="btn btn-primary">Continuar</button>
+																				</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+												@else
+													<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
+															<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
+													</a>
+												@endif
 							        	
 							       	</td>
 							      </tr>
-								 @endforeach
+								 	@endforeach
 						    </tbody>
 	                	</table>
 					</div>
