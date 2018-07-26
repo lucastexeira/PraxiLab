@@ -8,6 +8,6 @@ class Transaccion extends Model
 {
     protected $table = "transacciones";
 
-    protected $fillable = ['monto_transferido','id_emisor','id_destinatario','id_practica'];
+    protected $fillable = ['monto_transferido','id_emisor','id_destinatario','historial_practica','estado'];
     
 }

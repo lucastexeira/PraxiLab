@@ -20,12 +20,14 @@ class ServicioController extends Controller
 {
     public function verTodosLosServicios(){
     $buscador= array();
+
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                    //->orWhere('body', 'like', '%'.Input::get('buscador').'%')
-                    ->orderBy('id', 'desc')->get();
+                    ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                    ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
+                    ->orderBy('practicas.id', 'desc')->get();
                     $rubros = Rubro::All();
                     $servicios = Servicio::all();
-        
+
         return view('todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers);
         //dd($pracPers);
     }
