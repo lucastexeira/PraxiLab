@@ -25,9 +25,11 @@ class PracticasController extends Controller
                                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
                                         ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
                                         ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
-                                        ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono',
+                                        ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail',
+                                                 'personas.telefono', 'personas.id as id_voluntario',
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
-                                                 'historial_practicas.created_at', 'historial_practicas.id_estado', 'estados.estado')
+                                                 'historial_practicas.created_at', 'historial_practicas.id_estado', 
+                                                 'estados.estado', 'estados.id as id_estado')
                                         ->where('practicas.id_practicante', '=', $user)
                                         ->orderByRaw('created_at DESC')
                                         ->get();
@@ -36,9 +38,11 @@ class PracticasController extends Controller
                                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
                                         ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
                                         ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
-                                        ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail', 'personas.telefono',
+                                        ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail', 
+                                                 'personas.telefono', 'personas.id as id_practicante',
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
-                                                 'historial_practicas.created_at', 'historial_practicas.id_estado', 'estados.estado')
+                                                 'historial_practicas.created_at', 'historial_practicas.id_estado', 
+                                                 'estados.estado', 'estados.id as id_estado')
                                         ->where('historial_practicas.id_voluntario', '=', $user)
                                         ->get();
         
