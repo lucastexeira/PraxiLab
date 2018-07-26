@@ -19,7 +19,7 @@ class CreateTransaccionesTable extends Migration
             $table->unsignedInteger('id_emisor')->nullable();
             $table->unsignedInteger('id_destinatario')->nullable();
             $table->unsignedInteger('historial_practica')->nullable();
-            $table->integer('estado');
+            $table->integer('estado'); // 1= esperando pago 0= pago completado
 
             $table->foreign('id_emisor')->references('id')->on('personas');
             $table->foreign('id_destinatario')->references('id')->on('personas');

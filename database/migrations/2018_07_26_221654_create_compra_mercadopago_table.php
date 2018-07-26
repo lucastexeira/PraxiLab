@@ -15,10 +15,10 @@ class CreateCompraMercadopagoTable extends Migration
     {
         Schema::create('compra_mercadopago', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_transacciones')->nullable();
             $table->integer('monto_creditos');
             $table->integer('cantidad_meses');
-            $table->integer('estado');
+            $table->integer('estado'); // 1= esperando pago 0= pago completado
+            $table->unsignedInteger('id_transacciones')->nullable();
 
             $table->foreign('id_transacciones')->references('id')->on('transacciones');
             $table->timestamps();
