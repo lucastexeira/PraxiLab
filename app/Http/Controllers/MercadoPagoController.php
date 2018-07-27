@@ -28,6 +28,10 @@ class MercadoPagoController extends Controller
         $monto = Input::get('monto');
         $mes = Input::get('meses');
 
+        $usuario = $idUser->id;
+        
+        $hash = hash ('md5', 'identificacionDeTransaccion');
+
         if($monto!=0 && $mes==0){
             $titulo = "Creditos Praxilab";
             $precio = $monto + $monto * 0.05;
@@ -49,14 +53,14 @@ class MercadoPagoController extends Controller
         $transaccion->estado = 1;
         $transaccion->save();
 
-        //$lastTransaction = 
 
         $preference_data = array(
+            "id" => 11,
             "items" => array(
                 array(
-                    "id" => "111",
+                    "id" => $hash,
                     "title" => $titulo,
-                    "quantity" => $monto,
+                    "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
                     "unit_price" => $precio,
                     "picture_url" => ''
@@ -110,14 +114,16 @@ class MercadoPagoController extends Controller
 
     }
 
-    public function confirmarPago(){
-
+    public function confirmarPago(Request $req){ 
+        $mail = Session::get('mail');
         $rubros = Rubro::all();
 
         //$mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
         $mp = new MP('149347024881692', '1sxwddTWdF9GsFwhItyEsdJNGi1QYx2w');
        
         $payment_info = $mp->get_payment_info($_GET["collection_id"]);
+
+        $hash = Input::get('preference_id');
 
         if ($payment_info["status"] == 200) {
 
@@ -139,8 +145,8 @@ class MercadoPagoController extends Controller
             $mensaje = "El pago se efectuo Correctamente";
             $check = "check.png";
 
-            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
-            //dd($payment_info["response"]);
+            //return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            dd($hash);
         }
         else{
             $mensaje = "El pago NO se completo";
