@@ -27,7 +27,6 @@ class EvidenciaController extends Controller
     public function irAcargarEvidencia(Request $request, $id_historial_practicas){
 
         $evidencia = new Evidecia();
-        $calificacionescomentarios = new CalificacionComentario();
         
         $rubros = Rubro::all();
 
@@ -41,7 +40,7 @@ class EvidenciaController extends Controller
         )
         ->first();
 
-        return view('/cargarEvidencia')->with('rubros',$rubros)->with('evidencia',$evidencia)->with('practicaEvidencia',$practicaEvidencia)->with('calificacionescomentarios',$calificacionescomentarios);
+        return view('/cargarEvidencia')->with('rubros',$rubros)->with('evidencia',$evidencia)->with('practicaEvidencia',$practicaEvidencia);
         //dd($practicaEvidencia);
     }
 

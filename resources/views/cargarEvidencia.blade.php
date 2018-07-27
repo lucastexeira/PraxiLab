@@ -47,7 +47,7 @@
 
 		<div class="form-group">
             <label for="Comentario"><h3>Comentario</h3></label>
-            <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario" required="required" value="{{ $calificacionescomentarios->comentario }}"/>
+            <input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario" required="required" value="{{ $evidencia->comentario }}"/>
         </div>
 
         <br>
