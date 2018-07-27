@@ -51,7 +51,7 @@
 						<div class="container-fluid">
 							<div class="row align-items-start">
 								<div class="col-3 text-center">
-									<img src="{{$oferta->imagen_practica}}" class="img-oferta-perfil" />
+									<img src="{{asset($oferta->imagen_practica)}}" class="img-oferta-perfil" />
 								</div>
 								<div class="col-9">
 									<h1>{{$oferta->nombre_practica}}</h1>
@@ -75,24 +75,25 @@
 			</div>
 			
 			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
+				@foreach ($evidencias as $evidencia)
 				<div class="panel panel-default contenido">
 					<div class="panel-heading">
-						<img src="img/team/profile-pics.jpg" class="experiencia-profile-pic">
-						<h1 class="experiencia-titulo">Clase de Guitarra Acustica</h1>
+						<img src="{{ asset($persona->img) }}" class="experiencia-profile-pic">
+						<h1 class="experiencia-titulo">{{ $evidencia->titulo }}</h1>
 					</div>
 					<div class="experiencia-body panel-body">
 						<a href="verEvidencia/" >
-							<img src="img/practicas/practica_guitarra_2.jpg" class="experiencia-evidencia">
+							<img src="{{asset($evidencia->pathevidencia)}}" class="experiencia-evidencia">
 						</a>
 						<p class="experiencia-descripcion">
-							Primera práctica de guitarra realizada con Damian Rosa.
+							{{ $evidencia->evidencia_descripcion }}
 						</p>
 					</div>
-					<a href="verEvidencia/" >
+					<a href="{{url('verEvidencia/$evidencia->id_evidencia')}}" >
 						<button type="button" class="btn btn-lg btn-block btn-purple btn-experiencia-perfil">Ver mas</button>
 					</a>
-
 				</div>
+				@endforeach
 			</div>
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
