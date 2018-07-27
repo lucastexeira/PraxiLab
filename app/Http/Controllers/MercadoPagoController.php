@@ -49,7 +49,7 @@ class MercadoPagoController extends Controller
             "id" => 11,
             "items" => array(
                 array(
-                    "id" => $hash,
+                    "id" => '1',
                     "title" => $titulo,
                     "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
