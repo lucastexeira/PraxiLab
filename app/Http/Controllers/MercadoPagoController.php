@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Persona;
 use App\Transaccion;
 use App\Rubro;
+use App\CompraMercadoPago;
 use MP;
 use Session;
 use Illuminate\Support\Facades\Input;
@@ -44,14 +45,6 @@ class MercadoPagoController extends Controller
             $titulo = "Creditos mas Suscripcion Praxilab";
             $precio = $mes*100 + ($monto + $monto * 0.05); 
         }
-
-        $transaccion = new Transaccion();
-        $transaccion->monto_transferido = $monto;
-        $transaccion->id_emisor = $usuario;
-        $transaccion->id_destinatario = $usuario;
-        $transaccion->historial_practica = null;
-        $transaccion->estado = 1;
-        $transaccion->save();
 
 
         $preference_data = array(
@@ -92,6 +85,26 @@ class MercadoPagoController extends Controller
         $preference = $mp->create_preference($preference_data);
         
         $url = $preference['response']['init_point'];
+
+        $idTransaccionMercadoPago = $preference['response']['id'];
+
+
+        $transaccion = new Transaccion();
+        $transaccion->monto_transferido = $monto;
+        $transaccion->id_emisor = $usuario;
+        $transaccion->id_destinatario = $usuario;
+        $transaccion->historial_practica = null;
+        $transaccion->id_transaccione_mercadopago = $idTransaccionMercadoPago;
+        $transaccion->estado = 1;
+        $transaccion->save();
+
+        $compraMercadoPago = new CompraMercadoPago();
+        $compraMercadoPago->monto_creditos = $monto;
+        $compraMercadoPago->cantidad_meses = $mes;
+        $compraMercadoPago->estado = 1;
+        $compraMercadoPago->id_transaccion_mp = $idTransaccionMercadoPago;
+        $compraMercadoPago->save();
+
 
         //return Redirect::to($url);
 
