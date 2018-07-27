@@ -106,9 +106,9 @@ class MercadoPagoController extends Controller
         $compraMercadoPago->save();
 
 
-        //return Redirect::to($url);
+        return Redirect::to($url);
 
-        dd($preference);
+        //dd($preference);
     }
 
 
@@ -136,30 +136,41 @@ class MercadoPagoController extends Controller
        
         $payment_info = $mp->get_payment_info($_GET["collection_id"]);
 
-        $hash = Input::get('preference_id');
+        $id_preference = Input::get('preference_id');
 
         if ($payment_info["status"] == 200) {
 
             // Actualiza la cantidad de creditos del usuario y crea registro en la rabla transacciones
             $cantidadCreditosActual = DB::table('personas')->where('mail', $mail)->first(['cantidad_creditos']);
 
-            /*floatval($monto);
+            DB::table('transacciones')
+                    ->where('id_transaccione_mercadopago', $id_preference)
+                    ->update(['estado' => 0]);
+            
+            DB::table('compra_mercadopago')
+                    ->where('id_transaccion_mp', $id_preference)
+                    ->update(['estado' => 0]);
+
+            $monto=DB::table('transacciones')
+                        ->where('id_transaccione_mercadopago', $id_preference)
+                        ->first(['monto_transferido']);
+            $m = $monto->monto_transferido;
 
             $cant = $cantidadCreditosActual->cantidad_creditos;
 
-            $usuario = $idUser->id;
+            //$usuario = $idUser->id;
 
-            $montoAGuardar = $monto + $cant;
+            $montoAGuardar = $m + $cant;
 
             DB::table('personas')
                     ->where('mail', $mail)
-                    ->update(['cantidad_creditos' => $montoAGuardar]);*/
+                    ->update(['cantidad_creditos' => $montoAGuardar]);
             
             $mensaje = "El pago se efectuo Correctamente";
             $check = "check.png";
 
-            //return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
-            dd($hash);
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            //dd($m);
         }
         else{
             $mensaje = "El pago NO se completo";
