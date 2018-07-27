@@ -8,5 +8,5 @@ class Evidecia extends Model
 {
     protected $table = "evidencias";
 
-    protected $fillable = [ 'pathevidencia', 'fecha', 'id_practica'];
+    protected $fillable = [ 'pathevidencia', 'fecha', 'titulo', 'evidencia_descripcion', 'id_practica'];
 }

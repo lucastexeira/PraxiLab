@@ -16,7 +16,9 @@ class CreateEvidenciasTable extends Migration
         Schema::create('evidencias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('pathevidencia');//imagen de la practica hecha
-            $table->date('fecha');
+            $table->date('fecha')->nullable();
+            $table->string('titulo');
+            $table->longtext('evidencia_descripcion');
             $table->unsignedInteger('id_practica');
 
             $table->foreign('id_practica')->references('id')->on('practicas');
