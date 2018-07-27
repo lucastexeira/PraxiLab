@@ -141,6 +141,10 @@ Route::get('createEvidencia/{id}',[
 
 ]);
 
+Route::get('verEvidencia/',[
+	'uses' => 'EvidenciaController@verEvidencia' 
+]);
+
 Route::get('editarCurriculum/{id_persona}',[
 	'uses' => 'PerfilController@editarCurriculum'
 ]);

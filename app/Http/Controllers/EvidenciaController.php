@@ -18,6 +18,7 @@ use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Url;
 use Session; 
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
@@ -76,5 +77,15 @@ class EvidenciaController extends Controller
          $rubros = Rubro::all();
          //dd($calificacionescomentarios);
          return Redirect::to('/listadoPracticasEstados');
+    }
+    
+    public function verEvidencia(Request $req){
+
+        //$session_id = session()->getId();
+        $req = Session::get('mail');
+
+         $rubros = Rubro::all();
+         //dd($calificacionescomentarios);
+         return view('/verEvidencia')->with('rubros',$rubros);
     }
 }
