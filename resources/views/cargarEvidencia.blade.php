@@ -11,7 +11,7 @@
   @endif
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<form method="" role="form" action="{{url('createEvidencia/'.$practicaEvidencia->id.'')}}"> 
+<form method="" role="form" action="{{url('createEvidencia/'.$practicaEvidencia->id_historial_practica.'')}}"> 
 	<input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

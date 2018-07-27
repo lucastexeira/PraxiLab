@@ -34,7 +34,7 @@ class EvidenciaController extends Controller
         $practicaEvidencia = Historial_Practica::where('historial_practicas.id', $id_historial_practicas)
             ->leftJoin('practicas', 'historial_practicas.id_practica', '=', 'practicas.id')
             ->select(
-                'historial_practicas.id',
+                'historial_practicas.id as id_historial_practica',
                 'practicas.nombre_practica',
                 'practicas.imagen_practica',
                 'practicas.id'
@@ -42,7 +42,7 @@ class EvidenciaController extends Controller
         ->first();
 
         return view('/cargarEvidencia')->with('rubros',$rubros)->with('evidencia',$evidencia)->with('practicaEvidencia',$practicaEvidencia)->with('calificacionescomentarios',$calificacionescomentarios);
-
+        //dd($practicaEvidencia);
     }
 
     public function createEvidencia(Request $req, $id){
@@ -54,21 +54,23 @@ class EvidenciaController extends Controller
         $now->format('d-m-Y H:i:s');
 
         if ( $req ){
+            
+            $idPersona = DB::table('personas')->where('mail', $req)->first()->id;
+
             $evidencia = new Evidecia();
             $evidencia->pathevidencia = Input::get('pathevidencia');
             $evidencia->fecha = $now;
-            $evidencia->id_practica = $id;
+            $evidencia->id_historial_practica = $id;
+            $evidencia->calificacion = Input::get('calificacion');
+            $evidencia->comentario = Input::get('comentario');
+            $evidencia->id_autor = $idPersona;
+            $evidencia->id_destinatario = 1;
             $evidencia->save();
 
-            $idPersona = DB::table('personas')->where('mail', $req)->first()->id;
+            
 
-            $calificacionescomentarios = new CalificacionComentario();
-            $calificacionescomentarios->calificacion = Input::get('calificacion');
-            $calificacionescomentarios->comentario = Input::get('comentario');
-            $calificacionescomentarios->id_autor = $idPersona;
-            $calificacionescomentarios->id_destinatario = 1;
-            $calificacionescomentarios->id_practica = $id;
-            $calificacionescomentarios->save();
+            /*$calificacionescomentarios = new CalificacionComentario();
+            $calificacionescomentarios->save();*/
            
         }
 
