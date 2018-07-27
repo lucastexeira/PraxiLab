@@ -30,8 +30,6 @@ class MercadoPagoController extends Controller
         $mes = Input::get('meses');
 
         $usuario = $idUser->id;
-        
-        $hash = hash ('md5', 'identificacionDeTransaccion');
 
         if($monto!=0 && $mes==0){
             $titulo = "Creditos Praxilab";
