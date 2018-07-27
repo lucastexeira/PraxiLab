@@ -49,6 +49,7 @@ Route::get('logout', 'HomeController@logout');
 Route::get('perfil/{id_persona}',[
 	'uses' => 'PerfilController@perfil'
 ]);
+
 //Rubros y Servicios
 Route::get('rubrosYServicios',[
 	'uses' => 'RubroController@verRubrosYServicios' //Nombre_del_controlador@Nombre_del_metodo
@@ -135,9 +136,19 @@ Route::get('cargarEvidencia/{cargarEvidencia}',[
 
 ]);
 
+Route::get('cargarEvidenciaVoluntario/{cargarEvidencia}',[
+	'uses' => 'EvidenciaController@irACargarEvidenciaVoluntario'
+
+]);
+
 //Cargar Evidencia
 Route::get('createEvidencia/{id}',[
 	'uses' => 'EvidenciaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+Route::get('createEvidenciaVoluntario/{id}',[
+	'uses' => 'EvidenciaController@createEvidenciaVoluntario' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 

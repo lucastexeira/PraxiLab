@@ -29,16 +29,16 @@ class PerfilController extends Controller
         $curriculum = Curriculum::where('id_persona', $id)->first();
         $practicas = Practica::where('id_practicante', "=", $id)->get();
 
-        $evidencias = DB::table('practicas')
+        /*$evidencias = DB::table('practicas')
             ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')
             //->join()
-			->select('evidencias.id as id_evidencia', 'pathevidencia', 'evidencia_descripcion', 'id_practicante')
+			//->select('evidencias.id as id_evidencia', 'pathevidencia', 'evidencia_descripcion', 'id_practicante')
 			->where('practicas.id_practicante', '=', $id)
-			->get();
+			->get();*/
         
-        //return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum)->with('practicas', $practicas)->with('evidencias', $evidencias);
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum)->with('practicas', $practicas);//->with('evidencias', $evidencias);
 
-        dd($evidencias);
+        //dd($curriculum);
     }
 
     public function editarPerfil($id) {
