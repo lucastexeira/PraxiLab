@@ -307,14 +307,19 @@ class EvidenciaController extends Controller
                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
                         ->where('historial_practicas.id',$id_historial_practica)
                         ->first();
-        
+
+        $voluntarioCalificado = $comentarioPracticante->calificacion;
+        $practicanteCalificado = $comentarioVoluntario->calificacion;
+
         $nombrePractica = $nombre->nombre_practica;
         
         $imagenEvidencia = $imagen->pathevidencia;
 
         //dd($comentarioPracticante);
         return view('/verEvidencia')->with('rubros',$rubros)->with('persona',$persona)->with('nombrePractica',$nombrePractica)->with('imagenEvidencia',$imagenEvidencia)
-                                    ->with('comentarioPracticante',$comentarioPracticante)->with('comentarioVoluntario',$comentarioVoluntario);
+                                    ->with('comentarioPracticante',$comentarioPracticante)->with('comentarioVoluntario',$comentarioVoluntario)
+                                    ->with('voluntarioCalificado',$voluntarioCalificado)
+                                    ->with('practicanteCalificado',$practicanteCalificado);
     }
 
 }
