@@ -47,14 +47,16 @@
 					    </thead>
 
 					    <tbody>
+
+						@foreach($personaTransaccion as $transaccion)
 							<tr>
-								<td>20/07/2018</td>
+								<td>{{$transaccion->created_at}}</td>
 								<td><a href=" {{ 'oferta' }} ">Clases de Guitarra Acustica</a></td>
 								<td><a href="#">Damian</a></td>
-								<td>-$80</td>
-								<td>$690</td>
+								<td>-${{$transaccion->monto_transferido}}</td>
 							</tr>
-							<tr>
+						@endforeach
+						<!--<tr>
 								<td>08/07/2018</td>
 								<td><a href=" {{ 'oferta' }} ">Reparacion de Computadoras</a></td>
 								<td><a href="#">Ariel</a></td>
@@ -82,7 +84,7 @@
 								<td>+$1000</td>
 								<td>$1000</td>
 							</tr>
-
+						-->
 					    </tbody>
 	                </table>
 	            </div>

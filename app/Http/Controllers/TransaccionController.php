@@ -41,11 +41,9 @@ class TransaccionController extends Controller
                             ->orWhere('id_destinatario', $usuario)
                             ->orderBy('transacciones.created_at','desc')
                             ->get();
+                            
+        return view('/transacciones')->with('rubros',$rubros)->with('personaTransaccion',$personaTransaccion);
 
-        
-        
-        //return view('/transacciones')->with('rubros',$rubros);
-
-        dd($personaTransaccion);
+        //dd($personaTransaccion);
     }
 }
