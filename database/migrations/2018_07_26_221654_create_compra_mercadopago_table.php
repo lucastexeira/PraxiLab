@@ -18,9 +18,8 @@ class CreateCompraMercadopagoTable extends Migration
             $table->integer('monto_creditos');
             $table->integer('cantidad_meses');
             $table->integer('estado'); // 1= esperando pago 0= pago completado
-            $table->unsignedInteger('id_transacciones')->nullable();
+            $table->string('id_transaccion_mp')->nullable();
 
-            $table->foreign('id_transacciones')->references('id')->on('transacciones');
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Persona;
 use App\Transaccion;
 use App\Rubro;
+use App\CompraMercadoPago;
 use MP;
 use Session;
 use Illuminate\Support\Facades\Input;
@@ -28,6 +29,8 @@ class MercadoPagoController extends Controller
         $monto = Input::get('monto');
         $mes = Input::get('meses');
 
+        $usuario = $idUser->id;
+
         if($monto!=0 && $mes==0){
             $titulo = "Creditos Praxilab";
             $precio = $monto + $monto * 0.05;
@@ -41,22 +44,14 @@ class MercadoPagoController extends Controller
             $precio = $mes*100 + ($monto + $monto * 0.05); 
         }
 
-        $transaccion = new Transaccion();
-        $transaccion->monto_transferido = $monto;
-        $transaccion->id_emisor = $usuario;
-        $transaccion->id_destinatario = $usuario;
-        $transaccion->historial_practica = null;
-        $transaccion->estado = 1;
-        $transaccion->save();
-
-        //$lastTransaction = 
 
         $preference_data = array(
+            "id" => 11,
             "items" => array(
                 array(
-                    "id" => "111",
+                    "id" => '1',
                     "title" => $titulo,
-                    "quantity" => $monto,
+                    "quantity" => 1,
                     "currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
                     "unit_price" => $precio,
                     "picture_url" => ''
@@ -89,9 +84,29 @@ class MercadoPagoController extends Controller
         
         $url = $preference['response']['init_point'];
 
-        //return Redirect::to($url);
+        $idTransaccionMercadoPago = $preference['response']['id'];
 
-        dd($preference);
+
+        $transaccion = new Transaccion();
+        $transaccion->monto_transferido = $monto;
+        $transaccion->id_emisor = $usuario;
+        $transaccion->id_destinatario = $usuario;
+        $transaccion->historial_practica = null;
+        $transaccion->id_transaccione_mercadopago = $idTransaccionMercadoPago;
+        $transaccion->estado = 1;
+        $transaccion->save();
+
+        $compraMercadoPago = new CompraMercadoPago();
+        $compraMercadoPago->monto_creditos = $monto;
+        $compraMercadoPago->cantidad_meses = $mes;
+        $compraMercadoPago->estado = 1;
+        $compraMercadoPago->id_transaccion_mp = $idTransaccionMercadoPago;
+        $compraMercadoPago->save();
+
+
+        return Redirect::to($url);
+
+        //dd($preference);
     }
 
 
@@ -110,8 +125,8 @@ class MercadoPagoController extends Controller
 
     }
 
-    public function confirmarPago(){
-
+    public function confirmarPago(Request $req){ 
+        $mail = Session::get('mail');
         $rubros = Rubro::all();
 
         //$mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
@@ -119,28 +134,41 @@ class MercadoPagoController extends Controller
        
         $payment_info = $mp->get_payment_info($_GET["collection_id"]);
 
+        $id_preference = Input::get('preference_id');
+
         if ($payment_info["status"] == 200) {
 
             // Actualiza la cantidad de creditos del usuario y crea registro en la rabla transacciones
             $cantidadCreditosActual = DB::table('personas')->where('mail', $mail)->first(['cantidad_creditos']);
 
-            /*floatval($monto);
+            DB::table('transacciones')
+                    ->where('id_transaccione_mercadopago', $id_preference)
+                    ->update(['estado' => 0]);
+            
+            DB::table('compra_mercadopago')
+                    ->where('id_transaccion_mp', $id_preference)
+                    ->update(['estado' => 0]);
+
+            $monto=DB::table('transacciones')
+                        ->where('id_transaccione_mercadopago', $id_preference)
+                        ->first(['monto_transferido']);
+            $m = $monto->monto_transferido;
 
             $cant = $cantidadCreditosActual->cantidad_creditos;
 
-            $usuario = $idUser->id;
+            //$usuario = $idUser->id;
 
-            $montoAGuardar = $monto + $cant;
+            $montoAGuardar = $m + $cant;
 
             DB::table('personas')
                     ->where('mail', $mail)
-                    ->update(['cantidad_creditos' => $montoAGuardar]);*/
+                    ->update(['cantidad_creditos' => $montoAGuardar]);
             
             $mensaje = "El pago se efectuo Correctamente";
             $check = "check.png";
 
             return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
-            //dd($payment_info["response"]);
+            //dd($m);
         }
         else{
             $mensaje = "El pago NO se completo";
