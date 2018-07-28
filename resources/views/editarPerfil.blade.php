@@ -12,8 +12,7 @@
 	<!-- https://ajgallego.gitbooks.io/laravel-5/content/capitulo_2_formularios.html -->
 	<div class="container">
 		<div class="col-md-12">
-			<form method="" action="{{asset('edit/'.$persona->id.'')}}">
-				<input type="hidden" name="_method" value="PUT">
+			<form method="post" enctype="multipart/form-data" action="{{asset('edit/'.$persona->id.'')}}">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="card-body">
 					<div class="col-md-6">
@@ -30,14 +29,16 @@
 							<label for="nombre">Mail</label>
 							<input name="mail" type="mail" maxlength="50" id="mail" class="form-control" placeholder="E-mail" value="{{ $persona->mail }}"/>
 						</div>
-						<input name="img" type="hidden" id="img" required="required" value="img/logos/logo_default.png"/>
+						<div class="form-group">
+							<label for="img">Imagen</label>
+							<input name="img" type="file" maxlength="50" class="form-control" id="img" value="{{$persona->img}}"/>
+						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="zona">Localidad</label>
 							<input name="zona" type="text" maxlength="50" id="zona" class="form-control" placeholder="Localidad" value="{{ $persona->zona }}"/>
 						</div>
-						<input name="img" type="hidden" id="img" required="required" value="img/logos/logo_default.png"/>
 						<div class="form-group">
 							<label for="provincia">Provincia</label>
 							<input name="provincia" type="text" id="provincia" class="form-control" placeholder="Provincia" value="{{ $persona->provincia }}" />
