@@ -137,9 +137,11 @@ class EvidenciaController extends Controller
 
         //$session_id = session()->getId();
         $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
 
          $rubros = Rubro::all();
          //dd($calificacionescomentarios);
-         return view('/verEvidencia')->with('rubros',$rubros);
+         return view('/verEvidencia')->with('rubros',$rubros)->with('persona',$persona);
     }
 }
