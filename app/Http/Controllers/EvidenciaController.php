@@ -9,6 +9,7 @@ use App\Servicio;
 use App\Persona;
 use App\Practica;
 use App\Evidecia;
+use App\Transaccion;
 use App\CalificacionComentario;
 use App\Historial_Practica;
 use App\PersonasServicios;
@@ -121,7 +122,17 @@ class EvidenciaController extends Controller
                 
                 DB::table('personas')
                     ->where('id', $id_voluntario)
-                    ->update(['cantidad_creditos' => $montoAGuardarVoluntario]);    
+                    ->update(['cantidad_creditos' => $montoAGuardarVoluntario]);
+                
+                $transaccionDebitada = new Transaccion();
+                $transaccionDebitada->monto_transferido = $precio;
+                $transaccionDebitada->id_emisor = $id_practicante;
+                $transaccionDebitada->id_destinatario = $id_voluntario;
+                $transaccionDebitada->historial_practica = $id;
+                $transaccionDebitada->id_transaccione_mercadopago = null;
+                $transaccionDebitada->estado = 0;
+                $transaccionDebitada->save();
+
             }
 
         }
@@ -228,6 +239,15 @@ class EvidenciaController extends Controller
                 DB::table('personas')
                     ->where('id', $id_voluntario)
                     ->update(['cantidad_creditos' => $montoAGuardarVoluntario]);
+
+                $transaccionDebitada = new Transaccion();
+                $transaccionDebitada->monto_transferido = $precio;
+                $transaccionDebitada->id_emisor = $id_practicante;
+                $transaccionDebitada->id_destinatario = $id_voluntario;
+                $transaccionDebitada->historial_practica = $id;
+                $transaccionDebitada->id_transaccione_mercadopago = null;
+                $transaccionDebitada->estado = 0;
+                $transaccionDebitada->save();
             }
            
         }
