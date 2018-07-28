@@ -150,6 +150,9 @@ class EvidenciaController extends Controller
         $evidencia = new Evidecia();
         
         $rubros = Rubro::all();
+        $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
 
         $practicaEvidencia = Historial_Practica::where('historial_practicas.id', $id_historial_practicas)
             ->leftJoin('practicas', 'historial_practicas.id_practica', '=', 'practicas.id')
@@ -161,7 +164,7 @@ class EvidenciaController extends Controller
         )
         ->first();
 
-        return view('/cargarEvidenciaVoluntario')->with('rubros',$rubros)->with('evidencia',$evidencia)->with('practicaEvidencia',$practicaEvidencia);
+        return view('/cargarEvidenciaVoluntario')->with('rubros',$rubros)->with('evidencia',$evidencia)->with('practicaEvidencia',$practicaEvidencia)->with('persona',$persona);
         //dd($practicaEvidencia);
     }
 
