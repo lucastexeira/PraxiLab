@@ -33,13 +33,15 @@ class PerfilController extends Controller
                                         ->where('id_destinatario', '=', $id)
                                         ->avg('calificacion');
 
+        $calificacionEstrella = round($calificacionescomentarios, 1);
+
         $comentarios =  DB::table('evidencias')
                             ->where('id_destinatario', '=', $id)
                             ->select('comentario', 'calificacion', 'created_at')
                             ->get();
 
 
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas);
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)->with('calificacionEstrella', $calificacionEstrella);
 
         /*$evidencias = DB::table('practicas')
             ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')
@@ -50,7 +52,7 @@ class PerfilController extends Controller
         
         return view('perfil')->with('rubros', $rubros)->with('persona', $persona);//->with('evidencias', $evidencias);*/
 
-        //dd($curriculum);
+        //dd($calificacion);
     }
 
     public function editarPerfil($id) {

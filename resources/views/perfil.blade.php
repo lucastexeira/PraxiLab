@@ -154,31 +154,31 @@
 				<div class="container contenido">
 					<span class="heading">Calificación</span>
 
-						@if($calificacionescomentarios > 1 and $calificacionescomentarios < 2)
+						@if($calificacionEstrella == 1)
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
-						@elseif($calificacionescomentarios > 2 and $calificacionescomentarios < 3)
+						@elseif($calificacionEstrella == 2)
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
-						@elseif($calificacionescomentarios > 3 and $calificacionescomentarios < 4)
+						@elseif($calificacionEstrella == 3)
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
-						@elseif($calificacionescomentarios > 4 and $calificacionescomentarios < 5)
+						@elseif($calificacionEstrella == 4)
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star"></span>
-						@else($calificacionescomentarios == 5)
+						@elseif($calificacionEstrella == 5)
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star checked-purple"></span>
 							<span class="fa fa-star checked-purple"></span>
@@ -186,13 +186,13 @@
 							<span class="fa fa-star checked-purple"></span>
 						@endif
 
-						<p>Promedio: {{ $calificacionescomentarios }}</p>
+						<p>Promedio: <span class="fa fa-star checked-purple">{{ $calificacionEstrella }} </span></p>
 						
 					<hr style="border:3px solid #f1f1f1">
 
 					@foreach($comentarios as $c)
 					   <ul class="list-group">
-					    <li class="list-group-item">{{ $c->created_at }} <b>{{ $c->comentario }}</b> <span class="badge">{{ $c->calificacion }} </span></li>
+					    <li class="list-group-item">{{ $c->created_at }} <b>{{ $c->comentario }}</b> <span class="badge">{{ $c->calificacion }} <span class="fa fa-star checked-white"></span></span></li>
 					  </ul>
 					@endforeach
 					<!--div class="row">
