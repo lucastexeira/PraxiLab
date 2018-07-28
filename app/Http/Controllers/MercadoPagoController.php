@@ -192,7 +192,7 @@ class MercadoPagoController extends Controller
         
         }
         else{
-            $mensaje = "El pago NO se completo";
+            $mensaje = "El pago NO se completo, vuelva a intentar mas tarde";
             $check = "checkRojo.png";
             return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
             //dd($payment_info["response"]);

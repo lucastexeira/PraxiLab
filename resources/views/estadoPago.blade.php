@@ -10,7 +10,9 @@
   @endif
 
    <div class="container gallery-container">
-		<div class="panel panel-default contenido">
+		
+        <div class="panel panel-default contenido">
+
 			<div class="panel-heading">
                 <div class="row mt centered ">
                     <div class="col-lg-8 col-lg-offset-2">
@@ -20,11 +22,20 @@
                 </div>
             </div>
 
-                <div class="col-md-8 center-block"> 
-                    <img src="{{asset('img/status/'.$check.'')}}"> 
+            <div class="experiencia-body panel-body">
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <img class="center-block" src="{{asset('img/status/'.$check.'')}}">  
+                    </div>
                 </div> 
-			
-		</div>
-	</div>
+			</div>
+          
+		</div>  
 
+	</div>
+    <br>
+    <br>
+    <br>
+    <br>
 @include("layouts.pie")
+
