@@ -60,9 +60,9 @@
 
 									@if($transaccion->id_emisor == $transaccion->id_destinatario)
 
-										@foreach($personas as $persona)
-											@if($persona->id == $transaccion->id_destinatario)
-												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+										@foreach($todasPersonas as $per)
+											@if($per->id == $transaccion->id_destinatario)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$per->nombre}}{{$per->apellido}}</a></td>
 											@endif
 										@endforeach
 
@@ -70,9 +70,9 @@
 
 									@elseif($transaccion->id_emisor == $usuario)
 
-										@foreach($personas as $persona)
-											@if($persona->id == $transaccion->id_destinatario)
-												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+										@foreach($todasPersonas as $per)
+											@if($per->id == $transaccion->id_destinatario)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$per->nombre}}{{$per->apellido}}</a></td>
 											@endif
 										@endforeach
 
@@ -80,9 +80,9 @@
 
 									@else
 									
-										@foreach($personas as $persona)
-											@if($persona->id == $transaccion->id_emisor)
-												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+										@foreach($todasPersonas as $per)
+											@if($per->id == $transaccion->id_emisor)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$per->nombre}}{{$per->apellido}}</a></td>
 											@endif
 										@endforeach
 
@@ -93,35 +93,6 @@
 								</tr>
 							@endif
 						@endforeach
-						<!--<tr>
-								<td>08/07/2018</td>
-								<td><a href=" {{ 'oferta' }} ">Reparacion de Computadoras</a></td>
-								<td><a href="#">Ariel</a></td>
-								<td>+$50</td>
-								<td>$890</td>
-							</tr>
-							<tr>
-								<td>04/06/2018</td>
-								<td><a href=" {{ 'oferta' }} ">Corte de pelo</a></td>
-								<td><a href="#">Matias</a></td>
-								<td>-$60</td>
-								<td>$840</td>
-							</tr>
-							<tr>
-								<td>03/04/2018</td>
-								<td><a href=" {{ 'oferta' }} ">Tintura</td></a>
-								<td><a href="#">Florencia</a></td>
-								<td>-$100</td>
-								<td>$900</td>
-							</tr>
-							<tr>
-								<td>29/03/2018</td>
-								<td><a href=" {{ 'oferta' }} ">Compra de Creditos</td></a>
-								<td>--</td>
-								<td>+$1000</td>
-								<td>$1000</td>
-							</tr>
-						-->
 					    </tbody>
 	                </table>
 	            </div>
