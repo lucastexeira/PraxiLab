@@ -49,6 +49,7 @@ Route::get('logout', 'HomeController@logout');
 Route::get('perfil/{id_persona}',[
 	'uses' => 'PerfilController@perfil'
 ]);
+
 //Rubros y Servicios
 Route::get('rubrosYServicios',[
 	'uses' => 'RubroController@verRubrosYServicios' //Nombre_del_controlador@Nombre_del_metodo
@@ -117,13 +118,6 @@ Route::get('transacciones',[
 	'uses' => 'TransaccionController@verTransacciones' //Nombre_del_controlador@Nombre_del_metodo
 ]);
 
-Route::get('cargarEvidencia',[
-	'uses' => 'EvidenciaController@cargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
-]);
-
-Route::get('verEvidencia',[
-	'uses' => 'EvidenciaController@verEvidencia' //Nombre_del_controlador@Nombre_del_metodo
-]);
 
 Route::get('editarPerfil/{id_persona}',[
 	'uses' => 'PerfilController@editarPerfil'
@@ -137,15 +131,29 @@ Route::get('edit/{id}',[
 //Route::get('abmPracticaServicios','ServicioController@abmPracticaServicios');
 
 //ir a Cargar Evidencia
-Route::get('cargarEvidencia',[
-	'uses' => 'OfertaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+Route::get('cargarEvidencia/{cargarEvidencia}',[
+	'uses' => 'EvidenciaController@irACargarEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+Route::get('cargarEvidenciaVoluntario/{cargarEvidencia}',[
+	'uses' => 'EvidenciaController@irACargarEvidenciaVoluntario'
 
 ]);
 
 //Cargar Evidencia
-Route::get('createEvidencia',[
-	'uses' => 'OfertaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+Route::get('createEvidencia/{id}',[
+	'uses' => 'EvidenciaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 
+]);
+
+Route::get('createEvidenciaVoluntario/{id}',[
+	'uses' => 'EvidenciaController@createEvidenciaVoluntario' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+Route::get('verEvidencia/',[
+	'uses' => 'EvidenciaController@verEvidencia' 
 ]);
 
 Route::get('editarCurriculum/{id_persona}',[
@@ -157,3 +165,23 @@ Route::get('editCurriculum/{id}',[
 
 ]);
 
+//Update estado a comenzar
+Route::get('updateEstadoComenzar/{id_historial_practicas}',[
+	'uses' => 'PracticasController@updateEstadoComenzar' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Update estado a terminar
+Route::get('updateEstadoTerminar/{id_historial_practicas}',[
+	'uses' => 'PracticasController@updateEstadoTerminar' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+//Route::get('mp', 'MercadoPagoController@compraMP' );
+
+Route::get('compra', 'MercadoPagoController@compraMP');
+Route::post('compra', 'MercadoPagoController@compraMP');
+
+
+Route::get('crearUsuarioMP', 'MercadoPagoController@crearUsuarioMP');
+Route::get('confirmarPago', 'MercadoPagoController@confirmarPago');

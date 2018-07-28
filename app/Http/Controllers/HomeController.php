@@ -7,6 +7,7 @@ use App\Persona;
 use App\Rubro;
 use App\Servicio;
 use App\Practica;
+use App\CalificacionComentario;
 use App\PersonasServicios;
 use App\Curriculum;
 use Illuminate\Http\Request;
@@ -31,10 +32,9 @@ class HomeController extends Controller
         $rubroPorId = Rubro::where('id', '=', Input::get('id'));
         $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
         $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
-        $pracPers = DB::Select('Select * from personas inner join practicas on personas.id = practicas.id_practicante
-                                                       inner join personas_servicios on personas.id = personas_servicios.id_persona
-                                                       inner join servicios on personas_servicios.id_servicio = servicios.id limit 6');
-
+        $pracPers = DB::Select('Select practicas.id id_practica, nombre_practica, personas.nombre, practicas.descripcion, personas.id id_persona, practicas.imagen_practica from personas
+                                        inner join practicas on personas.id = practicas.id_practicante limit 6');
+                                        
         return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers);
 
         //dd($pracPers);

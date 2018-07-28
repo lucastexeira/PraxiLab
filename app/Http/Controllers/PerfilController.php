@@ -9,6 +9,7 @@ use App\Servicio;
 use App\Practica;
 use App\PersonasServicios;
 use App\Curriculum;
+use App\Evidencias;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
@@ -28,15 +29,28 @@ class PerfilController extends Controller
         $curriculum = Curriculum::where('id_persona', $id)->first();
         $practicas = Practica::where('id_practicante', "=", $id)->get();
 
-        $evidencias = DB::table('evidencias')
-			->join('practicas', 'practicas.id', '=', 'evidencias.id_practica')
-			->select('evidencias.id as id_evidencia', 'pathevidencia', 'titulo', 'evidencia_descripcion', 'id_practicante')
+        $calificacionescomentarios =  DB::table('calificacionescomentarios')
+                                        ->where('id_destinatario', '=', $id)
+                                        ->avg('calificacion');
+
+        $comentarios =  DB::table('calificacionescomentarios')
+                            ->where('id_destinatario', '=', $id)
+                            ->select('comentario', 'calificacion', 'created_at')
+                            ->get();
+
+
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas);
+
+        /*$evidencias = DB::table('practicas')
+            ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')
+            //->join()
+			//->select('evidencias.id as id_evidencia', 'pathevidencia', 'evidencia_descripcion', 'id_practicante')
 			->where('practicas.id_practicante', '=', $id)
 			->get();
         
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('curriculum', $curriculum)->with('practicas', $practicas)->with('evidencias', $evidencias);
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona);//->with('evidencias', $evidencias);*/
 
-        //dd($evidencia);
+        //dd($curriculum);
     }
 
     public function editarPerfil($id) {

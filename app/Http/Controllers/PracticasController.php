@@ -9,7 +9,9 @@ use App\Servicio;
 use App\Practica;
 use App\Estado;
 use App\Historial_Practica;
+use Illuminate\Support\Facades\DB;
 use Session; 
+use Illuminate\Support\Facades\Redirect;
 
 class PracticasController extends Controller
 {
@@ -19,18 +21,56 @@ class PracticasController extends Controller
         $req = Session::get('mail');
         $user = Persona::where('mail', $req)->first()->id;
 
-        $soyPracticante = Practica::where('id_practicante', $user)->get();
+        $practicasDelPracticante = DB::table('historial_practicas')
+                                        ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                        ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
+                                        ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
+                                        ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail',
+                                                 'personas.telefono', 'personas.id as id_voluntario',
+                                                 'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
+                                                 'historial_practicas.created_at', 'historial_practicas.id_estado', 
+                                                 'estados.estado', 'estados.id as id_estado')
+                                        ->where('practicas.id_practicante', '=', $user)
+                                        ->orderByRaw('created_at DESC')
+                                        ->get();
 
-        $soyPracticante->Historial_Practica = Historial_Practica::where('id', $soyPracticante->id)->get();
-
-        //$idPra = Practica::where('id_practicante', $user)->get()->id;
-        //$estados = Estado::where('id_practica', '$idPra')->get();
-
-        //$estados = Estado::where('id_practica', $soyPracticante->id);
-        //$soyVoluntario = ;
+        $practicasDelVoluntario = DB::table('historial_practicas')
+                                        ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                        ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
+                                        ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
+                                        ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail', 
+                                                 'personas.telefono', 'personas.id as id_practicante',
+                                                 'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
+                                                 'historial_practicas.created_at', 'historial_practicas.id_estado', 
+                                                 'estados.estado', 'estados.id as id_estado')
+                                        ->where('historial_practicas.id_voluntario', '=', $user)
+                                        ->get();
         
-        //return view('/listadoPracticasEstados')->with('rubros',$rubros);
+        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante);
 
-        dd($soyPracticante->Historial_Practica);
+        //dd($practicasDelVoluntario);
     }
+
+    public function updateEstadoComenzar($id_historial_practicas){
+
+        DB::table('historial_practicas')
+                ->where('id', $id_historial_practicas)
+                ->where('id_estado', 1)
+                ->update(['id_estado' => 2]);
+
+            return Redirect::to('/listadoPracticasEstados');
+        }
+
+
+        public function updateEstadoTerminar($id_historial_practicas){
+        
+        
+            DB::table('historial_practicas')
+                ->where('id', $id_historial_practicas)
+                ->where('id_estado', 2)
+                ->update(['id_estado' => 3]);
+
+            return Redirect::to('/listadoPracticasEstados');
+        }
+
 }

@@ -75,25 +75,7 @@
 			</div>
 			
 			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
-				@foreach ($evidencias as $evidencia)
-				<div class="panel panel-default contenido">
-					<div class="panel-heading">
-						<img src="{{ asset($persona->img) }}" class="experiencia-profile-pic">
-						<h1 class="experiencia-titulo">{{ $evidencia->titulo }}</h1>
-					</div>
-					<div class="experiencia-body panel-body">
-						<a href="verEvidencia/" >
-							<img src="{{asset($evidencia->pathevidencia)}}" class="experiencia-evidencia">
-						</a>
-						<p class="experiencia-descripcion">
-							{{ $evidencia->evidencia_descripcion }}
-						</p>
-					</div>
-					<a href="{{url('verEvidencia/$evidencia->id_evidencia')}}" >
-						<button type="button" class="btn btn-lg btn-block btn-purple btn-experiencia-perfil">Ver mas</button>
-					</a>
-				</div>
-				@endforeach
+				
 			</div>
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
@@ -171,15 +153,49 @@
 			<div class="tab-pane fade" id="calificacion" role="tabpanel" aria-labelledby="calificacion-tab">
 				<div class="container contenido">
 					<span class="heading">Calificación</span>
-					<span class="fa fa-star checked-purple"></span>
-					<span class="fa fa-star checked-purple"></span>
-					<span class="fa fa-star checked-purple"></span>
-					<span class="fa fa-star checked-purple"></span>
-					<span class="fa fa-star"></span>
-					<p>Promedio: 4.1 basado en 25 reviews.</p>
+
+						@if($calificacionescomentarios > 1 and $calificacionescomentarios < 2)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						@elseif($calificacionescomentarios > 2 and $calificacionescomentarios < 3)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						@elseif($calificacionescomentarios > 3 and $calificacionescomentarios < 4)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						@elseif($calificacionescomentarios > 4 and $calificacionescomentarios < 5)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star"></span>
+						@else($calificacionescomentarios == 5)
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+							<span class="fa fa-star checked-purple"></span>
+						@endif
+
+						<p>Promedio: {{ $calificacionescomentarios }}</p>
+						
 					<hr style="border:3px solid #f1f1f1">
 
-					<div class="row">
+					@foreach($comentarios as $c)
+					   <ul class="list-group">
+					    <li class="list-group-item">{{ $c->created_at }} <b>{{ $c->comentario }}</b> <span class="badge">{{ $c->calificacion }} </span></li>
+					  </ul>
+					@endforeach
+					<!--div class="row">
 						<div class="side">
 							<div>5 star</div>
 						</div>
@@ -235,7 +251,7 @@
 						<div class="side right">
 							<div>20</div>
 						</div>
-					</div>
+					</div-->
 				</div>
 			</div>
 		</div>

@@ -50,7 +50,7 @@
                   <div class="title">{{ $pracPer->nombre_practica }}</div>
               </a>
                     <div class="clearfix">
-                      <span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/')}}">{{ $pracPer->nombre }}</a></h2></font></span>
+                      <span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/'.$pracPer->id_practicante.'')}}">{{ $pracPer->nombre }}</a></h2></font></span>
                         <span class="meta-data"><font color="white"><h2>Calificación: <i class="fa fa-star-o"></i> 5     Oferta: <i class="fa fa-dollar"></i> 50</h2></font></span>
                         <span class="meta-data"><font color="white"></font></span>
                     </div>

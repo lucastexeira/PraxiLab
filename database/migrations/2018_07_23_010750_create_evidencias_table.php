@@ -15,14 +15,18 @@ class CreateEvidenciasTable extends Migration
     {
         Schema::create('evidencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pathevidencia');//imagen de la practica hecha
+            $table->string('pathevidencia')->nullable();//imagen de la practica hecha
             $table->date('fecha')->nullable();
-            $table->string('titulo');
-            $table->longtext('evidencia_descripcion');
-            $table->unsignedInteger('id_practica');
+            $table->unsignedInteger('id_historial_practica');
+            $table->integer('calificacion')->nullable();
+            $table->string('comentario')->nullable();
+            $table->unsignedInteger('id_autor')->nullable();
+			$table->unsignedInteger('id_destinatario')->nullable();
 
-            $table->foreign('id_practica')->references('id')->on('practicas');
-            
+            $table->foreign('id_historial_practica')->references('id')->on('historial_practicas');
+            $table->foreign('id_autor')->references('id')->on('personas');
+			$table->foreign('id_destinatario')->references('id')->on('personas');
+
             $table->timestamps();
         });
     }

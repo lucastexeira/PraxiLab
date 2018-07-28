@@ -92,62 +92,85 @@
 			<div class="tab-pane fade" id="creditos" role="tabpanel" aria-labelledby="creditos-tab">
 				<div class="panel panel-default contenido">
 					
-					<form action=”https://www.paypal.com/cgi-bin/webscr” method=”post”>
+					<!--<form action=”https://www.paypal.com/cgi-bin/webscr” method=”post”>-->
 
 						<div class="card-body">
-
 							<div class="row">
-				                <div class="center-block nav-item col-lg-5 col-lg-offset-1"  ><h1>Compra de creditos</h1>
-				                	<br>
-				                    <div class="form-group"  width="50%" >
-				                        <label for="text">Cantidad de creditos</label>
-				                        <input name="canCredito" type="text" id="canCredito" class="form-control" placeholder="Monto Deseado" required="true" style= "width:60%"/>
-				                    </div>
-				                    <div class="form-group">
-				                        <label for="text">Precio Total</label>
-				                        <input name="precioTotal" type="text" id="precioTotal" class="form-control" placeholder="Precio" style= "width:60%"/>
-				                    </div>
+								<div class="center-block nav-item col-lg-5 col-lg-offset-1"><h1>Creditos</h1>
+									<form method="post" action="compra">
+									{!! csrf_field()  !!}
+										<div class="card-body ">
+											<div>
+												<div class="form-group">
+													<label for="MONTO">Monto</label>
+													<input name="monto" id="monto" class="form-control" placeholder="Monto Deseado" type="number"/>
+												</div>
+
+												<div class="form-group">
+													<label>Precio Total</label>
+													<p id = "montoCalculado"></p>
+												</div>
+
+												<div class="form-group">
+													<p>Cada compra de credito tiene costo de %5</p>
+												</div>
+
+											</div>
+										</div>
 								</div>
+
 
 				                <div class="center-block nav-item col-lg-5 col-lg-offset-1" ><h1>Suscripción</h1>
 				                	<br>
-				                    <div class="form-group"  width="50%" >
-				                        <label for="text">Cantidad de Meses</label>
-				                        <select>
-				                        	@for($i=1;$i<13;$i++)
-											<option value="{{$i}}">{{$i}}</option>
-											@endfor
-										</select>
-				                    </div>
-				                    <div class="form-group">
-				                        <label for="text">Precio Total</label>
-				                        <input name="precioTotal" type="text" id="precioTotal" class="form-control" placeholder="Precio" style= "width:40%"/>
-				                    </div>
+										<div class="form-group"  width="50%" >
+											<label for="text">Cantidad de Meses</label>
+											<br>
+											<select name= "meses">
+												@for($i=0;$i<13;$i++)
+												<option value="{{$i}}" id= "mes">{{$i}}-${{$i}}00</option>
+												@endfor
+											</select>
+										</div>
+										<br>
+										<br>
+										<div class="form-group">
+											<p>La suscripción es de $100 mensuales 
+											</p>
+										</div>
+									
 				                </div>
 
 				            </div>
-
+								<div class="center-block">
 			                    <h2>Pague con</h2>
 			                    <br>
-			                    <div class="nav nav-tabs">
-			                    	<div class="center-block">
-					                    <a href="#">
+									<div class="nav nav-tabs">
+										
+											<button class="center-block col-lg-6" style ="width: 20px">
 											<img src="{{asset('img/logos/mercadoPago.png')}}"  width="50%" height="85%" class="center-block"/>
-										</a>
-									</div>
-									<div class="center-block">
-										<a href="#">
-											<img src="{{asset('img/logos/paypal.png')}}"  width="60%" height="65%" class="center-block"/>
-										</a>
+											</button>
+										
 									</div>
 								</div>
+							</form>
 		           		</div>
 
-					</form>
+					<!--</form>-->
 
 				</div>
 			</div>
 
 		</div>
 	</div>
+
+
+	<script>
+    $( document ).ready(function() {
+		$('#monto').on('keyup', function(){
+			var monto = parseInt(this.value) + parseInt(this.value)*0.05;
+			$('#montoCalculado').html(monto);
+		});
+
+	});
+    </script>
 	@include("layouts.pie")
