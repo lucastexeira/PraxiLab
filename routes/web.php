@@ -156,3 +156,4 @@ Route::get('editCurriculum/{id}',[
 	'uses' => 'PerfilController@editCurriculum' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
+
