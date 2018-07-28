@@ -15,7 +15,7 @@
 		<div class="panel panel-default contenido">
 			<div class="panel-heading">
 				<a href="oferta/">
-					<h1 class="experiencia-titulo">Práctica: Clases de Guitarra Acustica</h1>
+					<h1 class="experiencia-titulo">Práctica: {{$nombrePractica}}</h1>
 				</a>
 			</div>
 			<div class="experiencia-body panel-body">
@@ -25,25 +25,12 @@
 
 						<div class="col-sm-6 col-md-4">
 							<div class="thumbnail">
-								<a class="lightbox" href="{{asset('img/practicas/clases-de-guitarra.jpg')}}">
-									<img src="{{asset('img/practicas/clases-de-guitarra.jpg')}}" alt="Park">
+								<a class="lightbox" href="{{asset('$imagenEvidencia')}}">
+									<img src="{{asset('$imagenEvidencia')}}" >
 								</a>
 							</div>
 						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<a class="lightbox" href="{{asset('img/practicas/practica_guitarra_1.png')}}">
-									<img src="{{asset('img/practicas/practica_guitarra_1.png')}}" alt="Bridge">
-								</a>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<a class="lightbox" href="{{asset('img/practicas/practica_guitarra_2.jpg')}}">
-									<img src="{{asset('img/practicas/practica_guitarra_2.jpg')}}" alt="Tuneel">
-								</a>
-							</div>
-						</div>
+
 					</div>
 
 				</div>

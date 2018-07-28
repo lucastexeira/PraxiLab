@@ -263,15 +263,56 @@ class EvidenciaController extends Controller
         return Redirect::to('/listadoPracticasEstados');
     }
     
-    public function verEvidencia(Request $req){
+    public function verEvidencia(Request $req, $id_historial_practica){
 
-        //$session_id = session()->getId();
         $req = Session::get('mail');
         $id = Persona::where('mail', $req)->first()->id;
         $persona = Persona::find($id);
+        $rubros = Rubro::all();
 
-         $rubros = Rubro::all();
-         //dd($calificacionescomentarios);
-         return view('/verEvidencia')->with('rubros',$rubros)->with('persona',$persona);
+        $usuarioPracticante = DB::table('historial_practicas')
+                                ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                ->first();
+
+        $id_usuario_Practicante = $usuarioPracticante->id_practicante;
+
+        $evidenciaPractica = DB::table('historial_practicas')
+                                ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                ->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
+                                ->where('historial_practicas.id',$id_historial_practica)
+                                ->get();
+
+        $comentarioPracticante = DB::table('historial_practicas')
+                                ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                ->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
+                                ->where('historial_practicas.id',$id_historial_practica)
+                                ->where('evidencias.id_autor',$id_usuario_Practicante)
+                                ->first();
+
+        $comentarioVoluntario = DB::table('historial_practicas')
+                                ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                ->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
+                                ->where('historial_practicas.id',$id_historial_practica)
+                                ->where('evidencias.id_autor', '!=',$id_usuario_Practicante)
+                                ->first();
+
+        $imagen = DB::table('evidencias')
+                    ->where('id_historial_practica',$id_historial_practica)
+                    ->where('pathevidencia','!=',null)
+                    ->first();
+
+        $nombre = DB::table('historial_practicas')
+                        ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                        ->where('historial_practicas.id',$id_historial_practica)
+                        ->first();
+        
+        $nombrePractica = $nombre->nombre_practica;
+        
+        $imagenEvidencia = $imagen->pathevidencia;
+
+        //dd($comentarioVoluntario);
+        return view('/verEvidencia')->with('rubros',$rubros)->with('persona',$persona)->with('nombrePractica',$nombrePractica)->with('imagenEvidencia',$imagenEvidencia)
+                                    ->with('comentarioPracticante',$comentarioPracticante)->with('comentarioVoluntario',$comentarioVoluntario);
     }
+
 }
