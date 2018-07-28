@@ -27,6 +27,11 @@ class MercadoPagoController extends Controller
         $mp = new MP('149347024881692', '1sxwddTWdF9GsFwhItyEsdJNGi1QYx2w');
 
         $monto = Input::get('monto');
+
+        if($monto==null){
+            $monto = 0;
+        }
+
         $mes = Input::get('meses');
 
         $usuario = $idUser->id;

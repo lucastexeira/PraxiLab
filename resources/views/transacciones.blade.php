@@ -34,7 +34,7 @@
 	                <table class="table table-striped">
 
 	                	<br>
-	                	<h1>Cantidad de creditos actual: $690</h1>
+	                	<h1>Cantidad de creditos actual: ${{$cantidad}}</h1>
 	                	<br>
 	                	<thead>
 							<tr>
@@ -42,19 +42,58 @@
 								<th>Nombre de la Práctica</th>
 								<th>Usuario</th>
 								<th>Monto</th>
-								<th>Saldo</th>
 							</tr>
 					    </thead>
 
 					    <tbody>
-							<tr>
-								<td>20/07/2018</td>
-								<td><a href=" {{ 'oferta' }} ">Clases de Guitarra Acustica</a></td>
-								<td><a href="#">Damian</a></td>
-								<td>-$80</td>
-								<td>$690</td>
-							</tr>
-							<tr>
+
+						@foreach($personaTransaccion as $transaccion)
+							@if($transaccion->estado != 1)
+								<tr>
+									<td>{{$transaccion->created_at}}</td>
+
+									@if($transaccion->nombre_practica != null)
+										<td><a href=" {{ url('oferta/'.$transaccion->id_practica.'' )}} ">{{$transaccion->nombre_practica}}</a></td>
+									@else
+										<td>Compra de Creditos PraxiLab</td>
+									@endif
+
+									@if($transaccion->id_emisor == $transaccion->id_destinatario)
+
+										@foreach($personas as $persona)
+											@if($persona->id == $transaccion->id_destinatario)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+											@endif
+										@endforeach
+
+										<td>+${{$transaccion->monto_transferido}}</td>
+
+									@elseif($transaccion->id_emisor == $usuario)
+
+										@foreach($personas as $persona)
+											@if($persona->id == $transaccion->id_destinatario)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+											@endif
+										@endforeach
+
+										<td>-${{$transaccion->monto_transferido}}</td>
+
+									@else
+									
+										@foreach($personas as $persona)
+											@if($persona->id == $transaccion->id_emisor)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+											@endif
+										@endforeach
+
+										<td>+${{$transaccion->monto_transferido}}</td>
+									@endif
+
+
+								</tr>
+							@endif
+						@endforeach
+						<!--<tr>
 								<td>08/07/2018</td>
 								<td><a href=" {{ 'oferta' }} ">Reparacion de Computadoras</a></td>
 								<td><a href="#">Ariel</a></td>
@@ -82,7 +121,7 @@
 								<td>+$1000</td>
 								<td>$1000</td>
 							</tr>
-
+						-->
 					    </tbody>
 	                </table>
 	            </div>
