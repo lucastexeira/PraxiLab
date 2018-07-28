@@ -19,7 +19,7 @@ class PracticasController extends Controller
 
         $rubros = Rubro::all();
         $req = Session::get('mail');
-        $user = Persona::where('mail', $req)->first()->id;
+        $id = Persona::where('mail', $req)->first()->id;
         $persona = Persona::find($id);
 
         $practicasDelPracticante = DB::table('historial_practicas')
@@ -31,7 +31,7 @@ class PracticasController extends Controller
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
                                                  'historial_practicas.created_at', 'historial_practicas.id_estado', 
                                                  'estados.estado', 'estados.id as id_estado', 'precio')
-                                        ->where('practicas.id_practicante', '=', $user)
+                                        ->where('practicas.id_practicante', '=', $id)
                                         ->orderByRaw('created_at DESC')
                                         ->get();
 
@@ -44,7 +44,7 @@ class PracticasController extends Controller
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
                                                  'historial_practicas.created_at', 'historial_practicas.id_estado', 
                                                  'estados.estado', 'estados.id as id_estado', 'precio')
-                                        ->where('historial_practicas.id_voluntario', '=', $user)
+                                        ->where('historial_practicas.id_voluntario', '=', $id)
                                         ->orderByRaw('created_at DESC')
                                         ->get();
         
