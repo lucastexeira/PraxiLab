@@ -61,7 +61,7 @@
                                 <div class="imagenRubroSinSeleccion">  
                                   @foreach ($rubros as $rubro)
                                     <button class="botonRubro" type="button" id="botonRubro">
-                                        <img width="150" height="100" alt="{{ $rubro->id }}" src="{{ $rubro->imagen }}"/>
+                                        <img width="225" height="100" alt="{{ $rubro->id }}" src="{{ $rubro->imagen }}"/>
                                         <p>{{ $rubro->nombre_rubro }}</p>
                                     </button>
                                    @endforeach
@@ -78,11 +78,11 @@
                                 <div class="servicios">
                                     <ol>
                                     @foreach ($servicios as $servicio)
-                                            <a id="listaServicios" href="#step2">
-                                                <h4 class="center-block servicioSeleccionado" id="{{ $servicio->id }}" >
-                                                    {{ $servicio->nombre_servicio }}
-                                                </h4>
-                                            </a>
+                                        <a id="listaServicios" href="#step2">
+                                            <h4 class="center-block servicioSeleccionado" id="{{ $servicio->id }}" >
+                                                {{ $servicio->nombre_servicio }}
+                                            </h4>
+                                        </a>
                                     @endforeach
                                     
                                     </ol>
@@ -118,20 +118,24 @@
 
                             <div class="col-md-6">
                                 <input name="imagen_practica" type="hidden" id="imagen_practica" required="required" value="img/logos/logo_default.png"/>
-                                <!--div class="form-group">
+                                <div class="form-group">
                                     <label for="imagen">Imagen</label>
                                     <input name="imagen" type="file" id="imagen" placeholder="Imagen de la Practica" class="form-control" required>
-                                </div-->
+                                </div>
 
-                                <!--div class="form-group">
+                                <div class="form-group">
                                     <label for="precio">Monto ofrecido</label>
                                     <input name="precio" type="number" id="precio" class="form-control" placeholder="Monto ofrecido" required>
-                                </div-->
+                                </div>
                             </div>
                         </div>
 
                         <ul class="list-inline pull-right">
-                            <button type="submit" class="btn btn-theme btn-lg next-step" id="botonStep2">Guardar y Finalizar</button>
+                            
+                            <button type="submit" class="btn btn-theme btn-lg next-step" id="botonStep2">
+                                <input type="submit">Guardar y Finalizar
+                            </button>
+                            
                         </ul>
                     </div>
             </form>
@@ -188,6 +192,8 @@
             var rubroID = $(this).attr("alt");
             var rubroIMG = $(this).attr("src");
 
+            $('wizard').attr('href', 'id='+rubroID);
+
             $('#rubroSeleccionado').addClass('col-md-3');
             // eliminar una clase del elemento
             
@@ -195,7 +201,7 @@
             if(rubroID){
               $.ajax({
                 type:"GET",
-                url:"{{url('wizard')}}?id="+rubroID,
+                data:rubroID,
                 success:function(res){
                   if(res){
                     //Oculto listado de rubros con efecto lento

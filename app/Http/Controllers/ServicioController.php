@@ -21,6 +21,11 @@ class ServicioController extends Controller
     public function verTodosLosServicios(){
     $buscador= array();
 
+
+        $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
+        
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
                     ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
                     ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
@@ -28,7 +33,7 @@ class ServicioController extends Controller
                     $rubros = Rubro::All();
                     $servicios = Servicio::all();
 
-        return view('todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers);
+        return view('todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers)->with('persona',$persona);
         //dd($pracPers);
     }
 
@@ -60,7 +65,7 @@ class ServicioController extends Controller
         $rubros = Rubro::All();
         $pracPers = DB::Select('Select * from practicas inner join personas on practicas.id_practicante = personas.id 
                                                         inner join servicios on practicas.id_servicio = servicios.id 
-                                                        where servicios.id = '.$id_servicio.''); 
+                                                        where servicios.id = '.$id_servicio.'');     
 
         return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros);
 
@@ -69,7 +74,8 @@ class ServicioController extends Controller
 
     public function irAWizard(Request $request){
 
-
+        $id_rubro = array_key_exists('data', $_GET) ? $_GET['data'] : null;
+        
         $req = Session::get('mail');
         
         $id = Persona::where('mail', $req)->first()->id;
@@ -77,8 +83,13 @@ class ServicioController extends Controller
 
         $practica = new Practica();
         $rubros = Rubro::all();
-        $servicios = Servicio::paginate(5);
-        //$servicios = Servicio::where('id_rubro', $request->id_rubro)->pluck('id');
+       // $servicios = Servicio::paginate(5);
+        //$servicios = Servicio::where('id', $request->id)->pluck('id');
+        
+        if(!empty($id_rubro))
+            $servicios = DB::Select('Select * from servicios where id_rubro = '.$id_rubro.'');
+        else
+            $servicios = Servicio::paginate(5);
 
         return view('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica)->with('persona',$persona);
 
@@ -115,6 +126,7 @@ class ServicioController extends Controller
         
             $practica = new Practica();
             $practica->nombre_practica = Input::get('nombre_practica');
+            $practica->precio = Input::get('precio');
             $practica->descripcion = Input::get('descripcion');
             $practica->imagen_practica = Input::get('imagen_practica');
             $practica->id_practicante = $servicioId;
@@ -123,6 +135,7 @@ class ServicioController extends Controller
 
             $rubros = Rubro::all();
             
+            //dd($practica);
             return view('/listadoPracticasEstados')->with('rubros',$rubros);
         }
     }
