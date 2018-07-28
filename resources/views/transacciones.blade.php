@@ -48,48 +48,50 @@
 					    <tbody>
 
 						@foreach($personaTransaccion as $transaccion)
-							<tr>
-								<td>{{$transaccion->created_at}}</td>
+							@if($transaccion->estado != 1)
+								<tr>
+									<td>{{$transaccion->created_at}}</td>
 
-								@if($transaccion->nombre_practica != null)
-									<td><a href=" {{ url('oferta/'.$transaccion->id_practica.'' )}} ">{{$transaccion->nombre_practica}}</a></td>
-								@else
-									<td>Compra de Creditos PraxiLab</td>
-								@endif
+									@if($transaccion->nombre_practica != null)
+										<td><a href=" {{ url('oferta/'.$transaccion->id_practica.'' )}} ">{{$transaccion->nombre_practica}}</a></td>
+									@else
+										<td>Compra de Creditos PraxiLab</td>
+									@endif
 
-								@if($transaccion->id_emisor == $transaccion->id_destinatario)
+									@if($transaccion->id_emisor == $transaccion->id_destinatario)
 
-									@foreach($personas as $persona)
-										@if($persona->id == $transaccion->id_destinatario)
-											<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
-										@endif
-									@endforeach
+										@foreach($personas as $persona)
+											@if($persona->id == $transaccion->id_destinatario)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+											@endif
+										@endforeach
 
-									<td>+${{$transaccion->monto_transferido}}</td>
+										<td>+${{$transaccion->monto_transferido}}</td>
 
-								@elseif($transaccion->id_emisor == $usuario)
+									@elseif($transaccion->id_emisor == $usuario)
 
-									@foreach($personas as $persona)
-										@if($persona->id == $transaccion->id_destinatario)
-											<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
-										@endif
-									@endforeach
+										@foreach($personas as $persona)
+											@if($persona->id == $transaccion->id_destinatario)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+											@endif
+										@endforeach
 
-									<td>-${{$transaccion->monto_transferido}}</td>
+										<td>-${{$transaccion->monto_transferido}}</td>
 
-								@else
-								
-									@foreach($personas as $persona)
-										@if($persona->id == $transaccion->id_emisor)
-											<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
-										@endif
-									@endforeach
+									@else
+									
+										@foreach($personas as $persona)
+											@if($persona->id == $transaccion->id_emisor)
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$persona->nombre}}{{$persona->apellido}}</a></td>
+											@endif
+										@endforeach
 
-									<td>+${{$transaccion->monto_transferido}}</td>
-								@endif
+										<td>+${{$transaccion->monto_transferido}}</td>
+									@endif
 
 
-							</tr>
+								</tr>
+							@endif
 						@endforeach
 						<!--<tr>
 								<td>08/07/2018</td>

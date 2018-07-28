@@ -37,7 +37,7 @@ class TransaccionController extends Controller
                             ->leftjoin('historial_practicas', 'historial_practicas.id','=','transacciones.historial_practica')
                             ->leftjoin('practicas', 'practicas.id','=','historial_practicas.id_practica')
                             ->join('personas', 'personas.id','=','transacciones.id_emisor')
-                            ->select('id_practica', 'transacciones.created_at', 'nombre_practica','id_destinatario','id_emisor','monto_transferido')
+                            ->select('id_practica', 'transacciones.created_at', 'nombre_practica','id_destinatario','id_emisor','monto_transferido', 'transacciones.estado')
                             ->where('id_emisor',$usuario)
                             ->orWhere('id_destinatario', $usuario)
                             ->orderBy('transacciones.created_at','desc')
@@ -48,6 +48,6 @@ class TransaccionController extends Controller
                             
         return view('/transacciones')->with('rubros',$rubros)->with('personaTransaccion',$personaTransaccion)->with('usuario',$usuario)->with('cantidad',$cantidad)->with('personas',$personas);
 
-        //dd($personas);
+        //dd($personaTransaccion);
     }
 }
