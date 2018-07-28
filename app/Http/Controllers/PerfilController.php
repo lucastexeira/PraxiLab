@@ -29,11 +29,11 @@ class PerfilController extends Controller
         $curriculum = Curriculum::where('id_persona', $id)->first();
         $practicas = Practica::where('id_practicante', "=", $id)->get();
 
-        $calificacionescomentarios =  DB::table('calificacionescomentarios')
+        $calificacionescomentarios =  DB::table('evidencias')
                                         ->where('id_destinatario', '=', $id)
                                         ->avg('calificacion');
 
-        $comentarios =  DB::table('calificacionescomentarios')
+        $comentarios =  DB::table('evidencias')
                             ->where('id_destinatario', '=', $id)
                             ->select('comentario', 'calificacion', 'created_at')
                             ->get();
