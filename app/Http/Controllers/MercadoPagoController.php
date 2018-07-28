@@ -133,6 +133,8 @@ class MercadoPagoController extends Controller
     public function confirmarPago(Request $req){ 
         $mail = Session::get('mail');
         $rubros = Rubro::all();
+        $id = Persona::where('mail', $mail)->first()->id;
+        $persona = Persona::find($id);
 
         //$mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
         $mp = new MP('149347024881692', '1sxwddTWdF9GsFwhItyEsdJNGi1QYx2w');
@@ -172,13 +174,13 @@ class MercadoPagoController extends Controller
             $mensaje = "El pago se efectuo Correctamente";
             $check = "check.png";
 
-            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
             //dd($m);
         }
         else{
             $mensaje = "El pago NO se completo";
             $check = "checkRojo.png";
-            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
             //dd($payment_info["response"]);
         }
 

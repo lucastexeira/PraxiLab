@@ -21,8 +21,12 @@ use Illuminate\Support\Facades\DB;
 class TransaccionController extends Controller
 {
      public function verTransacciones(Request $req){
-
+        
+        // variables para la barra
         $rubros = Rubro::all();
+        $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
         
         $mail = Session::get('mail');
         $idUser = DB::table('personas')->where('mail', $mail)->first(['id']);
@@ -43,10 +47,10 @@ class TransaccionController extends Controller
                             ->orderBy('transacciones.created_at','desc')
                             ->get();
 
-        $personas = DB::table('personas')
+        $todasPersonas = DB::table('personas')
                     ->get();
                             
-        return view('/transacciones')->with('rubros',$rubros)->with('personaTransaccion',$personaTransaccion)->with('usuario',$usuario)->with('cantidad',$cantidad)->with('personas',$personas);
+        return view('/transacciones')->with('rubros',$rubros)->with('personaTransaccion',$personaTransaccion)->with('usuario',$usuario)->with('cantidad',$cantidad)->with('persona',$persona)->with('todasPersonas',$todasPersonas);
 
         //dd($personaTransaccion);
     }
