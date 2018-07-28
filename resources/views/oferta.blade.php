@@ -42,13 +42,17 @@
 								</div>
 								<div class="div-boton-oferta">
 									@if(session()->has('mail'))
-						                <button type="button" class="btn btn-lg btn-purple btn-oferta" data-toggle="modal" data-target="#myModal">	Practicar
-									</button>
-						            @else 
-						            	<a href="{{asset('inicioSesion')}}">
-							               <button type="button" class="btn btn-lg btn-purple btn-oferta">	Practicar
+						                <p>
+							                <button type="button" class="btn btn-lg btn-purple btn-oferta" data-toggle="modal" data-target="#myModal">		Practicar
 											</button>
-										</a>
+										</p>
+						            @else 
+						            	<p>
+							            	<a href="{{asset('inicioSesion')}}">
+								               <button type="button" class="btn btn-lg btn-purple btn-oferta">	Practicar
+												</button>
+											</a>
+										</p>
 						            @endif
 								</div>
 

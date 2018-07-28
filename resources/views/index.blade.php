@@ -71,8 +71,8 @@
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
-                Nombre
+                <img src="{{ $user->img }}" class="img-circle" alt="Usuario" height="50px" width="50px">
+                {{ $user->username }}
               </a>
 
               <ul class="dropdown-menu">
@@ -80,7 +80,7 @@
                   <div class="navbar-login">
                     <div class="row">
                       <div class="col-lg-12">
-                        <a class="dropdown-item" href="{{ 'perfil' }}">
+                        <a class="dropdown-item" href="{{ url('perfil/'.$user->id.'') }}">
                           <span class="glyphicon glyphicon-user"></span> Ver Perfil</a>
                         </div>
                       </div>

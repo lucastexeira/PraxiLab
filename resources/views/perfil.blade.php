@@ -62,10 +62,10 @@
 							</div>
 							<div class="row justify-content-end align-items-end">
 								<div class="col-1">
-									<p class="precio-oferta-perfil">{{$oferta->precio}}</p>
+									<p class="precio-oferta-perfil">${{$oferta->precio}}</p>
 								</div>
 								<div class="col-1">
-									<a href="{{url('oferta/')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
+									<a href="{{url('oferta/'.$oferta->id.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
 								</div>
 							</div>
 						</div>
@@ -80,9 +80,9 @@
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
-					<a href="{{url('editarCurriculum/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+					<a href="{{url('editarCurriculum/'.$persona->id.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
 
-					@if ($curriculum->formacion_academica != '')
+					@if (!empty($curriculum->formacion_academica))
 					<div class="panel panel-default contenido">
 						<div class="panel-heading">
 							<h2>FORMACIÓN ACADÉMICA</h2>
@@ -93,7 +93,7 @@
 					</div>
 					@endif
 
-					@if ($curriculum->formacion_complementaria != '')
+					@if (!empty($curriculum->formacion_complementaria))
 					<div class="panel panel-default contenido">
 						<div class="panel-heading">
 							<h2>FORMACIÓN COMPLEMENTARIA</h2>
@@ -104,7 +104,7 @@
 					</div>
 					@endif
 					
-					@if ($curriculum->experiencia != '')
+					@if (!empty($curriculum->experiencia))
 					<div class="panel panel-default contenido">
 						<div class="panel-heading">
 							<h2>EXPERIENCIA</h2>
@@ -115,7 +115,7 @@
 					</div>
 					@endif
 
-					@if ($curriculum->idiomas != '')
+					@if (!empty($curriculum->idiomas))
 					<div class="panel panel-default contenido">
 						<div class="panel-heading">
 							<h2>IDIOMAS</h2>
@@ -126,7 +126,7 @@
 					</div>
 					@endif
 
-					@if ($curriculum->referencias != '')
+					@if (!empty($curriculum->referencias))
 					<div class="panel panel-default contenido">
 						<div class="panel-heading">
 							<h2>REFERENCIAS</h2>
@@ -137,7 +137,7 @@
 					</div>
 					@endif
 
-					@if ($curriculum->otros_datos != '')
+					@if (!empty($curriculum->otros_datos))
 					<div class="panel panel-default contenido">
 						<div class="panel-heading">
 							<h2>OTROS DATOS</h2>
