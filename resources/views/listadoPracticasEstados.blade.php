@@ -147,7 +147,7 @@
 							        <td>{{ $soyVol->estado }}</td>
 										  @if( $soyVol->id_estado == 3)
 											<td>
-												<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
+												<a href=" {{ asset('cargarEvidenciaVoluntario/'.$soyVol->id_historial_practicas.'') }} ">
 														<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
 												</a>
 											</td>

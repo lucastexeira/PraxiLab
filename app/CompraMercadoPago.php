@@ -8,5 +8,5 @@ class CompraMercadoPago extends Model
 {
     protected $table = "compra_mercadopago";
 
-    protected $fillable = ['id_transacciones','monto_creditos','cantidad_meses','estado'];
+    protected $fillable = ['monto_creditos','cantidad_meses','estado','id_transaccion_mp'];
 }

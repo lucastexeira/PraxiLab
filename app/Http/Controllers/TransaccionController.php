@@ -25,15 +25,27 @@ class TransaccionController extends Controller
         $rubros = Rubro::all();
         
         $mail = Session::get('mail');
-        $user = Persona::where('mail', $mail)->get(['id']);
+        $idUser = DB::table('personas')->where('mail', $mail)->first(['id']);
 
-        /*$personaTransaccion = DB::table('transacciones')
-                                    ->leftJoin('historial_practicas', 'historial_practicas.id' ,'=', 'transacciones.historial_practica')
-                                    ->where()
-                                    ->get();*/
+        $usuario = $idUser->id;
+
+        $cantidadCreditos = DB::table('personas')->where('mail', $mail)->first(['cantidad_creditos']);
+
+        $cantidad = $cantidadCreditos->cantidad_creditos;
+
+        $personaTransaccion = DB::table('transacciones')
+                            ->leftjoin('historial_practicas', 'historial_practicas.id','=','transacciones.historial_practica')
+                            ->leftjoin('practicas', 'practicas.id','=','historial_practicas.id_practica')
+                            ->join('personas', 'personas.id','=','transacciones.id_emisor')
+                            ->where('id_emisor',$usuario)
+                            ->orWhere('id_destinatario', $usuario)
+                            ->orderBy('transacciones.created_at','desc')
+                            ->get();
+
         
-        return view('/transacciones')->with('rubros',$rubros);
+        
+        //return view('/transacciones')->with('rubros',$rubros);
 
-        //dd($personaTransaccion);
+        dd($personaTransaccion);
     }
 }

@@ -47,8 +47,9 @@ Route::get('logout', 'HomeController@logout');
 
 //Inicio de Sesion - (login y logout)
 Route::get('perfil/{id_persona}',[
-	'uses' => 'HomeController@perfil'
+	'uses' => 'PerfilController@perfil'
 ]);
+
 //Rubros y Servicios
 Route::get('rubrosYServicios',[
 	'uses' => 'RubroController@verRubrosYServicios' //Nombre_del_controlador@Nombre_del_metodo
@@ -119,11 +120,11 @@ Route::get('transacciones',[
 
 
 Route::get('editarPerfil/{id_persona}',[
-	'uses' => 'HomeController@editarPerfil'
+	'uses' => 'PerfilController@editarPerfil'
 ]);
 
 Route::get('edit/{id}',[
-	'uses' => 'HomeController@edit' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'PerfilController@edit' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 //Lista de Practicas en abmPractica
@@ -135,18 +136,32 @@ Route::get('cargarEvidencia/{cargarEvidencia}',[
 
 ]);
 
+Route::get('cargarEvidenciaVoluntario/{cargarEvidencia}',[
+	'uses' => 'EvidenciaController@irACargarEvidenciaVoluntario'
+
+]);
+
 //Cargar Evidencia
 Route::get('createEvidencia/{id}',[
 	'uses' => 'EvidenciaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
+Route::get('createEvidenciaVoluntario/{id}',[
+	'uses' => 'EvidenciaController@createEvidenciaVoluntario' //Nombre_del_controlador@Nombre_del_metodo
+
+]);
+
+Route::get('verEvidencia/',[
+	'uses' => 'EvidenciaController@verEvidencia' 
+]);
+
 Route::get('editarCurriculum/{id_persona}',[
-	'uses' => 'HomeController@editarCurriculum'
+	'uses' => 'PerfilController@editarCurriculum'
 ]);
 
 Route::get('editCurriculum/{id}',[
-	'uses' => 'HomeController@editCurriculum' //Nombre_del_controlador@Nombre_del_metodo
+	'uses' => 'PerfilController@editCurriculum' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
