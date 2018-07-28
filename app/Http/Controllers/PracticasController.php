@@ -29,7 +29,7 @@ class PracticasController extends Controller
                                                  'personas.telefono', 'personas.id as id_voluntario',
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
                                                  'historial_practicas.created_at', 'historial_practicas.id_estado', 
-                                                 'estados.estado', 'estados.id as id_estado')
+                                                 'estados.estado', 'estados.id as id_estado', 'precio')
                                         ->where('practicas.id_practicante', '=', $user)
                                         ->orderByRaw('created_at DESC')
                                         ->get();
@@ -42,8 +42,9 @@ class PracticasController extends Controller
                                                  'personas.telefono', 'personas.id as id_practicante',
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
                                                  'historial_practicas.created_at', 'historial_practicas.id_estado', 
-                                                 'estados.estado', 'estados.id as id_estado')
+                                                 'estados.estado', 'estados.id as id_estado', 'precio')
                                         ->where('historial_practicas.id_voluntario', '=', $user)
+                                        ->orderByRaw('created_at DESC')
                                         ->get();
         
         return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante);

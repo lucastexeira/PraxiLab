@@ -48,10 +48,28 @@ class EvidenciaController extends Controller
     public function createEvidencia(Request $req, $id){
 
         //$session_id = session()->getId();
+        $rubros = Rubro::all();
         $req = Session::get('mail');
 
         $now = new \DateTime();
         $now->format('d-m-Y H:i:s');
+
+        $id_historial_practica = DB::table('evidencias')
+                    ->where('id_historial_practica',$id)
+                    ->first();
+        
+        $id_destinatario =  DB::table('historial_practicas')
+                                ->where('id',$id)
+                                ->first();
+        
+        $id_des = $id_destinatario->id_voluntario;                        
+
+        if($id_historial_practica != null){
+            $id_hp = $id_historial_practica->id;
+        }
+        else{
+            $id_hp = 0;
+        }
 
         if ( $req ){
             
@@ -64,19 +82,22 @@ class EvidenciaController extends Controller
             $evidencia->calificacion = Input::get('calificacion');
             $evidencia->comentario = Input::get('comentario');
             $evidencia->id_autor = $idPersona;
-            $evidencia->id_destinatario = 1;
+            $evidencia->id_destinatario = $id_des;
             $evidencia->save();
 
-            
+            if($id_hp == $id){
+                DB::table('historial_practicas')
+                    ->where('id', $id)
+                    ->update(['id_estado' => 4]);
+            }
 
-            /*$calificacionescomentarios = new CalificacionComentario();
-            $calificacionescomentarios->save();*/
+            //$calificacionescomentarios = new CalificacionComentario();
+            //$calificacionescomentarios->save();
            
         }
 
-         $rubros = Rubro::all();
-         //dd($calificacionescomentarios);
-         return Redirect::to('/listadoPracticasEstados');
+        // dd($id_des);
+        return Redirect::to('/listadoPracticasEstados');
     }
 
     public function irAcargarEvidenciaVoluntario(Request $request, $id_historial_practicas){
@@ -102,10 +123,29 @@ class EvidenciaController extends Controller
     public function createEvidenciaVoluntario(Request $req, $id){
 
         //$session_id = session()->getId();
+        $rubros = Rubro::all();
         $req = Session::get('mail');
 
         $now = new \DateTime();
         $now->format('d-m-Y H:i:s');
+
+        $id_historial_practica = DB::table('evidencias')
+                    ->where('id_historial_practica',$id)
+                    ->first();
+
+        if($id_historial_practica != null){
+            $id_hp = $id_historial_practica->id;
+        }
+        else{
+            $id_hp = 0;
+        }
+
+        $id_destinatario =  DB::table('historial_practicas')
+                                ->join('practicas', 'historial_practicas.id_practica', '=', 'practicas.id')
+                                ->where('historial_practicas.id',$id)
+                                ->first();
+        
+        $id_des = $id_destinatario->id_practicante;    
 
         if ( $req ){
             
@@ -118,19 +158,19 @@ class EvidenciaController extends Controller
             $evidencia->calificacion = Input::get('calificacion');
             $evidencia->comentario = Input::get('comentario');
             $evidencia->id_autor = $idPersona;
-            $evidencia->id_destinatario = 1;
+            $evidencia->id_destinatario = $id_des;
             $evidencia->save();
 
-            
-
-            /*$calificacionescomentarios = new CalificacionComentario();
-            $calificacionescomentarios->save();*/
+            if($id_hp == $id){
+                DB::table('historial_practicas')
+                    ->where('id', $id)
+                    ->update(['id_estado' => 4]);
+            }
            
         }
 
-         $rubros = Rubro::all();
-         //dd($calificacionescomentarios);
-         return Redirect::to('/listadoPracticasEstados');
+        //dd($id_des);
+        return Redirect::to('/listadoPracticasEstados');
     }
     
     public function verEvidencia(Request $req){
