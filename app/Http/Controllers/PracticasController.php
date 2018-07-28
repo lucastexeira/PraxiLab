@@ -20,6 +20,7 @@ class PracticasController extends Controller
         $rubros = Rubro::all();
         $req = Session::get('mail');
         $user = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
 
         $practicasDelPracticante = DB::table('historial_practicas')
                                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
@@ -47,7 +48,7 @@ class PracticasController extends Controller
                                         ->orderByRaw('created_at DESC')
                                         ->get();
         
-        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante);
+        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante)->with('persona',$persona);
 
         //dd($practicasDelVoluntario);
     }

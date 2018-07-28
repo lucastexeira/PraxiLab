@@ -89,12 +89,19 @@ class PerfilController extends Controller
         $curriculum = Curriculum::where('id_persona', $id)->first();
         $persona = Persona::where('id', $id)->first();
 
+        if (empty($curriculum->formacion_academica)){
+            $curriculum = new Curriculum();
+            $curriculum->id_persona = $id;
+        }
+
         $curriculum->formacion_academica = Input::get('formacion_academica');
         $curriculum->formacion_complementaria = Input::get('formacion_complementaria');
         $curriculum->experiencia = Input::get('experiencia');
         $curriculum->idiomas = Input::get('idiomas');
         $curriculum->referencias = Input::get('referencias');
         $curriculum->otros_datos = Input::get('otros_datos');
+        
+
         $curriculum->save();
 
         return $this->perfil($persona->id);

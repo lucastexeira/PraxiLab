@@ -69,12 +69,18 @@ class ServicioController extends Controller
 
     public function irAWizard(Request $request){
 
+
+        $req = Session::get('mail');
+        
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
+
         $practica = new Practica();
         $rubros = Rubro::all();
         $servicios = Servicio::paginate(5);
         //$servicios = Servicio::where('id_rubro', $request->id_rubro)->pluck('id');
 
-        return view('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica);
+        return view('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica)->with('persona',$persona);
 
         //dd($servicios);
     }

@@ -34,9 +34,20 @@ class HomeController extends Controller
         $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
         $pracPers = DB::Select('Select practicas.id id_practica, nombre_practica, personas.nombre, practicas.descripcion, personas.id id_persona, practicas.imagen_practica from personas
                                         inner join practicas on personas.id = practicas.id_practicante limit 6');
-                                        
-        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers);
+        
+        $req = Session::get('mail');
+        
+        if (!empty($req)){
+            $id = Persona::where('mail', $req)->first()->id;
+            $user = Persona::find($id);
+        
 
+        return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers)->with('user', $user);
+        }
+
+        else{
+            return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers);   
+        }
         //dd($pracPers);
     }
  
@@ -84,7 +95,6 @@ class HomeController extends Controller
             //Si encuentro un mail, lo meto en una variable de sesion
             $req->session()->put('mail', $mail);
             session(['mail' => $mail]); //usando el helper
-
             
             return Redirect::to('/index');
         }
