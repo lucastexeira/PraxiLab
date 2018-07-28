@@ -53,23 +53,48 @@ class EvidenciaController extends Controller
 
         $now = new \DateTime();
         $now->format('d-m-Y H:i:s');
-
+        
+        // se obtiene el id del historial de la practica para saber si ya existe en la base de datos algun comentario de ese historial y asi poder finalizarla
         $id_historial_practica = DB::table('evidencias')
                     ->where('id_historial_practica',$id)
                     ->first();
-        
+
+        if($id_historial_practica != null){
+            $id_hp = $id_historial_practica->id_historial_practica;
+        }
+        else{
+            $id_hp = 0;
+        }
+
+        // se obtiene el id del usuario que esta recibiendo el comentario
         $id_destinatario =  DB::table('historial_practicas')
                                 ->where('id',$id)
                                 ->first();
         
         $id_des = $id_destinatario->id_voluntario;                        
 
-        if($id_historial_practica != null){
-            $id_hp = $id_historial_practica->id;
-        }
-        else{
-            $id_hp = 0;
-        }
+        // se obtiene la cantidad de creditos que tiene el usuario para hacer una transferencia.
+        $id_historial_practica = DB::table('practicas')
+                    ->join('historial_practicas', 'historial_practicas.id_practica', '=', 'practicas.id')
+                    ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
+                    ->where('historial_practicas.id',$id)
+                    ->first();
+
+        $id_historial_voluntario = DB::table('historial_practicas')
+                    ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
+                    ->where('historial_practicas.id',$id)
+                    ->first();
+
+        $id_practicante = $id_historial_practica->id_practicante;
+        $id_voluntario = $id_historial_voluntario->id_voluntario;
+
+        $creditosPracticante = $id_historial_practica->cantidad_creditos;
+        $creditosVoluntario = $id_historial_voluntario->cantidad_creditos;
+
+        $precio = $id_historial_practica->precio;
+
+        $montoAGuardarPracticante = $creditosPracticante-$precio;
+        $montoAGuardarVoluntario = $creditosVoluntario+$precio;
 
         if ( $req ){
             
@@ -89,14 +114,19 @@ class EvidenciaController extends Controller
                 DB::table('historial_practicas')
                     ->where('id', $id)
                     ->update(['id_estado' => 4]);
+
+                DB::table('personas')
+                    ->where('id', $id_practicante)
+                    ->update(['cantidad_creditos' => $montoAGuardarPracticante]); 
+                
+                DB::table('personas')
+                    ->where('id', $id_voluntario)
+                    ->update(['cantidad_creditos' => $montoAGuardarVoluntario]);    
             }
 
-            //$calificacionescomentarios = new CalificacionComentario();
-            //$calificacionescomentarios->save();
-           
         }
 
-        // dd($id_des);
+        //dd($id_historial_practica);
         return Redirect::to('/listadoPracticasEstados');
     }
 
@@ -128,24 +158,49 @@ class EvidenciaController extends Controller
 
         $now = new \DateTime();
         $now->format('d-m-Y H:i:s');
-
+        
+        // se obtiene el id del historial de la practica para saber si ya existe en la base de datos algun comentario de ese historial y asi poder finalizarla
         $id_historial_practica = DB::table('evidencias')
                     ->where('id_historial_practica',$id)
                     ->first();
 
         if($id_historial_practica != null){
-            $id_hp = $id_historial_practica->id;
+            $id_hp = $id_historial_practica->id_historial_practica;
         }
         else{
             $id_hp = 0;
         }
 
+        // se obtiene el id del usuario que esta recibiendo el comentario
         $id_destinatario =  DB::table('historial_practicas')
                                 ->join('practicas', 'historial_practicas.id_practica', '=', 'practicas.id')
                                 ->where('historial_practicas.id',$id)
                                 ->first();
+        $id_des = $id_destinatario->id_practicante;  
         
-        $id_des = $id_destinatario->id_practicante;    
+        // se obtiene la cantidad de creditos que tiene el usuario para hacer una transferencia.
+        $id_historial_practica = DB::table('practicas')
+                    ->join('historial_practicas', 'historial_practicas.id_practica', '=', 'practicas.id')
+                    ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
+                    ->where('historial_practicas.id',$id)
+                    ->first();
+
+        $id_historial_voluntario = DB::table('historial_practicas')
+                    ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
+                    ->where('historial_practicas.id',$id)
+                    ->first();
+
+        $id_practicante = $id_historial_practica->id_practicante;
+        $id_voluntario = $id_historial_voluntario->id_voluntario;
+
+        $creditosPracticante = $id_historial_practica->cantidad_creditos;
+        $creditosVoluntario = $id_historial_voluntario->cantidad_creditos;
+
+        $precio = $id_historial_practica->precio;
+
+        $montoAGuardarPracticante = $creditosPracticante-$precio;
+        $montoAGuardarVoluntario = $creditosVoluntario+$precio;
+
 
         if ( $req ){
             
@@ -165,6 +220,14 @@ class EvidenciaController extends Controller
                 DB::table('historial_practicas')
                     ->where('id', $id)
                     ->update(['id_estado' => 4]);
+
+                DB::table('personas')
+                    ->where('id', $id_practicante)
+                    ->update(['cantidad_creditos' => $montoAGuardarPracticante]); 
+                
+                DB::table('personas')
+                    ->where('id', $id_voluntario)
+                    ->update(['cantidad_creditos' => $montoAGuardarVoluntario]);
             }
            
         }
