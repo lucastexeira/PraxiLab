@@ -285,6 +285,7 @@ class EvidenciaController extends Controller
         $comentarioPracticante = DB::table('historial_practicas')
                                 ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
                                 ->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
+                                ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
                                 ->where('historial_practicas.id',$id_historial_practica)
                                 ->where('evidencias.id_autor',$id_usuario_Practicante)
                                 ->first();
@@ -292,6 +293,7 @@ class EvidenciaController extends Controller
         $comentarioVoluntario = DB::table('historial_practicas')
                                 ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
                                 ->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
+                                ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
                                 ->where('historial_practicas.id',$id_historial_practica)
                                 ->where('evidencias.id_autor', '!=',$id_usuario_Practicante)
                                 ->first();
@@ -310,7 +312,7 @@ class EvidenciaController extends Controller
         
         $imagenEvidencia = $imagen->pathevidencia;
 
-        //dd($comentarioVoluntario);
+        //dd($comentarioPracticante);
         return view('/verEvidencia')->with('rubros',$rubros)->with('persona',$persona)->with('nombrePractica',$nombrePractica)->with('imagenEvidencia',$imagenEvidencia)
                                     ->with('comentarioPracticante',$comentarioPracticante)->with('comentarioVoluntario',$comentarioVoluntario);
     }
