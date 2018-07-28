@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Session;
+use Illuminate\Support\Facades\Redirect;
 
 class ServicioController extends Controller
 {
@@ -129,11 +130,11 @@ class ServicioController extends Controller
         //dd($servicios);
     }
 
-    public function createPractica(Request $req){
-
+   public function createPractica(Request $req){
+ 
         //$session_id = session()->getId();
         $req = Session::get('mail');
-
+ 
         if ( $req ){
             $servicioId = DB::table('personas')->where('mail', $req)->first()->id;
         
@@ -145,11 +146,17 @@ class ServicioController extends Controller
             $practica->id_practicante = $servicioId;
             $practica->id_servicio = Input::get('id_servicio');
             $practica->save();
-
+ 
             $rubros = Rubro::all();
-            
+            $servicios = Servicio::paginate(5);
+ 
+            $req = Session::get('mail');
+        
+            $id = Persona::where('mail', $req)->first()->id;
+            $persona = Persona::find($id);
+ 
             //dd($practica);
-            return view('/listadoPracticasEstados')->with('rubros',$rubros);
+            return Redirect::to('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica)->with('persona',$persona);
         }
     }
 
