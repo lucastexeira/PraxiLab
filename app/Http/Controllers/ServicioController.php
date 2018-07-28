@@ -18,7 +18,12 @@ use Session;
 
 class ServicioController extends Controller
 {
-    public function verTodosLosServicios(){
+    public function verTodosLosServicios(Request $req){
+    
+    $req = Session::get('mail');
+    $id = Persona::where('mail', $req)->first()->id;
+    $persona = Persona::find($id);
+
     $buscador= array();
 
 
@@ -47,19 +52,27 @@ class ServicioController extends Controller
         //dd($servicios);
     }*/
 
-    public function verServicios($id_rubro){
+    public function verServicios(Request $req, $id_rubro){
+        
+        $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
 
         $servicios = Servicio::all();
         $rubros = Rubro::All();
         $ruId = Rubro::find($id_rubro);
 
         
-        return view('/servicios')->with('servicios', $servicios)->with('rubros',$rubros)->with('ruId',$ruId);
+        return view('/servicios')->with('servicios', $servicios)->with('rubros',$rubros)->with('ruId',$ruId)->with('persona',$persona);
 
         //dd($ruId);
     }
 
-    public function verUsuariosServicios($id_servicio){
+    public function verUsuariosServicios(Request $req, $id_servicio){
+
+        $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
 
         $servicio = Servicio::find($id_servicio);
         $rubros = Rubro::All();
@@ -67,7 +80,7 @@ class ServicioController extends Controller
                                                         inner join servicios on practicas.id_servicio = servicios.id 
                                                         where servicios.id = '.$id_servicio.'');     
 
-        return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros);
+        return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros)->with('persona',$persona);
 
         //dd($pracPers);
     }
