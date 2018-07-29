@@ -44,11 +44,14 @@ class PerfilController extends Controller
 							->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
 							->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
 							->where('practicas.id_practicante', $id)
+							->where('evidencias.id_autor', $id)
 							->get();
 
 
-        //return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)->with('calificacionEstrella', $calificacionEstrella);
-		dd($experiencia);
+		return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)
+							 ->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)
+							 ->with('calificacionEstrella', $calificacionEstrella)->with('experiencia', $experiencia);
+		//dd($experiencia);
         /*$evidencias = DB::table('practicas')
             ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')
             //->join()
