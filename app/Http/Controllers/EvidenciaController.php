@@ -71,6 +71,7 @@ class EvidenciaController extends Controller
 
             $imagenEvidencia = Input::get('pathevidencia');
 
+            // Debido a que el comentario del usuario voluntario carga imagen de evidencia en la base de datos, se le agrega de esta forma, para mostrarlo en el perfil del voluntario, si es una negrada pero toda la aplicacion esta cochina, putoelquelee 
             DB::table('evidencias')
                 ->where('id', $id_comentario_voluntario)
                 ->update(['pathevidencia' => $imagenEvidencia]);
@@ -192,8 +193,19 @@ class EvidenciaController extends Controller
                     ->where('id_historial_practica',$id)
                     ->first();
 
+        $imagenEvidencia = null;
+
         if($id_historial_practica != null){
             $id_hp = $id_historial_practica->id_historial_practica;
+
+            $id_comentario_practicante = $id_historial_practica->id;
+
+            // Debido a que el comentario del usuario voluntario carga imagen de evidencia en la base de datos, se le agrega de esta forma, para mostrarlo en el perfil del voluntario, si es una negrada pero toda la aplicacion esta cochina, putoelquelee 
+            $imagen = $id_historial_practica = DB::table('evidencias')
+                        ->where('id',$id_comentario_practicante)
+                        ->first();
+
+            $imagenEvidencia= $imagen->pathevidencia;
         }
         else{
             $id_hp = 0;
@@ -235,7 +247,7 @@ class EvidenciaController extends Controller
             $idPersona = DB::table('personas')->where('mail', $req)->first()->id;
 
             $evidencia = new Evidecia();
-            $evidencia->pathevidencia = null;
+            $evidencia->pathevidencia = $imagenEvidencia;
             $evidencia->fecha = $now;
             $evidencia->id_historial_practica = $id;
             $evidencia->calificacion = Input::get('calificacion');
@@ -270,7 +282,7 @@ class EvidenciaController extends Controller
            
         }
 
-        //dd($id_des);
+        //dd($imagenEvidencia);
         return Redirect::to('/listadoPracticasEstados');
     }
     
