@@ -24,19 +24,19 @@ class personasSeeder extends Seeder
             'pais' => '', 'descripcion' => 'Buscando personas para realizar mis practicas', 'cantidad_creditos' => '1000.00', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'img/team/profile-pics.jpg', 'password' => '123456'],
 
             [ 'username' => 'KarenM', 'nombre'=>'Karmen', 'apellido' => 'Monsanto', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
-            'pais' => '', 'descripcion' => '','cantidad_creditos' => '1', 'estado' => '1', 'cantpracticas_hechas' => '1000.00', 'img' =>'img/team/logo_default.png', 'password' => '123456'],
+            'pais' => '', 'descripcion' => '','cantidad_creditos' => '500', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'img/team/logo_default.png', 'password' => '123456'],
 
-            [ 'username' => 'GastonF', 'nombre'=>'Gaston', 'apellido' => 'Ferrari', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
-            'pais' => '', 'descripcion' => '','cantidad_creditos' => '1', 'estado' => '1', 'cantpracticas_hechas' => '1000.00', 'img' =>'img/team/logo_default.png', 'password' => '123456' ],
+            [ 'username' => 'GastonF', 'nombre'=>'Gaston', 'apellido' => 'Ferrari', 'telefono' => '5555-4444', 'mail' => 'Usuario4@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'descripcion' => '','cantidad_creditos' => '500', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'img/team/logo_default.png', 'password' => '123456' ],
 
-            [ 'username' => 'SantiagoG', 'nombre'=>'Santiago', 'apellido' => 'Guiterrez', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
-            'pais' => '', 'descripcion' => '','cantidad_creditos' => '1', 'estado' => '1', 'cantpracticas_hechas' => '1000.00', 'img' =>'img/team/logo_default.png', 'password' => '123456'],
+            [ 'username' => 'SantiagoG', 'nombre'=>'Santiago', 'apellido' => 'Guiterrez', 'telefono' => '5555-4444', 'mail' => 'Usuario5@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'descripcion' => '','cantidad_creditos' => '500', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'img/team/logo_default.png', 'password' => '123456'],
 
-            [ 'username' => 'SofiaP', 'nombre'=>'Sofia', 'apellido' => 'Perez', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
-            'pais' => '', 'descripcion' => '','cantidad_creditos' => '1', 'estado' => '1', 'cantpracticas_hechas' => '1000.00', 'img' =>'img/team/logo_default.png', 'password' => '123456'],
+            [ 'username' => 'SofiaP', 'nombre'=>'Sofia', 'apellido' => 'Perez', 'telefono' => '5555-4444', 'mail' => 'Usuario6@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'descripcion' => '','cantidad_creditos' => '500', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'img/team/logo_default.png', 'password' => '123456'],
 
-            [ 'username' => 'SusanaA', 'nombre'=>'Susana', 'apellido' => 'Aranda', 'telefono' => '5555-4444', 'mail' => 'Usuario3@mail.com', 'provincia' => '', 'zona' => '',
-            'pais' => '', 'descripcion' => '','cantidad_creditos' => '1', 'estado' => '1', 'cantpracticas_hechas' => '1000.00', 'img' =>'img/team/logo_default.png', 'password' => '123456']
+            [ 'username' => 'SusanaA', 'nombre'=>'Susana', 'apellido' => 'Aranda', 'telefono' => '5555-4444', 'mail' => 'Usuario7@mail.com', 'provincia' => '', 'zona' => '',
+            'pais' => '', 'descripcion' => '','cantidad_creditos' => '500', 'estado' => '1', 'cantpracticas_hechas' => '1', 'img' =>'img/team/logo_default.png', 'password' => '123456']
 			
         ]);
     }

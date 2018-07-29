@@ -1,6 +1,6 @@
 @include("layouts.cabecera")
 <link href="{{asset('css/oferta.css')}}" rel="stylesheet">
-<title>{{$persona->nombre}} {{$persona->apellido}} - PraxiLab</title>
+<title>{{$personaAtributos->nombre}} {{$personaAtributos->apellido}} - PraxiLab</title>
 </head>
 <body>
 
@@ -14,13 +14,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 text-center">
-					<img src="{{asset($persona->img)}}" class="img-fluid img-thumbnail">
+					<img src="{{asset($personaAtributos->img)}}" class="img-fluid img-thumbnail">
+					<a href="{{url('editarPerfil/'.$personaAtributos->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple">Editar perfil</button></a>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 desc">
 
-					<p id="nombre">{{ $persona->nombre }} {{ $persona->apellido }}</p>
+					<p id="nombre">{{ $personaAtributos->nombre }} {{ $personaAtributos->apellido }}</p>
 					<p>
-						{{ $persona->descripcion }}
+						{{ $personaAtributos->descripcion }}
 					</p>
 				</div>
 			</div>
@@ -44,43 +45,85 @@
 		</ul>
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade active show" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
-			<br><a href="{{url('wizard/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Nueva oferta de Practica</button></a>
-				@foreach ($practicas as $oferta)
-				<div class="panel panel-default contenido">
-					<div class="panel-body">
-						<div class="container-fluid">
-							<div class="row align-items-start">
-								<div class="col-3 text-center">
-									<img src="{{asset($oferta->imagen_practica)}}" class="img-oferta-perfil" />
+				<br><a href="{{url('wizard/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Nueva oferta de Practica</button></a>
+					@foreach ($practicas as $oferta)
+					<div class="panel panel-default contenido">
+						<div class="panel-body">
+							<div class="container-fluid">
+								<div class="row align-items-start">
+									<div class="col-3 text-center">
+										<img src="{{asset($oferta->imagen_practica)}}" class="img-oferta-perfil" />
+									</div>
+									<div class="col-9">
+										<h1>{{$oferta->nombre_practica}}</h1>
+										<p>
+											{{$oferta->descripcion}}
+										</p>
+									</div>
 								</div>
-								<div class="col-9">
-									<h1>{{$oferta->nombre_practica}}</h1>
-									<p>
-										{{$oferta->descripcion}}
-									</p>
-								</div>
-							</div>
-							<div class="row justify-content-end align-items-end">
-								<div class="col-1">
-									<p class="precio-oferta-perfil">${{$oferta->precio}}</p>
-								</div>
-								<div class="col-1">
-									<a href="{{url('oferta/'.$oferta->id.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
+								<div class="row justify-content-end align-items-end">
+									<div class="col-1">
+										<p class="precio-oferta-perfil">${{$oferta->precio}}</p>
+									</div>
+									<div class="col-1">
+										<a href="{{url('oferta/'.$oferta->id.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				@endforeach
+					@endforeach
 			</div>
 			
 			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
 				
+				<div class="panel panel-default contenido">
+
+					<div class="panel-heading">
+						<h1>Estas son las evidencias de las practicas que realizo el usuario {{$personaAtributos->username}}</a></h1>
+					</div>
+
+					@foreach ($experiencia as $evidencia)
+						<div class="panel-body">
+							<div class="container-fluid">
+								<div class="row align-items-start">
+									<div class="col-3 text-center">
+										<a href="{{url('verEvidencia/'.$evidencia->id_historial_practica.'')}}" >
+											<img src="{{asset($evidencia->pathevidencia)}}" class="img-oferta-perfil">
+										</a>
+									</div>
+									<div class="col-9">
+										<h1>Evidencias de la practica <a href="{{url('oferta/'.$evidencia->id_practica.'')}}">{{$evidencia->nombre_practica}}</a></h1>
+											@foreach($usuarios as $user)
+												@if($user->id == $evidencia->id_voluntario)
+												<div class="usuario-oferta">
+													<h1 class="experiencia-titulo">Usuario voluntario: <a href="{{url('perfil/'.$user->id.'')}}">{{$user->nombre}}</h1>
+													<img src="{{ asset($user->img) }}" class="experiencia-profile-pic"></a>
+												</div>
+												@endif
+												@if($user->id == $evidencia->id_practicante)
+												<div class="usuario-oferta">
+													<h1 class="experiencia-titulo">Usuario practicante: <a href="{{url('perfil/'.$user->id.'')}}">{{$user->nombre}}</h1>
+													<img src="{{ asset($user->img) }}" class="experiencia-profile-pic"></a>
+												</div>
+												@endif	
+											@endforeach
+									</div>
+								</div>
+								<div class="row justify-content-end align-items-end">
+									<div class="col-1">
+										<a href="{{url('verEvidencia/'.$evidencia->id_historial_practica.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					@endforeach
+				</div>
 			</div>
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
-					<a href="{{url('editarCurriculum/'.$persona->id.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+					<a href="{{url('editarCurriculum/'.$personaAtributos->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
 
 					@if (!empty($curriculum->formacion_academica))
 					<div class="panel panel-default contenido">

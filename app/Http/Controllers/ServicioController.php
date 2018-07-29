@@ -21,26 +21,44 @@ class ServicioController extends Controller
 {
     public function verTodosLosServicios(Request $req){
     
-    $req = Session::get('mail');
-    $id = Persona::where('mail', $req)->first()->id;
-    $persona = Persona::find($id);
+        $req = Session::get('mail');
+        
+        if (!empty($req)){
+            $id = Persona::where('mail', $req)->first()->id;
+            $persona = Persona::find($id);
+
+        $buscador= array();
+
+
+        $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
+                ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
+                ->orderBy('practicas.id', 'desc')->get();
+                $rubros = Rubro::All();
+                $servicios = Servicio::all();
+                
+        return view('todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers)->with('persona',$persona);
+    
+        }
+
+        else{
+
+
 
     $buscador= array();
 
 
-        $req = Session::get('mail');
-        $id = Persona::where('mail', $req)->first()->id;
-        $persona = Persona::find($id);
-        
-        $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                    ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
-                    ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
-                    ->orderBy('practicas.id', 'desc')->get();
-                    $rubros = Rubro::All();
-                    $servicios = Servicio::all();
+    $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
+                ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
+                ->orderBy('practicas.id', 'desc')->get();
+                $rubros = Rubro::All();
+                $servicios = Servicio::all();
+                
+            
+            return view('todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers);
+        }
 
-        return view('todosLosServicios')->with('buscador', $buscador)->with('servicios', $servicios)->with('rubros',$rubros)->with('pracPers',$pracPers)->with('persona',$persona);
-        //dd($pracPers);
     }
 
     /*public function verServiciosPorRubro($id_rubro){
@@ -72,16 +90,27 @@ class ServicioController extends Controller
     public function verUsuariosServicios(Request $req, $id_servicio){
 
         $req = Session::get('mail');
-        $id = Persona::where('mail', $req)->first()->id;
-        $persona = Persona::find($id);
+        
+        if (!empty($req)){
+            $id = Persona::where('mail', $req)->first()->id;
+            $persona = Persona::find($id);
 
-        $servicio = Servicio::find($id_servicio);
-        $rubros = Rubro::All();
-        $pracPers = DB::Select('Select * from practicas inner join personas on practicas.id_practicante = personas.id 
-                                                        inner join servicios on practicas.id_servicio = servicios.id 
-                                                        where servicios.id = '.$id_servicio.'');     
+            $servicio = Servicio::find($id_servicio);
+            $rubros = Rubro::All();
+            $pracPers = DB::Select('Select * from practicas inner join personas on practicas.id_practicante = personas.id 
+                                                            inner join servicios on practicas.id_servicio = servicios.id 
+                                                            where servicios.id = '.$id_servicio.'');     
 
-        return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros)->with('persona',$persona);
+            return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros)->with('persona',$persona);
+        }else{
+            $servicio = Servicio::find($id_servicio);
+            $rubros = Rubro::All();
+            $pracPers = DB::Select('Select * from practicas inner join personas on practicas.id_practicante = personas.id 
+                                                            inner join servicios on practicas.id_servicio = servicios.id 
+                                                            where servicios.id = '.$id_servicio.'');     
+
+            return view('/usuariosPorServicio')->with('pracPers',$pracPers)->with('servicio',$servicio)->with('rubros',$rubros);
+        }
 
         //dd($pracPers);
     }

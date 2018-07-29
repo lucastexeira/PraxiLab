@@ -16,11 +16,23 @@ class RubroController extends Controller
     public function verRubrosYServicios(){
     	$req = Session::get('mail');
         
-        $id = Persona::where('mail', $req)->first()->id;
-        $persona = Persona::find($id);
-        $rubros = Rubro::all();
-        $servicios = Servicio::all();
+        if (!empty($req)){
+            
+            $id = Persona::where('mail', $req)->first()->id;
+            $persona = Persona::find($id);
+
+	        $rubros = Rubro::all();
+	        $servicios = Servicio::all();
 
         return view('/rubrosYServicios')->with('rubros', $rubros)->with('servicios', $servicios)->with('persona',$persona);
+    	}
+
+    	else{
+
+    		$rubros = Rubro::all();
+        	$servicios = Servicio::all();
+
+    		return view('/rubrosYServicios')->with('rubros', $rubros)->with('servicios', $servicios);
+    	}
     }
 }
