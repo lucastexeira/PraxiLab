@@ -1,4 +1,20 @@
 /* PERFIL */
+body {
+    font-size: 16px !important;
+}
+
+h4 {
+    font-size: 18px!important;
+}
+
+p {
+    font-size: 19px !important;
+}
+
+a {
+    color: black!important;
+}
+
 .about{
    margin: 1em 0;
    padding: 1em;
@@ -13,7 +29,8 @@
 .about img{
    height: 100%;
    width: 100%;
-   border-radius: 50%
+   border-radius: 50%;
+   max-height: 350px;
 }
 
 .about span{

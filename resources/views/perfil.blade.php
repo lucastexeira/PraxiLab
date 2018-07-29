@@ -15,6 +15,7 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 text-center">
 					<img src="{{asset($persona->img)}}" class="img-fluid img-thumbnail">
+					<a href="{{url('editarPerfil/'.$persona->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple">Editar perfil</button></a>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 desc">
 
@@ -80,7 +81,7 @@
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
-					<a href="{{url('editarCurriculum/'.$persona->id.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+					<a href="{{url('editarCurriculum/'.$persona->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
 
 					@if (!empty($curriculum->formacion_academica))
 					<div class="panel panel-default contenido">
