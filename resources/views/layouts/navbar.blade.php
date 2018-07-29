@@ -37,8 +37,9 @@
 
         
             
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Buscar Practica" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="{{url('todosLosServicios') }}" method="GET"> 
+              <span><i class="nav-icon-search"></i></span><input class="form-control mr-sm-2" type="search" placeholder="Nombre de la practica" aria-label="Search" id="buscador" name="buscador" >
+              <!--button type="button" class="btn btn-cta btn-lg" style="background-color: #9244a4">Buscar</button-->
             </form>
 
             <ul class="navbar-nav">
@@ -60,13 +61,13 @@
                     </li>
                   </ul>
                 </li>
-              </ul\
+              </ul>
 
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                    <img src="" class="img-circle" alt="Usuario" height="50px" width="50px">
-                    LucasT
+                    <img src="{{asset($persona->img)}}" class="img-circle" alt="Usuario" height="50px" width="50px">
+                    {{ $persona->username }}
                   </a>
 
                   <ul class="dropdown-menu">
@@ -74,7 +75,7 @@
                 <div class="navbar-login">
                   <div class="row">
                     <div class="col-lg-12">
-                      <a class="dropdown-item" href="{{url('perfil/')}}">
+                      <a class="dropdown-item" href="{{ url('perfil/'.$persona->id.'') }}">
                         <span class="glyphicon glyphicon-user"></span> Ver Perfil</a>
                       </div>
                     </div>
@@ -97,7 +98,7 @@
                       <div class="navbar-login navbar-login-session">
                         <div class="row">
                           <div class="col-lg-12">
-                            <a href="{{ 'logout' }}" class="dropdown-item">
+                            <a href="{{asset('logout')}}" class="dropdown-item">
                               <span class="glyphicon glyphicon-log-out"></span> Cerrar Sesion</a>
                               
                             </div>

@@ -29,17 +29,19 @@ class PerfilController extends Controller
         $curriculum = Curriculum::where('id_persona', $id)->first();
         $practicas = Practica::where('id_practicante', "=", $id)->get();
 
-        $calificacionescomentarios =  DB::table('calificacionescomentarios')
+        $calificacionescomentarios =  DB::table('evidencias')
                                         ->where('id_destinatario', '=', $id)
                                         ->avg('calificacion');
 
-        $comentarios =  DB::table('calificacionescomentarios')
+        $calificacionEstrella = round($calificacionescomentarios, 1);
+
+        $comentarios =  DB::table('evidencias')
                             ->where('id_destinatario', '=', $id)
                             ->select('comentario', 'calificacion', 'created_at')
                             ->get();
 
 
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas);
+        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)->with('calificacionEstrella', $calificacionEstrella);
 
         /*$evidencias = DB::table('practicas')
             ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')
@@ -50,7 +52,7 @@ class PerfilController extends Controller
         
         return view('perfil')->with('rubros', $rubros)->with('persona', $persona);//->with('evidencias', $evidencias);*/
 
-        //dd($curriculum);
+        //dd($calificacion);
     }
 
     public function editarPerfil($id) {
@@ -89,12 +91,19 @@ class PerfilController extends Controller
         $curriculum = Curriculum::where('id_persona', $id)->first();
         $persona = Persona::where('id', $id)->first();
 
+        if (empty($curriculum->formacion_academica)){
+            $curriculum = new Curriculum();
+            $curriculum->id_persona = $id;
+        }
+
         $curriculum->formacion_academica = Input::get('formacion_academica');
         $curriculum->formacion_complementaria = Input::get('formacion_complementaria');
         $curriculum->experiencia = Input::get('experiencia');
         $curriculum->idiomas = Input::get('idiomas');
         $curriculum->referencias = Input::get('referencias');
         $curriculum->otros_datos = Input::get('otros_datos');
+        
+
         $curriculum->save();
 
         return $this->perfil($persona->id);

@@ -93,7 +93,7 @@
 																		</div>
 																	</div>
 																</div>
-												@else
+												@elseif ($soyPrac->id_estado == 3)
 													<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
 															<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
 													</a>

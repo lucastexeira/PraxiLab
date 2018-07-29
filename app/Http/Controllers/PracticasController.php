@@ -19,7 +19,8 @@ class PracticasController extends Controller
 
         $rubros = Rubro::all();
         $req = Session::get('mail');
-        $user = Persona::where('mail', $req)->first()->id;
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
 
         $practicasDelPracticante = DB::table('historial_practicas')
                                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
@@ -29,8 +30,8 @@ class PracticasController extends Controller
                                                  'personas.telefono', 'personas.id as id_voluntario',
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
                                                  'historial_practicas.created_at', 'historial_practicas.id_estado', 
-                                                 'estados.estado', 'estados.id as id_estado')
-                                        ->where('practicas.id_practicante', '=', $user)
+                                                 'estados.estado', 'estados.id as id_estado', 'precio')
+                                        ->where('practicas.id_practicante', '=', $id)
                                         ->orderByRaw('created_at DESC')
                                         ->get();
 
@@ -42,11 +43,12 @@ class PracticasController extends Controller
                                                  'personas.telefono', 'personas.id as id_practicante',
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
                                                  'historial_practicas.created_at', 'historial_practicas.id_estado', 
-                                                 'estados.estado', 'estados.id as id_estado')
-                                        ->where('historial_practicas.id_voluntario', '=', $user)
+                                                 'estados.estado', 'estados.id as id_estado', 'precio')
+                                        ->where('historial_practicas.id_voluntario', '=', $id)
+                                        ->orderByRaw('created_at DESC')
                                         ->get();
         
-        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante);
+        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante)->with('persona',$persona);
 
         //dd($practicasDelVoluntario);
     }

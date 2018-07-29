@@ -152,7 +152,7 @@ Route::get('createEvidenciaVoluntario/{id}',[
 
 ]);
 
-Route::get('verEvidencia/',[
+Route::get('verEvidencia/{id_historial_practica}',[
 	'uses' => 'EvidenciaController@verEvidencia' 
 ]);
 

@@ -27,6 +27,11 @@ class MercadoPagoController extends Controller
         $mp = new MP('149347024881692', '1sxwddTWdF9GsFwhItyEsdJNGi1QYx2w');
 
         $monto = Input::get('monto');
+
+        if($monto==null){
+            $monto = 0;
+        }
+
         $mes = Input::get('meses');
 
         $usuario = $idUser->id;
@@ -128,6 +133,8 @@ class MercadoPagoController extends Controller
     public function confirmarPago(Request $req){ 
         $mail = Session::get('mail');
         $rubros = Rubro::all();
+        $id = Persona::where('mail', $mail)->first()->id;
+        $persona = Persona::find($id);
 
         //$mp = new MP('8472593339549232', 'bwvYT6Hd3jXf1pjiwpZvE4z8PD3YZKV6');
         $mp = new MP('149347024881692', '1sxwddTWdF9GsFwhItyEsdJNGi1QYx2w');
@@ -136,7 +143,13 @@ class MercadoPagoController extends Controller
 
         $id_preference = Input::get('preference_id');
 
-        if ($payment_info["status"] == 200) {
+        $estado = DB::table('transacciones')
+                                ->where('id_transaccione_mercadopago', $id_preference)
+                                ->first();
+
+        $estadoTansaccion = $estado->estado;
+
+        if ($payment_info["status"] == 200 and $estadoTansaccion != 0) {
 
             // Actualiza la cantidad de creditos del usuario y crea registro en la rabla transacciones
             $cantidadCreditosActual = DB::table('personas')->where('mail', $mail)->first(['cantidad_creditos']);
@@ -167,17 +180,23 @@ class MercadoPagoController extends Controller
             $mensaje = "El pago se efectuo Correctamente";
             $check = "check.png";
 
-            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
             //dd($m);
         }
+
+        elseif($payment_info["status"] == 200 and $estadoTansaccion == 0){
+            $mensaje = "El pago ya fue efectuado con exito";
+            $check = "check.png";
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
+            //dd($payment_info["response"]);
+        
+        }
         else{
-            $mensaje = "El pago NO se completo";
+            $mensaje = "El pago NO se completo, vuelva a intentar mas tarde";
             $check = "checkRojo.png";
-            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje);
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
             //dd($payment_info["response"]);
         }
-
-        
 
     }
 }
