@@ -113,10 +113,13 @@ class PerfilController extends Controller
 			return $this->perfil($persona->id);
 		}
 
-		public function editarCurriculum($id) {
+		public function editarCurriculum(Request $req, $id) {
 			$rubros = Rubro::all();
 			$curriculum = Curriculum::where('id_persona', $id)->first();
-			$persona = Persona::where('id', $id)->first();
+			$req = Session::get('mail');
+			$id_usuario = Persona::where('mail', $req)->first()->id;
+			
+			$persona = Persona::where('id', $id_usuario)->first();
 
 			return view('editarCurriculum')->with('rubros', $rubros)->with('curriculum', $curriculum)->with('persona', $persona);
 		}
