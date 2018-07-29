@@ -45,37 +45,37 @@
 		</ul>
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade active show" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
-			<br><a href="{{url('wizard/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Nueva oferta de Practica</button></a>
-				@foreach ($practicas as $oferta)
-				<div class="panel panel-default contenido">
-					<div class="panel-body">
-						<div class="container-fluid">
-							<div class="row align-items-start">
-								<div class="col-3 text-center">
-									<img src="{{asset($oferta->imagen_practica)}}" class="img-oferta-perfil" />
+				<br><a href="{{url('wizard/')}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Nueva oferta de Practica</button></a>
+					@foreach ($practicas as $oferta)
+					<div class="panel panel-default contenido">
+						<div class="panel-body">
+							<div class="container-fluid">
+								<div class="row align-items-start">
+									<div class="col-3 text-center">
+										<img src="{{asset($oferta->imagen_practica)}}" class="img-oferta-perfil" />
+									</div>
+									<div class="col-9">
+										<h1>{{$oferta->nombre_practica}}</h1>
+										<p>
+											{{$oferta->descripcion}}
+										</p>
+									</div>
 								</div>
-								<div class="col-9">
-									<h1>{{$oferta->nombre_practica}}</h1>
-									<p>
-										{{$oferta->descripcion}}
-									</p>
-								</div>
-							</div>
-							<div class="row justify-content-end align-items-end">
-								<div class="col-1">
-									<p class="precio-oferta-perfil">${{$oferta->precio}}</p>
-								</div>
-								<div class="col-1">
-									<a href="{{url('oferta/'.$oferta->id.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
+								<div class="row justify-content-end align-items-end">
+									<div class="col-1">
+										<p class="precio-oferta-perfil">${{$oferta->precio}}</p>
+									</div>
+									<div class="col-1">
+										<a href="{{url('oferta/'.$oferta->id.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				@endforeach
+					@endforeach
 			</div>
 			
-			<div class="tab-pane fade  active show" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
+			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
 				
 				<div class="panel panel-default contenido">
 
