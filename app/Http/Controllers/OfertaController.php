@@ -66,7 +66,7 @@ class OfertaController extends Controller
         $practicaPersona->Persona = Persona::where('id', $practicaPersona->id_practicante)->first();*/
 
         return view('oferta')->with('rubros', $rubros)->with('persona', $persona)->with('practicaPersona', $practicaPersona)->with('historial_practicas', $historial_practicas)
-                             ->with('promedioRedondeado', $promedioRedondeado); 
+                             ->with('promedioRedondeado', $promedioRedondeado)->with('comentarios', $comentarios); 
         //dd($comentarios);
     }
     
