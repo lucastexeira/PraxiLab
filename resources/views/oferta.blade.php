@@ -136,63 +136,11 @@
 									
 								<hr style="border:3px solid #f1f1f1">
 
-							<div class="row">
-								<div class="side">
-									<div>5 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-5"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>0</div>
-								</div>
-								<div class="side">
-									<div>4 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-4"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>2</div>
-								</div>
-								<div class="side">
-									<div>3 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-3"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>0</div>
-								</div>
-								<div class="side">
-									<div>2 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-2"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>0</div>
-								</div>
-								<div class="side">
-									<div>1 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-1"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>0</div>
-								</div>
-							</div>
+								@foreach($comentarios as $c)
+								<ul class="list-group">
+									<li class="list-group-item">{{ $c->created_at }} <b>{{ $c->comentario }}</b> <span class="badge"><h4>{{ $c->calificacion }}<span class="fa fa-star checked-white"></h4> </span></span></li>
+								</ul>
+								@endforeach
 						</div>
 					</div>
 				</div>
