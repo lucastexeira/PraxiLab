@@ -15,7 +15,9 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 text-center">
 					<img src="{{asset($personaAtributos->img)}}" class="img-fluid img-thumbnail">
-					<a href="{{url('editarPerfil/'.$personaAtributos->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple">Editar perfil</button></a>
+					@if($personaAtributos->id == $persona->id) <!--Esto es para que se oculte el boton cuando estas biendo el perdil de otro usuario-->
+						<a href="{{url('editarPerfil/'.$personaAtributos->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple">Editar perfil</button></a>
+					@endif
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 desc">
 
@@ -123,7 +125,9 @@
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
-					<a href="{{url('editarCurriculum/'.$personaAtributos->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+					@if($personaAtributos->id == $persona->id) <!--Esto es para que se oculte el boton cuando estas biendo el perdil de otro usuario-->
+						<a href="{{url('editarCurriculum/'.$personaAtributos->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+					@endif
 
 					@if (!empty($curriculum->formacion_academica))
 					<div class="panel panel-default contenido">
