@@ -124,23 +124,30 @@ class EvidenciaController extends Controller
             $idPersona = DB::table('personas')->where('mail', $req)->first()->id;
 
             $evidencia = new Evidecia();
-            if($request->hasFile('img')){ 
-                $image = $request->file('img'); 
-                $fileName = $image->getClientOriginalName();
-                $fileExtension = $image->getClientOriginalExtension();
-                $imageName = 'id_practica'.$id_hp.'.'.$image->getClientOriginalExtension();
-                $image->move(base_path().'/public/img/evidencia/', $imageName);
-                // Debido a que el comentario del usuario voluntario carga imagen de evidencia en la base de datos, se le agrega de esta forma, para mostrarlo en el perfil del voluntario, si es una negrada pero toda la aplicacion esta cochina, putoelquelee 
-                DB::table('evidencias')
-                    ->where('id', $id_comentario_voluntario)
-                    ->update(['pathevidencia' =>'img/evidencia/'.$imageName]);
-            }
+
+            
             $evidencia->fecha = $now;
             $evidencia->id_historial_practica = $id;
             $evidencia->calificacion = Input::get('calificacion');
             $evidencia->comentario = Input::get('comentario');
             $evidencia->id_autor = $idPersona;
             $evidencia->id_destinatario = $id_des;
+            
+            if($request->hasFile('imgEvidencia')){ 
+                $image = $request->file('imgEvidencia'); 
+                $fileName = $image->getClientOriginalName();
+                $fileExtension = $image->getClientOriginalExtension();
+                $imageName = 'id_practica'.$id_hp.'.'.$image->getClientOriginalExtension();
+                $image->move(base_path().'/public/img/evidencia/', $imageName);
+                $evidencia->pathevidencia = 'img/perfil/'.$imageName;
+
+                /*if($id_comentario_voluntario != null){
+                    // Debido a que el comentario del usuario voluntario carga imagen de evidencia en la base de datos, se le agrega de esta forma, para mostrarlo en el perfil del voluntario, si es una negrada pero toda la aplicacion esta cochina, putoelquelee 
+                    DB::table('evidencias')
+                        ->where('id', $id_comentario_voluntario)
+                        ->update(['pathevidencia' =>'img/evidencia/'.$imageName]);
+                }*/
+            }
             $evidencia->save();
 
             if($id_hp == $id){
