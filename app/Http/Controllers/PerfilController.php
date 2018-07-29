@@ -67,7 +67,7 @@ class PerfilController extends Controller
     		]);
 			$rubros = Rubro::all();
 			$persona = Persona::where('id', $id)->first();
-			$curriculum_persona = Persona::where('id_persona', $id);
+			$curriculum_persona = Persona::where('id_persona', $id)->first();
 
 			$persona->nombre = Input::get('nombre');
 			$persona->apellido = Input::get('apellido');
@@ -75,6 +75,8 @@ class PerfilController extends Controller
 			$persona->provincia = Input::get('provincia');
 			$persona->pais = Input::get('pais');
 			$persona->telefono = Input::get('telefono');
+			$persona->zona = Input::get('zona');
+			$persona->descripcion = Input::get('descripcion');
 
 			if($request->hasFile('img')){ 
 				$image = $request->file('img'); 

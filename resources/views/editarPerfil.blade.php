@@ -45,12 +45,23 @@
 						</div>
 
 						<div class="form-group">
+							<label for="zona">Zona</label>
+							<input name="zona" type="text" id="zona" class="form-control" placeholder="Zona" value="{{ $persona->zona }}" />
+						</div>
+
+						<div class="form-group">
 							<label for="pais">Pais</label>
 							<input name="pais" type="text" id="pais" class="form-control" placeholder="Pais" value="{{ $persona->pais }}" />
 						</div>
 						<div class="form-group">
 							<label for="telefono">Telefono</label>
 							<input name="telefono" type="text" id="telefono" class="form-control" placeholder="Telefono" value="{{ $persona->telefono }}" />
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="descripcion">Descripción</label>
+							<textarea class="form-control" rows="5" id="descripcion" name="descripcion">{{ $persona->descripcion }}</textarea>
 						</div>
 					</div>
 					<input type="submit" class="btn btn-primary btn-block" value="Confirmar"/>
