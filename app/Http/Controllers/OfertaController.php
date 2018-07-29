@@ -25,7 +25,7 @@ use DateTime;
 
 class OfertaController extends Controller
 {
-    public function oferta($id_oferta){ 
+    public function oferta(Request $req, $id_oferta){ 
 
         $req = Session::get('mail');
         $id = Persona::where('mail', $req)->first()->id;
