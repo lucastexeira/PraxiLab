@@ -37,8 +37,9 @@
 
         
             
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Buscar Practica" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="{{url('todosLosServicios') }}" method="GET"> 
+              <span><i class="nav-icon-search"></i></span><input class="form-control mr-sm-2" type="search" placeholder="Nombre de la practica" aria-label="Search" id="buscador" name="buscador" >
+              <!--button type="button" class="btn btn-cta btn-lg" style="background-color: #9244a4">Buscar</button-->
             </form>
 
             <ul class="navbar-nav">
