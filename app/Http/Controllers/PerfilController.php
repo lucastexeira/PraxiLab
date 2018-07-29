@@ -67,7 +67,7 @@ class PerfilController extends Controller
     		]);
 			$rubros = Rubro::all();
 			$persona = Persona::where('id', $id)->first();
-			$curriculum_persona = Persona::where('id_persona', $id)->first();
+			$curriculum_persona = Curriculum::where('id_persona', $id)->first();
 
 			$persona->nombre = Input::get('nombre');
 			$persona->apellido = Input::get('apellido');
