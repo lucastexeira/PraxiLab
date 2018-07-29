@@ -62,11 +62,9 @@ class HomeController extends Controller
     protected $redirectTo = '/index';
 
     public function registro(){
-         //$persona = new Persona();
        $rubros = Rubro::all();
-       return View::make('registro')
-        //->with('persona', $persona)
-       ->with('rubros', $rubros);
+       
+       return View::make('registro')->with('rubros', $rubros);
    }
 
    public function create(){
