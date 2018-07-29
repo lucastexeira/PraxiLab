@@ -257,7 +257,7 @@ class EvidenciaController extends Controller
             $evidencia->save();
 
             if($id_hp == $id){
-                // esto es para cuando ya tiene otro comentario el historial, se cierre y se acredite el monto de la practica
+                // esto es para cuando ya tiene otro comentario el historial, se finaliza el historial de practicas y se acredite el monto de la practica
                 DB::table('historial_practicas')
                     ->where('id', $id)
                     ->update(['id_estado' => 4]);
