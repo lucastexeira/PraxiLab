@@ -13,3 +13,5 @@ yarn-error.log
 .env
 
 public/img/perfil/
+
+public/img/evidencia/
