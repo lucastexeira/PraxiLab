@@ -66,6 +66,15 @@ class EvidenciaController extends Controller
 
         if($id_historial_practica != null){
             $id_hp = $id_historial_practica->id_historial_practica;
+
+            $id_comentario_voluntario = $id_historial_practica->id;
+
+            $imagenEvidencia = Input::get('pathevidencia');
+
+            DB::table('evidencias')
+                ->where('id', $id_comentario_voluntario)
+                ->update(['pathevidencia' => $imagenEvidencia]);
+
         }
         else{
             $id_hp = 0;
@@ -116,6 +125,7 @@ class EvidenciaController extends Controller
             $evidencia->save();
 
             if($id_hp == $id){
+                // esto es para cuando ya tiene otro comentario el historial, se cierre y se acredite el monto de la practica
                 DB::table('historial_practicas')
                     ->where('id', $id)
                     ->update(['id_estado' => 4]);
@@ -141,7 +151,7 @@ class EvidenciaController extends Controller
 
         }
 
-        //dd($id_historial_practica);
+        //dd($id_comentario_voluntario);
         return Redirect::to('/listadoPracticasEstados');
     }
 
@@ -235,6 +245,7 @@ class EvidenciaController extends Controller
             $evidencia->save();
 
             if($id_hp == $id){
+                // esto es para cuando ya tiene otro comentario el historial, se cierre y se acredite el monto de la practica
                 DB::table('historial_practicas')
                     ->where('id', $id)
                     ->update(['id_estado' => 4]);
