@@ -62,3 +62,8 @@
         });
         
     </script>
+    <style>
+    input[type='text'] { font-size: 18px; }
+    input[type='mail'] { font-size: 18px; }
+    input[type='password'] { font-size: 18px; }
+    </style>

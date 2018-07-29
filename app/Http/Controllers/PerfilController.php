@@ -106,6 +106,9 @@ class PerfilController extends Controller
 
         $curriculum->save();
 
+        return $this->perfil($persona->id);
+    }
+
 		public function editarCurriculum($id) {
 			$rubros = Rubro::all();
 			$curriculum = Curriculum::where('id_persona', $id)->first();
