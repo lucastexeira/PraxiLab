@@ -67,23 +67,16 @@ class EvidenciaController extends Controller
         ->where('id_historial_practica',$id)
         ->first();
 
+        $id_historial_practica_imagen = $id;
+        
+        $id_comentario_voluntario = null;
+
         if($id_historial_practica != null){
+
             $id_hp = $id_historial_practica->id_historial_practica;
 
             $id_comentario_voluntario = $id_historial_practica->id;
 
-            /*if($req->hasFile('imgEvidencia')){ 
-                $image = $req->file('imgEvidencia'); 
-                $fileName = $image->getClientOriginalName();
-                $fileExtension = $image->getClientOriginalExtension();
-                $imageName = 'id_practica'.$id_hp.'.'.$image->getClientOriginalExtension();
-                $image->move(base_path().'/public/img/evidencia/', $imageName);
-                }           */
-
-                // Debido a que el comentario del usuario voluntario carga imagen de evidencia en la base de datos, se le agrega de esta forma, para mostrarlo en el perfil del voluntario, si es una negrada pero toda la aplicacion esta cochina, putoelquelee 
-                // DB::table('evidencias')
-                //     ->where('id', $id_comentario_voluntario)
-                //     ->update(['pathevidencia' => 'img/evidencia/'.$imageName]);
         }
         else{
             $id_hp = 0;
@@ -132,23 +125,23 @@ class EvidenciaController extends Controller
             $evidencia->comentario = Input::get('comentario');
             $evidencia->id_autor = $idPersona;
             $evidencia->id_destinatario = $id_des;
-            
             if($request->hasFile('imgEvidencia')){ 
                 $image = $request->file('imgEvidencia'); 
                 $fileName = $image->getClientOriginalName();
                 $fileExtension = $image->getClientOriginalExtension();
-                $imageName = 'id_practica'.$id_hp.'.'.$image->getClientOriginalExtension();
+                $imageName = 'id_practica'.$id_historial_practica_imagen.'.'.$image->getClientOriginalExtension();
                 $image->move(base_path().'/public/img/evidencia/', $imageName);
-                $evidencia->pathevidencia = 'img/perfil/'.$imageName;
-
-                /*if($id_comentario_voluntario != null){
+                $evidencia->pathevidencia = 'img/evidencia/'.$imageName; 
+            }
+            $evidencia->save();
+            
+            
+            if($id_comentario_voluntario != null){
                     // Debido a que el comentario del usuario voluntario carga imagen de evidencia en la base de datos, se le agrega de esta forma, para mostrarlo en el perfil del voluntario, si es una negrada pero toda la aplicacion esta cochina, putoelquelee 
                     DB::table('evidencias')
                         ->where('id', $id_comentario_voluntario)
                         ->update(['pathevidencia' =>'img/evidencia/'.$imageName]);
-                }*/
-            }
-            $evidencia->save();
+                }
 
             if($id_hp == $id){
                 // esto es para cuando ya tiene otro comentario el historial, se cierre y se acredite el monto de la practica
