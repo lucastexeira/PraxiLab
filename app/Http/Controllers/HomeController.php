@@ -10,6 +10,7 @@ use App\Practica;
 use App\CalificacionComentario;
 use App\PersonasServicios;
 use App\Curriculum;
+use App\Evidecia;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Exception;
@@ -35,14 +36,28 @@ class HomeController extends Controller
         /*$pracPers = DB::Select('Select practicas.id id_practica, nombre_practica, personas.nombre, practicas.descripcion, 
                                 personas.id id_persona, practicas.imagen_practica, practicas.precio  
                                 from personas inner join practicas on personas.id = practicas.id_practicante limit 6');*/
-
+/*
         $pracPers = DB::table('personas')
                     ->join('practicas', 'practicas.id_practicante', '=', 'personas.id')
-                    ->select('practicas.id as id_practica', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 
-                                'personas.id as id_persona', 'practicas.imagen_practica', 'practicas.precio')
+                    ->leftJoin('evidencias', 'practicas.id', '=', 'evidencias.id_historial_practica')
+                    ->select('calificacionEstrella', 'practicas.id as id_practica', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 
+                                'personas.id as id_persona', 'practicas.imagen_practica', 'practicas.precio', 'calificacion')
                     ->limit(6)
+                    ->groupBy('practicas.id')
+                    ->selectRaw('practicas.id, avg(calificacion) as calificacionEstrella')
+                    ->orderByRaw('calificacion DESC')
                     ->get();
-        
+*/
+        $pracPers = DB::table('personas')
+                    ->join('practicas', 'practicas.id_practicante', '=', 'personas.id')
+                    ->leftJoin('evidencias', 'practicas.id', '=', 'evidencias.id_historial_practica')
+                    ->select(DB::raw('practicas.id as id_practica, nombre_practica, personas.nombre, practicas.descripcion, personas.id as id_persona, practicas.imagen_practica, practicas.precio,
+                    practicas.id, round(avg(calificacion),1) as calificacionEstrella'))
+                    ->limit(6)
+                    ->groupBy('practicas.id')
+                    ->orderByRaw('calificacion DESC')
+                    ->get();
+
         $req = Session::get('mail');
         
         if (!empty($req)){
@@ -51,10 +66,14 @@ class HomeController extends Controller
         
 
         return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers)->with('user', $user);
+
+        //    dd($pracPers);
         }
 
         else{
             return view('/index')->with('rubros', $rubros)->with('servicios', $servicios)->with('rubroPorId', $rubroPorId)->with('rubrosYServicios', $rubrosYServicios)->with('pracPers',$pracPers);   
+
+            //dd($calificacionEstrella);
         }
         //dd($pracPers);
     }

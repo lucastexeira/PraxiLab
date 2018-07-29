@@ -145,19 +145,20 @@ Route::get('cargarEvidenciaVoluntario/{cargarEvidencia}',[
 
 ]);
 
-//Cargar Evidencia
-Route::get('createEvidencia/{id}',[
-	'uses' => 'EvidenciaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
-
-]);
-
 Route::get('createEvidenciaVoluntario/{id}',[
 	'uses' => 'EvidenciaController@createEvidenciaVoluntario' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);
 
+
 Route::get('verEvidencia/{id_historial_practica}',[
 	'uses' => 'EvidenciaController@verEvidencia' 
+]);
+
+//Cargar Evidencia
+Route::post('createEvidencia/{id}',[
+	'uses' => 'EvidenciaController@createEvidencia' //Nombre_del_controlador@Nombre_del_metodo
+
 ]);
 
 Route::get('editarCurriculum/{id_persona}',[
