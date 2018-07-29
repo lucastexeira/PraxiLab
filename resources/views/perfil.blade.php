@@ -75,26 +75,50 @@
 				@endforeach
 			</div>
 			
-			<div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
-				@foreach ($experiencia as $evidencia)
+			<div class="tab-pane fade  active show" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
+				
 				<div class="panel panel-default contenido">
+
 					<div class="panel-heading">
-						<img src="{{ asset($persona->img) }}" class="experiencia-profile-pic">
-						<h1 class="experiencia-titulo">Evidencias de la practica {{ $evidencia->nombre_practica }}</h1>
+						<h1>Estas son las evidencias de las practicas que realizo el usuario {{$persona->username}}</a></h1>
 					</div>
-					<div class="experiencia-body panel-body">
-						<a href="verEvidencia/" >
-							<img src="{{asset($evidencia->pathevidencia)}}" class="experiencia-evidencia">
-						</a>
-						<p class="experiencia-descripcion">
-							{{ $evidencia->comentario }}
-						</p>
-					</div>
-					<a href="{{url('verEvidencia/$evidencia->id_historial_practica')}}" >
-						<button type="button" class="btn btn-lg btn-block btn-purple btn-experiencia-perfil">Ver mas</button>
-					</a>
+
+					@foreach ($experiencia as $evidencia)
+						<div class="panel-body">
+							<div class="container-fluid">
+								<div class="row align-items-start">
+									<div class="col-3 text-center">
+										<a href="{{url('verEvidencia/'.$evidencia->id_historial_practica.'')}}" >
+											<img src="{{asset($evidencia->pathevidencia)}}" class="img-oferta-perfil">
+										</a>
+									</div>
+									<div class="col-9">
+										<h1>Evidencias de la practica <a href="{{url('oferta/'.$evidencia->id_practica.'')}}">{{$evidencia->nombre_practica}}</a></h1>
+											@foreach($usuarios as $user)
+												@if($user->id == $evidencia->id_voluntario)
+												<div class="usuario-oferta">
+													<h1 class="experiencia-titulo">Usuario voluntario: <a href="{{url('perfil/'.$user->id.'')}}">{{$user->nombre}}</h1>
+													<img src="{{ asset($user->img) }}" class="experiencia-profile-pic"></a>
+												</div>
+												@endif
+												@if($user->id == $evidencia->id_practicante)
+												<div class="usuario-oferta">
+													<h1 class="experiencia-titulo">Usuario practicante: <a href="{{url('perfil/'.$user->id.'')}}">{{$user->nombre}}</h1>
+													<img src="{{ asset($user->img) }}" class="experiencia-profile-pic"></a>
+												</div>
+												@endif	
+											@endforeach
+									</div>
+								</div>
+								<div class="row justify-content-end align-items-end">
+									<div class="col-1">
+										<a href="{{url('verEvidencia/'.$evidencia->id_historial_practica.'')}}"><button type="button" class="btn btn-success btn-lg btn-purple">Ver detalle</button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					@endforeach
 				</div>
-				@endforeach
 			</div>
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
