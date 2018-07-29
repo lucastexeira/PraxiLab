@@ -27,37 +27,41 @@
 				</div>
 
 				<div class="form-group">
-					<label for="img">Imagen</label>
-					<input name="img" type="file" maxlength="50" class="form-control" id="img"/>
+					<label for="imgEvidencia">Imagen</label>
+					<input name="imgEvidencia" type="file" maxlength="50" class="form-control" id="imgEvidencia"/>
 				</div>
-			</div>
+
 
 			<div class="form-group">
 				<label for="Comentario"><h3>Comentario</h3></label>
 				<input type="text" id="comentario" name="comentario" class="form-control" placeholder="Escriba un comentario" required="required" value="{{ $evidencia->comentario }}"/>
 			</div>
 
-			<br>
-			<label for="Comentario"><h3>Calificación</h3></label>
-			<br>
-			<div class="stars">
+					<br>
+					<label for="Comentario"><h3>Calificación</h3></label>
+					<br>
+					<div class="stars">
 
-				@for($i = 5; $i > 0; $i--)
+						@for($i = 5; $i > 0; $i--)
 
-				<input class="star star-4" id="star-{{$i}}" type="radio" name="calificacion" value="{{ $i }}"/>
-				<label class="star star-4" for="star-{{$i}}"></label>
+						<input class="star star-4" id="star-{{$i}}" type="radio" name="calificacion" value="{{ $i }}"/>
+						<label class="star star-4" for="star-{{$i}}"></label>
 
-				@endfor
+						@endfor
 
+					</div>
+
+					<div class="row mt centered">
+						<div class="col-lg-4 col-lg-offset-4">
+							<a  href="verEvidencia/" >
+								<input type="submit" class="file-upload-btn btn-block" value="Agregar Evidencia"/>
+							</a>
+						</div>
+					</div><!-- /row -->
+
+			
 			</div>
 
-			<div class="row mt centered">
-				<div class="col-lg-4 col-lg-offset-4">
-					<a  href="verEvidencia/" >
-						<input type="submit" class="file-upload-btn btn-block" value="Agregar Evidencia"/>
-					</a>
-				</div>
-			</div><!-- /row -->
 		</div>
 
 	</form>

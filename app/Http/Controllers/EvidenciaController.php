@@ -50,11 +50,12 @@ class EvidenciaController extends Controller
         //dd($practicaEvidencia);
     }
 
-    public function createEvidencia(Request $req, $id){
+    public function createEvidencia(Request $request, $id){
 
+        //dd($req->hasFile('imgEvidencia'));
         //$session_id = session()->getId();
         $this->validate($request, [
-            'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'imgEvidencia' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
         $req = Session::get('mail');
 
@@ -71,18 +72,18 @@ class EvidenciaController extends Controller
 
             $id_comentario_voluntario = $id_historial_practica->id;
 
-            if($request->hasFile('img')){ 
-                $image = $request->file('img'); 
+            /*if($req->hasFile('imgEvidencia')){ 
+                $image = $req->file('imgEvidencia'); 
                 $fileName = $image->getClientOriginalName();
                 $fileExtension = $image->getClientOriginalExtension();
                 $imageName = 'id_practica'.$id_hp.'.'.$image->getClientOriginalExtension();
                 $image->move(base_path().'/public/img/evidencia/', $imageName);
-                // Debido a que el comentario del usuario voluntario carga imagen de evidencia en la base de datos, se le agrega de esta forma, para mostrarlo en el perfil del voluntario, si es una negrada pero toda la aplicacion esta cochina, putoelquelee 
-                DB::table('evidencias')
-                    ->where('id', $id_comentario_voluntario)
-                    ->update(['pathevidencia' =>'img/evidencia/'.$imageName]);
-            }
+                }           */
 
+                // Debido a que el comentario del usuario voluntario carga imagen de evidencia en la base de datos, se le agrega de esta forma, para mostrarlo en el perfil del voluntario, si es una negrada pero toda la aplicacion esta cochina, putoelquelee 
+                // DB::table('evidencias')
+                //     ->where('id', $id_comentario_voluntario)
+                //     ->update(['pathevidencia' => 'img/evidencia/'.$imageName]);
         }
         else{
             $id_hp = 0;
