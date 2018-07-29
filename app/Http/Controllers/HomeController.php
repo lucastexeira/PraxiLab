@@ -32,9 +32,16 @@ class HomeController extends Controller
         $rubroPorId = Rubro::where('id', '=', Input::get('id'));
         $rubrosYServicios = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
         $serviciosPorRubro = Servicio::where($servicios.'id_rubro', '=', $rubros.'id');
-        $pracPers = DB::Select('Select practicas.id id_practica, nombre_practica, personas.nombre, practicas.descripcion, 
+        /*$pracPers = DB::Select('Select practicas.id id_practica, nombre_practica, personas.nombre, practicas.descripcion, 
                                 personas.id id_persona, practicas.imagen_practica, practicas.precio  
-                                from personas inner join practicas on personas.id = practicas.id_practicante limit 6');
+                                from personas inner join practicas on personas.id = practicas.id_practicante limit 6');*/
+
+        $pracPers = DB::table('personas')
+                    ->join('practicas', 'practicas.id_practicante', '=', 'personas.id')
+                    ->select('practicas.id as id_practica', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 
+                                'personas.id as id_persona', 'practicas.imagen_practica', 'practicas.precio')
+                    ->limit(6)
+                    ->get();
         
         $req = Session::get('mail');
         

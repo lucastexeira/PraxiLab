@@ -38,11 +38,17 @@ class PerfilController extends Controller
         $comentarios =  DB::table('evidencias')
                             ->where('id_destinatario', '=', $id)
                             ->select('comentario', 'calificacion', 'created_at')
-                            ->get();
+							->get();
+							
+		$experiencia = DB::table('historial_practicas')
+							->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+							->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
+							->where('practicas.id_practicante', $id)
+							->get();
 
 
-        return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)->with('calificacionEstrella', $calificacionEstrella);
-
+        //return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)->with('calificacionEstrella', $calificacionEstrella);
+		dd($experiencia);
         /*$evidencias = DB::table('practicas')
             ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')
             //->join()
