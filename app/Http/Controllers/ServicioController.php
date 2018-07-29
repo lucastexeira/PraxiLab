@@ -148,7 +148,7 @@ class ServicioController extends Controller
             $practica->save();
  
             $rubros = Rubro::all();
-            $servicios = Servicio::paginate(5);
+            $servicios = Servicio::All();
  
             $req = Session::get('mail');
         
