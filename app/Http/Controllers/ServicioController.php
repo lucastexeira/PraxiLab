@@ -185,7 +185,8 @@ class ServicioController extends Controller
             $persona = Persona::find($id);
  
             //dd($practica);
-            return Redirect::to('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica)->with('persona',$persona);
+            //return Redirect::to('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica)->with('persona',$persona);
+            return Redirect::to('/listadoPracticasEstados');
         }
     }
 

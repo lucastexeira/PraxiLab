@@ -107,12 +107,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="descripcion">Nombre</label>
-                                    <input name="nombre_de_practica" type="text" id="nombre_de_practica" class="form-control" placeholder="Nombre de la Practica" required="required">
+                                    <input name="nombre_practica" type="text" id="nombre_practica" class="form-control" placeholder="Nombre de la Practica" required="required">
 
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
-                                    <textarea name="descripcion_de_practica" type="text" id="descripcion_de_practica" cols="40" rows="4" class="form-control" placeholder="Descripcion de la Practica" required="required"></textarea>
+                                    <textarea name="descripcion" type="text" id="descripcion" cols="40" rows="4" class="form-control" placeholder="Descripcion de la Practica" required="required"></textarea>
                                 </div>
 
                             </div>
@@ -122,7 +122,7 @@
 
                                 <div class="form-group">
                                     <label for="precio">Monto ofrecido</label>
-                                    <input name="precio_de_practica" id="precio_de_practica" type="number" class="form-control" placeholder="Monto ofrecido" required>
+                                    <input name="precio" id="precio" type="number" class="form-control" placeholder="Monto ofrecido" required>
                                 </div>
                             </div>
                         </div>
@@ -145,20 +145,20 @@
                             
                                 <div class="col-lg-6 col-lg-offset-3">
                                     <b>Nombre de la Practica:</b>
-                                    <input name="nombre_practica" type="text" id="nombre_practica" class="form-control" placeholder="Nombre de la Practica" value="" disabled>
+                                    <input name="nombre_de_practica" type="text" id="nombre_de_practica" class="form-control" placeholder="Nombre de la Practica" value="" disabled>
                                 </div>  
                           
                           </li>
                           <li class="list-group-item" style="color:black">
                                 <div class="col-lg-6 col-lg-offset-3">
                                     <b>Descripcion de la Practica:</b>
-                                    <input name="descripcion" type="text" id="descripcion" class="form-control" value="" disabled>
+                                    <input name="descripcion_de_practica" type="text" id="descripcion_de_practica" class="form-control" value="" disabled>
                                 </div>
                           </li>
                           <li class="list-group-item" style="color:black">
                                 <div class="col-lg-6 col-lg-offset-3">
                                     <b>Precio de la Practica:</b>
-                                    $<input name="precio" type="text" id="precio" class="form-control" value="" disabled>
+                                    $<input name="precio_de_practica" type="text" id="precio_de_practica" class="form-control" value="" disabled>
                                 </div>
                           </li>
                         </ul>
@@ -269,14 +269,15 @@
             $('#irAPaso3').attr('href', '#complete');
 
 
-            var nombre_de_practica = $('#nombre_de_practica').val();
+            var nombre_practica = $('#nombre_practica').val();
             //$('#nombre_practica').val(nombre_de_practica);
-            $('#nombre_practica').attr('value', nombre_de_practica);
+            $('#nombre_de_practica').attr('value', nombre_practica);
 
-            var descripcion_de_practica = $('#descripcion_de_practica').val();
-            $('#descripcion').val(descripcion_de_practica);
-            var precio_de_practica = $('#precio_de_practica').val();
-            $('#precio').val(precio_de_practica);
+            var descripcion = $('#descripcion').val();
+            $('#descripcion_de_practica').val(descripcion);
+
+            var precio = $('#precio').val();
+            $('#precio_de_practica').val(precio);
 
         }); 
 
