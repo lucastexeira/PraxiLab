@@ -23,35 +23,44 @@ use Session;
 
 class PerfilController extends Controller
 {
-	public function perfil($id){
+	public function perfil(Request $req, $id_usuario){
+		
 		$rubros = Rubro::all();
-		$persona = Persona::where('id', $id)->first();
-		$curriculum = Curriculum::where('id_persona', $id)->first();
-		$practicas = Practica::where('id_practicante', "=", $id)->get();
+
+        $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
+		
+		$personaAtributos = Persona::where('id', $id_usuario)->first();
+
+		$curriculum = Curriculum::where('id_persona', $id_usuario)->first();
+		$practicas = Practica::where('id_practicante', "=", $id_usuario)->get();
 
         $calificacionescomentarios =  DB::table('evidencias')
-                                        ->where('id_destinatario', '=', $id)
+                                        ->where('id_destinatario', '=', $id_usuario)
                                         ->avg('calificacion');
 
         $calificacionEstrella = round($calificacionescomentarios, 1);
 
         $comentarios =  DB::table('evidencias')
-                            ->where('id_destinatario', '=', $id)
+                            ->where('id_destinatario', '=', $id_usuario)
                             ->select('comentario', 'calificacion', 'created_at')
 							->get();
 							
 		$experiencia = DB::table('historial_practicas')
 							->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
 							->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
-							->where('practicas.id_practicante', $id)
-							->orWhere('evidencias.id_autor', $id)
+							->Where('historial_practicas.id_estado', 4)
+							->Where('evidencias.id_autor', $id_usuario)
 							->get();
 		
-		$usuarios = DB::table('personas')
-						->get();
+		$usuarios = DB::table('personas')->get();
+
+		//dd($experiencia);
 
 		return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)
 							 ->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)
+							 ->with('personaAtributos', $personaAtributos)
 							 ->with('calificacionEstrella', $calificacionEstrella)->with('experiencia', $experiencia)->with('usuarios', $usuarios);
 		//dd($usuarios);
         /*$evidencias = DB::table('practicas')
@@ -63,7 +72,6 @@ class PerfilController extends Controller
         
 			return view('perfil')->with('rubros', $rubros)->with('persona', $persona);//->with('evidencias', $evidencias);*/
 
-        //dd($calificacion);
     }
 
 		public function editarPerfil($id) {

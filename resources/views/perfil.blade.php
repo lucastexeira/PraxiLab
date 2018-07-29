@@ -1,6 +1,6 @@
 @include("layouts.cabecera")
 <link href="{{asset('css/oferta.css')}}" rel="stylesheet">
-<title>{{$persona->nombre}} {{$persona->apellido}} - PraxiLab</title>
+<title>{{$personaAtributos->nombre}} {{$personaAtributos->apellido}} - PraxiLab</title>
 </head>
 <body>
 
@@ -14,14 +14,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 text-center">
-					<img src="{{asset($persona->img)}}" class="img-fluid img-thumbnail">
-					<a href="{{url('editarPerfil/'.$persona->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple">Editar perfil</button></a>
+					<img src="{{asset($personaAtributos->img)}}" class="img-fluid img-thumbnail">
+					<a href="{{url('editarPerfil/'.$personaAtributos->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple">Editar perfil</button></a>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 desc">
 
-					<p id="nombre">{{ $persona->nombre }} {{ $persona->apellido }}</p>
+					<p id="nombre">{{ $personaAtributos->nombre }} {{ $personaAtributos->apellido }}</p>
 					<p>
-						{{ $persona->descripcion }}
+						{{ $personaAtributos->descripcion }}
 					</p>
 				</div>
 			</div>
@@ -80,7 +80,7 @@
 				<div class="panel panel-default contenido">
 
 					<div class="panel-heading">
-						<h1>Estas son las evidencias de las practicas que realizo el usuario {{$persona->username}}</a></h1>
+						<h1>Estas son las evidencias de las practicas que realizo el usuario {{$personaAtributos->username}}</a></h1>
 					</div>
 
 					@foreach ($experiencia as $evidencia)
@@ -123,7 +123,7 @@
 
 			<div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
 				<div class="container contenido">
-					<a href="{{url('editarCurriculum/'.$persona->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
+					<a href="{{url('editarCurriculum/'.$personaAtributos->id)}}"><button type="button" class="btn btn-success btn-lg btn-purple ">Editar curriculum</button></a><br/>
 
 					@if (!empty($curriculum->formacion_academica))
 					<div class="panel panel-default contenido">
