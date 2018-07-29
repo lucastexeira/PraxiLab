@@ -25,19 +25,49 @@ use DateTime;
 
 class OfertaController extends Controller
 {
-    public function oferta($id){ 
+    public function oferta($id_oferta){ 
+
+        $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
 
         $historial_practicas = new Historial_Practica();
         $rubros = Rubro::all();
-        $practicaPersona = DB::Select('select practicas.id as practica_id, nombre_practica, img, imagen_practica, username, precio, practicas.descripcion from practicas 
+        /*$practicaPersona = DB::Select('select practicas.id as practica_id, nombre_practica, img, imagen_practica, username, precio, practicas.descripcion from practicas 
                                        inner join personas on practicas.id_practicante = personas.id 
-                                       where practicas.id = '.$id.'');
+                                       where practicas.id = '.$id_oferta.'');*/
+
+        $practicaPersona = DB::table('practicas')
+                                ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
+                                ->select('practicas.id as practica_id', 'nombre_practica', 'img', 'imagen_practica', 'username', 'precio', 'practicas.descripcion', 'id_practicante')
+                                ->where('practicas.id',$id_oferta)
+                                ->first();
+        
+        $id_practicante = $practicaPersona->id_practicante;
+
+        $promedioCalificacion = DB::table('evidencias')
+                                        ->join('historial_practicas', 'historial_practicas.id', '=', 'evidencias.id_historial_practica')
+                                        ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                        ->where('practicas.id', $id_oferta)
+                                        ->where('evidencias.id_autor' , '!=', $id_practicante)
+                                        ->avg('calificacion');
+
+        $promedioRedondeado = round($promedioCalificacion);
+
+        $comentarios = DB::table('evidencias')
+                        ->join('historial_practicas', 'historial_practicas.id', '=', 'evidencias.id_historial_practica')
+                        ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                        ->where('practicas.id', $id_oferta)
+                        ->where('evidencias.id_autor' , '!=', $id_practicante)
+                        ->get();
+        
 
         /*$practicaPersona= Practica::where('id', $id)->first();
         $practicaPersona->Persona = Persona::where('id', $practicaPersona->id_practicante)->first();*/
 
-        return view('oferta')->with('rubros', $rubros)->with('practicaPersona', $practicaPersona)->with('historial_practicas', $historial_practicas); 
-        //dd($practicaPersona);
+        return view('oferta')->with('rubros', $rubros)->with('persona', $persona)->with('practicaPersona', $practicaPersona)->with('historial_practicas', $historial_practicas)
+                             ->with('promedioRedondeado', $promedioRedondeado)->with('comentarios', $comentarios); 
+        //dd($comentarios);
     }
     
     public function adquirirPractica(Request $req){

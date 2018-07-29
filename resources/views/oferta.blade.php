@@ -9,7 +9,6 @@
       @include('layouts.navbarSinInicio')
   @endif
 
-  @foreach ($practicaPersona as $Persona)
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -19,15 +18,17 @@
 					<input type="hidden" name="_method" value="PUT">
                 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="col-md-5">
-							<img class="imagen-oferta" src="{{asset($Persona->imagen_practica) }}">
+							<img class="imagen-oferta" src="{{asset($practicaPersona->imagen_practica) }}">
 						</div>
 						<div class="col-md-7">
 							<div class="div-descripcion-corta-oferta">
-								<input name="id_practica" id="id_practica" type="hidden" value="{{ $Persona->practica_id }}"/>
-								<h1 class="titulo-oferta">{{ $Persona->nombre_practica }}</h1>
+								<input name="id_practica" id="id_practica" type="hidden" value="{{ $practicaPersona->practica_id }}"/>
+								<h1 class="titulo-oferta">{{ $practicaPersona->nombre_practica }}</h1>
 								<div class="usuario-oferta">
-									<img src="{{asset($Persona->img)}}" class="usuario-oferta-pic">
-									<p class="nombre-usuario-oferta">{{ $Persona->username }}</p>
+									
+								<img src="{{asset($practicaPersona->img)}}" class="usuario-oferta-pic"> 
+								<p class="nombre-usuario-oferta"><a href="{{asset('perfil/'.$practicaPersona->id_practicante.'')}}"> {{ $practicaPersona->username }}</a></p>
+							
 								</div>
 								<div class="div-calificacion-oferta">
 									<span class="fa fa-star checked-purple"></span>
@@ -38,17 +39,21 @@
 									<p class="cantidad-opiniones-oferta">2 opiniones</p>
 								</div>
 								<div class="div-precio-oferta">
-									<p class="precio-oferta">{{ $Persona->precio }}</p>
+									<p class="precio-oferta">{{ $practicaPersona->precio }}</p>
 								</div>
 								<div class="div-boton-oferta">
 									@if(session()->has('mail'))
-						                <button type="button" class="btn btn-lg btn-purple btn-oferta" data-toggle="modal" data-target="#myModal">	Practicar
-									</button>
-						            @else 
-						            	<a href="{{asset('inicioSesion')}}">
-							               <button type="button" class="btn btn-lg btn-purple btn-oferta">	Practicar
+						                <p>
+							                <button type="button" class="btn btn-lg btn-purple btn-oferta" data-toggle="modal" data-target="#myModal">		Practicar
 											</button>
-										</a>
+										</p>
+						            @else 
+						            	<p>
+							            	<a href="{{asset('inicioSesion')}}">
+								               <button type="button" class="btn btn-lg btn-purple btn-oferta">	Practicar
+												</button>
+											</a>
+										</p>
 						            @endif
 								</div>
 
@@ -86,83 +91,60 @@
 					<div class="tab-pane fade active show" id="descripcion" role="tabpanel" aria-labelledby="descripcion-tab">
 					
 						<div class="contenido">
-							{{ $Persona->descripcion }}
+							{{ $practicaPersona->descripcion }}
 						</div>
 					
 					</div>
+
 					<div class="tab-pane fade" id="calificacion" role="tabpanel" aria-labelledby="calificacion-tab">
 						<div class="container contenido">
-							<span class="heading">Calificación</span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star"></span>
-							<p>Promedio: 4 basado en 2 reviews.</p>
-							<hr style="border:3px solid #f1f1f1">
+								<span class="heading">Calificación</span>
 
-							<div class="row">
-								<div class="side">
-									<div>5 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-5"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>0</div>
-								</div>
-								<div class="side">
-									<div>4 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-4"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>2</div>
-								</div>
-								<div class="side">
-									<div>3 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-3"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>0</div>
-								</div>
-								<div class="side">
-									<div>2 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-2"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>0</div>
-								</div>
-								<div class="side">
-									<div>1 star</div>
-								</div>
-								<div class="middle">
-									<div class="bar-container">
-										<div class="bar-1"></div>
-									</div>
-								</div>
-								<div class="side right">
-									<div>0</div>
-								</div>
-							</div>
+									@if($promedioRedondeado == 1)
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									@elseif($promedioRedondeado == 2)
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									@elseif($promedioRedondeado == 3)
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									@elseif($promedioRedondeado == 4)
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star"></span>
+									@elseif($promedioRedondeado == 5)
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+										<span class="fa fa-star checked-purple"></span>
+									@endif
+
+									<p>Promedio: <span class="fa fa-star checked-purple">{{ $promedioRedondeado }} </span></p>
+									
+								<hr style="border:3px solid #f1f1f1">
+
+								@foreach($comentarios as $c)
+								<ul class="list-group">
+									<li class="list-group-item">{{ $c->created_at }} <b>{{ $c->comentario }}</b> <span class="badge"><h4>{{ $c->calificacion }}<span class="fa fa-star checked-white"></h4> </span></span></li>
+								</ul>
+								@endforeach
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	@endforeach
 	@include("layouts.pie")

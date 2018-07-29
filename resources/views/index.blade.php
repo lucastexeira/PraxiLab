@@ -43,8 +43,9 @@
           </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar Practica" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="{{ 'todosLosServicios' }}" method="GET"> 
+          <span><i class="nav-icon-search"></i></span><input class="form-control mr-sm-2" type="search" placeholder="Nombre de la practica" aria-label="Search" id="buscador" name="buscador" >
+          <!--button type="button" class="btn btn-cta btn-lg" style="background-color: #9244a4">Buscar</button-->
         </form>
 
         <ul class="navbar-nav">
@@ -71,8 +72,8 @@
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                <img src="img/team/profile-pics.jpg" class="img-circle" alt="Usuario" height="50px" width="50px">
-                Nombre
+                <img src="{{ $user->img }}" class="img-circle" alt="Usuario" height="50px" width="50px">
+                {{ $user->username }}
               </a>
 
               <ul class="dropdown-menu">
@@ -80,7 +81,7 @@
                   <div class="navbar-login">
                     <div class="row">
                       <div class="col-lg-12">
-                        <a class="dropdown-item" href="{{ 'perfil' }}">
+                        <a class="dropdown-item" href="{{ url('perfil/'.$user->id.'') }}">
                           <span class="glyphicon glyphicon-user"></span> Ver Perfil</a>
                         </div>
                       </div>
@@ -230,7 +231,7 @@
                 </a>
                 <div class="clearfix">
                   <span class="tag" ><font color="white"><h2>Usuario: <a href="{{url('perfil/'.$pracPer->id_persona.'')}}">{{ $pracPer->nombre }}</a></h2></font></span>
-                  <span class="meta-data"><font color="white"><h2>Calificación: <i class="fa fa-star-o"></i> 5     Oferta: <i class="fa fa-dollar"></i> 50</h2></font></span>
+                  <span class="meta-data"><font color="white"><h2>Calificación: <i class="fa fa-star-o"></i> 5     Precio: ${{ $pracPer->precio }}</h2></font></span>
                   <span class="meta-data"><font color="white"></font></span>
                 </div>
                 <div class="content">

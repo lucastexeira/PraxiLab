@@ -23,24 +23,46 @@ use Session;
 
 class PerfilController extends Controller
 {
-	public function perfil($id){
+	public function perfil(Request $req, $id_usuario){
+		
 		$rubros = Rubro::all();
-		$persona = Persona::where('id', $id)->first();
-		$curriculum = Curriculum::where('id_persona', $id)->first();
-		$practicas = Practica::where('id_practicante', "=", $id)->get();
 
-		$calificacionescomentarios =  DB::table('calificacionescomentarios')
-		->where('id_destinatario', '=', $id)
-		->avg('calificacion');
+        $req = Session::get('mail');
+        $id = Persona::where('mail', $req)->first()->id;
+        $persona = Persona::find($id);
+		
+		$personaAtributos = Persona::where('id', $id_usuario)->first();
 
-		$comentarios =  DB::table('calificacionescomentarios')
-		->where('id_destinatario', '=', $id)
-		->select('comentario', 'calificacion', 'created_at')
-		->get();
+		$curriculum = Curriculum::where('id_persona', $id_usuario)->first();
+		$practicas = Practica::where('id_practicante', "=", $id_usuario)->get();
 
+        $calificacionescomentarios =  DB::table('evidencias')
+                                        ->where('id_destinatario', '=', $id_usuario)
+                                        ->avg('calificacion');
 
-		return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas);
+        $calificacionEstrella = round($calificacionescomentarios, 1);
 
+        $comentarios =  DB::table('evidencias')
+                            ->where('id_destinatario', '=', $id_usuario)
+                            ->select('comentario', 'calificacion', 'created_at')
+							->get();
+							
+		$experiencia = DB::table('historial_practicas')
+							->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+							->join('evidencias', 'evidencias.id_historial_practica', '=', 'historial_practicas.id')
+							->Where('historial_practicas.id_estado', 4)
+							->Where('evidencias.id_autor', $id_usuario)
+							->get();
+		
+		$usuarios = DB::table('personas')->get();
+
+		//dd($experiencia);
+
+		return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)
+							 ->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)
+							 ->with('personaAtributos', $personaAtributos)
+							 ->with('calificacionEstrella', $calificacionEstrella)->with('experiencia', $experiencia)->with('usuarios', $usuarios);
+		//dd($usuarios);
         /*$evidencias = DB::table('practicas')
             ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')
             //->join()
@@ -50,8 +72,7 @@ class PerfilController extends Controller
         
 			return view('perfil')->with('rubros', $rubros)->with('persona', $persona);//->with('evidencias', $evidencias);*/
 
-        //dd($curriculum);
-		}
+    }
 
 		public function editarPerfil($id) {
 			$rubros = Rubro::all();
@@ -89,8 +110,23 @@ class PerfilController extends Controller
 			
 			$persona->save();
 
-			return $this->perfil($persona->id);
-		}
+        if (empty($curriculum->formacion_academica)){
+            $curriculum = new Curriculum();
+            $curriculum->id_persona = $id;
+        }
+
+        $curriculum->formacion_academica = Input::get('formacion_academica');
+        $curriculum->formacion_complementaria = Input::get('formacion_complementaria');
+        $curriculum->experiencia = Input::get('experiencia');
+        $curriculum->idiomas = Input::get('idiomas');
+        $curriculum->referencias = Input::get('referencias');
+        $curriculum->otros_datos = Input::get('otros_datos');
+        
+
+        $curriculum->save();
+
+        return $this->perfil($persona->id);
+    }
 
 		public function editarCurriculum($id) {
 			$rubros = Rubro::all();

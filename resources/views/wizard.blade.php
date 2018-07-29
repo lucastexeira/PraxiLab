@@ -61,7 +61,7 @@
                                 <div class="imagenRubroSinSeleccion">  
                                   @foreach ($rubros as $rubro)
                                     <button class="botonRubro" type="button" id="botonRubro">
-                                        <img width="150" height="100" alt="{{ $rubro->id }}" src="{{ $rubro->imagen }}"/>
+                                        <img width="225" height="100" alt="{{ $rubro->id }}" src="{{ $rubro->imagen }}"/>
                                         <p>{{ $rubro->nombre_rubro }}</p>
                                     </button>
                                    @endforeach
@@ -78,11 +78,11 @@
                                 <div class="servicios">
                                     <ol>
                                     @foreach ($servicios as $servicio)
-                                            <a id="listaServicios" href="#step2">
-                                                <h4 class="center-block servicioSeleccionado" id="{{ $servicio->id }}" >
-                                                    {{ $servicio->nombre_servicio }}
-                                                </h4>
-                                            </a>
+                                        <a id="listaServicios" href="#step2">
+                                            <h4 class="center-block servicioSeleccionado" id="{{ $servicio->id }}" >
+                                                {{ $servicio->nombre_servicio }}
+                                            </h4>
+                                        </a>
                                     @endforeach
                                     
                                     </ol>
@@ -118,28 +118,32 @@
 
                             <div class="col-md-6">
                                 <input name="imagen_practica" type="hidden" id="imagen_practica" required="required" value="img/logos/logo_default.png"/>
-                                <!--div class="form-group">
-                                    <label for="imagen">Imagen</label>
-                                    <input name="imagen" type="file" id="imagen" placeholder="Imagen de la Practica" class="form-control" required>
-                                </div-->
 
-                                <!--div class="form-group">
+                                <div class="form-group">
                                     <label for="precio">Monto ofrecido</label>
                                     <input name="precio" type="number" id="precio" class="form-control" placeholder="Monto ofrecido" required>
-                                </div-->
+                                </div>
                             </div>
                         </div>
 
                         <ul class="list-inline pull-right">
-                            <button type="submit" class="btn btn-theme btn-lg next-step" id="botonStep2">Guardar y Finalizar</button>
+                            
+                            <!--button type="button" class="btn btn-theme btn-lg next-step" id="botonStep2">Guardar y Finalizar
+                            </button-->
+                            <button type="submit" class="btn btn-theme btn-lg">Guardar y Finalizar
+                            </button>                            
                         </ul>
                     </div>
-            </form>
+            
                     <div class="tab-pane text-center" role="tabpanel" id="complete">
                         <h2>¡Se ha creado la práctica exitosamente!</h2>
 
                         <ul class="list-group">
                           <li class="list-group-item" style="color:black"><b>Rubro</b> Cursos y Clases</li>
+
+                          <input name="nombre_practica2" type="text" id="nombre_practica2" class="form-control" placeholder="Nombre de la Practica" value="">
+
+
                           <li class="list-group-item" style="color:black"><b>Servicio</b> {{ $practica->id_servicio }}</li>
                           <li class="list-group-item" style="color:black"><b>Práctica</b>  {{ $practica->id_practica }} - {{ $practica->nombre_practica }}</li>
                           <li class="list-group-item" style="color:black"><b>Descripción</b>  {{ $practica->descripcion }}</li>
@@ -152,6 +156,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+            </form>
         </div>
     </div>
    </div>
@@ -159,6 +164,7 @@
 
 <script>
     $(document).ready(function(){
+
 
     //PASO 1    
         //Oculto el rubro a seleccionar y los servicios
@@ -188,6 +194,8 @@
             var rubroID = $(this).attr("alt");
             var rubroIMG = $(this).attr("src");
 
+            $('wizard').attr('href', 'id='+rubroID);
+
             $('#rubroSeleccionado').addClass('col-md-3');
             // eliminar una clase del elemento
             
@@ -195,7 +203,7 @@
             if(rubroID){
               $.ajax({
                 type:"GET",
-                url:"{{url('wizard')}}?id="+rubroID,
+                data:rubroID,
                 success:function(res){
                   if(res){
                     //Oculto listado de rubros con efecto lento
@@ -223,6 +231,7 @@
         }
     });
 
+        
 
     //PASO 2
         //Si apreto el boton de confirmar y continuar del PASO 1, deshabilito al icono1
@@ -263,6 +272,15 @@
 
         });
 });
+
+ function copiarDatos(){
+
+          $("#nombre_practica").keyup(function () {
+        var value = $(this).val();
+        $("#nombre_practica2").val(value);
+             });
+
+        }
 
 function nextTab(elem) {
 $(elem).next().find('a[data-toggle="tab"]').click();
