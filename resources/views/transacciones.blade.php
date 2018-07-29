@@ -62,7 +62,7 @@
 
 										@foreach($todasPersonas as $per)
 											@if($per->id == $transaccion->id_destinatario)
-												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$per->nombre}}{{$per->apellido}}</a></td>
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$per->nombre}} {{$per->apellido}}</a></td>
 											@endif
 										@endforeach
 
@@ -72,7 +72,7 @@
 
 										@foreach($todasPersonas as $per)
 											@if($per->id == $transaccion->id_destinatario)
-												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$per->nombre}}{{$per->apellido}}</a></td>
+												<td><a href=" {{ url('perfil/'.$transaccion->id_destinatario.'' )}} ">{{$per->nombre}} {{$per->apellido}}</a></td>
 											@endif
 										@endforeach
 

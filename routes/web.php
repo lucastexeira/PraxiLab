@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('formularioPrueba', function() {
+	return view('formularioPrueba');
+});
+
 Route::get('index',[
 	'uses' => 'HomeController@index' //Nombre_del_controlador@Nombre_del_metodo
 
@@ -123,7 +127,7 @@ Route::get('editarPerfil/{id_persona}',[
 	'uses' => 'PerfilController@editarPerfil'
 ]);
 
-Route::get('edit/{id}',[
+Route::post('edit/{id}',[
 	'uses' => 'PerfilController@edit' //Nombre_del_controlador@Nombre_del_metodo
 
 ]);

@@ -143,7 +143,13 @@ class MercadoPagoController extends Controller
 
         $id_preference = Input::get('preference_id');
 
-        if ($payment_info["status"] == 200) {
+        $estado = DB::table('transacciones')
+                                ->where('id_transaccione_mercadopago', $id_preference)
+                                ->first();
+
+        $estadoTansaccion = $estado->estado;
+
+        if ($payment_info["status"] == 200 and $estadoTansaccion != 0) {
 
             // Actualiza la cantidad de creditos del usuario y crea registro en la rabla transacciones
             $cantidadCreditosActual = DB::table('personas')->where('mail', $mail)->first(['cantidad_creditos']);
@@ -177,14 +183,20 @@ class MercadoPagoController extends Controller
             return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
             //dd($m);
         }
+
+        elseif($payment_info["status"] == 200 and $estadoTansaccion == 0){
+            $mensaje = "El pago ya fue efectuado con exito";
+            $check = "check.png";
+            return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
+            //dd($payment_info["response"]);
+        
+        }
         else{
-            $mensaje = "El pago NO se completo";
+            $mensaje = "El pago NO se completo, vuelva a intentar mas tarde";
             $check = "checkRojo.png";
             return view('/estadoPago')->with('rubros', $rubros)->with('check', $check)->with('mensaje', $mensaje)->with('persona', $persona);
             //dd($payment_info["response"]);
         }
-
-        
 
     }
 }
