@@ -216,3 +216,7 @@ img#imgRubro {
 .well {
     width: 1125px !important;
 }
+
+.form-control {
+    font-size: 18px!important;
+    }
