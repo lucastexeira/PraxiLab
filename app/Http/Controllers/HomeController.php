@@ -54,8 +54,8 @@ class HomeController extends Controller
                     ->select(DB::raw('practicas.id as id_practica, nombre_practica, personas.nombre, practicas.descripcion, personas.id as id_persona, practicas.imagen_practica, practicas.precio,
                     practicas.id, round(avg(calificacion),1) as calificacionEstrella'))
                     ->limit(6)
-                    ->groupBy('practicas.id')
                     ->orderByRaw('calificacion DESC')
+                    ->groupBy(DB::raw('id_practica'))
                     ->get();
 
         $req = Session::get('mail');

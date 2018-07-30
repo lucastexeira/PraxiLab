@@ -31,7 +31,7 @@ class ServicioController extends Controller
 
 
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                ->select('practicas.id', 'practicas.precio', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
                 ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
                 ->orderBy('practicas.id', 'desc')->get();
                 $rubros = Rubro::All();
@@ -49,7 +49,7 @@ class ServicioController extends Controller
 
 
     $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                ->select('practicas.id', 'practicas.precio', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
                 ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
                 ->orderBy('practicas.id', 'desc')->get();
                 $rubros = Rubro::All();
@@ -117,7 +117,7 @@ class ServicioController extends Controller
 
     public function irAWizard(Request $request){
 
-        $id_rubro = array_key_exists('data', $_GET) ? $_GET['data'] : null;
+        //$id_rubro = array_key_exists('data', $_GET) ? $_GET['data'] : null;
         
         $req = Session::get('mail');
         
@@ -129,6 +129,10 @@ class ServicioController extends Controller
        // $servicios = Servicio::paginate(5);
         //$servicios = Servicio::where('id', $request->id)->pluck('id');
         
+
+        //$rubro->id_rubro = request('rubroID');
+
+
         if(!empty($id_rubro))
             $servicios = DB::Select('Select * from servicios where id_rubro = '.$id_rubro.'');
         else
@@ -160,20 +164,40 @@ class ServicioController extends Controller
     }
 
    public function createPractica(Request $req){
- 
+
+        $this->validate($req, [
+            'imagenPractica' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+        
         //$session_id = session()->getId();
-        $req = Session::get('mail');
- 
-        if ( $req ){
-            $servicioId = DB::table('personas')->where('mail', $req)->first()->id;
+        $request = Session::get('mail');
+
+        $id_practica = DB::table('practicas')->orderBy('created_at', 'desc')->first();
+
+        $id_practica_anterior = $id_practica->id;
+
+        $id_practica_imagen = $id_practica_anterior +1;
+
+        if ( $request ){
+            $id_practicante = DB::table('personas')->where('mail', $request)->first()->id;
         
             $practica = new Practica();
             $practica->nombre_practica = Input::get('nombre_practica');
             $practica->precio = Input::get('precio');
             $practica->descripcion = Input::get('descripcion');
             $practica->imagen_practica = Input::get('imagen_practica');
-            $practica->id_practicante = $servicioId;
+            $practica->id_practicante = $id_practicante;
             $practica->id_servicio = Input::get('id_servicio');
+
+			if($req->hasFile('imagenPractica')){ 
+				$image = $req->file('imagenPractica'); 
+				$fileName = $image->getClientOriginalName();
+				$fileExtension = $image->getClientOriginalExtension();
+				$imageName = 'img_practica_'.$id_practica_imagen.'.'.$image->getClientOriginalExtension();
+				$image->move(base_path().'/public/img/practicas/', $imageName);
+				$practica->imagen_practica = 'img/practicas/'.$imageName;
+			}
+
             $practica->save();
  
             $rubros = Rubro::all();
@@ -185,7 +209,10 @@ class ServicioController extends Controller
             $persona = Persona::find($id);
  
             //dd($practica);
-            return Redirect::to('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica)->with('persona',$persona);
+            //return Redirect::to('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica)->with('persona',$persona);
+            return redirect()->action(
+                'OfertaController@oferta', ['id_oferta' => $id_practica_imagen]
+            );
         }
     }
 
