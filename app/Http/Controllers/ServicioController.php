@@ -31,7 +31,7 @@ class ServicioController extends Controller
 
 
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                ->select('practicas.id', 'practicas.precio', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                ->select('practicas.id as id_practica', 'practicas.precio', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
                 ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
                 ->orderBy('practicas.id', 'desc')->get();
                 $rubros = Rubro::All();
@@ -49,7 +49,7 @@ class ServicioController extends Controller
 
 
     $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                ->select('practicas.id', 'practicas.precio', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                ->select('practicas.id as id_practica', 'practicas.precio', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
                 ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
                 ->orderBy('practicas.id', 'desc')->get();
                 $rubros = Rubro::All();
