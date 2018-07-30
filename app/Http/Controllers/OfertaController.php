@@ -49,6 +49,7 @@ class OfertaController extends Controller
                                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
                                         ->where('practicas.id', $id_oferta)
                                         ->where('evidencias.id_autor' , '!=', $id_practicante)
+                                        ->where('historial_practicas.id_estado', '=', 4)
                                         ->avg('calificacion');
 
         $promedioRedondeado = round($promedioCalificacion);
@@ -56,11 +57,14 @@ class OfertaController extends Controller
         $comentarios = DB::table('evidencias')
                         ->join('historial_practicas', 'historial_practicas.id', '=', 'evidencias.id_historial_practica')
                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+						->join('personas','personas.id','=','evidencias.id_autor')
                         ->where('practicas.id', $id_oferta)
                         ->where('evidencias.id_autor' , '!=', $id_practicante)
+						->where('historial_practicas.id_estado', '=', 4)
                         ->get();
-        
 
+        
+        //dd($comentarios);
         /*$practicaPersona= Practica::where('id', $id)->first();
         $practicaPersona->Persona = Persona::where('id', $practicaPersona->id_practicante)->first();*/
 
