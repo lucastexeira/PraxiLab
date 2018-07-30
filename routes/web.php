@@ -90,9 +90,8 @@ Route::get('wizard',[
 ]);
 
 //Crear una practica (Wizard)
-Route::get('createPractica',[
-	'uses' => 'ServicioController@createPractica' //Nombre_del_controlador@Nombre_del_metodo
-
+Route::post('createPractica',[
+	'uses' => 'ServicioController@createPractica' 
 ]);
 
 //Lista de Practicas Por Estados
