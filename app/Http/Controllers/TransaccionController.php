@@ -36,6 +36,16 @@ class TransaccionController extends Controller
         $cantidadCreditos = DB::table('personas')->where('mail', $mail)->first(['cantidad_creditos']);
 
         $cantidad = $cantidadCreditos->cantidad_creditos;
+        
+        $mes_cantidad = DB::table('transacciones')
+                            ->join('compra_mercadopago', 'compra_mercadopago.id_transaccion_mp', '=','transacciones.id_transaccione_mercadopago')
+                            ->where('transacciones.id_destinatario',$usuario)
+                            ->where('transacciones.id_emisor',$usuario)
+                            ->sum('cantidad_meses');
+        
+        if($mes_cantidad == null) {
+            $mes_cantidad = 0;
+        }
 
         $personaTransaccion = DB::table('transacciones')
                             ->leftjoin('historial_practicas', 'historial_practicas.id','=','transacciones.historial_practica')
@@ -50,7 +60,7 @@ class TransaccionController extends Controller
         $todasPersonas = DB::table('personas')
                     ->get();
                             
-        return view('/transacciones')->with('rubros',$rubros)->with('personaTransaccion',$personaTransaccion)->with('usuario',$usuario)->with('cantidad',$cantidad)->with('persona',$persona)->with('todasPersonas',$todasPersonas);
+        return view('/transacciones')->with('rubros',$rubros)->with('mes_cantidad',$mes_cantidad)->with('personaTransaccion',$personaTransaccion)->with('usuario',$usuario)->with('cantidad',$cantidad)->with('persona',$persona)->with('todasPersonas',$todasPersonas);
 
         //dd($personaTransaccion);
     }
