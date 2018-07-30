@@ -160,20 +160,40 @@ class ServicioController extends Controller
     }
 
    public function createPractica(Request $req){
- 
+
+        $this->validate($req, [
+            'imagenPractica' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+        
         //$session_id = session()->getId();
-        $req = Session::get('mail');
- 
-        if ( $req ){
-            $servicioId = DB::table('personas')->where('mail', $req)->first()->id;
+        $request = Session::get('mail');
+
+        $id_practica = DB::table('practicas')->orderBy('created_at', 'desc')->first();
+
+        $id_practica_anterior = $id_practica->id;
+
+        $id_practica_imagen = $id_practica_anterior +1;
+
+        if ( $request ){
+            $id_practicante = DB::table('personas')->where('mail', $request)->first()->id;
         
             $practica = new Practica();
             $practica->nombre_practica = Input::get('nombre_practica');
             $practica->precio = Input::get('precio');
             $practica->descripcion = Input::get('descripcion');
             $practica->imagen_practica = Input::get('imagen_practica');
-            $practica->id_practicante = $servicioId;
+            $practica->id_practicante = $id_practicante;
             $practica->id_servicio = Input::get('id_servicio');
+
+			if($req->hasFile('imagenPractica')){ 
+				$image = $req->file('imagenPractica'); 
+				$fileName = $image->getClientOriginalName();
+				$fileExtension = $image->getClientOriginalExtension();
+				$imageName = 'img_practica_'.$id_practica_imagen.'.'.$image->getClientOriginalExtension();
+				$image->move(base_path().'/public/img/practicas/', $imageName);
+				$practica->imagen_practica = 'img/practicas/'.$imageName;
+			}
+
             $practica->save();
  
             $rubros = Rubro::all();
@@ -186,7 +206,9 @@ class ServicioController extends Controller
  
             //dd($practica);
             //return Redirect::to('/wizard')->with('rubros',$rubros)->with('servicios',$servicios)->with('practica',$practica)->with('persona',$persona);
-            return Redirect::to('/listadoPracticasEstados');
+            return redirect()->action(
+                'OfertaController@oferta', ['id_oferta' => $id_practica_imagen]
+            );
         }
     }
 

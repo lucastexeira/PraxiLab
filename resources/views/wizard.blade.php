@@ -45,8 +45,7 @@
                 </ul>
             </div>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <form action=" createPractica/{{ $practica->id }}" role="form" id="formularioWizard" class="formularioWizard" method="">
-                <input type="hidden" name="_method" value="PUT">
+            <form action="{{url('createPractica/')}}" enctype="multipart/form-data" role="form" id="formularioWizard" class="formularioWizard" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
@@ -118,7 +117,13 @@
                             </div>
 
                             <div class="col-md-6">
-                                <input name="imagen_practica" type="hidden" id="imagen_practica" required="required" value="img/logos/logo_default.png"/>
+
+                                <div class="form-group">
+                                    <label for="imagenPractica">Imagen</label>
+                                    <input name="imagenPractica" type="file" maxlength="50" class="form-control" id="imagenPractica"/>
+                                </div>
+
+                                <br>
 
                                 <div class="form-group">
                                     <label for="precio">Monto ofrecido</label>
