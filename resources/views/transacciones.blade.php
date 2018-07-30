@@ -34,8 +34,17 @@
 	                <table class="table table-striped">
 
 	                	<br>
-	                	<h1>Cantidad de creditos actual: ${{$cantidad}}</h1>
+						<div>
+							<div class="pull-left">
+	                			<h1>Cantidad de creditos actual: ${{$cantidad}}</h1>
+							</div>
+							<div class="pull-right">
+								<h1>Cantidad de meses Suscriptro: {{$mes_cantidad}}</h1>
+							</div>
+						<div>
 	                	<br>
+						<br>
+						<br>
 	                	<thead>
 							<tr>
 								<th>Fecha de transacción</th>

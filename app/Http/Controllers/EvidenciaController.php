@@ -167,6 +167,11 @@ class EvidenciaController extends Controller
                 $transaccionDebitada->save();
 
             }
+            else{
+                DB::table('historial_practicas')
+                ->where('id', $id)
+                ->update(['id_estado' => 5]);
+            }
 
         }
 
@@ -298,6 +303,11 @@ class EvidenciaController extends Controller
                 $transaccionDebitada->estado = 0;
                 $transaccionDebitada->save();
             }
+            else{
+                DB::table('historial_practicas')
+                ->where('id', $id)
+                ->update(['id_estado' => 5]);
+            }
 
         }
 
@@ -314,6 +324,7 @@ class EvidenciaController extends Controller
 
         $usuarioPracticante = DB::table('historial_practicas')
         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+        ->where('historial_practicas.id', $id_historial_practica)
         ->first();
 
         $id_usuario_Practicante = $usuarioPracticante->id_practicante;

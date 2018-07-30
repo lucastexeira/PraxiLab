@@ -28,8 +28,7 @@ class PerfilController extends Controller
 		$rubros = Rubro::all();
 
 		$req = Session::get('mail');
-		$id = Persona::where('mail', $req)->first()->id;
-		$persona = Persona::find($id);
+		$persona = Persona::where('mail', $req)->first();
 		
 		$personaAtributos = Persona::where('id', $id_usuario)->first();
 
@@ -86,6 +85,7 @@ class PerfilController extends Controller
 			$this->validate($request, [
 				'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
 			]);
+
 			$rubros = Rubro::all();
 			$persona = Persona::where('id', $id)->first();
 			$curriculum_persona = Curriculum::where('id_persona', $id)->first();
@@ -98,6 +98,7 @@ class PerfilController extends Controller
 			$persona->telefono = Input::get('telefono');
 			$persona->zona = Input::get('zona');
 			$persona->descripcion = Input::get('descripcion');
+			
 
 			if($request->hasFile('img')){ 
 				$image = $request->file('img'); 
@@ -110,7 +111,9 @@ class PerfilController extends Controller
 			
 			$persona->save();
 
-			return $this->perfil($persona->id);
+			return redirect()->action(
+                'PerfilController@perfil', ['perfil' => $id]
+            );
 		}
 
 		public function editarCurriculum(Request $req, $id) {
@@ -129,6 +132,25 @@ class PerfilController extends Controller
 			$curriculum = Curriculum::where('id_persona', $id)->first();
 			$persona = Persona::where('id', $id)->first();
 
+			if($curriculum == null){
+				
+				$newCurriculum = new Curriculum();
+				
+				$newCurriculum->formacion_academica = Input::get('formacion_academica');
+				$newCurriculum->formacion_complementaria = Input::get('formacion_complementaria');
+				$newCurriculum->experiencia = Input::get('experiencia');
+				$newCurriculum->idiomas = Input::get('idiomas');
+				$newCurriculum->referencias = Input::get('referencias');
+				$newCurriculum->otros_datos = Input::get('otros_datos');
+				$newCurriculum->id_persona = $persona->id;
+				$newCurriculum->save();
+
+				return redirect()->action(
+					'PerfilController@perfil', ['perfil' => $id]
+				);
+		
+			}
+
 			$curriculum->formacion_academica = Input::get('formacion_academica');
 			$curriculum->formacion_complementaria = Input::get('formacion_complementaria');
 			$curriculum->experiencia = Input::get('experiencia');
@@ -137,6 +159,8 @@ class PerfilController extends Controller
 			$curriculum->otros_datos = Input::get('otros_datos');
 			$curriculum->save();
 
-			return $this->perfil($persona->id);
+			return redirect()->action(
+                'PerfilController@perfil', ['perfil' => $id]
+            );
 		}
 	}

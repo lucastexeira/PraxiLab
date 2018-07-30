@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     	$this->call(rubrosSeeder::class);
         $this->call(serviciosSeeder::class);
         $this->call(personasSeeder::class);
-        $this->call(personasServiciosSeeder::class);
+        //$this->call(personasServiciosSeeder::class);
         $this->call(practicasSeeder::class);
         $this->call(estadosSeeder::class);
-        $this->call(historialPracticasSeeder::class);
+        //$this->call(historialPracticasSeeder::class);
         $this->call(CurriculumSeeder::class);
     }
 }

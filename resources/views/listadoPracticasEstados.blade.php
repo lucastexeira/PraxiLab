@@ -61,7 +61,7 @@
 
 						    	@foreach ($practicasDelPracticante as $soyPrac)
 						          <tr>
-							        <td><a href=" {{url('perfil/'.$soyPrac->id_voluntario.'')}} ">{{ $soyPrac->nombre }} {{ $soyPrac->apellido }} - {{ $soyPrac->mail }} - {{ $soyPrac->telefono }}</a></td>
+							        <td><a href=" {{url('perfil/'.$soyPrac->id_voluntario.'')}} ">{{ $soyPrac->nombre }} {{ $soyPrac->apellido }} - {{ $soyPrac->mail }}</a></td>
 							        <td><a href=" {{url('oferta/'.$soyPrac->id.'')}} ">{{ $soyPrac->nombre_practica }}</td></a>
 							        <td>${{ $soyPrac->precio }}</td>
 							        <td>{{ $soyPrac->created_at }}</td>
@@ -93,10 +93,12 @@
 																		</div>
 																	</div>
 																</div>
-												@elseif ($soyPrac->id_estado == 3)
+												@elseif ($soyPrac->id_estado == 3 or $soyPrac->id_estado == 5 and $soyPrac->id_autor != $persona->id)
 													<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
 															<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
 													</a>
+												@else
+													<td>&nbsp</td>
 												@endif
 							        	
 							       	</td>
@@ -140,12 +142,12 @@
 
 						    	@foreach ($practicasDelVoluntario as $soyVol)
 						          <tr>
-							        <td><a href=" {{url('perfil/'.$soyVol->id_practicante.'')}} ">{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }} - {{ $soyVol->telefono }}</a></td>
+							        <td><a href=" {{url('perfil/'.$soyVol->id_practicante.'')}} ">{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }}</a></td>
 							        <td><a href=" {{url('oferta/'.$soyVol->id.'')}} ">{{ $soyVol->nombre_practica }}</a></td>
 							        <td>${{ $soyVol->precio }}</td>
 							        <td>{{ $soyVol->created_at }}</td>
 							        <td>{{ $soyVol->estado }}</td>
-										  @if( $soyVol->id_estado == 3)
+										    @if( $soyVol->id_estado == 3 or $soyVol->id_estado == 5 and $soyVol->id_autor != $persona->id)
 											<td>
 												<a href=" {{ asset('cargarEvidenciaVoluntario/'.$soyVol->id_historial_practicas.'') }} ">
 														<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>

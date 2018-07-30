@@ -17,7 +17,7 @@ class estadosSeeder extends Seeder
     		['estado' => 'En Curso'],
             ['estado' => 'Sin Calificar'],
             ['estado' => 'Finalizada'],
-            ['estado' => 'Esperando Calificación del Usuario']// posiblemente no lo usemos nunca ¯\_(ツ)_/¯.
+            ['estado' => 'Esperando calificación ']// Esto es para que el mismo usuario no califique dos veces la misma practica. posiblemente no lo usemos nunca ¯\_(ツ)_/¯.
 
         ]);
     }
