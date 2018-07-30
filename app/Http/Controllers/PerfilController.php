@@ -29,6 +29,13 @@ class PerfilController extends Controller
 
 		$req = Session::get('mail');
 		$persona = Persona::where('mail', $req)->first();
+
+		if($persona != null){
+			$id_persona_boton = $persona->id; 
+		}
+		else{
+			$id_persona_boton = 0;
+		}
 		
 		$personaAtributos = Persona::where('id', $id_usuario)->first();
 
@@ -76,7 +83,8 @@ class PerfilController extends Controller
 		->with('personaAtributos', $personaAtributos)
 		->with('calificacionEstrella', $calificacionEstrella)->with('experiencia', $experiencia)->with('usuarios', $usuarios)
 		->with('CantidadPracticasPracticante',$CantidadPracticasPracticante)
-		->with('CantidadPracticasVoluntario',$CantidadPracticasVoluntario);
+		->with('CantidadPracticasVoluntario',$CantidadPracticasVoluntario)
+		->with('id_persona_boton',$id_persona_boton);
 		//dd($usuarios);
         /*$evidencias = DB::table('practicas')
             ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')
