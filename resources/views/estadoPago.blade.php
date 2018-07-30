@@ -18,6 +18,7 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <h1>{{$mensaje}}</h1>
                         <hr>
+                        <a href="{{url('transacciones/')}}"><button type="button" class="btn btn-success btn-lg btn-purple "><h2>Ver historial de Transacciones</h2></button></a>
                     </div>
                 </div>
             </div>
