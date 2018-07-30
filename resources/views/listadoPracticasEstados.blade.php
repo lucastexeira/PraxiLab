@@ -97,9 +97,6 @@
 													<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
 															<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
 													</a>
-												@elseif($soyPrac->id_estado == 5)
-													<td>del otro usuario</td>
-												@else
 													<td>&nbsp</td>
 												@endif
 							        	
@@ -144,7 +141,7 @@
 
 						    	@foreach ($practicasDelVoluntario as $soyVol)
 						          <tr>
-							        <td><a href=" {{url('perfil/'.$soyVol->id_practicante.'')}} ">{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }} - {{ $soyVol->telefono }}</a></td>
+							        <td><a href=" {{url('perfil/'.$soyVol->id_practicante.'')}} ">{{ $soyVol->nombre }} {{ $soyVol->apellido }} - {{ $soyVol->mail }}</a></td>
 							        <td><a href=" {{url('oferta/'.$soyVol->id.'')}} ">{{ $soyVol->nombre_practica }}</a></td>
 							        <td>${{ $soyVol->precio }}</td>
 							        <td>{{ $soyVol->created_at }}</td>
@@ -155,10 +152,6 @@
 														<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
 												</a>
 											</td>
-											@elseif($soyVol->id_estado == 5)
-												<td>del otro usuario</td>
-											@else
-												<td>&nbsp</td>
 											@endif
 
 										</tr>

@@ -26,12 +26,14 @@ class PracticasController extends Controller
                                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
                                         ->join('personas', 'personas.id', '=', 'historial_practicas.id_voluntario')
                                         ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
+                                        ->leftjoin('evidencias','evidencias.id_historial_practica','=','historial_practicas.id')
                                         ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail',
                                                  'personas.telefono', 'personas.id as id_voluntario',
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
                                                  'historial_practicas.created_at', 'historial_practicas.id_estado', 
-                                                 'estados.estado', 'estados.id as id_estado', 'precio')
+                                                 'estados.estado', 'estados.id as id_estado', 'precio', 'evidencias.id_autor')
                                         ->where('practicas.id_practicante', '=', $id)
+                                        ->groupBy('historial_practicas.id')
                                         ->orderByRaw('created_at DESC')
                                         ->get();
 
@@ -39,27 +41,18 @@ class PracticasController extends Controller
                                         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
                                         ->join('personas', 'personas.id', '=', 'practicas.id_practicante')
                                         ->join('estados', 'estados.id', '=', 'historial_practicas.id_estado')
+                                        ->leftjoin('evidencias','evidencias.id_historial_practica','=','historial_practicas.id')
                                         ->select('historial_practicas.id as id_historial_practicas', 'personas.nombre', 'personas.apellido', 'personas.mail', 
                                                  'personas.telefono', 'personas.id as id_practicante',
                                                  'practicas.id', 'practicas.nombre_practica', 'practicas.precio',
                                                  'historial_practicas.created_at', 'historial_practicas.id_estado', 
-                                                 'estados.estado', 'estados.id as id_estado', 'precio')
+                                                 'estados.estado', 'estados.id as id_estado', 'precio', 'evidencias.id_autor')
                                         ->where('historial_practicas.id_voluntario', '=', $id)
+                                        ->groupBy('historial_practicas.id')
                                         ->orderByRaw('created_at DESC')
                                         ->get();
-
-        $evidenciaPracticante = db::table('evidencias')
-                                    ->join('historial_practicas','historial_practicas.id', '=', 'evidencias.id_historial_practica')
-                                    ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
-                                    ->where('practicas.id_practicante', '=', $id)
-                                    ->get();
-
-        $evidenciavoluntario = db::table('evidencias')
-                                    ->join('historial_practicas','historial_practicas.id', '=', 'evidencias.id_historial_practica')
-                                    ->where('historial_practicas.id_voluntario', '=', $id)
-                                    ->get();
         
-        dd($evidenciaPracticante, $evidenciavoluntario, $persona->id);
+        //dd($evidenciaPracticante, $evidenciavoluntario, $persona->id);
         return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante)->with('persona',$persona);
 
         //dd($practicasDelVoluntario);
