@@ -167,6 +167,11 @@ class EvidenciaController extends Controller
                 $transaccionDebitada->save();
 
             }
+            else{
+                DB::table('historial_practicas')
+                ->where('id', $id)
+                ->update(['id_estado' => 5]);
+            }
 
         }
 
@@ -297,6 +302,11 @@ class EvidenciaController extends Controller
                 $transaccionDebitada->id_transaccione_mercadopago = null;
                 $transaccionDebitada->estado = 0;
                 $transaccionDebitada->save();
+            }
+            else{
+                DB::table('historial_practicas')
+                ->where('id', $id)
+                ->update(['id_estado' => 5]);
             }
 
         }

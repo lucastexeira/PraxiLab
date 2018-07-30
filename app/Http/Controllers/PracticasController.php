@@ -47,7 +47,19 @@ class PracticasController extends Controller
                                         ->where('historial_practicas.id_voluntario', '=', $id)
                                         ->orderByRaw('created_at DESC')
                                         ->get();
+
+        $evidenciaPracticante = db::table('evidencias')
+                                    ->join('historial_practicas','historial_practicas.id', '=', 'evidencias.id_historial_practica')
+                                    ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                    ->where('practicas.id_practicante', '=', $id)
+                                    ->get();
+
+        $evidenciavoluntario = db::table('evidencias')
+                                    ->join('historial_practicas','historial_practicas.id', '=', 'evidencias.id_historial_practica')
+                                    ->where('historial_practicas.id_voluntario', '=', $id)
+                                    ->get();
         
+        dd($evidenciaPracticante, $evidenciavoluntario, $persona->id);
         return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante)->with('persona',$persona);
 
         //dd($practicasDelVoluntario);

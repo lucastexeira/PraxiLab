@@ -57,7 +57,7 @@
 										<img src="{{asset($oferta->imagen_practica)}}" class="img-oferta-perfil" />
 									</div>
 									<div class="col-9">
-										<h1>{{$oferta->nombre_practica}}</h1>
+										<h1><a href="{{url('oferta/'.$oferta->id.'')}}">{{$oferta->nombre_practica}}</a></h1>
 										<p>
 											{{$oferta->descripcion}}
 										</p>
