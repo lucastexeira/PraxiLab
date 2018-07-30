@@ -31,7 +31,7 @@ class ServicioController extends Controller
 
 
         $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                ->select('practicas.id', 'practicas.precio', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
                 ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
                 ->orderBy('practicas.id', 'desc')->get();
                 $rubros = Rubro::All();
@@ -49,7 +49,7 @@ class ServicioController extends Controller
 
 
     $pracPers = Practica::where('nombre_practica', 'like', '%'.Input::get('buscador').'%')
-                ->select('practicas.id', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
+                ->select('practicas.id', 'practicas.precio', 'nombre_practica', 'personas.nombre', 'practicas.descripcion', 'personas.id', 'practicas.imagen_practica', 'practicas.id_practicante')
                 ->join('personas', 'practicas.id_practicante', '=', 'personas.id')
                 ->orderBy('practicas.id', 'desc')->get();
                 $rubros = Rubro::All();
@@ -117,7 +117,7 @@ class ServicioController extends Controller
 
     public function irAWizard(Request $request){
 
-        $id_rubro = array_key_exists('data', $_GET) ? $_GET['data'] : null;
+        //$id_rubro = array_key_exists('data', $_GET) ? $_GET['data'] : null;
         
         $req = Session::get('mail');
         
@@ -129,6 +129,10 @@ class ServicioController extends Controller
        // $servicios = Servicio::paginate(5);
         //$servicios = Servicio::where('id', $request->id)->pluck('id');
         
+
+        //$rubro->id_rubro = request('rubroID');
+
+
         if(!empty($id_rubro))
             $servicios = DB::Select('Select * from servicios where id_rubro = '.$id_rubro.'');
         else
