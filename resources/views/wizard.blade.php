@@ -230,7 +230,7 @@
               $.ajax({
                 type:"GET",
                 data: rubroID,
-                url : "http://localhost:8080/PraxiLab/public/wizard?rubroID=" +rubroID,
+                //url : "http://localhost:8080/PraxiLab/public/wizard?rubroID=" +rubroID,
                 success:function(res){
                   if(res){
                     //Oculto listado de rubros con efecto lento
