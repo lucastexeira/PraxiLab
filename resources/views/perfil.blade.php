@@ -108,9 +108,12 @@
 													<h1 class="experiencia-titulo">Usuario practicante: <a href="{{url('perfil/'.$user->id.'')}}">{{$user->nombre}}</h1>
 													<img src="{{ asset($user->img) }}" class="experiencia-profile-pic"></a>
 												</div>
-												@endif	
+												@endif
+
 											@endforeach
+										
 									</div>
+
 								</div>
 								<div class="row justify-content-end align-items-end">
 									<div class="col-1">
@@ -118,7 +121,9 @@
 									</div>
 								</div>
 							</div>
+						<hr>
 						</div>
+
 					@endforeach
 				</div>
 			</div>

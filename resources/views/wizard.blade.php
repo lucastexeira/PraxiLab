@@ -45,8 +45,7 @@
                 </ul>
             </div>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <form action=" createPractica/{{ $practica->id }}" role="form" id="formularioWizard" class="formularioWizard" method="">
-                <input type="hidden" name="_method" value="PUT">
+            <form action="{{url('createPractica/')}}" enctype="multipart/form-data" role="form" id="formularioWizard" class="formularioWizard" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
@@ -107,51 +106,73 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="descripcion">Nombre</label>
-                                    <input name="nombre_practica" type="text" id="nombre_practica" class="form-control" placeholder="Nombre de la Practica" required="required" value="{{ $practica->nombre_practica }}">
+                                    <input name="nombre_practica" type="text" id="nombre_practica" class="form-control" placeholder="Nombre de la Practica" required="required">
+
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
-                                    <textarea name="descripcion" cols="40" rows="4" class="form-control" required="required" value="{{ $practica->descripcion }}"></textarea>
+                                    <textarea name="descripcion" type="text" id="descripcion" cols="40" rows="4" class="form-control" placeholder="Descripcion de la Practica" required="required"></textarea>
                                 </div>
 
                             </div>
 
                             <div class="col-md-6">
-                                <input name="imagen_practica" type="hidden" id="imagen_practica" required="required" value="img/logos/logo_default.png"/>
+
+                                <div class="form-group">
+                                    <label for="imagenPractica">Imagen</label>
+                                    <input name="imagenPractica" type="file" maxlength="50" class="form-control" id="imagenPractica"/>
+                                </div>
+
+                                <br>
 
                                 <div class="form-group">
                                     <label for="precio">Monto ofrecido</label>
-                                    <input name="precio" type="number" id="precio" class="form-control" placeholder="Monto ofrecido" required>
+                                    <input name="precio" id="precio" type="number" class="form-control" placeholder="Monto ofrecido" required>
                                 </div>
                             </div>
                         </div>
 
                         <ul class="list-inline pull-right">
                             
-                            <!--button type="button" class="btn btn-theme btn-lg next-step" id="botonStep2">Guardar y Finalizar
-                            </button-->
-                            <button type="submit" class="btn btn-theme btn-lg">Guardar y Finalizar
-                            </button>                            
+                            <button type="button" class="btn btn-theme btn-lg next-step" id="botonStep2">Guardar y Finalizar
+                            </button>
+                            <!--button type="submit" class="btn btn-theme btn-lg">Guardar y Finalizar
+                            </button-->                            
                         </ul>
                     </div>
             
                     <div class="tab-pane text-center" role="tabpanel" id="complete">
-                        <h2>¡Se ha creado la práctica exitosamente!</h2>
+                        <h2>¡Confirmar y guardar!</h2>
 
+                    <div class="col-lg-12">
                         <ul class="list-group">
-                          <li class="list-group-item" style="color:black"><b>Rubro</b> Cursos y Clases</li>
-
-                          <input name="nombre_practica2" type="text" id="nombre_practica2" class="form-control" placeholder="Nombre de la Practica" value="">
-
-
-                          <li class="list-group-item" style="color:black"><b>Servicio</b> {{ $practica->id_servicio }}</li>
-                          <li class="list-group-item" style="color:black"><b>Práctica</b>  {{ $practica->id_practica }} - {{ $practica->nombre_practica }}</li>
-                          <li class="list-group-item" style="color:black"><b>Descripción</b>  {{ $practica->descripcion }}</li>
+                          <li class="list-group-item" style="color:black">
+                            
+                                <div class="col-lg-6 col-lg-offset-3">
+                                    <b>Nombre de la Practica:</b>
+                                    <input name="nombre_de_practica" type="text" id="nombre_de_practica" class="form-control" placeholder="Nombre de la Practica" value="" disabled>
+                                </div>  
+                          
+                          </li>
+                          <li class="list-group-item" style="color:black">
+                                <div class="col-lg-6 col-lg-offset-3">
+                                    <b>Descripcion de la Practica:</b>
+                                    <input name="descripcion_de_practica" type="text" id="descripcion_de_practica" class="form-control" value="" disabled>
+                                </div>
+                          </li>
+                          <li class="list-group-item" style="color:black">
+                                <div class="col-lg-6 col-lg-offset-3">
+                                    <b>Precio de la Practica:</b>
+                                    $<input name="precio_de_practica" type="text" id="precio_de_practica" class="form-control" value="" disabled>
+                                </div>
+                          </li>
                         </ul>
-
+                    </div>
                         </br>
-                        <button type="button" class="btn btn-theme btn-lg next-step">
+                        <!--button type="button" class="btn btn-theme btn-lg next-step">
                             <a href="{{ 'oferta' }}">Ir a mi práctica</a>
+                        </button-->
+                        <button type="submit" class="btn btn-theme btn-lg">Guardar y Finalizar
                         </button>
                     </div>
                     <div class="clearfix"></div>
@@ -194,6 +215,11 @@
             var rubroID = $(this).attr("alt");
             var rubroIMG = $(this).attr("src");
 
+            /*
+            if (rubroID == 1){
+                $('#servicioSeleccionado').attr('value', 1)                
+            }
+    */
             $('wizard').attr('href', 'id='+rubroID);
 
             $('#rubroSeleccionado').addClass('col-md-3');
@@ -203,7 +229,8 @@
             if(rubroID){
               $.ajax({
                 type:"GET",
-                data:rubroID,
+                data: rubroID,
+                url : "http://localhost:8080/PraxiLab/public/wizard?rubroID=" +rubroID,
                 success:function(res){
                   if(res){
                     //Oculto listado de rubros con efecto lento
@@ -231,7 +258,6 @@
         }
     });
 
-        
 
     //PASO 2
         //Si apreto el boton de confirmar y continuar del PASO 1, deshabilito al icono1
@@ -247,6 +273,17 @@
             $('#irAPaso2').removeAttr('href', '#step2');
             $('#iconoPaso2').addClass('disabled');
             $('#irAPaso3').attr('href', '#complete');
+
+
+            var nombre_practica = $('#nombre_practica').val();
+            //$('#nombre_practica').val(nombre_de_practica);
+            $('#nombre_de_practica').attr('value', nombre_practica);
+
+            var descripcion = $('#descripcion').val();
+            $('#descripcion_de_practica').val(descripcion);
+
+            var precio = $('#precio').val();
+            $('#precio_de_practica').val(precio);
 
         }); 
 
@@ -272,15 +309,6 @@
 
         });
 });
-
- function copiarDatos(){
-
-          $("#nombre_practica").keyup(function () {
-        var value = $(this).val();
-        $("#nombre_practica2").val(value);
-             });
-
-        }
 
 function nextTab(elem) {
 $(elem).next().find('a[data-toggle="tab"]').click();
