@@ -109,7 +109,9 @@ class PerfilController extends Controller
 			
 			$persona->save();
 
-			return $this->perfil($persona->id);
+			return redirect()->action(
+                'PerfilController@perfil', ['perfil' => $id]
+            );
 		}
 
 		public function editarCurriculum(Request $req, $id) {
@@ -136,6 +138,8 @@ class PerfilController extends Controller
 			$curriculum->otros_datos = Input::get('otros_datos');
 			$curriculum->save();
 
-			return $this->perfil($persona->id);
+			return redirect()->action(
+                'PerfilController@perfil', ['perfil' => $id]
+            );
 		}
 	}
