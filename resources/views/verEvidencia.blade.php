@@ -15,7 +15,7 @@
 	<div class="container gallery-container">
 		<div class="panel panel-default contenido">
 			<div class="panel-heading">
-				<a href="oferta/">
+				<a href="{{url('oferta/'.$comentarioPracticante->id_practica.'')}}">
 					<h1 class="experiencia-titulo">Práctica: {{$nombrePractica}}</h1>
 				</a>
 			</div>
@@ -40,7 +40,7 @@
 				<div class="row">
 
 					<div class="center-block nav-item col-lg-5 col-lg-offset-1">
-						<h1>Usuario Practicante: {{$comentarioPracticante->nombre}} {{$comentarioPracticante->apellido}}</h1>
+						<h1>Usuario Practicante: <a href="{{url('perfil/'.$comentarioPracticante->id_autor)}}"> {{$comentarioPracticante->nombre}} {{$comentarioPracticante->apellido}}</a></h1>
 						
 						<div>
 							<div class="container contenido">
@@ -89,7 +89,7 @@
 					</div>
 
 					<div class="center-block nav-item col-lg-5 col-lg-offset-1">
-						<h1>Usuario voluntario: {{$comentarioVoluntario->nombre}} {{$comentarioVoluntario->apellido}}</h1>
+						<h1>Usuario voluntario:<a href="{{url('perfil/'.$comentarioVoluntario->id_autor)}}"> {{$comentarioVoluntario->nombre}} {{$comentarioVoluntario->apellido}}</a></h1>
 
 						<div>
 							<div class="container contenido">
