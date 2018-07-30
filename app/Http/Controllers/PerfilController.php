@@ -28,8 +28,7 @@ class PerfilController extends Controller
 		$rubros = Rubro::all();
 
 		$req = Session::get('mail');
-		$id = Persona::where('mail', $req)->first()->id;
-		$persona = Persona::find($id);
+		$persona = Persona::where('mail', $req)->first();
 		
 		$personaAtributos = Persona::where('id', $id_usuario)->first();
 

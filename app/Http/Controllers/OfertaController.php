@@ -28,7 +28,7 @@ class OfertaController extends Controller
     public function oferta(Request $req, $id_oferta){ 
 
         $req = Session::get('mail');
-        $id = Persona::where('mail', $req)->first()->id;
+        $id = Persona::where('mail', $req)->first(['id']);
         $persona = Persona::find($id);
 
         $historial_practicas = new Historial_Practica();
