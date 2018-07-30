@@ -89,6 +89,7 @@ class HomeController extends Controller
    public function create(){
 
     $persona = new Persona();
+    $persona->username = Input::get('nombre');
     $persona->nombre = Input::get('nombre');
     $persona->apellido = Input::get('apellido');
     $persona->mail = Input::get('mail');
@@ -102,7 +103,7 @@ class HomeController extends Controller
     $curriculum = new Curriculum();
     $curriculum->id_persona = $persona->id;
     $curriculum->save();
-    return Redirect::to('/inicioSesion')->with('notice', 'El usuario ha sido creado correctamente, Inicie Sesión');
+    return Redirect::to('/inicioSesion');
 }
 
 public function inicioSesion(){
