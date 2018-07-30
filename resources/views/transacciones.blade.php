@@ -57,7 +57,7 @@
 					    <tbody>
 
 						@foreach($personaTransaccion as $transaccion)
-							@if($transaccion->estado != 1)
+							@if($transaccion->estado != 1 and $transaccion->monto_transferido != 0)
 								<tr>
 									<td>{{$transaccion->created_at}}</td>
 
