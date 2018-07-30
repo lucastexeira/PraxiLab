@@ -44,6 +44,7 @@ class PerfilController extends Controller
 		$comentarios =  DB::table('evidencias')
 						->join('historial_practicas','historial_practicas.id','=','evidencias.id_historial_practica')
 						->join('personas','personas.id','=','evidencias.id_autor')
+						->select('historial_practicas.created_at','id_autor','username','id_historial_practica','comentario','calificacion')
 						->where('id_destinatario', '=', $id_usuario)
 						->where('historial_practicas.id_estado', '=', 4)
 						->get();
