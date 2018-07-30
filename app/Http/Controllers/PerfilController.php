@@ -42,9 +42,11 @@ class PerfilController extends Controller
 		$calificacionEstrella = round($calificacionescomentarios, 1);
 
 		$comentarios =  DB::table('evidencias')
-		->where('id_destinatario', '=', $id_usuario)
-		->select('comentario', 'calificacion', 'created_at')
-		->get();
+						->join('historial_practicas','historial_practicas.id','=','evidencias.id_historial_practica')
+						->join('personas','personas.id','=','evidencias.id_autor')
+						->where('id_destinatario', '=', $id_usuario)
+						->where('historial_practicas.id_estado', '=', 4)
+						->get();
 
 		$experiencia = DB::table('historial_practicas')
 		->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
@@ -66,7 +68,7 @@ class PerfilController extends Controller
                                             ->where('historial_practicas.id_estado' ,'=' ,4)
                                             ->count('historial_practicas.id');
 
-		//dd($experiencia);
+		//dd($comentarios);
 		
 		return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)
 		->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)
