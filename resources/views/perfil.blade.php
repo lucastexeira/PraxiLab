@@ -83,6 +83,7 @@
 
 					<div class="panel-heading">
 						<h1>Estas son las evidencias de las practicas que realizo el usuario {{$personaAtributos->username}}</a></h1>
+						<h2>Fue practicante en {{$CantidadPracticasPracticante}} practicas, y fue voluntario en {{$CantidadPracticasVoluntario}} practicas</h2>
 					</div>
 
 					@foreach ($experiencia as $evidencia)
