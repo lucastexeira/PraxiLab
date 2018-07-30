@@ -51,11 +51,25 @@ class PracticasController extends Controller
                                         ->groupBy('historial_practicas.id')
                                         ->orderByRaw('created_at DESC')
                                         ->get();
-        
-        //dd($evidenciaPracticante, $evidenciavoluntario, $persona->id);
-        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)->with('practicasDelPracticante',$practicasDelPracticante)->with('persona',$persona);
 
-        //dd($practicasDelVoluntario);
+        $CantidadPracticasPracticante = DB::table('historial_practicas')
+                                            ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                            ->where('practicas.id_practicante', '=', $id)
+                                            ->where('historial_practicas.id_estado' ,'=' ,4)
+                                            ->count('historial_practicas.id');
+        
+        $CantidadPracticasVoluntario = DB::table('historial_practicas')
+                                            ->where('historial_practicas.id_voluntario', '=', $id)
+                                            ->where('historial_practicas.id_estado' ,'=' ,4)
+                                            ->count('historial_practicas.id');
+        
+        
+        return view('/listadoPracticasEstados')->with('rubros',$rubros)->with('practicasDelVoluntario',$practicasDelVoluntario)
+                                               ->with('practicasDelPracticante',$practicasDelPracticante)->with('persona',$persona)
+                                               ->with('CantidadPracticasPracticante',$CantidadPracticasPracticante)
+                                               ->with('CantidadPracticasVoluntario',$CantidadPracticasVoluntario);
+
+        //dd($CantidadPracticasPracticante, $CantidadPracticasVoluntario);
     }
 
     public function updateEstadoComenzar($id_historial_practicas){

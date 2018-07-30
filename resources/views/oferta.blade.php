@@ -137,9 +137,11 @@
 								<hr style="border:3px solid #f1f1f1">
 
 								@foreach($comentarios as $c)
-								<ul class="list-group">
-									<li class="list-group-item">{{ $c->created_at }} <b>{{ $c->comentario }}</b> <span class="badge"><h4>{{ $c->calificacion }}<span class="fa fa-star checked-white"></h4> </span></span></li>
-								</ul>
+									<ul class="list-group">
+										<li class="list-group-item">Fechas de practica: {{ $c->created_at }} <b>   Comentario del usuario <a href="{{url('perfil/'.$c->id_autor)}}">{{$c->username}}</a>: 
+										<a href="{{url('verEvidencia/'.$c->id_historial_practica)}}">{{ $c->comentario }}</a></b>
+										<span class="badge">{{ $c->calificacion }} <span class="fa fa-star checked-white"></span></span></li>
+									</ul>
 								@endforeach
 						</div>
 					</div>

@@ -42,9 +42,12 @@ class PerfilController extends Controller
 		$calificacionEstrella = round($calificacionescomentarios, 1);
 
 		$comentarios =  DB::table('evidencias')
-		->where('id_destinatario', '=', $id_usuario)
-		->select('comentario', 'calificacion', 'created_at')
-		->get();
+						->join('historial_practicas','historial_practicas.id','=','evidencias.id_historial_practica')
+						->join('personas','personas.id','=','evidencias.id_autor')
+						->select('historial_practicas.created_at','id_autor','username','id_historial_practica','comentario','calificacion')
+						->where('id_destinatario', '=', $id_usuario)
+						->where('historial_practicas.id_estado', '=', 4)
+						->get();
 
 		$experiencia = DB::table('historial_practicas')
 		->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
@@ -55,12 +58,25 @@ class PerfilController extends Controller
 		
 		$usuarios = DB::table('personas')->get();
 
-		//dd($experiencia);
+		$CantidadPracticasPracticante = DB::table('historial_practicas')
+                                            ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+                                            ->where('practicas.id_practicante', '=', $id_usuario)
+                                            ->where('historial_practicas.id_estado' ,'=' ,4)
+                                            ->count('historial_practicas.id');
+        
+        $CantidadPracticasVoluntario = DB::table('historial_practicas')
+                                            ->where('historial_practicas.id_voluntario', '=', $id_usuario)
+                                            ->where('historial_practicas.id_estado' ,'=' ,4)
+                                            ->count('historial_practicas.id');
 
+		//dd($comentarios);
+		
 		return view('perfil')->with('rubros', $rubros)->with('persona', $persona)->with('calificacionescomentarios', $calificacionescomentarios)
 		->with('comentarios', $comentarios)->with('curriculum', $curriculum)->with('practicas', $practicas)
 		->with('personaAtributos', $personaAtributos)
-		->with('calificacionEstrella', $calificacionEstrella)->with('experiencia', $experiencia)->with('usuarios', $usuarios);
+		->with('calificacionEstrella', $calificacionEstrella)->with('experiencia', $experiencia)->with('usuarios', $usuarios)
+		->with('CantidadPracticasPracticante',$CantidadPracticasPracticante)
+		->with('CantidadPracticasVoluntario',$CantidadPracticasVoluntario);
 		//dd($usuarios);
         /*$evidencias = DB::table('practicas')
             ->leftjoin('evidencias', 'evidencias.id_practica', '=', 'practicas.id')

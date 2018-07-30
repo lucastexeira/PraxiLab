@@ -35,15 +35,16 @@
 				<div class="panel panel-default contenido">
 					<div class="panel-body">
 	            		</br>
-	            		<div class="col-lg-4">
-		            		<select class="form-control" id="select">
+	            		<div class="col-lg-8">
+		            		<!--<select class="form-control" id="select">
 					          <option value="">Seleccionar Estado</option>
 					            <option value="">Solicitada</option>
 					            <option value="">En Curso</option>
 					            <option value="">Finalizada</option>
 					            <option value="">Sin Calificar</option>
-					        </select>
+					        </select>-->
 
+							<h2>Practicas finalizadas como practicante: {{$CantidadPracticasPracticante}}</h2>
 				        </div>
 				        </br>
 						<table class="table table-striped">
@@ -115,15 +116,16 @@
 					<div class="panel-body">
 
 	            		</br>
-	            		<div class="col-lg-4">
-		            		<select class="form-control" id="select">
+	            		<div class="col-lg-8">
+		            		<!--<select class="form-control" id="select">
 					          <option value="">Seleccionar Estado</option>
 					            <option value="">Solicitada</option>
 					            <option value="">En Curso</option>
 					            <option value="">Finalizada</option>
 					            <option value="">Sin Calificar</option>
-					        </select>
+					        </select>-->
 
+							<h2>Practicas finalizadas como voluntario: {{$CantidadPracticasVoluntario}}</h2>
 				        </div>
 				        </br>
 				        

@@ -83,6 +83,7 @@
 
 					<div class="panel-heading">
 						<h1>Estas son las evidencias de las practicas que realizo el usuario {{$personaAtributos->username}}</a></h1>
+						<h2>Fue practicante en {{$CantidadPracticasPracticante}} practicas, y fue voluntario en {{$CantidadPracticasVoluntario}} practicas</h2>
 					</div>
 
 					@foreach ($experiencia as $evidencia)
@@ -244,7 +245,9 @@
 
 					@foreach($comentarios as $c)
 					   <ul class="list-group">
-					    <li class="list-group-item">{{ $c->created_at }} <b>{{ $c->comentario }}</b> <span class="badge">{{ $c->calificacion }} <span class="fa fa-star checked-white"></span></span></li>
+					    <li class="list-group-item">Fechas de practica: {{ $c->created_at }} <b>   Comentario del usuario <a href="{{url('perfil/'.$c->id_autor)}}">{{$c->username}}</a>: 
+							<a href="{{url('verEvidencia/'.$c->id_historial_practica)}}">{{ $c->comentario }}</a></b>
+							<span class="badge">{{ $c->calificacion }} <span class="fa fa-star checked-white"></span></span></li>
 					  </ul>
 					@endforeach
 					<!--div class="row">

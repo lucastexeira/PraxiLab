@@ -172,7 +172,7 @@ class ServicioController extends Controller
         //$session_id = session()->getId();
         $request = Session::get('mail');
 
-        $id_practica = DB::table('practicas')->orderBy('created_at', 'desc')->first();
+        $id_practica = DB::table('practicas')->orderBy('id', 'desc')->first();
 
         $id_practica_anterior = $id_practica->id;
 
