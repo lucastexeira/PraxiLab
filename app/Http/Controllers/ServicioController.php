@@ -130,7 +130,7 @@ class ServicioController extends Controller
         //$servicios = Servicio::where('id', $request->id)->pluck('id');
         
 
-        $rubro->id_rubro = request('rubroID');
+        //$rubro->id_rubro = request('rubroID');
 
 
         if(!empty($id_rubro))
