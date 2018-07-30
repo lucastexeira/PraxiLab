@@ -38,7 +38,7 @@ class practicasSeeder extends Seeder
             'imagen_practica' => 'img/practicas/practica3.png', 'id_practicante' => '4', 'id_servicio'=>'1', 'precio'=>'80.0'],
 
             ['nombre_practica' => 'Practica9', 'descripcion'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-            'imagen_practica' => 'img/practicas/practica3.png', 'id_practicante' => '1', 'id_servicio'=>'1', 'precio'=>'80.0'],
+            'imagen_practica' => 'img/practicas/practica3.png', 'id_practicante' => '1', 'id_servicio'=>'1', 'precio'=>'80.0']/*,
 
             ['nombre_practica' => 'Practica10', 'descripcion'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
             'imagen_practica' => 'img/practicas/practica3.png', 'id_practicante' => '1', 'id_servicio'=>'1', 'precio'=>'80.0'],
@@ -53,7 +53,7 @@ class practicasSeeder extends Seeder
             'imagen_practica' => 'img/practicas/practica3.png', 'id_practicante' => '2', 'id_servicio'=>'1', 'precio'=>'80.0'],
 
             ['nombre_practica' => 'Practica14', 'descripcion'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-            'imagen_practica' => 'img/practicas/practica3.png', 'id_practicante' => '4', 'id_servicio'=>'1', 'precio'=>'80.0']
+            'imagen_practica' => 'img/practicas/practica3.png', 'id_practicante' => '4', 'id_servicio'=>'1', 'precio'=>'80.0']*/
 
         ]);
 }
