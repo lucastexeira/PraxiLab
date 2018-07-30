@@ -324,6 +324,7 @@ class EvidenciaController extends Controller
 
         $usuarioPracticante = DB::table('historial_practicas')
         ->join('practicas', 'practicas.id', '=', 'historial_practicas.id_practica')
+        ->where('historial_practicas.id', $id_historial_practica)
         ->first();
 
         $id_usuario_Practicante = $usuarioPracticante->id_practicante;

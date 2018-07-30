@@ -97,6 +97,7 @@
 													<a href=" {{ asset('cargarEvidencia/'.$soyPrac->id_historial_practicas.'') }} ">
 															<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
 													</a>
+												@else
 													<td>&nbsp</td>
 												@endif
 							        	
@@ -152,6 +153,8 @@
 														<button type="button" class="btn btn-warning btn-lg" >Evidenciar/Calificar</button>
 												</a>
 											</td>
+											@else
+												<td>&nbsp</td>
 											@endif
 
 										</tr>

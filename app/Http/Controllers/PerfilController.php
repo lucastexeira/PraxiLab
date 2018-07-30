@@ -85,6 +85,7 @@ class PerfilController extends Controller
 			$this->validate($request, [
 				'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
 			]);
+
 			$rubros = Rubro::all();
 			$persona = Persona::where('id', $id)->first();
 			$curriculum_persona = Curriculum::where('id_persona', $id)->first();
@@ -97,6 +98,7 @@ class PerfilController extends Controller
 			$persona->telefono = Input::get('telefono');
 			$persona->zona = Input::get('zona');
 			$persona->descripcion = Input::get('descripcion');
+			
 
 			if($request->hasFile('img')){ 
 				$image = $request->file('img'); 
@@ -129,6 +131,25 @@ class PerfilController extends Controller
 			$rubros = Rubro::all();
 			$curriculum = Curriculum::where('id_persona', $id)->first();
 			$persona = Persona::where('id', $id)->first();
+
+			if($curriculum == null){
+				
+				$newCurriculum = new Curriculum();
+				
+				$newCurriculum->formacion_academica = Input::get('formacion_academica');
+				$newCurriculum->formacion_complementaria = Input::get('formacion_complementaria');
+				$newCurriculum->experiencia = Input::get('experiencia');
+				$newCurriculum->idiomas = Input::get('idiomas');
+				$newCurriculum->referencias = Input::get('referencias');
+				$newCurriculum->otros_datos = Input::get('otros_datos');
+				$newCurriculum->id_persona = $persona->id;
+				$newCurriculum->save();
+
+				return redirect()->action(
+					'PerfilController@perfil', ['perfil' => $id]
+				);
+		
+			}
 
 			$curriculum->formacion_academica = Input::get('formacion_academica');
 			$curriculum->formacion_complementaria = Input::get('formacion_complementaria');
